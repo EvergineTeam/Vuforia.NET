@@ -2,7 +2,7 @@
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
-    <Copyright>Copyright (c) Evergine 2025</Copyright>
+    <Copyright>Copyright (c) Evergine 2026</Copyright>
     <Authors>Evergine Team</Authors>
     <Company>Plain Concepts</Company>
     <Description>Low-level bindings for Vuforia Engine used in Evergine</Description>
