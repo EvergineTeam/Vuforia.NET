@@ -1,0 +1,29 @@
+# Binding CI - Simple Template
+name: CI
+
+on:
+  workflow_dispatch:
+    inputs:
+      publish-artifacts:
+        description: 'Publish artifacts'
+        required: false
+        type: boolean
+        default: false
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  ci:
+    uses: EvergineTeam/evergine-standards/.github/workflows/binding-common-ci.yml@v2
+    with:
+      generator-project: "VuforiaGen/VuforiaGen.csproj"
+      generator-name: "VuforiaGen"
+      binding-project: "Evergine.Bindings.Vuforia/Evergine.Bindings.Vuforia.csproj"
+      target-framework: "net8.0"
+      dotnet-version: "8.x"
+      runtime-identifier: "linux-x64"
+      build-configuration: "Release"
+      nuget-artifacts: ${{ inputs.publish-artifacts || false }}
+      revision: ${{ github.run_number }}

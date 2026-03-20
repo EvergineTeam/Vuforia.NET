@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="Evergine.Bindings.Vuforia/Evergine.Bindings.Vuforia.csproj" />
+  <Project Path="VuforiaGen/VuforiaGen.csproj" />
+</Solution>

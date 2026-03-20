@@ -1,0 +1,33 @@
+# Binding Simple CD - Template
+name: CD
+
+on:
+  workflow_dispatch:
+    inputs:
+      skip-assets-publishing:
+        description: 'Skip assets publishing'
+        required: false
+        type: boolean
+        default: false
+
+jobs:
+  cd:
+    if: github.event_name != 'schedule' || github.ref == 'refs/heads/main'
+    uses: EvergineTeam/evergine-standards/.github/workflows/binding-simple-cd.yml@v2
+    with:
+      generator-project: "VuforiaGen/VuforiaGen.csproj"
+      generator-name: "VuforiaGen"
+      binding-project: "Evergine.Bindings.Vuforia/Evergine.Bindings.Vuforia.csproj"
+      target-framework: "net8.0"
+      dotnet-version: "8.x"
+      nuget-version: "6.x"
+      runtime-identifier: "linux-x64"
+      build-configuration: "Release"
+      revision: ${{ github.run_number }}
+      publish-enabled: ${{ !inputs.skip-assets-publishing }}
+      enable-email-notifications: true
+    secrets:
+      NUGET_UPLOAD_TOKEN: ${{ secrets.EVERGINE_NUGETORG_TOKEN }}
+      WAVE_SENDGRID_TOKEN: ${{ secrets.WAVE_SENDGRID_TOKEN }}
+      EVERGINE_EMAILREPORT_LIST: ${{ secrets.EVERGINE_EMAILREPORT_LIST }}
+      EVERGINE_EMAIL: ${{ secrets.EVERGINE_EMAIL }}
