@@ -1308,6 +1308,18 @@ namespace Evergine.Bindings.Vuforia
 		public static extern VuResult vuEngineConfigSetAddRenderConfig(VuEngineConfigSet* configSet, VuRenderConfig* config);
 
 		/// <summary>
+		/// Default Android-specific configuration
+		/// </summary>
+		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
+		public static extern VuPlatformAndroidConfig vuPlatformAndroidConfigDefault();
+
+		/// <summary>
+		/// Add an Android-specific configuration to the engine config
+		/// </summary>
+		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
+		public static extern VuResult vuEngineConfigSetAddPlatformAndroidConfig(VuEngineConfigSet* configSet, VuPlatformAndroidConfig* config);
+
+		/// <summary>
 		/// Default anchor observer configuration
 		/// Use this function to initialize the VuAnchorObserverConfig data structure with default values.
 		/// </summary>
@@ -4169,18 +4181,6 @@ namespace Evergine.Bindings.Vuforia
 		/// </summary>
 		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
 		public static extern VuResult vuEngineCreateMeshObserverFromAreaTargetCaptureConfig(VuEngine* engine, VuObserver** observer, VuMeshAreaTargetCaptureConfig* config, VuMeshAreaTargetCaptureCreationError* errorCode);
-
-		/// <summary>
-		/// Default Android-specific configuration
-		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuPlatformAndroidConfig vuPlatformAndroidConfigDefault();
-
-		/// <summary>
-		/// Add an Android-specific configuration to the engine config
-		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuEngineConfigSetAddPlatformAndroidConfig(VuEngineConfigSet* configSet, VuPlatformAndroidConfig* config);
 
 		/// <summary>
 		/// Get information about the ARCore Fusion Provider Platform

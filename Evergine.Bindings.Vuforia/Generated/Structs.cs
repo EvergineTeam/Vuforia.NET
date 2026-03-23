@@ -654,6 +654,22 @@ namespace Evergine.Bindings.Vuforia
 	}
 
 	/// <summary>
+	/// Android-specific platform configuration data structure
+	/// </summary>
+	[StructLayout(LayoutKind.Sequential)]
+	public unsafe partial struct VuPlatformAndroidConfig
+	{
+		/// <summary>
+		/// Pointer to the client app&apos;s Android Activity of type &quot;jobject&quot;
+		/// </summary>
+		public void* activity;
+		/// <summary>
+		/// Pointer to the client app&apos;s JVM of type &quot;JavaVM*&quot;
+		/// </summary>
+		public void* javaVM;
+	}
+
+	/// <summary>
 	/// Configuration for creating an anchor observer
 	/// </summary>
 	[StructLayout(LayoutKind.Sequential)]
@@ -2414,22 +2430,6 @@ namespace Evergine.Bindings.Vuforia
 		/// The default value is VU_TRUE.
 		/// </summary>
 		public uint activate;
-	}
-
-	/// <summary>
-	/// Android-specific platform configuration data structure
-	/// </summary>
-	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VuPlatformAndroidConfig
-	{
-		/// <summary>
-		/// Pointer to the client app&apos;s Android Activity of type &quot;jobject&quot;
-		/// </summary>
-		public void* activity;
-		/// <summary>
-		/// Pointer to the client app&apos;s JVM of type &quot;JavaVM*&quot;
-		/// </summary>
-		public void* javaVM;
 	}
 
 	/// <summary>

@@ -175,9 +175,7 @@ namespace Evergine.Bindings.Vuforia
 		/// </summary>
 		public const int VU_OBSERVATION_VALIDATION_AREA_TYPE = 14;
 
-		public const int VU_IS_WINDOWS = 1;
-
-		public const int VU_PLATFORM_WINDOWS = 1;
+		public const int VU_PLATFORM_ANDROID = 1;
 
 		public const int VU_VERSION_MAJOR = 11;
 
@@ -188,8 +186,6 @@ namespace Evergine.Bindings.Vuforia
 		public const int VU_TRUE = 1;
 
 		public const int VU_FALSE = 0;
-
-		public const int VU_PLATFORM_ANDROID = 1;
 
 		public const int VU_PLATFORM_IOS = 1;
 

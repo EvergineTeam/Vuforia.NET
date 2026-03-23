@@ -481,6 +481,23 @@ namespace Evergine.Bindings.Vuforia
 	}
 
 	/// <summary>
+	/// Android-specific configuration error code type for errors occurring when creating a Vuforia Engine instance
+	/// The error code is reported via the
+	/// @p errorCode
+	/// parameter of the vuEngineCreate() function if an error
+	/// related to applying Android-specific configuration occurs while initializing the new Engine instance.
+	/// </summary>
+	public enum VuPlatformAndroidConfigError : int
+	{
+		VU_ENGINE_CREATION_ERROR_PLATFORM_ANDROID_CONFIG_INITIALIZATION_ERROR = 1296,
+		VU_ENGINE_CREATION_ERROR_PLATFORM_ANDROID_CONFIG_INVALID_ACTIVITY = 1297,
+		/// <summary>
+		/// Invalid Java VM (JavaVM*) passed to the configuration
+		/// </summary>
+		VU_ENGINE_CREATION_ERROR_PLATFORM_ANDROID_CONFIG_INVALID_JAVA_VM = 1298,
+	}
+
+	/// <summary>
 	/// Configuration error for anchor creation
 	/// </summary>
 	public enum VuAnchorCreationError : int
@@ -2095,23 +2112,6 @@ namespace Evergine.Bindings.Vuforia
 		/// </summary>
 		VU_MESH_AREA_TARGET_CAPTURE_CREATION_ERROR_INVALID_CAPTURE = 4,
 		VU_MESH_AREA_TARGET_CAPTURE_CREATION_ERROR_SAME_SOURCE_NOT_SUPPORTED = 5,
-	}
-
-	/// <summary>
-	/// Android-specific configuration error code type for errors occurring when creating a Vuforia Engine instance
-	/// The error code is reported via the
-	/// @p errorCode
-	/// parameter of the vuEngineCreate() function if an error
-	/// related to applying Android-specific configuration occurs while initializing the new Engine instance.
-	/// </summary>
-	public enum VuPlatformAndroidConfigError : int
-	{
-		VU_ENGINE_CREATION_ERROR_PLATFORM_ANDROID_CONFIG_INITIALIZATION_ERROR = 1296,
-		VU_ENGINE_CREATION_ERROR_PLATFORM_ANDROID_CONFIG_INVALID_ACTIVITY = 1297,
-		/// <summary>
-		/// Invalid Java VM (JavaVM*) passed to the configuration
-		/// </summary>
-		VU_ENGINE_CREATION_ERROR_PLATFORM_ANDROID_CONFIG_INVALID_JAVA_VM = 1298,
 	}
 
 	/// <summary>
