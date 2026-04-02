@@ -10,6 +10,7 @@ namespace VuforiaGen
 	{
 		public static readonly CsCodeGenerator Instance = new CsCodeGenerator();
 
+		private const string NativeClass = "Vuforia";
 		private const string DllImportName = "VuforiaEngine";
 
 		public void Generate(List<CppCompilation> compilations, string outputPath)
@@ -122,7 +123,7 @@ namespace VuforiaGen
 			writer.WriteLine();
 			writer.WriteLine("namespace Evergine.Bindings.Vuforia");
 			writer.WriteLine("{");
-			writer.WriteLine("\tpublic static partial class VuforiaNative");
+			writer.WriteLine($"\tpublic static partial class {NativeClass}");
 			writer.WriteLine("\t{");
 
 			// VU_CONST_INT values from enums (anonymous enums used as constants)
@@ -142,8 +143,9 @@ namespace VuforiaGen
 					if (!seenConstantNames.Add(item.Name))
 						continue;
 
+					var csName = Helpers.StripPrefix(item.Name);
 					Helpers.PrintComments(writer, item.Comment, "\t\t");
-					writer.WriteLine($"\t\tpublic const int {item.Name} = {item.Value};");
+					writer.WriteLine($"\t\tpublic const int {csName} = {item.Value};");
 					writer.WriteLine();
 				}
 			}
@@ -166,15 +168,17 @@ namespace VuforiaGen
 				if (macro.Value.Contains("(") || macro.Value.Contains("|") || macro.Value.Contains("<<"))
 					continue;
 
+				var csMacroName = Helpers.StripPrefix(macro.Name);
+
 				// Try to detect type
 				if (int.TryParse(macro.Value, out int intVal))
 				{
-					writer.WriteLine($"\t\tpublic const int {macro.Name} = {macro.Value};");
+					writer.WriteLine($"\t\tpublic const int {csMacroName} = {macro.Value};");
 					writer.WriteLine();
 				}
 				else if (macro.Value.StartsWith("0x") && int.TryParse(macro.Value.Substring(2), System.Globalization.NumberStyles.HexNumber, null, out _))
 				{
-					writer.WriteLine($"\t\tpublic const int {macro.Name} = {macro.Value};");
+					writer.WriteLine($"\t\tpublic const int {csMacroName} = {macro.Value};");
 					writer.WriteLine();
 				}
 			}
@@ -219,13 +223,22 @@ namespace VuforiaGen
 					writer.WriteLine("\t[System.Flags]");
 				}
 
-				writer.WriteLine($"\tpublic enum {enumDef.Name} : int");
+				var csEnumName = Helpers.StripPrefix(enumDef.Name);
+				writer.WriteLine($"\tpublic enum {csEnumName} : int");
 				writer.WriteLine("\t{");
+
+				// Find common prefix for enum values and convert to PascalCase
+				var valueNames = enumDef.Items.Select(i => i.Name).ToList();
+				var commonPrefix = Helpers.FindCommonPrefix(valueNames);
 
 				foreach (var item in enumDef.Items)
 				{
 					Helpers.PrintComments(writer, item.Comment, "\t\t");
-					writer.WriteLine($"\t\t{item.Name} = {item.Value},");
+					var strippedValue = item.Name;
+					if (!string.IsNullOrEmpty(commonPrefix) && strippedValue.StartsWith(commonPrefix))
+						strippedValue = strippedValue.Substring(commonPrefix.Length);
+					var csValueName = Helpers.ScreamingToPascalCase(strippedValue);
+					writer.WriteLine($"\t\t{csValueName} = {item.Value},");
 				}
 
 				writer.WriteLine("\t}");
@@ -286,8 +299,9 @@ namespace VuforiaGen
 					parameters.Add($"{paramType} {paramName}");
 				}
 
+				var csDelegateName = Helpers.StripPrefix(typedef.Name);
 				writer.WriteLine($"\t[UnmanagedFunctionPointer(CallingConvention.StdCall)]");
-				writer.WriteLine($"\tpublic unsafe delegate {returnType} {typedef.Name}({string.Join(", ", parameters)});");
+				writer.WriteLine($"\tpublic unsafe delegate {returnType} {csDelegateName}({string.Join(", ", parameters)});");
 				writer.WriteLine();
 			}
 
@@ -341,7 +355,8 @@ namespace VuforiaGen
 					writer.WriteLine("\t[StructLayout(LayoutKind.Sequential)]");
 				}
 
-				writer.WriteLine($"\tpublic unsafe partial struct {classDef.Name}");
+				var csStructName = Helpers.StripPrefix(classDef.Name);
+				writer.WriteLine($"\tpublic unsafe partial struct {csStructName}");
 				writer.WriteLine("\t{");
 
 				foreach (var field in classDef.Fields)
@@ -354,7 +369,7 @@ namespace VuforiaGen
 					Helpers.PrintComments(writer, field.Comment, "\t\t");
 
 					var fieldType = Helpers.ConvertToCSharpType(field.Type);
-					var fieldName = Helpers.EscapeReservedKeyword(field.Name);
+					var fieldName = Helpers.EscapeReservedKeyword(Helpers.PascalCaseField(field.Name));
 
 					// Handle fixed-size arrays
 					if (field.Type is CppArrayType arrayType && arrayType.Size > 0)
@@ -417,7 +432,7 @@ namespace VuforiaGen
 			writer.WriteLine();
 			writer.WriteLine("namespace Evergine.Bindings.Vuforia");
 			writer.WriteLine("{");
-			writer.WriteLine("\tpublic static unsafe partial class VuforiaNative");
+			writer.WriteLine($"\tpublic static unsafe partial class {NativeClass}");
 			writer.WriteLine("\t{");
 
 			foreach (var function in functions)
@@ -483,8 +498,9 @@ namespace VuforiaGen
 					parameters.Add($"{paramType} {paramName}");
 				}
 
-				writer.WriteLine($"\t\t[DllImport(\"{DllImportName}\", CallingConvention = CallingConvention.StdCall)]");
-				writer.WriteLine($"\t\tpublic static extern {returnType} {function.Name}({string.Join(", ", parameters)});");
+				var csMethodName = Helpers.StripPrefix(function.Name);
+				writer.WriteLine($"\t\t[DllImport(\"{DllImportName}\", EntryPoint = \"{function.Name}\", CallingConvention = CallingConvention.StdCall)]");
+				writer.WriteLine($"\t\tpublic static extern {returnType} {csMethodName}({string.Join(", ", parameters)});");
 				writer.WriteLine();
 			}
 
@@ -510,7 +526,7 @@ namespace VuforiaGen
 				if (!Helpers.IsOpaqueType(typedef))
 					continue;
 
-				var name = typedef.Name;
+				var name = Helpers.StripPrefix(typedef.Name);
 
 				Helpers.PrintComments(writer, typedef.Comment, "\t");
 				writer.WriteLine($"\tpublic partial struct {name} : IEquatable<{name}>");

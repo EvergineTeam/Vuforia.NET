@@ -6,78 +6,78 @@ namespace Evergine.Bindings.Vuforia
 	/// Error code result from an operation
 	/// When a function fails by returning VU_FAILED, check the function-specific error code in the respective out parameter.
 	/// </summary>
-	public enum VuResult : int
+	public enum Result : int
 	{
 		/// <summary>
 		/// Failed operation
 		/// </summary>
-		VU_FAILED = 0,
+		Failed = 0,
 		/// <summary>
 		/// Successful operation
 		/// </summary>
-		VU_SUCCESS = 1,
+		Success = 1,
 	}
 
 	/// <summary>
 	/// Rotation angle for camera intrinsics, rendering, etc.
 	/// </summary>
-	public enum VuRotation : int
+	public enum Rotation : int
 	{
 		/// <summary>
 		/// 0 degrees
 		/// </summary>
-		VU_ROTATION_ANGLE_0 = 1,
+		_0 = 1,
 		/// <summary>
 		/// 90 degrees
 		/// </summary>
-		VU_ROTATION_ANGLE_90 = 2,
+		_90 = 2,
 		/// <summary>
 		/// 180 degrees
 		/// </summary>
-		VU_ROTATION_ANGLE_180 = 3,
+		_180 = 3,
 		/// <summary>
 		/// 270 degrees
 		/// </summary>
-		VU_ROTATION_ANGLE_270 = 4,
+		_270 = 4,
 	}
 
 	/// <summary>
 	/// Camera distortion model
 	/// </summary>
-	public enum VuCameraDistortionMode : int
+	public enum CameraDistortionMode : int
 	{
 		/// <summary>
 		/// Linear model (no distortion or undistortion)
 		/// </summary>
-		VU_CAMERA_DISTORTION_MODE_LINEAR = 1,
+		Linear = 1,
 		/// <summary>
 		/// ARCTAN model with one parameter
 		/// </summary>
-		VU_CAMERA_DISTORTION_MODE_1PARAM = 5,
+		_1PARAM = 5,
 		/// <summary>
 		/// 2 radial parameters, no tangential parameters
 		/// </summary>
-		VU_CAMERA_DISTORTION_MODE_2PARAMS = 6,
+		_2PARAMS = 6,
 		/// <summary>
 		/// 3 radial parameters, no tangential parameters
 		/// </summary>
-		VU_CAMERA_DISTORTION_MODE_3PARAMS = 2,
+		_3PARAMS = 2,
 		/// <summary>
 		/// 2 radial parameters, plus 2 tangential parameters
 		/// </summary>
-		VU_CAMERA_DISTORTION_MODE_4PARAMS = 3,
+		_4PARAMS = 3,
 		/// <summary>
 		/// 3 radial parameters, plus 2 tangential parameters
 		/// </summary>
-		VU_CAMERA_DISTORTION_MODE_5PARAMS = 4,
+		_5PARAMS = 4,
 		/// <summary>
 		/// 6 radial parameters (rational), no tangential parameters
 		/// </summary>
-		VU_CAMERA_DISTORTION_MODE_6PARAMS = 7,
+		_6PARAMS = 7,
 		/// <summary>
 		/// 6 radial parameters (rational), plus 2 tangential parameters
 		/// </summary>
-		VU_CAMERA_DISTORTION_MODE_8PARAMS = 8,
+		_8PARAMS = 8,
 	}
 
 	/// <summary>
@@ -85,66 +85,66 @@ namespace Evergine.Bindings.Vuforia
 	/// Pixel format types containing FORMAT_DEPTH in the name are specific to depth frames,
 	/// while others, which do not contain FORMAT_DEPTH, define video camera image pixel formats.
 	/// </summary>
-	public enum VuImagePixelFormat : int
+	public enum ImagePixelFormat : int
 	{
 		/// <summary>
 		/// Unknown pixel format.
 		/// </summary>
-		VU_IMAGE_PIXEL_FORMAT_UNKNOWN = 1,
+		Unknown = 1,
 		/// <summary>
 		/// A color pixel stored in 2 bytes using 5 bits for red,
 		/// 6 bits for green and 5 bits for blue.
 		/// </summary>
-		VU_IMAGE_PIXEL_FORMAT_RGB565 = 2,
+		Rgb565 = 2,
 		/// <summary>
 		/// A color pixel stored in 3 bytes using 8 bits each
 		/// for red, green and blue.
 		/// </summary>
-		VU_IMAGE_PIXEL_FORMAT_RGB888 = 3,
+		Rgb888 = 3,
 		/// <summary>
 		/// A grayscale pixel stored in one byte.
 		/// </summary>
-		VU_IMAGE_PIXEL_FORMAT_GRAYSCALE = 4,
+		Grayscale = 4,
 		/// <summary>
 		/// A color pixel stored in 4 bytes using 8 bits each
 		/// for red, green and blue and 8 bits for alpha channel.
 		/// </summary>
-		VU_IMAGE_PIXEL_FORMAT_RGBA8888 = 5,
+		Rgba8888 = 5,
 		/// <summary>
 		/// YUV 4:2:0 with a plane of 8 bit Y (luma) samples followed by
 		/// an interleaved plane of 8 bit, 2x2 subsampled, V/U (chroma) samples.
 		/// </summary>
-		VU_IMAGE_PIXEL_FORMAT_NV21 = 6,
+		Nv21 = 6,
 		/// <summary>
 		/// YUV 4:2:0 with a plane of 8 bit Y (luma) samples followed by
 		/// an interleaved plane of 8 bit, 2x2 subsampled, U/V (chroma) samples.
 		/// </summary>
-		VU_IMAGE_PIXEL_FORMAT_NV12 = 7,
+		Nv12 = 7,
 		/// <summary>
 		/// YUV 4:2:0 with a plane of 8 bit Y (luma) samples followed by
 		/// a plane of 8 bit, 2x2 subsampled, V (chroma) samples followed by
 		/// a plane of 8 bit, 2x2 subsampled, U (chroma) samples.
 		/// </summary>
-		VU_IMAGE_PIXEL_FORMAT_YV12 = 8,
+		Yv12 = 8,
 		/// <summary>
 		/// YUV 4:2:0 with a plane of 8 bit Y (luma) samples followed by
 		/// a plane of 8 bit, 2x2 subsampled, U (chroma) samples followed by
 		/// a plane of 8 bit, 2x2 subsampled, V (chroma) samples.
 		/// Note that this format is also known as I420
 		/// </summary>
-		VU_IMAGE_PIXEL_FORMAT_YUV420P = 9,
+		Yuv420p = 9,
 		/// <summary>
 		/// YUV 4:2:2 with a single plane of interleaved 8 bit samples in YUYV order
 		/// where each pixel has a Y value and U, V values 2x1 subsampled.
 		/// Note that this format is also known as YUY2
 		/// </summary>
-		VU_IMAGE_PIXEL_FORMAT_YUYV = 10,
+		Yuyv = 10,
 		/// <summary>
 		/// A depth value in meters, stored in a 32-bit floating point value.
 		/// This pixel format is part of a feature in beta and
 		/// may change from release to release without notice.
 		/// </summary>
-		VU_IMAGE_PIXEL_FORMAT_DEPTH_METER_FLOAT32 = 257,
+		DepthMeterFloat32 = 257,
 		/// <summary>
 		/// A depth confidence pixel stored in one byte that can have
 		/// one of the following three discrete values:
@@ -154,7 +154,7 @@ namespace Evergine.Bindings.Vuforia
 		/// This pixel format is part of a feature in beta and
 		/// may change from release to release without notice.
 		/// </summary>
-		VU_IMAGE_PIXEL_FORMAT_DEPTH_CONFIDENCE_LMH_UINT8 = 513,
+		DepthConfidenceLmhUint8 = 513,
 	}
 
 	/// <summary>
@@ -162,50 +162,50 @@ namespace Evergine.Bindings.Vuforia
 	/// Additional errors are related to engine configuration,
 	/// see the respective error code for each engine configuration type
 	/// </summary>
-	public enum VuEngineCreationError : int
+	public enum EngineCreationError : int
 	{
 		/// <summary>
 		/// No error
 		/// </summary>
-		VU_ENGINE_CREATION_ERROR_NONE = 0,
+		None = 0,
 		/// <summary>
 		/// The device is not supported
 		/// </summary>
-		VU_ENGINE_CREATION_ERROR_DEVICE_NOT_SUPPORTED = 1,
+		DeviceNotSupported = 1,
 		/// <summary>
 		/// One or more permissions required by Vuforia Engine are missing or not granted by
 		/// user (e.g. the user may have denied camera access to the App)
 		/// </summary>
-		VU_ENGINE_CREATION_ERROR_PERMISSION_ERROR = 2,
+		PermissionError = 2,
 		/// <summary>
 		/// A valid license configuration is required
 		/// </summary>
-		VU_ENGINE_CREATION_ERROR_LICENSE_ERROR = 3,
-		VU_ENGINE_CREATION_ERROR_INITIALIZATION = 4,
+		LicenseError = 3,
+		Initialization = 4,
 	}
 
 	/// <summary>
 	/// Tracking optimization types
 	/// </summary>
-	public enum VuTrackingOptimization : int
+	public enum TrackingOptimization : int
 	{
 		/// <summary>
 		/// Best tracking performance for the majority of use cases and targets.
 		/// </summary>
-		VU_TRACKING_OPTIMIZATION_DEFAULT = 1,
+		Default = 1,
 		/// <summary>
 		/// Optimize tracking for objects with smooth, untextured surfaces, that
 		/// lack features and detailed structures, including cars, sheet metal parts
 		/// and many industrial objects.
 		/// Do not use for objects that move while being tracked.
 		/// </summary>
-		VU_TRACKING_OPTIMIZATION_LOW_FEATURE_OBJECTS = 2,
+		LowFeatureObjects = 2,
 		/// <summary>
 		/// Optimize tracking for use cases where small, handheld fast moving
 		/// targets are used like an AR/VR controller. Tracking will be less stable if
 		/// the object is stationary.
 		/// </summary>
-		VU_TRACKING_OPTIMIZATION_AR_CONTROLLER = 3,
+		ArController = 3,
 	}
 
 	/// <summary>
@@ -222,12 +222,8 @@ namespace Evergine.Bindings.Vuforia
 	/// for an observer of type &quot;ExampleObserver&quot; that provides pose information there will be a status info of type
 	/// &quot;VuExampleObservationStatusInfo&quot; and a function &quot;vuExampleObservationGetStatusInfo&quot; to query this information. See the
 	/// documentation of the respective observer type for the possible values of pose status and status info.
-	/// VuPoseInfo
-	/// vuObservationHasPoseInfo
-	/// vuObservationGetPoseInfo
-	/// vuStateGetObservationsWithPoseInfo
 	/// </summary>
-	public enum VuObservationPoseStatus : int
+	public enum ObservationPoseStatus : int
 	{
 		/// <summary>
 		/// No valid pose available. For details refer to the status info. The
@@ -236,64 +232,64 @@ namespace Evergine.Bindings.Vuforia
 		/// @ref VU_OBSERVATION_POSE_STATUS_NO_POSE
 		/// in their status info.
 		/// </summary>
-		VU_OBSERVATION_POSE_STATUS_NO_POSE = 1,
+		NoPose = 1,
 		/// <summary>
 		/// Observed object is being tracked in a limited form, and so the pose may
 		/// be unreliable or degraded. For details refer to the status info.
 		/// </summary>
-		VU_OBSERVATION_POSE_STATUS_LIMITED = 2,
+		Limited = 2,
 		/// <summary>
 		/// Observed object is being tracked directly with a valid pose.
 		/// </summary>
-		VU_OBSERVATION_POSE_STATUS_TRACKED = 3,
+		Tracked = 3,
 		/// <summary>
 		/// Observed object is being tracked indirectly using extended tracking.
 		/// </summary>
-		VU_OBSERVATION_POSE_STATUS_EXTENDED_TRACKED = 4,
+		ExtendedTracked = 4,
 	}
 
 	/// <summary>
 	/// Database target info errors
 	/// </summary>
-	public enum VuDatabaseTargetInfoError : int
+	public enum DatabaseTargetInfoError : int
 	{
 		/// <summary>
 		/// No error
 		/// </summary>
-		VU_DATABASE_TARGET_INFO_ERROR_NONE = 0,
+		None = 0,
 		/// <summary>
 		/// Could not find database file or read data from it
 		/// (potentially unknown or corrupted file)
 		/// </summary>
-		VU_DATABASE_TARGET_INFO_ERROR_DATABASE_LOAD_ERROR = 1,
+		DatabaseLoadError = 1,
 		/// <summary>
 		/// Could not find any targets in the database from which an observer could be created
 		/// </summary>
-		VU_DATABASE_TARGET_INFO_ERROR_NO_TARGETS = 2,
-		VU_DATABASE_TARGET_INFO_ERROR_DATABASE_XML_REQUIRED = 3,
+		NoTargets = 2,
+		DatabaseXmlRequired = 3,
 	}
 
 	/// <summary>
 	/// Vuforia Driver configuration error code when creating a Vuforia Engine instance
 	/// </summary>
-	public enum VuDriverConfigError : int
+	public enum DriverConfigError : int
 	{
-		VU_ENGINE_CREATION_ERROR_DRIVER_CONFIG_LOAD_ERROR = 256,
+		LoadError = 256,
 		/// <summary>
 		/// Vuforia Driver is not supported by the current license
 		/// </summary>
-		VU_ENGINE_CREATION_ERROR_DRIVER_CONFIG_FEATURE_NOT_SUPPORTED = 257,
+		FeatureNotSupported = 257,
 	}
 
 	/// <summary>
 	/// Error codes for Engine lifecycle-related errors reported via the VuErrorHandler error handler function
 	/// </summary>
-	public enum VuEngineError : int
+	public enum EngineError : int
 	{
 		/// <summary>
 		/// License key validation has failed, Engine has stopped
 		/// </summary>
-		VU_ENGINE_ERROR_INVALID_LICENSE = 1536,
+		InvalidLicense = 1536,
 		/// <summary>
 		/// The operating system has reported that the camera device
 		/// has become unavailable to Vuforia and therefore Engine has
@@ -301,7 +297,7 @@ namespace Evergine.Bindings.Vuforia
 		/// user action has caused the operating system to close Engine&apos;s
 		/// connection to the camera.
 		/// </summary>
-		VU_ENGINE_ERROR_CAMERA_DEVICE_LOST = 1537,
+		CameraDeviceLost = 1537,
 		/// <summary>
 		/// This error can only happen on Android when using ARCore.
 		/// &lt;p&gt;
@@ -319,7 +315,7 @@ namespace Evergine.Bindings.Vuforia
 		/// @ref VuPlatformARCoreInfo
 		/// documentation.
 		/// </summary>
-		VU_ENGINE_ERROR_PLATFORM_FUSION_PROVIDER_INFO_INVALIDATED = 1538,
+		PlatformFusionProviderInfoInvalidated = 1538,
 	}
 
 	/// <summary>
@@ -335,62 +331,62 @@ namespace Evergine.Bindings.Vuforia
 	/// license-related error, but Engine will stop soon afterwards, and any subsequent attempt to call vuEngineStart()
 	/// will fail.
 	/// </summary>
-	public enum VuLicenseConfigError : int
+	public enum LicenseConfigError : int
 	{
 		/// <summary>
 		/// License key is missing
 		/// </summary>
-		VU_ENGINE_CREATION_ERROR_LICENSE_CONFIG_MISSING_KEY = 512,
+		MissingKey = 512,
 		/// <summary>
 		/// Invalid license key passed to SDK
 		/// </summary>
-		VU_ENGINE_CREATION_ERROR_LICENSE_CONFIG_INVALID_KEY = 513,
+		InvalidKey = 513,
 		/// <summary>
 		/// Unable to verify license key due to network (Permanent error)
 		/// </summary>
-		VU_ENGINE_CREATION_ERROR_LICENSE_CONFIG_NO_NETWORK_PERMANENT = 514,
+		NoNetworkPermanent = 514,
 		/// <summary>
 		/// Unable to verify license key due to network (Transient error)
 		/// </summary>
-		VU_ENGINE_CREATION_ERROR_LICENSE_CONFIG_NO_NETWORK_TRANSIENT = 515,
-		VU_ENGINE_CREATION_ERROR_LICENSE_CONFIG_BAD_REQUEST = 516,
+		NoNetworkTransient = 515,
+		BadRequest = 516,
 		/// <summary>
 		/// Provided key is no longer valid
 		/// </summary>
-		VU_ENGINE_CREATION_ERROR_LICENSE_CONFIG_KEY_CANCELED = 517,
+		KeyCanceled = 517,
 		/// <summary>
 		/// Provided key is not valid for current product
 		/// </summary>
-		VU_ENGINE_CREATION_ERROR_LICENSE_CONFIG_PRODUCT_TYPE_MISMATCH = 518,
+		ProductTypeMismatch = 518,
 		/// <summary>
 		/// Unknown error
 		/// </summary>
-		VU_ENGINE_CREATION_ERROR_LICENSE_CONFIG_UNKNOWN = 519,
+		Unknown = 519,
 	}
 
 	/// <summary>
 	/// Vuforia Engine log level values
 	/// </summary>
-	public enum VuLogLevel : int
+	public enum LogLevel : int
 	{
 		/// <summary>
 		/// Error log message. Logged in situations that caused an operation to fail or abort.
 		/// </summary>
-		VU_LOG_LEVEL_ERROR = 0,
+		Error = 0,
 		/// <summary>
 		/// Warning log message. Logged in situations where the operation continued
 		/// despite an error or unexpected condition.
 		/// </summary>
-		VU_LOG_LEVEL_WARNING = 1,
+		Warning = 1,
 		/// <summary>
 		/// Info log message. Information that might be useful to the user or developer but does
 		/// not indicate any error or problem.
 		/// </summary>
-		VU_LOG_LEVEL_INFO = 2,
+		Info = 2,
 		/// <summary>
 		/// Verbose log message. Used for very detailed information or very frequently logged information.
 		/// </summary>
-		VU_LOG_LEVEL_VERBOSE = 3,
+		Verbose = 3,
 	}
 
 	/// <summary>
@@ -400,23 +396,23 @@ namespace Evergine.Bindings.Vuforia
 	/// parameter of the vuEngineCreate() function if an error
 	/// related to the rendering configuration occurs while initializing the new Engine instance.
 	/// </summary>
-	public enum VuRenderConfigError : int
+	public enum RenderConfigError : int
 	{
 		/// <summary>
 		/// Unsupported render backend
 		/// </summary>
-		VU_ENGINE_CREATION_ERROR_RENDER_CONFIG_UNSUPPORTED_BACKEND = 768,
+		UnsupportedBackend = 768,
 		/// <summary>
 		/// Failed to set video background viewport.
 		/// This is currently never reported.
 		/// </summary>
-		VU_ENGINE_CREATION_ERROR_RENDER_CONFIG_FAILED_TO_SET_VIDEO_BG_VIEWPORT = 769,
+		FailedToSetVideoBgViewport = 769,
 	}
 
 	/// <summary>
 	/// Render video background backend configuration
 	/// </summary>
-	public enum VuRenderVBBackendType : int
+	public enum RenderVBBackendType : int
 	{
 		/// <summary>
 		/// Select default rendering backend for each platform. Currently:
@@ -425,24 +421,24 @@ namespace Evergine.Bindings.Vuforia
 		/// UWP: DirectX 11
 		/// This is the default video background configuration.
 		/// </summary>
-		VU_RENDER_VB_BACKEND_DEFAULT = 1,
+		Default = 1,
 		/// <summary>
 		/// Deactivate usage of video background rendering support. Supported on
 		/// all platforms.
 		/// </summary>
-		VU_RENDER_VB_BACKEND_HEADLESS = 2,
+		Headless = 2,
 		/// <summary>
 		/// OpenGL ES 3.x. Supported on Android and iOS.
 		/// </summary>
-		VU_RENDER_VB_BACKEND_GLES3 = 4,
+		Gles3 = 4,
 		/// <summary>
 		/// DirectX 11. Supported on UWP.
 		/// </summary>
-		VU_RENDER_VB_BACKEND_DX11 = 5,
+		Dx11 = 5,
 		/// <summary>
 		/// Metal. Supported on iOS.
 		/// </summary>
-		VU_RENDER_VB_BACKEND_METAL = 6,
+		Metal = 6,
 	}
 
 	/// <summary>
@@ -464,20 +460,20 @@ namespace Evergine.Bindings.Vuforia
 	/// If the aspect ratio of the render view is the same as the aspect ratio of the native video and additionally also the resolutions
 	/// are the same then all three modes will have the same result.
 	/// </summary>
-	public enum VuVideoBackgroundViewportMode : int
+	public enum VideoBackgroundViewportMode : int
 	{
 		/// <summary>
 		/// Scales the video background to fill the whole render view. This can crop the video
 		/// background image (either top and bottom or left and right). This is the default.
 		/// </summary>
-		VU_VIDEOBG_VIEWPORT_MODE_SCALE_TO_FILL = 1,
+		ScaleToFill = 1,
 		/// <summary>
 		/// Scales the video background to show the full video image in the render view.
 		/// The video background viewport is adjusted accordingly to the size of the video image
 		/// in the render view which might show a letter box around the image.
 		/// </summary>
-		VU_VIDEOBG_VIEWPORT_MODE_SCALE_TO_FIT = 2,
-		VU_VIDEOBG_VIEWPORT_MODE_NATIVE_VIDEO = 3,
+		ScaleToFit = 2,
+		NativeVideo = 3,
 	}
 
 	/// <summary>
@@ -487,37 +483,37 @@ namespace Evergine.Bindings.Vuforia
 	/// parameter of the vuEngineCreate() function if an error
 	/// related to applying Android-specific configuration occurs while initializing the new Engine instance.
 	/// </summary>
-	public enum VuPlatformAndroidConfigError : int
+	public enum PlatformAndroidConfigError : int
 	{
-		VU_ENGINE_CREATION_ERROR_PLATFORM_ANDROID_CONFIG_INITIALIZATION_ERROR = 1296,
-		VU_ENGINE_CREATION_ERROR_PLATFORM_ANDROID_CONFIG_INVALID_ACTIVITY = 1297,
+		InitializationError = 1296,
+		InvalidActivity = 1297,
 		/// <summary>
 		/// Invalid Java VM (JavaVM*) passed to the configuration
 		/// </summary>
-		VU_ENGINE_CREATION_ERROR_PLATFORM_ANDROID_CONFIG_INVALID_JAVA_VM = 1298,
+		InvalidJavaVm = 1298,
 	}
 
 	/// <summary>
 	/// Configuration error for anchor creation
 	/// </summary>
-	public enum VuAnchorCreationError : int
+	public enum AnchorCreationError : int
 	{
 		/// <summary>
 		/// No error
 		/// </summary>
-		VU_ANCHOR_CREATION_ERROR_NONE = 0,
+		None = 0,
 		/// <summary>
 		/// An internal error occurred while creating the observer
 		/// </summary>
-		VU_ANCHOR_CREATION_ERROR_INTERNAL = 1,
+		Internal = 1,
 		/// <summary>
 		/// Observer auto-activation failed
 		/// </summary>
-		VU_ANCHOR_CREATION_ERROR_AUTOACTIVATION_FAILED = 2,
+		AutoactivationFailed = 2,
 		/// <summary>
 		/// Device pose observer is null or invalid
 		/// </summary>
-		VU_ANCHOR_CREATION_ERROR_INVALID_DEVICE_POSE_OBSERVER = 3,
+		InvalidDevicePoseObserver = 3,
 	}
 
 	/// <summary>
@@ -528,131 +524,125 @@ namespace Evergine.Bindings.Vuforia
 	/// @ref VuObservationPoseStatus
 	/// may be reported as part of an Anchor observation, except
 	/// @ref VU_OBSERVATION_POSE_STATUS_TRACKED.
-	/// VuPoseInfo
-	/// VuObservationPoseStatus
-	/// vuObservationHasPoseInfo
-	/// vuObservationGetPoseInfo
-	/// vuStateGetObservationsWithPoseInfo
-	/// vuAnchorObservationGetStatusInfo
 	/// </summary>
-	public enum VuAnchorObservationStatusInfo : int
+	public enum AnchorObservationStatusInfo : int
 	{
-		VU_ANCHOR_OBSERVATION_STATUS_INFO_NORMAL = 1,
+		Normal = 1,
 		/// <summary>
 		/// Anchor is not observed. Reported for
 		/// @ref VU_OBSERVATION_POSE_STATUS_NO_POSE.
 		/// </summary>
-		VU_ANCHOR_OBSERVATION_STATUS_INFO_NOT_OBSERVED = 2,
-		VU_ANCHOR_OBSERVATION_STATUS_INFO_RELOCALIZING = 3,
+		NotObserved = 2,
+		Relocalizing = 3,
 	}
 
 	/// <summary>
 	/// Hints for hit-tests
 	/// </summary>
-	public enum VuHitTestHint : int
+	public enum HitTestHint : int
 	{
 		/// <summary>
 		/// No hint
 		/// </summary>
-		VU_HIT_TEST_HINT_NONE = 1,
+		None = 1,
 		/// <summary>
 		/// Hit-test is performed on a horizontal plane
 		/// </summary>
-		VU_HIT_TEST_HINT_HORIZONTAL_PLANE = 2,
+		HorizontalPlane = 2,
 		/// <summary>
 		/// Hit-test is performed on a vertical plane (not supported yet)
 		/// </summary>
-		VU_HIT_TEST_HINT_VERTICAL_PLANE = 3,
+		VerticalPlane = 3,
 	}
 
 	/// <summary>
 	/// Configuration error for Area Target creation from VuAreaTargetConfig
 	/// </summary>
-	public enum VuAreaTargetCreationError : int
+	public enum AreaTargetCreationError : int
 	{
 		/// <summary>
 		/// No error
 		/// </summary>
-		VU_AREA_TARGET_CREATION_ERROR_NONE = 0,
+		None = 0,
 		/// <summary>
 		/// An internal error occurred while creating the observer
 		/// </summary>
-		VU_AREA_TARGET_CREATION_ERROR_INTERNAL = 1,
-		VU_AREA_TARGET_CREATION_ERROR_AUTOACTIVATION_FAILED = 2,
+		Internal = 1,
+		AutoactivationFailed = 2,
 		/// <summary>
 		/// Feature not supported (e.g. if Vuforia is not running on a
 		/// platform-based Fusion Provider such as ARKit, ARCore)
 		/// </summary>
-		VU_AREA_TARGET_CREATION_ERROR_FEATURE_NOT_SUPPORTED = 3,
+		FeatureNotSupported = 3,
 		/// <summary>
 		/// Device pose observer is null or invalid
 		/// </summary>
-		VU_AREA_TARGET_CREATION_ERROR_INVALID_DEVICE_POSE_OBSERVER = 4,
+		InvalidDevicePoseObserver = 4,
 		/// <summary>
 		/// Database file not found or an error occurred when reading data from it
 		/// (potentially unknown or corrupted file)
 		/// </summary>
-		VU_AREA_TARGET_CREATION_ERROR_DATABASE_LOAD_ERROR = 5,
+		DatabaseLoadError = 5,
 		/// <summary>
 		/// Invalid target name
 		/// </summary>
-		VU_AREA_TARGET_CREATION_ERROR_INVALID_TARGET_NAME = 6,
-		VU_AREA_TARGET_CREATION_ERROR_TARGET_NOT_FOUND = 7,
+		InvalidTargetName = 6,
+		TargetNotFound = 7,
 		/// <summary>
 		/// This target does not support the default loading and detection
 		/// behavior. The requireExternalPositions option in VuAreaTargetConfig
 		/// must be set to VU_TRUE to use this target.
 		/// </summary>
-		VU_AREA_TARGET_CREATION_ERROR_REQUIRES_EXTERNAL_POSITIONS = 8,
+		RequiresExternalPositions = 8,
 	}
 
 	/// <summary>
 	/// Configuration error for Area Target creation from VuAreaTargetCloudConfig
 	/// </summary>
-	public enum VuAreaTargetCloudCreationError : int
+	public enum AreaTargetCloudCreationError : int
 	{
 		/// <summary>
 		/// No error
 		/// </summary>
-		VU_AREA_TARGET_CLOUD_CREATION_ERROR_NONE = 0,
+		None = 0,
 		/// <summary>
 		/// An internal error occurred while creating the observer.
 		/// </summary>
-		VU_AREA_TARGET_CLOUD_CREATION_ERROR_INTERNAL = 1,
-		VU_AREA_TARGET_CLOUD_CREATION_ERROR_AUTOACTIVATION_FAILED = 2,
+		Internal = 1,
+		AutoactivationFailed = 2,
 		/// <summary>
 		/// Feature not supported (e.g. if Vuforia is not running on a
 		/// platform-based Fusion Provider such as ARKit, ARCore)
 		/// </summary>
-		VU_AREA_TARGET_CLOUD_CREATION_ERROR_FEATURE_NOT_SUPPORTED = 3,
+		FeatureNotSupported = 3,
 		/// <summary>
 		/// Cloud Area Target under the given targetId was not found
 		/// </summary>
-		VU_AREA_TARGET_CLOUD_CREATION_ERROR_TARGET_NOT_FOUND = 4,
-		VU_AREA_TARGET_CLOUD_CREATION_ERROR_REQUIRES_EXTERNAL_POSITIONS = 5,
-		VU_AREA_TARGET_CLOUD_CREATION_ERROR_AUTHENTICATION_FAILED = 6,
+		TargetNotFound = 4,
+		RequiresExternalPositions = 5,
+		AuthenticationFailed = 6,
 		/// <summary>
 		/// A request time out occured while we tried to contact the server.
 		/// </summary>
-		VU_AREA_TARGET_CLOUD_CREATION_ERROR_NETWORK_TIMEOUT = 7,
-		VU_AREA_TARGET_CLOUD_CREATION_ERROR_NETWORK_CERTIFICATE_ERROR = 8,
-		VU_AREA_TARGET_CLOUD_CREATION_ERROR_NETWORK_DOMAIN_NAME_RESOLUTION_FAILED = 9,
+		NetworkTimeout = 7,
+		NetworkCertificateError = 8,
+		NetworkDomainNameResolutionFailed = 9,
 		/// <summary>
 		/// Device has no connection to the internet
 		/// </summary>
-		VU_AREA_TARGET_CLOUD_CREATION_ERROR_NO_NETWORK_CONNECTION = 10,
+		NoNetworkConnection = 10,
 		/// <summary>
 		/// Communication with the server failed for other reason (not listed here).
 		/// Consult the device network status or device logs for further details.
 		/// </summary>
-		VU_AREA_TARGET_CLOUD_CREATION_ERROR_NETWORK_ERROR = 11,
-		VU_AREA_TARGET_CLOUD_CREATION_ERROR_TARGET_NOT_READY = 12,
-		VU_AREA_TARGET_CLOUD_CREATION_ERROR_SERVICE_NOT_AVAILABLE = 13,
-		VU_AREA_TARGET_CLOUD_CREATION_ERROR_SAME_SOURCE_NOT_SUPPORTED = 14,
+		NetworkError = 11,
+		TargetNotReady = 12,
+		ServiceNotAvailable = 13,
+		SameSourceNotSupported = 14,
 		/// <summary>
 		/// Device pose observer is null or invalid
 		/// </summary>
-		VU_AREA_TARGET_CLOUD_CREATION_ERROR_INVALID_DEVICE_POSE_OBSERVER = 15,
+		InvalidDevicePoseObserver = 15,
 	}
 
 	/// <summary>
@@ -663,179 +653,173 @@ namespace Evergine.Bindings.Vuforia
 	/// @ref VuObservationPoseStatus
 	/// may be reported as part of an Area Target observation, except
 	/// @ref VU_OBSERVATION_POSE_STATUS_TRACKED.
-	/// VuPoseInfo
-	/// VuObservationPoseStatus
-	/// vuObservationHasPoseInfo
-	/// vuObservationGetPoseInfo
-	/// vuStateGetObservationsWithPoseInfo
-	/// vuAreaTargetObservationGetStatusInfo
 	/// </summary>
-	public enum VuAreaTargetObservationStatusInfo : int
+	public enum AreaTargetObservationStatusInfo : int
 	{
-		VU_AREA_TARGET_OBSERVATION_STATUS_INFO_NORMAL = 1,
-		VU_AREA_TARGET_OBSERVATION_STATUS_INFO_NOT_OBSERVED = 2,
-		VU_AREA_TARGET_OBSERVATION_STATUS_INFO_RELOCALIZING = 3,
-		VU_AREA_TARGET_OBSERVATION_STATUS_INFO_MISSING_DATA = 4,
+		Normal = 1,
+		NotObserved = 2,
+		Relocalizing = 3,
+		MissingData = 4,
 	}
 
 	/// <summary>
 	/// Configuration error for Mesh observer creation with Area Target observer
 	/// </summary>
-	public enum VuMeshAreaTargetCreationError : int
+	public enum MeshAreaTargetCreationError : int
 	{
 		/// <summary>
 		/// No error
 		/// </summary>
-		VU_MESH_AREA_TARGET_CREATION_ERROR_NONE = 0,
+		None = 0,
 		/// <summary>
 		/// An internal error occurred while creating the observer
 		/// </summary>
-		VU_MESH_AREA_TARGET_CREATION_ERROR_INTERNAL = 1,
+		Internal = 1,
 		/// <summary>
 		/// An error occurred while auto-activating the observer
 		/// </summary>
-		VU_MESH_AREA_TARGET_CREATION_ERROR_AUTOACTIVATION_FAILED = 2,
+		AutoactivationFailed = 2,
 		/// <summary>
 		/// Area Target observer is NULL or invalid
 		/// </summary>
-		VU_MESH_AREA_TARGET_CREATION_ERROR_INVALID_OBSERVER = 3,
-		VU_MESH_AREA_TARGET_CREATION_ERROR_MESH_FILE_LOAD_ERROR = 4,
+		InvalidObserver = 3,
+		MeshFileLoadError = 4,
 		/// <summary>
 		/// Failed to load mesh data
 		/// </summary>
-		VU_MESH_AREA_TARGET_CREATION_ERROR_MESH_LOAD_ERROR = 4,
+		MeshLoadError = 4,
 		/// <summary>
 		/// A mesh observer is already attached to the Area Target observer
 		/// </summary>
-		VU_MESH_AREA_TARGET_CREATION_ERROR_SAME_SOURCE_NOT_SUPPORTED = 5,
+		SameSourceNotSupported = 5,
 	}
 
 	/// <summary>
 	/// Configuration error for Cloud Image Target Observer creation
 	/// </summary>
-	public enum VuCloudImageTargetCreationError : int
+	public enum CloudImageTargetCreationError : int
 	{
 		/// <summary>
 		/// No error
 		/// </summary>
-		VU_CLOUD_IMAGE_TARGET_CREATION_ERROR_NONE = 0,
+		None = 0,
 		/// <summary>
 		/// An internal error occurred while creating the observer
 		/// </summary>
-		VU_CLOUD_IMAGE_TARGET_CREATION_ERROR_INTERNAL = 1,
+		Internal = 1,
 		/// <summary>
 		/// An error occurred while auto-activating the observer
 		/// </summary>
-		VU_CLOUD_IMAGE_TARGET_CREATION_ERROR_AUTOACTIVATION_FAILED = 2,
+		AutoactivationFailed = 2,
 		/// <summary>
 		/// Feature is not supported by the current license
 		/// </summary>
-		VU_CLOUD_IMAGE_TARGET_CREATION_ERROR_FEATURE_NOT_SUPPORTED = 3,
-		VU_CLOUD_IMAGE_TARGET_CREATION_ERROR_SERVICE_MISSING_AUTHENTICATION = 4,
+		FeatureNotSupported = 3,
+		ServiceMissingAuthentication = 4,
 		/// <summary>
 		/// No network connection
 		/// </summary>
-		VU_CLOUD_IMAGE_TARGET_CREATION_ERROR_NO_NETWORK_CONNECTION = 5,
+		NoNetworkConnection = 5,
 		/// <summary>
 		/// Service is not available
 		/// </summary>
-		VU_CLOUD_IMAGE_TARGET_CREATION_ERROR_SERVICE_NOT_AVAILABLE = 6,
+		ServiceNotAvailable = 6,
 	}
 
 	/// <summary>
 	/// Cloud Image Target query errors
 	/// </summary>
-	public enum VuCloudImageTargetQueryError : int
+	public enum CloudImageTargetQueryError : int
 	{
 		/// <summary>
 		/// No error
 		/// </summary>
-		VU_CLOUD_IMAGE_TARGET_QUERY_ERROR_NONE = 0,
+		None = 0,
 		/// <summary>
 		/// Credentials are wrong or outdated
 		/// </summary>
-		VU_CLOUD_IMAGE_TARGET_QUERY_ERROR_AUTHORIZATION_FAILED = 1,
+		AuthorizationFailed = 1,
 		/// <summary>
 		/// The specified project was suspended
 		/// </summary>
-		VU_CLOUD_IMAGE_TARGET_QUERY_ERROR_PROJECT_SUSPENDED = 2,
+		ProjectSuspended = 2,
 		/// <summary>
 		/// Device has no network connection
 		/// </summary>
-		VU_CLOUD_IMAGE_TARGET_QUERY_ERROR_NO_NETWORK_CONNECTION = 3,
+		NoNetworkConnection = 3,
 		/// <summary>
 		/// Server not found, down or overloaded
 		/// </summary>
-		VU_CLOUD_IMAGE_TARGET_QUERY_ERROR_SERVICE_NOT_AVAILABLE = 4,
+		ServiceNotAvailable = 4,
 		/// <summary>
 		/// Low frame quality has been continuously observed
 		/// </summary>
-		VU_CLOUD_IMAGE_TARGET_QUERY_ERROR_BAD_FRAME_QUALITY = 5,
+		BadFrameQuality = 5,
 		/// <summary>
 		/// SDK Version outdated
 		/// </summary>
-		VU_CLOUD_IMAGE_TARGET_QUERY_ERROR_UPDATE_SDK = 6,
+		UpdateSdk = 6,
 		/// <summary>
 		/// Client/Server clocks too far away
 		/// </summary>
-		VU_CLOUD_IMAGE_TARGET_QUERY_ERROR_TIMESTAMP_OUT_OF_RANGE = 7,
+		TimestampOutOfRange = 7,
 		/// <summary>
 		/// No response to network request after timeout
 		/// </summary>
-		VU_CLOUD_IMAGE_TARGET_QUERY_ERROR_REQUEST_TIMEOUT = 8,
+		RequestTimeout = 8,
 	}
 
 	/// <summary>
 	/// Configuration error for Image Target creation with Cloud Observation
 	/// </summary>
-	public enum VuImageTargetCloudObservationCreationError : int
+	public enum ImageTargetCloudObservationCreationError : int
 	{
 		/// <summary>
 		/// No error
 		/// </summary>
-		VU_IMAGE_TARGET_CLOUD_OBSERVATION_ERROR_NONE = 0,
+		None = 0,
 		/// <summary>
 		/// Internal error
 		/// </summary>
-		VU_IMAGE_TARGET_CLOUD_OBSERVATION_ERROR_INTERNAL = 1,
+		Internal = 1,
 		/// <summary>
 		/// Invalid value passed to the scale parameter
 		/// </summary>
-		VU_IMAGE_TARGET_CLOUD_OBSERVATION_ERROR_INVALID_SCALE = 2,
+		InvalidScale = 2,
 	}
 
 	/// <summary>
 	/// Configuration error for Cylinder Target creation
 	/// </summary>
-	public enum VuCylinderTargetCreationError : int
+	public enum CylinderTargetCreationError : int
 	{
 		/// <summary>
 		/// No error
 		/// </summary>
-		VU_CYLINDER_TARGET_CREATION_ERROR_NONE = 0,
+		None = 0,
 		/// <summary>
 		/// An internal error occurred while creating the observer
 		/// </summary>
-		VU_CYLINDER_TARGET_CREATION_ERROR_INTERNAL = 1,
+		Internal = 1,
 		/// <summary>
 		/// Observer auto-activation failed
 		/// </summary>
-		VU_CYLINDER_TARGET_CREATION_ERROR_AUTOACTIVATION_FAILED = 2,
+		AutoactivationFailed = 2,
 		/// <summary>
 		/// Database file not found or an error occurred when reading data from it
 		/// (potentially unknown or corrupted file)
 		/// </summary>
-		VU_CYLINDER_TARGET_CREATION_ERROR_DATABASE_LOAD_ERROR = 3,
+		DatabaseLoadError = 3,
 		/// <summary>
 		/// Invalid target name
 		/// </summary>
-		VU_CYLINDER_TARGET_CREATION_ERROR_INVALID_TARGET_NAME = 4,
-		VU_CYLINDER_TARGET_CREATION_ERROR_TARGET_NOT_FOUND = 5,
+		InvalidTargetName = 4,
+		TargetNotFound = 5,
 		/// <summary>
 		/// Invalid value passed to the scale parameter
 		/// </summary>
-		VU_CYLINDER_TARGET_CREATION_ERROR_INVALID_SCALE = 6,
-		VU_CYLINDER_TARGET_CREATION_ERROR_DATABASE_XML_REQUIRED = 7,
+		InvalidScale = 6,
+		DatabaseXmlRequired = 7,
 	}
 
 	/// <summary>
@@ -845,41 +829,35 @@ namespace Evergine.Bindings.Vuforia
 	/// All enum values defined by
 	/// @ref VuObservationPoseStatus
 	/// may be reported as part of a Cylinder Target observation.
-	/// VuPoseInfo
-	/// VuObservationPoseStatus
-	/// vuObservationHasPoseInfo
-	/// vuObservationGetPoseInfo
-	/// vuStateGetObservationsWithPoseInfo
-	/// vuCylinderTargetObservationGetStatusInfo
 	/// </summary>
-	public enum VuCylinderTargetObservationStatusInfo : int
+	public enum CylinderTargetObservationStatusInfo : int
 	{
-		VU_CYLINDER_TARGET_OBSERVATION_STATUS_INFO_NORMAL = 1,
-		VU_CYLINDER_TARGET_OBSERVATION_STATUS_INFO_NOT_OBSERVED = 2,
-		VU_CYLINDER_TARGET_OBSERVATION_STATUS_INFO_RELOCALIZING = 3,
+		Normal = 1,
+		NotObserved = 2,
+		Relocalizing = 3,
 	}
 
 	/// <summary>
 	/// Configuration error for Device Pose creation
 	/// </summary>
-	public enum VuDevicePoseCreationError : int
+	public enum DevicePoseCreationError : int
 	{
 		/// <summary>
 		/// No error
 		/// </summary>
-		VU_DEVICE_POSE_CREATION_ERROR_NONE = 0,
+		None = 0,
 		/// <summary>
 		/// An internal error occurred while creating the observer
 		/// </summary>
-		VU_DEVICE_POSE_CREATION_ERROR_INTERNAL = 1,
+		Internal = 1,
 		/// <summary>
 		/// An error occurred while auto-activating the observer
 		/// </summary>
-		VU_DEVICE_POSE_CREATION_ERROR_AUTOACTIVATION_FAILED = 2,
+		AutoactivationFailed = 2,
 		/// <summary>
 		/// Device tracking functionality is not supported on the current device
 		/// </summary>
-		VU_DEVICE_POSE_CREATION_ERROR_FEATURE_NOT_SUPPORTED = 3,
+		FeatureNotSupported = 3,
 	}
 
 	/// <summary>
@@ -890,152 +868,146 @@ namespace Evergine.Bindings.Vuforia
 	/// @ref VuObservationPoseStatus
 	/// may be reported as part of a Device Pose observation, except
 	/// @ref VU_OBSERVATION_POSE_STATUS_EXTENDED_TRACKED.
-	/// VuPoseInfo
-	/// VuObservationPoseStatus
-	/// vuObservationHasPoseInfo
-	/// vuObservationGetPoseInfo
-	/// vuStateGetObservationsWithPoseInfo
-	/// vuDevicePoseObservationGetStatusInfo
 	/// </summary>
-	public enum VuDevicePoseObservationStatusInfo : int
+	public enum DevicePoseObservationStatusInfo : int
 	{
-		VU_DEVICE_POSE_OBSERVATION_STATUS_INFO_NORMAL = 1,
-		VU_DEVICE_POSE_OBSERVATION_STATUS_INFO_NOT_OBSERVED = 2,
-		VU_DEVICE_POSE_OBSERVATION_STATUS_INFO_UNKNOWN = 3,
-		VU_DEVICE_POSE_OBSERVATION_STATUS_INFO_INITIALIZING = 4,
-		VU_DEVICE_POSE_OBSERVATION_STATUS_INFO_RELOCALIZING = 5,
-		VU_DEVICE_POSE_OBSERVATION_STATUS_INFO_EXCESSIVE_MOTION = 6,
-		VU_DEVICE_POSE_OBSERVATION_STATUS_INFO_INSUFFICIENT_FEATURES = 7,
-		VU_DEVICE_POSE_OBSERVATION_STATUS_INFO_INSUFFICIENT_LIGHT = 8,
+		Normal = 1,
+		NotObserved = 2,
+		Unknown = 3,
+		Initializing = 4,
+		Relocalizing = 5,
+		ExcessiveMotion = 6,
+		InsufficientFeatures = 7,
+		InsufficientLight = 8,
 	}
 
 	/// <summary>
 	/// Configuration error for Illumination observer creation
 	/// </summary>
-	public enum VuIlluminationCreationError : int
+	public enum IlluminationCreationError : int
 	{
 		/// <summary>
 		/// No error
 		/// </summary>
-		VU_ILLUMINATION_CREATION_ERROR_NONE = 0,
+		None = 0,
 		/// <summary>
 		/// An internal error occurred while creating the observer
 		/// </summary>
-		VU_ILLUMINATION_CREATION_ERROR_INTERNAL = 1,
+		Internal = 1,
 		/// <summary>
 		/// An error occurred while auto-activating the observer
 		/// </summary>
-		VU_ILLUMINATION_CREATION_ERROR_AUTOACTIVATION_FAILED = 2,
+		AutoactivationFailed = 2,
 	}
 
 	/// <summary>
 	/// Configuration error for Image Target creation
 	/// </summary>
-	public enum VuImageTargetCreationError : int
+	public enum ImageTargetCreationError : int
 	{
 		/// <summary>
 		/// No error
 		/// </summary>
-		VU_IMAGE_TARGET_CREATION_ERROR_NONE = 0,
+		None = 0,
 		/// <summary>
 		/// An internal error occurred during observer creation
 		/// </summary>
-		VU_IMAGE_TARGET_CREATION_ERROR_INTERNAL = 1,
+		Internal = 1,
 		/// <summary>
 		/// Observer auto-activation failed
 		/// </summary>
-		VU_IMAGE_TARGET_CREATION_ERROR_AUTOACTIVATION_FAILED = 2,
+		AutoactivationFailed = 2,
 		/// <summary>
 		/// Could not find database file or read data from it
 		/// (potentially unknown or corrupted file)
 		/// </summary>
-		VU_IMAGE_TARGET_CREATION_ERROR_DATABASE_LOAD_ERROR = 3,
+		DatabaseLoadError = 3,
 		/// <summary>
 		/// Invalid target name
 		/// </summary>
-		VU_IMAGE_TARGET_CREATION_ERROR_INVALID_TARGET_NAME = 4,
-		VU_IMAGE_TARGET_CREATION_ERROR_TARGET_NOT_FOUND = 5,
+		InvalidTargetName = 4,
+		TargetNotFound = 5,
 		/// <summary>
 		/// Invalid value passed to the scale parameter
 		/// </summary>
-		VU_IMAGE_TARGET_CREATION_ERROR_INVALID_SCALE = 6,
-		VU_IMAGE_TARGET_CREATION_ERROR_DATABASE_XML_REQUIRED = 7,
+		InvalidScale = 6,
+		DatabaseXmlRequired = 7,
 	}
 
 	/// <summary>
 	/// Configuration error for Image Target creation with buffer config
 	/// </summary>
-	public enum VuImageTargetBufferCreationError : int
+	public enum ImageTargetBufferCreationError : int
 	{
 		/// <summary>
 		/// No error
 		/// </summary>
-		VU_IMAGE_TARGET_BUFFER_CREATION_ERROR_NONE = 0,
+		None = 0,
 		/// <summary>
 		/// An internal error occurred during observer creation
 		/// </summary>
-		VU_IMAGE_TARGET_BUFFER_CREATION_ERROR_INTERNAL = 1,
+		Internal = 1,
 		/// <summary>
 		/// Observer auto-activation failed
 		/// </summary>
-		VU_IMAGE_TARGET_BUFFER_CREATION_ERROR_AUTOACTIVATION_FAILED = 2,
+		AutoactivationFailed = 2,
 		/// <summary>
 		/// Feature not supported without a Vuforia license
 		/// </summary>
-		VU_IMAGE_TARGET_BUFFER_CREATION_ERROR_FEATURE_NOT_SUPPORTED = 3,
+		FeatureNotSupported = 3,
 		/// <summary>
 		/// Invalid pixel data buffer pointer
 		/// </summary>
-		VU_IMAGE_TARGET_BUFFER_CREATION_ERROR_INVALID_DATA = 4,
-		VU_IMAGE_TARGET_BUFFER_CREATION_ERROR_INVALID_FORMAT = 5,
+		InvalidData = 4,
+		InvalidFormat = 5,
 		/// <summary>
 		/// Invalid pixel buffer size
 		/// </summary>
-		VU_IMAGE_TARGET_BUFFER_CREATION_ERROR_INVALID_SIZE = 6,
+		InvalidSize = 6,
 		/// <summary>
 		/// Invalid target width value
 		/// </summary>
-		VU_IMAGE_TARGET_BUFFER_CREATION_ERROR_INVALID_TARGET_WIDTH = 7,
+		InvalidTargetWidth = 7,
 		/// <summary>
 		/// Invalid target name
 		/// </summary>
-		VU_IMAGE_TARGET_BUFFER_CREATION_ERROR_INVALID_TARGET_NAME = 8,
+		InvalidTargetName = 8,
 	}
 
 	/// <summary>
 	/// Configuration error for Image Target creation with file config
 	/// </summary>
-	public enum VuImageTargetFileCreationError : int
+	public enum ImageTargetFileCreationError : int
 	{
 		/// <summary>
 		/// No error
 		/// </summary>
-		VU_IMAGE_TARGET_FILE_CREATION_ERROR_NONE = 0,
+		None = 0,
 		/// <summary>
 		/// An internal error occurred while creating the observer
 		/// </summary>
-		VU_IMAGE_TARGET_FILE_CREATION_ERROR_INTERNAL = 1,
+		Internal = 1,
 		/// <summary>
 		/// An error occurred while auto-activating the observer
 		/// </summary>
-		VU_IMAGE_TARGET_FILE_CREATION_ERROR_AUTOACTIVATION_FAILED = 2,
+		AutoactivationFailed = 2,
 		/// <summary>
 		/// Feature not supported without a Vuforia license
 		/// </summary>
-		VU_IMAGE_TARGET_FILE_CREATION_ERROR_FEATURE_NOT_SUPPORTED = 3,
+		FeatureNotSupported = 3,
 		/// <summary>
 		/// Could not find image file or read data from it
 		/// (potentially unknown or corrupted file)
 		/// </summary>
-		VU_IMAGE_TARGET_FILE_CREATION_ERROR_FILE_LOAD_ERROR = 4,
+		FileLoadError = 4,
 		/// <summary>
 		/// Invalid target width value
 		/// </summary>
-		VU_IMAGE_TARGET_FILE_CREATION_ERROR_INVALID_TARGET_WIDTH = 5,
+		InvalidTargetWidth = 5,
 		/// <summary>
 		/// Invalid target name
 		/// </summary>
-		VU_IMAGE_TARGET_FILE_CREATION_ERROR_INVALID_TARGET_NAME = 6,
+		InvalidTargetName = 6,
 	}
 
 	/// <summary>
@@ -1045,30 +1017,24 @@ namespace Evergine.Bindings.Vuforia
 	/// All enum values defined by
 	/// @ref VuObservationPoseStatus
 	/// may be reported as part of an Image Target observation.
-	/// VuPoseInfo
-	/// VuObservationPoseStatus
-	/// vuObservationHasPoseInfo
-	/// vuObservationGetPoseInfo
-	/// vuStateGetObservationsWithPoseInfo
-	/// vuImageTargetObservationGetStatusInfo
 	/// </summary>
-	public enum VuImageTargetObservationStatusInfo : int
+	public enum ImageTargetObservationStatusInfo : int
 	{
-		VU_IMAGE_TARGET_OBSERVATION_STATUS_INFO_NORMAL = 1,
-		VU_IMAGE_TARGET_OBSERVATION_STATUS_INFO_NOT_OBSERVED = 2,
-		VU_IMAGE_TARGET_OBSERVATION_STATUS_INFO_RELOCALIZING = 3,
+		Normal = 1,
+		NotObserved = 2,
+		Relocalizing = 3,
 	}
 
 	/// <summary>
 	/// Status information on the mesh data in the observation
 	/// </summary>
-	public enum VuMeshObservationStatus : int
+	public enum MeshObservationStatus : int
 	{
 		/// <summary>
 		/// Mesh is normal
 		/// </summary>
-		VU_MESH_OBSERVATION_STATUS_NORMAL = 1,
-		VU_MESH_OBSERVATION_STATUS_LIMITED = 2,
+		Normal = 1,
+		Limited = 2,
 	}
 
 	/// <summary>
@@ -1079,64 +1045,58 @@ namespace Evergine.Bindings.Vuforia
 	/// @ref VuObservationPoseStatus
 	/// may be reported as part of a Mesh observation, except
 	/// @ref VU_OBSERVATION_POSE_STATUS_TRACKED.
-	/// VuPoseInfo
-	/// VuObservationPoseStatus
-	/// vuObservationHasPoseInfo
-	/// vuObservationGetPoseInfo
-	/// vuStateGetObservationsWithPoseInfo
-	/// vuMeshObservationGetStatusInfo
 	/// </summary>
-	public enum VuMeshObservationStatusInfo : int
+	public enum MeshObservationStatusInfo : int
 	{
-		VU_MESH_OBSERVATION_STATUS_INFO_NORMAL = 1,
+		Normal = 1,
 		/// <summary>
 		/// Mesh is not observed. Reported for
 		/// @ref #VU_OBSERVATION_POSE_STATUS_NO_POSE.
 		/// </summary>
-		VU_MESH_OBSERVATION_STATUS_INFO_NOT_OBSERVED = 2,
-		VU_MESH_OBSERVATION_STATUS_INFO_RELOCALIZING = 3,
+		NotObserved = 2,
+		Relocalizing = 3,
 		/// <summary>
 		/// Asynchronous loading failed. The Mesh pose is based on incomplete data.
 		/// Tracking quality might decrease or the tracking might be lost.
 		/// Reported for
 		/// @ref VU_OBSERVATION_POSE_STATUS_LIMITED.
 		/// </summary>
-		VU_MESH_OBSERVATION_STATUS_INFO_MISSING_DATA = 4,
-		VU_MESH_OBSERVATION_STATUS_INFO_WRONG_SCALE = 5,
+		MissingData = 4,
+		WrongScale = 5,
 	}
 
 	/// <summary>
 	/// Configuration error for Model Target creation
 	/// </summary>
-	public enum VuModelTargetCreationError : int
+	public enum ModelTargetCreationError : int
 	{
 		/// <summary>
 		/// No error
 		/// </summary>
-		VU_MODEL_TARGET_CREATION_ERROR_NONE = 0,
+		None = 0,
 		/// <summary>
 		/// An internal error occurred while creating the observer
 		/// </summary>
-		VU_MODEL_TARGET_CREATION_ERROR_INTERNAL = 1,
+		Internal = 1,
 		/// <summary>
 		/// Observer auto-activation failed
 		/// </summary>
-		VU_MODEL_TARGET_CREATION_ERROR_AUTOACTIVATION_FAILED = 2,
+		AutoactivationFailed = 2,
 		/// <summary>
 		/// Database file not found or an error occurred when reading data from it
 		/// (potentially unknown or corrupted file)
 		/// </summary>
-		VU_MODEL_TARGET_CREATION_ERROR_DATABASE_LOAD_ERROR = 3,
+		DatabaseLoadError = 3,
 		/// <summary>
 		/// Invalid target name
 		/// </summary>
-		VU_MODEL_TARGET_CREATION_ERROR_INVALID_TARGET_NAME = 4,
-		VU_MODEL_TARGET_CREATION_ERROR_TARGET_NOT_FOUND = 5,
+		InvalidTargetName = 4,
+		TargetNotFound = 5,
 		/// <summary>
 		/// Invalid value passed to the scale parameter
 		/// </summary>
-		VU_MODEL_TARGET_CREATION_ERROR_INVALID_SCALE = 6,
-		VU_MODEL_TARGET_CREATION_ERROR_INVALID_GUIDE_VIEW_NAME = 7,
+		InvalidScale = 6,
+		InvalidGuideViewName = 7,
 	}
 
 	/// <summary>
@@ -1146,108 +1106,102 @@ namespace Evergine.Bindings.Vuforia
 	/// All enum values defined by
 	/// @ref VuObservationPoseStatus
 	/// may be reported as part of a Model Target observation.
-	/// VuPoseInfo
-	/// VuObservationPoseStatus
-	/// vuObservationHasPoseInfo
-	/// vuObservationGetPoseInfo
-	/// vuStateGetObservationsWithPoseInfo
-	/// vuModelTargetObservationGetStatusInfo
 	/// </summary>
-	public enum VuModelTargetObservationStatusInfo : int
+	public enum ModelTargetObservationStatusInfo : int
 	{
-		VU_MODEL_TARGET_OBSERVATION_STATUS_INFO_NORMAL = 1,
-		VU_MODEL_TARGET_OBSERVATION_STATUS_INFO_NOT_OBSERVED = 2,
-		VU_MODEL_TARGET_OBSERVATION_STATUS_INFO_INITIALIZING = 3,
-		VU_MODEL_TARGET_OBSERVATION_STATUS_INFO_RELOCALIZING = 4,
-		VU_MODEL_TARGET_OBSERVATION_STATUS_INFO_NO_DETECTION_RECOMMENDING_GUIDANCE = 5,
-		VU_MODEL_TARGET_OBSERVATION_STATUS_INFO_WRONG_SCALE = 6,
+		Normal = 1,
+		NotObserved = 2,
+		Initializing = 3,
+		Relocalizing = 4,
+		NoDetectionRecommendingGuidance = 5,
+		WrongScale = 6,
 	}
 
 	/// <summary>
 	/// Configuration error for Mesh observer creation with Model Target observer
 	/// </summary>
-	public enum VuMeshModelTargetCreationError : int
+	public enum MeshModelTargetCreationError : int
 	{
 		/// <summary>
 		/// No error
 		/// </summary>
-		VU_MESH_MODEL_TARGET_CREATION_ERROR_NONE = 0,
+		None = 0,
 		/// <summary>
 		/// An internal error occurred while creating the observer
 		/// </summary>
-		VU_MESH_MODEL_TARGET_CREATION_ERROR_INTERNAL = 1,
+		Internal = 1,
 		/// <summary>
 		/// An error occurred while auto-activating the observer
 		/// </summary>
-		VU_MESH_MODEL_TARGET_CREATION_ERROR_AUTOACTIVATION_FAILED = 2,
+		AutoactivationFailed = 2,
 		/// <summary>
 		/// Model Target observer is NULL or invalid
 		/// </summary>
-		VU_MESH_MODEL_TARGET_CREATION_ERROR_INVALID_OBSERVER = 3,
-		VU_MESH_MODEL_TARGET_CREATION_ERROR_SAME_SOURCE_NOT_SUPPORTED = 5,
+		InvalidObserver = 3,
+		SameSourceNotSupported = 5,
 	}
 
 	/// <summary>
 	/// Configuration error for Multi-Target creation
 	/// </summary>
-	public enum VuMultiTargetCreationError : int
+	public enum MultiTargetCreationError : int
 	{
 		/// <summary>
 		/// No error
 		/// </summary>
-		VU_MULTI_TARGET_CREATION_ERROR_NONE = 0,
+		None = 0,
 		/// <summary>
 		/// An internal error occurred while creating the observer
 		/// </summary>
-		VU_MULTI_TARGET_CREATION_ERROR_INTERNAL = 1,
+		Internal = 1,
 		/// <summary>
 		/// Observer auto-activation failed
 		/// </summary>
-		VU_MULTI_TARGET_CREATION_ERROR_AUTOACTIVATION_FAILED = 2,
+		AutoactivationFailed = 2,
 		/// <summary>
 		/// Database file not found or an error occurred when reading data from it
 		/// (potentially unknown or corrupted file)
 		/// </summary>
-		VU_MULTI_TARGET_CREATION_ERROR_DATABASE_LOAD_ERROR = 3,
+		DatabaseLoadError = 3,
 		/// <summary>
 		/// Invalid target name
 		/// </summary>
-		VU_MULTI_TARGET_CREATION_ERROR_INVALID_TARGET_NAME = 4,
-		VU_MULTI_TARGET_CREATION_ERROR_TARGET_NOT_FOUND = 5,
+		InvalidTargetName = 4,
+		TargetNotFound = 5,
 		/// <summary>
 		/// An error occurred while trying to set up the parts that form the Multi-Target
 		/// </summary>
-		VU_MULTI_TARGET_CREATION_ERROR_ASSEMBLY_ERROR = 6,
+		AssemblyError = 6,
 	}
 
 	/// <summary>
 	/// Configuration error when creating a Multi-Target from parts
 	/// </summary>
-	public enum VuMultiTargetPartsCreationError : int
+	public enum MultiTargetPartsCreationError : int
 	{
 		/// <summary>
 		/// No error
 		/// </summary>
-		VU_MULTI_TARGET_PARTS_CREATION_ERROR_NONE = 0,
+		None = 0,
 		/// <summary>
 		/// An internal error occurred while creating the observer
 		/// </summary>
-		VU_MULTI_TARGET_PARTS_CREATION_ERROR_INTERNAL = 1,
+		Internal = 1,
 		/// <summary>
 		/// Observer auto-activation failed
 		/// </summary>
-		VU_MULTI_TARGET_PARTS_CREATION_ERROR_AUTOACTIVATION_FAILED = 2,
+		AutoactivationFailed = 2,
 		/// <summary>
 		/// Database file not found or an error occurred when reading data from
 		/// it (potentially unknown or corrupted file)
 		/// </summary>
-		VU_MULTI_TARGET_PARTS_CREATION_ERROR_DATABASE_LOAD_ERROR = 3,
+		DatabaseLoadError = 3,
 		/// <summary>
 		/// Invalid target name
 		/// </summary>
-		VU_MULTI_TARGET_PARTS_CREATION_ERROR_INVALID_TARGET_NAME = 4,
-		VU_MULTI_TARGET_PARTS_CREATION_ERROR_ASSEMBLY_ERROR = 5,
-		VU_MULTI_TARGET_PARTS_CREATION_ERROR_DATABASE_XML_REQUIRED = 6,
+		InvalidTargetName = 4,
+		AssemblyError = 5,
+		DatabaseXmlRequired = 6,
 	}
 
 	/// <summary>
@@ -1257,58 +1211,52 @@ namespace Evergine.Bindings.Vuforia
 	/// All enum values defined by
 	/// @ref VuObservationPoseStatus
 	/// may be reported as part of a Multi-Target observation.
-	/// VuPoseInfo
-	/// VuObservationPoseStatus
-	/// vuObservationHasPoseInfo
-	/// vuObservationGetPoseInfo
-	/// vuStateGetObservationsWithPoseInfo
-	/// vuStateGetObservationsWithPoseInfo
 	/// </summary>
-	public enum VuMultiTargetObservationStatusInfo : int
+	public enum MultiTargetObservationStatusInfo : int
 	{
-		VU_MULTI_TARGET_OBSERVATION_STATUS_INFO_NORMAL = 1,
-		VU_MULTI_TARGET_OBSERVATION_STATUS_INFO_NOT_OBSERVED = 2,
-		VU_MULTI_TARGET_OBSERVATION_STATUS_INFO_RELOCALIZING = 3,
+		Normal = 1,
+		NotObserved = 2,
+		Relocalizing = 3,
 	}
 
 	/// <summary>
 	/// Configuration error for VuMark creation
 	/// </summary>
-	public enum VuVuMarkCreationError : int
+	public enum VuMarkCreationError : int
 	{
 		/// <summary>
 		/// No error
 		/// </summary>
-		VU_VUMARK_CREATION_ERROR_NONE = 0,
+		None = 0,
 		/// <summary>
 		/// An internal error occurred while creating the observer
 		/// </summary>
-		VU_VUMARK_CREATION_ERROR_INTERNAL = 1,
+		Internal = 1,
 		/// <summary>
 		/// Observer auto-activation failed
 		/// </summary>
-		VU_VUMARK_CREATION_ERROR_AUTOACTIVATION_FAILED = 2,
+		AutoactivationFailed = 2,
 		/// <summary>
 		/// Database file not found or an error occurred when reading
 		/// data from it (potentially unknown or corrupted file)
 		/// </summary>
-		VU_VUMARK_CREATION_ERROR_DATABASE_LOAD_ERROR = 3,
+		DatabaseLoadError = 3,
 		/// <summary>
 		/// Invalid target name
 		/// </summary>
-		VU_VUMARK_CREATION_ERROR_INVALID_TARGET_NAME = 4,
-		VU_VUMARK_CREATION_ERROR_TARGET_NOT_FOUND = 5,
+		InvalidTargetName = 4,
+		TargetNotFound = 5,
 		/// <summary>
 		/// Invalid value passed to the scale parameter
 		/// </summary>
-		VU_VUMARK_CREATION_ERROR_INVALID_SCALE = 6,
+		InvalidScale = 6,
 		/// <summary>
 		/// The VuMark could not be loaded from the DAT file directly, because the
 		/// database only supports loading from the database XML file. Only VuMark
 		/// databases created for Vuforia 10.15 and newer support loading from the DAT
 		/// file directly. Older databases must still be loaded via the database XML file.
 		/// </summary>
-		VU_VUMARK_CREATION_ERROR_DATABASE_XML_REQUIRED = 7,
+		DatabaseXmlRequired = 7,
 	}
 
 	/// <summary>
@@ -1318,14 +1266,8 @@ namespace Evergine.Bindings.Vuforia
 	/// All enum values defined by
 	/// @ref VuObservationPoseStatus
 	/// may be reported as part of a VuMark observation.
-	/// VuPoseInfo
-	/// VuObservationPoseStatus
-	/// vuObservationHasPoseInfo
-	/// vuObservationGetPoseInfo
-	/// vuStateGetObservationsWithPoseInfo
-	/// vuStateGetObservationsWithPoseInfo
 	/// </summary>
-	public enum VuVuMarkObservationStatusInfo : int
+	public enum VuMarkObservationStatusInfo : int
 	{
 		/// <summary>
 		/// Tracking is working normally. Reported for
@@ -1333,205 +1275,205 @@ namespace Evergine.Bindings.Vuforia
 		/// or
 		/// @ref VU_OBSERVATION_POSE_STATUS_EXTENDED_TRACKED.
 		/// </summary>
-		VU_VUMARK_OBSERVATION_STATUS_INFO_NORMAL = 1,
+		Normal = 1,
 		/// <summary>
 		/// Target is not observed. Reported for
 		/// @ref VU_OBSERVATION_POSE_STATUS_NO_POSE.
 		/// </summary>
-		VU_VUMARK_OBSERVATION_STATUS_INFO_NOT_OBSERVED = 2,
-		VU_VUMARK_OBSERVATION_STATUS_INFO_RELOCALIZING = 3,
+		NotObserved = 2,
+		Relocalizing = 3,
 	}
 
 	/// <summary>
 	/// Status info for VuMark observation
 	/// </summary>
-	public enum VuMarkInstanceIdType : int
+	public enum MarkInstanceIdType : int
 	{
 		/// <summary>
 		/// Generic byte data, stored in little-endian order in the buffer
 		/// (e.g. an ID of 0x123456 would appear as { 0x56, 0x34, 0x12 })
 		/// </summary>
-		VU_VUMARK_INSTANCE_ID_BYTE = 1,
+		Byte = 1,
 		/// <summary>
 		/// Printable string data in ASCII
 		/// </summary>
-		VU_VUMARK_INSTANCE_ID_STRING = 2,
+		String = 2,
 		/// <summary>
 		/// Numeric data, not larger than a 64 bit unsigned long long
 		/// </summary>
-		VU_VUMARK_INSTANCE_ID_NUMERIC = 3,
+		Numeric = 3,
 	}
 
 	/// <summary>
 	/// Configuration error for barcode creation
 	/// </summary>
-	public enum VuBarcodeCreationError : int
+	public enum BarcodeCreationError : int
 	{
 		/// <summary>
 		/// No error
 		/// </summary>
-		VU_BARCODE_CREATION_ERROR_NONE = 0,
+		None = 0,
 		/// <summary>
 		/// An internal error occurred while creating the observer
 		/// </summary>
-		VU_BARCODE_CREATION_ERROR_INTERNAL = 1,
+		Internal = 1,
 		/// <summary>
 		/// The set of barcode types to observe is empty
 		/// </summary>
-		VU_BARCODE_CREATION_ERROR_OBSERVED_TYPES_EMPTY = 2,
+		ObservedTypesEmpty = 2,
 	}
 
 	/// <summary>
 	/// Type of barcode observed
 	/// </summary>
-	public enum VuBarcodeType : int
+	public enum BarcodeType : int
 	{
 		/// <summary>
 		/// 1D barcode type, UPC-A
 		/// </summary>
-		VU_BARCODE_TYPE_UPCA = 1,
+		Upca = 1,
 		/// <summary>
 		/// 1D barcode type, UPC-E
 		/// </summary>
-		VU_BARCODE_TYPE_UPCE = 2,
+		Upce = 2,
 		/// <summary>
 		/// 1D barcode type, EAN-8
 		/// </summary>
-		VU_BARCODE_TYPE_EAN8 = 3,
+		Ean8 = 3,
 		/// <summary>
 		/// 1D barcode type, EAN-13
 		/// </summary>
-		VU_BARCODE_TYPE_EAN13 = 4,
+		Ean13 = 4,
 		/// <summary>
 		/// 1D barcode type, CODE 39
 		/// </summary>
-		VU_BARCODE_TYPE_CODE39 = 5,
+		Code39 = 5,
 		/// <summary>
 		/// 1D barcode type, CODE 93
 		/// </summary>
-		VU_BARCODE_TYPE_CODE93 = 6,
+		Code93 = 6,
 		/// <summary>
 		/// 1D barcode type, CODE 128
 		/// </summary>
-		VU_BARCODE_TYPE_CODE128 = 7,
+		Code128 = 7,
 		/// <summary>
 		/// 1D barcode type, Codabar
 		/// </summary>
-		VU_BARCODE_TYPE_CODABAR = 8,
+		Codabar = 8,
 		/// <summary>
 		/// 1D barcode type, ITF
 		/// </summary>
-		VU_BARCODE_TYPE_ITF = 9,
+		Itf = 9,
 		/// <summary>
 		/// 2D barcode type, QR Code
 		/// </summary>
-		VU_BARCODE_TYPE_QRCODE = 10,
+		Qrcode = 10,
 		/// <summary>
 		/// 2D barcode type, Data Matrix
 		/// </summary>
-		VU_BARCODE_TYPE_DATAMATRIX = 11,
+		Datamatrix = 11,
 		/// <summary>
 		/// 2D barcode type, Aztec
 		/// </summary>
-		VU_BARCODE_TYPE_AZTEC = 12,
+		Aztec = 12,
 		/// <summary>
 		/// 2D barcode type, PDF417
 		/// </summary>
-		VU_BARCODE_TYPE_PDF417 = 13,
+		Pdf417 = 13,
 		/// <summary>
 		/// 2D barcode type, Micro QR Code
 		/// </summary>
-		VU_BARCODE_TYPE_MICROQRCODE = 14,
+		Microqrcode = 14,
 	}
 
 	/// <summary>
 	/// Barcode detection mode
 	/// </summary>
-	public enum VuBarcodeDetectionMode : int
+	public enum BarcodeDetectionMode : int
 	{
 		/// <summary>
 		/// The observer detects only a single barcode at a time. This mode
 		/// works best in scenarios where only one barcode is visible.
 		/// </summary>
-		VU_BARCODE_DETECTION_MODE_SINGLE = 1,
+		Single = 1,
 		/// <summary>
 		/// The observer detects multiple barcodes in parallel and produces
 		/// a separate obseration for each barcode found in the frame.
 		/// </summary>
-		VU_BARCODE_DETECTION_MODE_MULTIPLE = 2,
+		Multiple = 2,
 	}
 
 	/// <summary>
 	/// Configuration error for Validation Area creation with file config
 	/// </summary>
-	public enum VuValidationAreaFileCreationError : int
+	public enum ValidationAreaFileCreationError : int
 	{
 		/// <summary>
 		/// No error
 		/// </summary>
-		VU_VALIDATION_AREA_FILE_CREATION_ERROR_NONE = 0,
+		None = 0,
 		/// <summary>
 		/// An internal error occurred while creating the observer
 		/// </summary>
-		VU_VALIDATION_AREA_FILE_CREATION_ERROR_INTERNAL = 1,
+		Internal = 1,
 		/// <summary>
 		/// An error occurred while auto-activating the observer
 		/// </summary>
-		VU_VALIDATION_AREA_FILE_CREATION_ERROR_AUTOACTIVATION_FAILED = 2,
+		AutoactivationFailed = 2,
 		/// <summary>
 		/// Feature not supported on the current platform
 		/// </summary>
-		VU_VALIDATION_AREA_FILE_CREATION_ERROR_FEATURE_NOT_SUPPORTED_PLATFORM = 3,
-		VU_VALIDATION_AREA_FILE_CREATION_ERROR_FEATURE_NOT_SUPPORTED_LICENSE = 4,
+		FeatureNotSupportedPlatform = 3,
+		FeatureNotSupportedLicense = 4,
 		/// <summary>
 		/// Failed to load plugin necessary for this feature
 		/// </summary>
-		VU_VALIDATION_AREA_FILE_CREATION_ERROR_PLUGIN_LOAD_ERROR = 5,
+		PluginLoadError = 5,
 		/// <summary>
 		/// Invalid Validation Area name
 		/// </summary>
-		VU_VALIDATION_AREA_FILE_CREATION_ERROR_INVALID_AREA_NAME = 6,
-		VU_VALIDATION_AREA_FILE_CREATION_ERROR_FILE_LOAD_ERROR = 7,
+		InvalidAreaName = 6,
+		FileLoadError = 7,
 	}
 
 	/// <summary>
 	/// Configuration error for Validation Area creation with buffer config
 	/// </summary>
-	public enum VuValidationAreaBufferCreationError : int
+	public enum ValidationAreaBufferCreationError : int
 	{
 		/// <summary>
 		/// No error
 		/// </summary>
-		VU_VALIDATION_AREA_BUFFER_CREATION_ERROR_NONE = 0,
+		None = 0,
 		/// <summary>
 		/// An internal error occurred during observer creation
 		/// </summary>
-		VU_VALIDATION_AREA_BUFFER_CREATION_ERROR_INTERNAL = 1,
+		Internal = 1,
 		/// <summary>
 		/// Observer auto-activation failed
 		/// </summary>
-		VU_VALIDATION_AREA_BUFFER_CREATION_ERROR_AUTOACTIVATION_FAILED = 2,
+		AutoactivationFailed = 2,
 		/// <summary>
 		/// Feature not supported on the current platform
 		/// </summary>
-		VU_VALIDATION_AREA_BUFFER_CREATION_ERROR_FEATURE_NOT_SUPPORTED_PLATFORM = 3,
-		VU_VALIDATION_AREA_BUFFER_CREATION_ERROR_FEATURE_NOT_SUPPORTED_LICENSE = 4,
+		FeatureNotSupportedPlatform = 3,
+		FeatureNotSupportedLicense = 4,
 		/// <summary>
 		/// Failed to load plugin necessary for this feature
 		/// </summary>
-		VU_VALIDATION_AREA_BUFFER_CREATION_ERROR_PLUGIN_LOAD_ERROR = 5,
+		PluginLoadError = 5,
 		/// <summary>
 		/// Invalid Validation Area name
 		/// </summary>
-		VU_VALIDATION_AREA_BUFFER_CREATION_ERROR_INVALID_AREA_NAME = 6,
+		InvalidAreaName = 6,
 		/// <summary>
 		/// Invalid pixel data buffer pointer
 		/// </summary>
-		VU_VALIDATION_AREA_BUFFER_CREATION_ERROR_INVALID_DATA = 7,
+		InvalidData = 7,
 		/// <summary>
 		/// Invalid pixel buffer size
 		/// </summary>
-		VU_VALIDATION_AREA_BUFFER_CREATION_ERROR_INVALID_SIZE = 8,
+		InvalidSize = 8,
 	}
 
 	/// <summary>
@@ -1541,289 +1483,283 @@ namespace Evergine.Bindings.Vuforia
 	/// All enum values defined by
 	/// @ref VuObservationPoseStatus
 	/// may be reported as part of a Validation Area observation.
-	/// VuPoseInfo
-	/// VuObservationPoseStatus
-	/// vuObservationHasPoseInfo
-	/// vuObservationGetPoseInfo
-	/// vuStateGetObservationsWithPoseInfo
-	/// vuStateGetObservationsWithPoseInfo
 	/// </summary>
-	public enum VuValidationAreaObservationStatusInfo : int
+	public enum ValidationAreaObservationStatusInfo : int
 	{
-		VU_VALIDATION_AREA_OBSERVATION_STATUS_INFO_NORMAL = 1,
-		VU_VALIDATION_AREA_OBSERVATION_STATUS_INFO_NOT_OBSERVED = 2,
-		VU_VALIDATION_AREA_OBSERVATION_STATUS_INFO_RELOCALIZING = 3,
+		Normal = 1,
+		NotObserved = 2,
+		Relocalizing = 3,
 	}
 
 	/// <summary>
 	/// Validation status for Validation Area observation
 	/// </summary>
-	public enum VuValidationAreaObservationValidationStatus : int
+	public enum ValidationAreaObservationValidationStatus : int
 	{
-		VU_VALIDATION_AREA_OBSERVATION_VALIDATION_STATUS_NORMAL = 1,
-		VU_VALIDATION_AREA_OBSERVATION_VALIDATION_STATUS_NOT_VISIBLE = 3,
-		VU_VALIDATION_AREA_OBSERVATION_VALIDATION_STATUS_UNDECIDABLE = 4,
+		Normal = 1,
+		NotVisible = 3,
+		Undecidable = 4,
 	}
 
 	/// <summary>
 	/// Supported camera video mode presets
 	/// </summary>
-	public enum VuCameraVideoModePreset : int
+	public enum CameraVideoModePreset : int
 	{
 		/// <summary>
 		/// Default camera mode
 		/// </summary>
-		VU_CAMERA_VIDEO_MODE_PRESET_DEFAULT = 1,
+		Default = 1,
 		/// <summary>
 		/// Fast camera mode. Camera mode that reduces
 		/// the system resource impact of Vuforia Engine
 		/// at the cost of lower image and/or tracking
 		/// quality.
 		/// </summary>
-		VU_CAMERA_VIDEO_MODE_PRESET_OPTIMIZE_SPEED = 2,
+		OptimizeSpeed = 2,
 		/// <summary>
 		/// High-quality camera mode. Camera mode that
 		/// maximizes image and tracking quality at the
 		/// cost of higher system resource impact.
 		/// </summary>
-		VU_CAMERA_VIDEO_MODE_PRESET_OPTIMIZE_QUALITY = 3,
+		OptimizeQuality = 3,
 	}
 
 	/// <summary>
 	/// Supported camera focus modes
 	/// </summary>
-	public enum VuCameraFocusMode : int
+	public enum CameraFocusMode : int
 	{
 		/// <summary>
 		/// Unknown focus mode
 		/// </summary>
-		VU_CAMERA_FOCUS_MODE_UNKNOWN = 1,
+		Unknown = 1,
 		/// <summary>
 		/// Focus mode to trigger a single auto-focus operation
 		/// </summary>
-		VU_CAMERA_FOCUS_MODE_TRIGGERAUTO = 3,
+		Triggerauto = 3,
 		/// <summary>
 		/// Continuous auto-focus mode
 		/// </summary>
-		VU_CAMERA_FOCUS_MODE_CONTINUOUSAUTO = 4,
+		Continuousauto = 4,
 		/// <summary>
 		/// Focus set to infinity
 		/// </summary>
-		VU_CAMERA_FOCUS_MODE_INFINITY = 5,
+		Infinity = 5,
 		/// <summary>
 		/// Macro mode for close-up focus
 		/// </summary>
-		VU_CAMERA_FOCUS_MODE_MACRO = 6,
+		Macro = 6,
 		/// <summary>
 		/// Fixed focus mode
 		/// </summary>
-		VU_CAMERA_FOCUS_MODE_FIXED = 7,
+		Fixed = 7,
 	}
 
 	/// <summary>
 	/// Supported camera exposure modes
 	/// </summary>
-	public enum VuCameraExposureMode : int
+	public enum CameraExposureMode : int
 	{
 		/// <summary>
 		/// Unknown exposure mode
 		/// </summary>
-		VU_CAMERA_EXPOSURE_MODE_UNKNOWN = 1,
+		Unknown = 1,
 		/// <summary>
 		/// Exposure mode to trigger a single auto-exposure operation
 		/// </summary>
-		VU_CAMERA_EXPOSURE_MODE_TRIGGERAUTO = 2,
+		Triggerauto = 2,
 		/// <summary>
 		/// Continuous auto-exposure mode
 		/// </summary>
-		VU_CAMERA_EXPOSURE_MODE_CONTINUOUSAUTO = 3,
+		Continuousauto = 3,
 		/// <summary>
 		/// Fixed exposure mode
 		/// </summary>
-		VU_CAMERA_EXPOSURE_MODE_FIXED = 4,
+		Fixed = 4,
 	}
 
 	/// <summary>
 	/// The view orientation describes how the application is oriented, or how the user &quot;views&quot; the camera image
 	/// </summary>
-	public enum VuViewOrientation : int
+	public enum ViewOrientation : int
 	{
 		/// <summary>
 		/// The app is viewed as wider than it is tall with the device rotated by 90
 		/// degrees COUNTER - CLOCKWISE from regular portrait. Note that on iOS this
 		/// corresponds to &quot;Landscape Right&quot;
 		/// </summary>
-		VU_VIEW_ORIENTATION_LANDSCAPE_LEFT = 1,
+		LandscapeLeft = 1,
 		/// <summary>
 		/// The app is viewed as taller than it is wide
 		/// </summary>
-		VU_VIEW_ORIENTATION_PORTRAIT = 2,
+		Portrait = 2,
 		/// <summary>
 		/// The app is viewed in a landscape orientation BUT in the opposite direction
 		/// from the landscape orientation as defined above. In other words, the device
 		/// is rotated by 90 degrees CLOCKWISE from regular portrait. Note that on iOS
 		/// this corresponds to &quot;Landscape Left&quot;
 		/// </summary>
-		VU_VIEW_ORIENTATION_LANDSCAPE_RIGHT = 3,
+		LandscapeRight = 3,
 		/// <summary>
 		/// The app is viewed in a portrait orientation BUT in the opposite direction
 		/// from the regular portrait orientation
 		/// </summary>
-		VU_VIEW_ORIENTATION_PORTRAIT_UPSIDEDOWN = 4,
+		PortraitUpsidedown = 4,
 	}
 
 	/// <summary>
 	/// Vuforia Fusion provider types
 	/// </summary>
-	public enum VuFusionProviderType : int
+	public enum FusionProviderType : int
 	{
 		/// <summary>
 		/// Fusion provider is unknown
 		/// </summary>
-		VU_FUSION_PROVIDER_TYPE_UNKNOWN = 1,
+		Unknown = 1,
 		/// <summary>
 		/// Use vision-based Fusion only
 		/// Please note that not all Vuforia Engine features are
 		/// supported when using this provider.
 		/// </summary>
-		VU_FUSION_PROVIDER_TYPE_VISION_ONLY = 2,
+		VisionOnly = 2,
 		/// <summary>
 		/// Use Vuforia-provided technology for Fusion. Vuforia Engine will make
 		/// use of camera and IMU information to try to create a tracking
 		/// experience that, when compared to vision-only, is more robust
 		/// to erratic motions and sparse or featureless environments.
 		/// </summary>
-		VU_FUSION_PROVIDER_TYPE_SENSOR_FUSION = 3,
+		SensorFusion = 3,
 		/// <summary>
 		/// Use platform-provided technology for Fusion. Vuforia Engine
 		/// will make use of tracking services offered by the underlying
 		/// platform, such as ARKit on iOS, ARCore on Android, or
 		/// Windows Holographic on UWP.
 		/// </summary>
-		VU_FUSION_PROVIDER_TYPE_PLATFORM_SENSOR_FUSION = 4,
+		PlatformSensorFusion = 4,
 	}
 
 	/// <summary>
 	/// Vuforia Fusion Provider Platform type
 	/// </summary>
-	public enum VuFusionProviderPlatformType : int
+	public enum FusionProviderPlatformType : int
 	{
 		/// <summary>
 		/// Provider platform is unknown or unavailable
 		/// </summary>
-		VU_FUSION_PROVIDER_PLATFORM_TYPE_UNKNOWN = 1,
+		Unknown = 1,
 		/// <summary>
 		/// ARKit platform
 		/// </summary>
-		VU_FUSION_PROVIDER_PLATFORM_TYPE_ARKIT = 2,
+		Arkit = 2,
 		/// <summary>
 		/// ARCore platform
 		/// </summary>
-		VU_FUSION_PROVIDER_PLATFORM_TYPE_ARCORE = 3,
+		Arcore = 3,
 		/// <summary>
 		/// Windows Holographic platform
 		/// </summary>
-		VU_FUSION_PROVIDER_PLATFORM_TYPE_WINDOWS_HOLOGRAPHIC = 4,
+		WindowsHolographic = 4,
 		/// <summary>
 		/// Lumin platform
 		/// </summary>
-		VU_FUSION_PROVIDER_PLATFORM_TYPE_LUMIN = 5,
+		Lumin = 5,
 		/// <summary>
 		/// External (Vuforia Driver)
 		/// </summary>
-		VU_FUSION_PROVIDER_PLATFORM_TYPE_EXTERNAL = 6,
+		External = 6,
 	}
 
 	/// <summary>
 	/// Recording creation error
 	/// </summary>
-	public enum VuRecordingCreationError : int
+	public enum RecordingCreationError : int
 	{
 		/// <summary>
 		/// No error
 		/// </summary>
-		VU_RECORDING_CREATION_ERROR_NONE = 0,
-		VU_RECORDING_CREATION_ERROR_DATA_FLAGS_NOT_SUPPORTED = 1,
+		None = 0,
+		DataFlagsNotSupported = 1,
 		/// <summary>
 		/// Auto-start of the recording failed
 		/// </summary>
-		VU_RECORDING_CREATION_ERROR_AUTOSTART_FAILED = 2,
+		AutostartFailed = 2,
 	}
 
 	/// <summary>
 	/// Recording start error
 	/// </summary>
-	public enum VuRecordingStartError : int
+	public enum RecordingStartError : int
 	{
 		/// <summary>
 		/// No error
 		/// </summary>
-		VU_RECORDING_START_ERROR_NONE = 0,
-		VU_RECORDING_START_ERROR_INTERNAL = 1,
+		None = 0,
+		Internal = 1,
 		/// <summary>
 		/// Failed to start a recording because another recording is already in
 		/// progress. Stop the other recording before starting a new one.
 		/// </summary>
-		VU_RECORDING_START_ERROR_ANOTHER_RECORDING_RUNNING = 2,
+		AnotherRecordingRunning = 2,
 		/// <summary>
 		/// Recording cannot be started as the engine is not running
 		/// </summary>
-		VU_RECORDING_START_ERROR_ENGINE_NOT_RUNNING = 3,
-		VU_RECORDING_START_ERROR_INVALID_STATUS = 4,
+		EngineNotRunning = 3,
+		InvalidStatus = 4,
 		/// <summary>
 		/// Cannot start the recording because the output file could not be created
 		/// </summary>
-		VU_RECORDING_START_ERROR_FILE_CREATION = 5,
+		FileCreation = 5,
 		/// <summary>
 		/// Device is in an unknown orientation
 		/// </summary>
-		VU_RECORDING_START_ERROR_UNKNOWN_ORIENTATION = 6,
-		VU_RECORDING_START_ERROR_DATA_SOURCE = 7,
-		VU_RECORDING_START_ERROR_INSUFFICIENT_FREE_SPACE = 8,
+		UnknownOrientation = 6,
+		DataSource = 7,
+		InsufficientFreeSpace = 8,
 	}
 
 	/// <summary>
 	/// Session recording status
 	/// </summary>
-	public enum VuRecordingStatus : int
+	public enum RecordingStatus : int
 	{
 		/// <summary>
 		/// The recording has been created and can be started
 		/// </summary>
-		VU_RECORDING_STATUS_INITIALIZED = 1,
+		Initialized = 1,
 		/// <summary>
 		/// The recording is in progress
 		/// </summary>
-		VU_RECORDING_STATUS_RUNNING = 2,
+		Running = 2,
 		/// <summary>
 		/// The recording has stopped. It cannot be started again. Check the status info for error details.
 		/// </summary>
-		VU_RECORDING_STATUS_STOPPED = 3,
+		Stopped = 3,
 	}
 
 	/// <summary>
 	/// Session recording status info
 	/// </summary>
-	public enum VuRecordingStatusInfo : int
+	public enum RecordingStatusInfo : int
 	{
 		/// <summary>
 		/// Normal operation. No error has occurred.
 		/// </summary>
-		VU_RECORDING_STATUS_INFO_NORMAL = 0,
+		Normal = 0,
 		/// <summary>
 		/// The recording completed successfully
 		/// </summary>
-		VU_RECORDING_STATUS_INFO_SUCCESS = 1,
-		VU_RECORDING_STATUS_INFO_ERROR_INTERNAL = 2,
+		Success = 1,
+		ErrorInternal = 2,
 		/// <summary>
 		/// The device orientation changed during recording
 		/// </summary>
-		VU_RECORDING_STATUS_INFO_ERROR_ORIENTATION_CHANGED = 3,
+		ErrorOrientationChanged = 3,
 		/// <summary>
 		/// Recording from some of the selected data sources failed
 		/// </summary>
-		VU_RECORDING_STATUS_INFO_ERROR_DATA_SOURCE = 4,
-		VU_RECORDING_STATUS_INFO_ERROR_INSUFFICIENT_FREE_SPACE = 5,
+		ErrorDataSource = 4,
+		ErrorInsufficientFreeSpace = 5,
 	}
 
 	/// <summary>
@@ -1832,75 +1768,75 @@ namespace Evergine.Bindings.Vuforia
 	/// data flags that are appropriate for the current device to create a recording
 	/// that can be used for AR session playback.
 	/// </summary>
-	public enum VuRecordingDataFlagBits : int
+	public enum RecordingDataFlagBits : int
 	{
 		/// <summary>
 		/// Camera images
 		/// </summary>
-		VU_RECORDING_DATA_VIDEO_BIT = 1,
+		VideoBit = 1,
 		/// <summary>
 		/// Camera metadata required for AR session playback
 		/// </summary>
-		VU_RECORDING_DATA_CAMERA_METADATA_BIT = 2,
+		CameraMetadataBit = 2,
 		/// <summary>
 		/// Data from device sensors (accelerometer, gyroscope and magnetometer) depending
 		/// on which are available on the current device
 		/// </summary>
-		VU_RECORDING_DATA_SENSORS_BIT = 4,
+		SensorsBit = 4,
 		/// <summary>
 		/// Device poses generated by the platform-provided Vuforia Fusion provider
 		/// </summary>
-		VU_RECORDING_DATA_DEVICE_POSE_BIT = 8,
+		DevicePoseBit = 8,
 		/// <summary>
 		/// Audio recording from the default audio input device
 		/// </summary>
-		VU_RECORDING_DATA_AUDIO_BIT = 16,
+		AudioBit = 16,
 	}
 
 	/// <summary>
 	/// The frame rate at which camera images are recorded
 	/// </summary>
-	public enum VuRecordingFrameRate : int
+	public enum RecordingFrameRate : int
 	{
 		/// <summary>
 		/// Let Vuforia automatically choose the option that will provide
 		/// the best performance during recording. This is the default
 		/// </summary>
-		VU_RECORDING_FRAME_RATE_AUTO = 1,
+		Auto = 1,
 		/// <summary>
 		/// Record camera images at the full frame rate of the camera
 		/// </summary>
-		VU_RECORDING_FRAME_RATE_FULL = 2,
+		Full = 2,
 		/// <summary>
 		/// Record camera images at half the frame rate of the camera
 		/// </summary>
-		VU_RECORDING_FRAME_RATE_HALF = 3,
+		Half = 3,
 	}
 
 	/// <summary>
 	/// The scale factor to be applied to camera images before recording
 	/// </summary>
-	public enum VuRecordingImageScale : int
+	public enum RecordingImageScale : int
 	{
 		/// <summary>
 		/// Let Vuforia automatically choose the option that will provide the best
 		/// performance during recording. This is the default
 		/// </summary>
-		VU_RECORDING_IMAGE_SCALE_AUTO = 1,
+		Auto = 1,
 		/// <summary>
 		/// Record camera images at full resolution
 		/// </summary>
-		VU_RECORDING_IMAGE_SCALE_FULL = 2,
+		Full = 2,
 		/// <summary>
 		/// Downsample camera images to half size along both dimensions
 		/// </summary>
-		VU_RECORDING_IMAGE_SCALE_HALF = 3,
+		Half = 3,
 	}
 
 	/// <summary>
 	/// Quality settings used for encoding the recorded video
 	/// </summary>
-	public enum VuRecordingVideoEncodingQuality : int
+	public enum RecordingVideoEncodingQuality : int
 	{
 		/// <summary>
 		/// High quality video encoding with minimal compression artifacts. Recordings with
@@ -1909,146 +1845,146 @@ namespace Evergine.Bindings.Vuforia
 		/// @
 		/// 30 video)
 		/// </summary>
-		VU_RECORDING_VIDEO_ENCODING_QUALITY_HIGH = 1,
+		High = 1,
 		/// <summary>
 		/// Medium quality video encoding for general purpose video recording.
 		/// (approx. 5MBit/s video bitrate for 720p
 		/// @
 		/// 30 video)
 		/// </summary>
-		VU_RECORDING_VIDEO_ENCODING_QUALITY_MEDIUM = 2,
+		Medium = 2,
 	}
 
 	/// <summary>
 	/// Session recording format
 	/// Only one format is currently supported. Others might be added in the future.
 	/// </summary>
-	public enum VuRecordingFormat : int
+	public enum RecordingFormat : int
 	{
 		/// <summary>
 		/// Default format. MP4 file with H.264 compressed video.
 		/// </summary>
-		VU_RECORDING_FORMAT_DEFAULT = 1,
+		Default = 1,
 	}
 
 	/// <summary>
 	/// Area Target Capture creation error
 	/// </summary>
-	public enum VuAreaTargetCaptureCreationError : int
+	public enum AreaTargetCaptureCreationError : int
 	{
 		/// <summary>
 		/// No error
 		/// </summary>
-		VU_AREA_TARGET_CAPTURE_CREATION_ERROR_NONE = 0,
+		None = 0,
 		/// <summary>
 		/// An internal error occurred while creating the capture
 		/// </summary>
-		VU_AREA_TARGET_CAPTURE_CREATION_ERROR_INTERNAL = 1,
+		Internal = 1,
 		/// <summary>
 		/// Auto-start of the capture failed
 		/// </summary>
-		VU_AREA_TARGET_CAPTURE_CREATION_ERROR_AUTOSTART_FAILED = 2,
+		AutostartFailed = 2,
 		/// <summary>
 		/// Feature is not supported on the current device
 		/// </summary>
-		VU_AREA_TARGET_CAPTURE_CREATION_ERROR_FEATURE_NOT_SUPPORTED = 3,
-		VU_AREA_TARGET_CAPTURE_CREATION_ERROR_MULTIPLE_INSTANCES_NOT_SUPPORTED = 4,
+		FeatureNotSupported = 3,
+		MultipleInstancesNotSupported = 4,
 		/// <summary>
 		/// Device pose observer is NULL or invalid
 		/// </summary>
-		VU_AREA_TARGET_CAPTURE_CREATION_ERROR_INVALID_DEVICE_POSE_OBSERVER = 5,
+		InvalidDevicePoseObserver = 5,
 	}
 
 	/// <summary>
 	/// Area Target Capture status
 	/// </summary>
-	public enum VuAreaTargetCaptureStatus : int
+	public enum AreaTargetCaptureStatus : int
 	{
 		/// <summary>
 		/// The capture was created and can be started
 		/// </summary>
-		VU_AREA_TARGET_CAPTURE_STATUS_INITIALIZED = 1,
+		Initialized = 1,
 		/// <summary>
 		/// The capture has not collected sufficient data to create the initial reconstruction
 		/// of the environment. A target cannot be generated yet
 		/// </summary>
-		VU_AREA_TARGET_CAPTURE_STATUS_PREPARING = 2,
+		Preparing = 2,
 		/// <summary>
 		/// The capture created an initial reconstruction of the environment. A target can now
 		/// be generated, or continue to capture more data
 		/// </summary>
-		VU_AREA_TARGET_CAPTURE_STATUS_CAPTURING = 3,
+		Capturing = 3,
 		/// <summary>
 		/// The capture was paused
 		/// </summary>
-		VU_AREA_TARGET_CAPTURE_STATUS_PAUSED = 4,
+		Paused = 4,
 		/// <summary>
 		/// The capture was stopped
 		/// </summary>
-		VU_AREA_TARGET_CAPTURE_STATUS_STOPPED = 5,
+		Stopped = 5,
 		/// <summary>
 		/// The capture is generating a target from the captured data
 		/// </summary>
-		VU_AREA_TARGET_CAPTURE_STATUS_GENERATING = 6,
+		Generating = 6,
 	}
 
 	/// <summary>
 	/// Area Target Capture status info
 	/// </summary>
-	public enum VuAreaTargetCaptureStatusInfo : int
+	public enum AreaTargetCaptureStatusInfo : int
 	{
 		/// <summary>
 		/// The capture is running normally
 		/// </summary>
-		VU_AREA_TARGET_CAPTURE_STATUS_INFO_NORMAL = 1,
+		Normal = 1,
 		/// <summary>
 		/// The capture is relocalizing, the user should move around or return towards
 		/// a previously mapped area in order to resume normal capturing
 		/// </summary>
-		VU_AREA_TARGET_CAPTURE_STATUS_INFO_RELOCALIZING = 2,
+		Relocalizing = 2,
 		/// <summary>
 		/// The user is moving too quickly
 		/// </summary>
-		VU_AREA_TARGET_CAPTURE_STATUS_INFO_EXCESSIVE_MOTION = 3,
-		VU_AREA_TARGET_CAPTURE_STATUS_INFO_CAPACITY_WARNING = 4,
+		ExcessiveMotion = 3,
+		CapacityWarning = 4,
 		/// <summary>
 		/// The capture is unable to add new data, the user should stop the capture
 		/// </summary>
-		VU_AREA_TARGET_CAPTURE_STATUS_INFO_INTERRUPTED = 5,
+		Interrupted = 5,
 		/// <summary>
 		/// The capture is suspended until Engine is started
 		/// </summary>
-		VU_AREA_TARGET_CAPTURE_STATUS_INFO_SUSPENDED = 6,
+		Suspended = 6,
 		/// <summary>
 		/// The capture is processing the captured data
 		/// </summary>
-		VU_AREA_TARGET_CAPTURE_STATUS_INFO_TRACKING_DATA_GENERATION = 7,
+		TrackingDataGeneration = 7,
 		/// <summary>
 		/// The capture is generating the authoring files
 		/// </summary>
-		VU_AREA_TARGET_CAPTURE_STATUS_INFO_AUTHORING_DATA_GENERATION = 8,
-		VU_AREA_TARGET_CAPTURE_STATUS_INFO_DEVICE_DATABASE_GENERATION = 9,
+		AuthoringDataGeneration = 8,
+		DeviceDatabaseGeneration = 9,
 		/// <summary>
 		/// The capture is generating the package(s)
 		/// </summary>
-		VU_AREA_TARGET_CAPTURE_STATUS_INFO_PACKAGE_GENERATION = 10,
+		PackageGeneration = 10,
 		/// <summary>
 		/// Generation successful
 		/// </summary>
-		VU_AREA_TARGET_CAPTURE_STATUS_INFO_GENERATION_SUCCESS = 11,
+		GenerationSuccess = 11,
 		/// <summary>
 		/// Generation was canceled
 		/// </summary>
-		VU_AREA_TARGET_CAPTURE_STATUS_INFO_GENERATION_CANCELED = 12,
+		GenerationCanceled = 12,
 		/// <summary>
 		/// Generation failed because an internal error occurred
 		/// </summary>
-		VU_AREA_TARGET_CAPTURE_STATUS_INFO_GENERATION_ERROR_INTERNAL = 13,
-		VU_AREA_TARGET_CAPTURE_STATUS_INFO_GENERATION_ERROR_NO_NETWORK_CONNECTION = 14,
-		VU_AREA_TARGET_CAPTURE_STATUS_INFO_GENERATION_ERROR_SERVICE_NOT_AVAILABLE = 15,
-		VU_AREA_TARGET_CAPTURE_STATUS_INFO_GENERATION_ERROR_AUTHORIZATION_FAILED = 16,
-		VU_AREA_TARGET_CAPTURE_STATUS_INFO_GENERATION_ERROR_MISSING_ALIGNMENT_DATA = 17,
-		VU_AREA_TARGET_CAPTURE_STATUS_INFO_GENERATION_ERROR_ALIGNMENT_FAILED = 18,
+		GenerationErrorInternal = 13,
+		GenerationErrorNoNetworkConnection = 14,
+		GenerationErrorServiceNotAvailable = 15,
+		GenerationErrorAuthorizationFailed = 16,
+		GenerationErrorMissingAlignmentData = 17,
+		GenerationErrorAlignmentFailed = 18,
 	}
 
 	/// <summary>
@@ -2057,61 +1993,61 @@ namespace Evergine.Bindings.Vuforia
 	/// Errors that arise **during** Area Target generation are reported in
 	/// @ref VuAreaTargetCaptureStatusInfo.
 	/// </summary>
-	public enum VuAreaTargetCaptureGenerationError : int
+	public enum AreaTargetCaptureGenerationError : int
 	{
 		/// <summary>
 		/// No error
 		/// </summary>
-		VU_AREA_TARGET_CAPTURE_GENERATION_ERROR_NONE = 0,
+		None = 0,
 		/// <summary>
 		/// An internal error occurred
 		/// </summary>
-		VU_AREA_TARGET_CAPTURE_GENERATION_ERROR_INTERNAL = 1,
+		Internal = 1,
 		/// <summary>
 		/// Generation failed because Engine is not running
 		/// </summary>
-		VU_AREA_TARGET_CAPTURE_GENERATION_ERROR_ENGINE_NOT_RUNNING = 2,
+		EngineNotRunning = 2,
 		/// <summary>
 		/// Generation failed because the capture is in the wrong status
 		/// </summary>
-		VU_AREA_TARGET_CAPTURE_GENERATION_ERROR_INVALID_STATUS = 3,
-		VU_AREA_TARGET_CAPTURE_GENERATION_ERROR_INSUFFICIENT_DATA = 4,
-		VU_AREA_TARGET_CAPTURE_GENERATION_ERROR_MISSING_AUTHENTICATION = 5,
-		VU_AREA_TARGET_CAPTURE_GENERATION_ERROR_INVALID_OUTPUT_DIRECTORY = 6,
-		VU_AREA_TARGET_CAPTURE_GENERATION_ERROR_INVALID_TARGET_NAME = 7,
-		VU_AREA_TARGET_CAPTURE_GENERATION_ERROR_AUTHORING_FILES_GENERATION_REQUIRED = 8,
-		VU_AREA_TARGET_CAPTURE_GENERATION_ERROR_DATABASE_GENERATION_REQUIRED = 9,
-		VU_AREA_TARGET_CAPTURE_GENERATION_ERROR_ALIGNMENT_DATABASE_LOAD_ERROR = 10,
-		VU_AREA_TARGET_CAPTURE_GENERATION_ERROR_INVALID_ALIGNMENT_TARGET_NAME = 11,
-		VU_AREA_TARGET_CAPTURE_GENERATION_ERROR_ALIGNMENT_TARGET_NOT_FOUND = 12,
+		InvalidStatus = 3,
+		InsufficientData = 4,
+		MissingAuthentication = 5,
+		InvalidOutputDirectory = 6,
+		InvalidTargetName = 7,
+		AuthoringFilesGenerationRequired = 8,
+		DatabaseGenerationRequired = 9,
+		AlignmentDatabaseLoadError = 10,
+		InvalidAlignmentTargetName = 11,
+		AlignmentTargetNotFound = 12,
 	}
 
 	/// <summary>
 	/// Configuration error for Mesh observer creation with Area Target Capture
 	/// </summary>
-	public enum VuMeshAreaTargetCaptureCreationError : int
+	public enum MeshAreaTargetCaptureCreationError : int
 	{
 		/// <summary>
 		/// No error
 		/// </summary>
-		VU_MESH_AREA_TARGET_CAPTURE_CREATION_ERROR_NONE = 0,
+		None = 0,
 		/// <summary>
 		/// An internal error occurred while creating the observer
 		/// </summary>
-		VU_MESH_AREA_TARGET_CAPTURE_CREATION_ERROR_INTERNAL = 1,
+		Internal = 1,
 		/// <summary>
 		/// An error occurred while auto-activating the observer
 		/// </summary>
-		VU_MESH_AREA_TARGET_CAPTURE_CREATION_ERROR_AUTOACTIVATION_FAILED = 2,
+		AutoactivationFailed = 2,
 		/// <summary>
 		/// Mesh functionality is not supported on the current device
 		/// </summary>
-		VU_MESH_AREA_TARGET_CAPTURE_CREATION_ERROR_FEATURE_NOT_SUPPORTED = 3,
+		FeatureNotSupported = 3,
 		/// <summary>
 		/// The provided capture is NULL or invalid
 		/// </summary>
-		VU_MESH_AREA_TARGET_CAPTURE_CREATION_ERROR_INVALID_CAPTURE = 4,
-		VU_MESH_AREA_TARGET_CAPTURE_CREATION_ERROR_SAME_SOURCE_NOT_SUPPORTED = 5,
+		InvalidCapture = 4,
+		SameSourceNotSupported = 5,
 	}
 
 	/// <summary>
@@ -2121,13 +2057,13 @@ namespace Evergine.Bindings.Vuforia
 	/// parameter of the vuEngineCreate() function if an error
 	/// related to applying iOS-specific configuration occurs while initializing the new Engine instance.
 	/// </summary>
-	public enum VuPlatformiOSConfigError : int
+	public enum PlatformiOSConfigError : int
 	{
 		/// <summary>
 		/// An error occurred during initialization of the platform
 		/// </summary>
-		VU_ENGINE_CREATION_ERROR_PLATFORM_IOS_CONFIG_INITIALIZATION_ERROR = 1360,
-		VU_ENGINE_CREATION_ERROR_PLATFORM_IOS_CONFIG_INVALID_APP_GROUP = 1361,
+		InitializationError = 1360,
+		InvalidAppGroup = 1361,
 	}
 
 }

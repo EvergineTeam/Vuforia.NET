@@ -35,13 +35,6 @@ namespace VuforiaGen
 			{ "VuRecordingDataFlags", "uint" },
 		};
 
-		public enum Family
-		{
-			Parameter,
-			Field,
-			ReturnValue,
-		}
-
 		public static string ConvertToCSharpType(CppType type, bool isPointer = false)
 		{
 			if (type is CppPrimitiveType primitiveType)
@@ -109,27 +102,6 @@ namespace VuforiaGen
 			return "IntPtr";
 		}
 
-		public static string ShowAsMarshalType(string type, Family family, CppType originalType = null)
-		{
-			switch (family)
-			{
-				case Family.Parameter:
-					// const char* → string for parameters
-					if (originalType is CppPointerType ptrType && IsCharPointer(ptrType))
-						return "[MarshalAs(UnmanagedType.LPStr)] string";
-					if (type == "uint" && originalType is CppTypedef td && td.Name == "VuBool")
-						return "[MarshalAs(UnmanagedType.Bool)] bool";
-					break;
-				case Family.Field:
-					// Fields use raw types for blittable layout
-					break;
-				case Family.ReturnValue:
-					break;
-			}
-
-			return type;
-		}
-
 		public static string GetCsCleanName(string name)
 		{
 			if (string.IsNullOrEmpty(name))
@@ -139,15 +111,16 @@ namespace VuforiaGen
 			if (name.StartsWith("PFN"))
 				return "IntPtr";
 
-			// Known type mappings
+			// Known type mappings (VuBool → uint, etc.)
 			if (csNameMappings.TryGetValue(name, out var mapped))
 				return mapped;
 
-			// Opaque handle types → keep as their named handle type (we generate wrapper structs)
+			// Opaque handle types → return stripped name (we generate wrapper structs with stripped names)
 			if (TypedefList.Contains(name))
-				return name;
+				return StripPrefix(name);
 
-			return name;
+			// Strip prefix for all other Vuforia types (enums, structs)
+			return StripPrefix(name);
 		}
 
 		public static bool IsCharPointer(CppPointerType ptrType)
@@ -173,6 +146,23 @@ namespace VuforiaGen
 			foreach (var line in text.Split('\n'))
 			{
 				var trimmed = line.Trim();
+				if (string.IsNullOrEmpty(trimmed))
+					continue;
+
+				// Skip Doxygen \var lines (e.g. "\var NAME NAME")
+				if (trimmed.StartsWith("\\var ") || trimmed.StartsWith("@var "))
+					continue;
+
+				// Skip lines that are just repeated VU_* identifiers (CppAst strips \var but keeps args)
+				if (IsVarCommentLine(trimmed))
+					continue;
+
+				// Strip Doxygen \brief prefix
+				if (trimmed.StartsWith("\\brief "))
+					trimmed = trimmed.Substring(7).TrimStart();
+				else if (trimmed.StartsWith("@brief "))
+					trimmed = trimmed.Substring(7).TrimStart();
+
 				if (!string.IsNullOrEmpty(trimmed))
 					writer.WriteLine($"{tabs}/// {System.Security.SecurityElement.Escape(trimmed)}");
 			}
@@ -193,6 +183,33 @@ namespace VuforiaGen
 			}
 
 			return comment.ToString();
+		}
+
+		/// <summary>
+		/// Detects lines that consist solely of repeated VU_* identifiers,
+		/// which are artifacts from Doxygen \var commands after CppAst strips the command.
+		/// E.g. "VU_OBSERVER_ANCHOR_TYPE VU_OBSERVER_ANCHOR_TYPE"
+		/// </summary>
+		private static bool IsVarCommentLine(string line)
+		{
+			var words = line.Split(' ', System.StringSplitOptions.RemoveEmptyEntries);
+			if (words.Length == 0)
+				return false;
+
+			// All words must be VU_* identifiers
+			foreach (var word in words)
+			{
+				if (!word.StartsWith("VU_") && !word.StartsWith("Vu") && !word.StartsWith("vu"))
+					return false;
+				// Must look like a C identifier (letters, digits, underscores only)
+				foreach (var ch in word)
+				{
+					if (!char.IsLetterOrDigit(ch) && ch != '_')
+						return false;
+				}
+			}
+
+			return true;
 		}
 
 		public static string EscapeReservedKeyword(string name)
@@ -256,6 +273,127 @@ namespace VuforiaGen
 		{
 			// Vuforia uses VU_API_CALL which is __stdcall on Windows
 			return "CallingConvention.StdCall";
+		}
+
+		/// <summary>
+		/// Strip the Vuforia C prefix from a name.
+		/// Handles: VU_ (constants/macros), Vu (types), vu (functions).
+		/// </summary>
+		public static string StripPrefix(string name)
+		{
+			if (string.IsNullOrEmpty(name))
+				return name;
+
+			// SCREAMING_CASE constants/macros: VU_
+			if (name.StartsWith("VU_"))
+				return name.Substring(3);
+
+			// PascalCase types: Vu
+			if (name.StartsWith("Vu") && name.Length > 2 && char.IsUpper(name[2]))
+				return name.Substring(2);
+
+			// camelCase functions: vu
+			if (name.StartsWith("vu") && name.Length > 2 && char.IsUpper(name[2]))
+				return name.Substring(2);
+
+			return name;
+		}
+
+		/// <summary>
+		/// Capitalize the first letter of a struct field name (camelCase → PascalCase).
+		/// Preserves existing uppercase runs (e.g. bodyID → BodyID).
+		/// </summary>
+		public static string PascalCaseField(string name)
+		{
+			if (string.IsNullOrEmpty(name))
+				return name;
+
+			if (char.IsUpper(name[0]))
+				return name;
+
+			return char.ToUpperInvariant(name[0]) + name.Substring(1);
+		}
+
+		/// <summary>
+		/// Find the longest common prefix at underscore boundaries among SCREAMING_CASE names.
+		/// E.g. given VU_IMAGE_PIXEL_FORMAT_UNKNOWN, VU_IMAGE_PIXEL_FORMAT_RGB565
+		/// → common prefix is "VU_IMAGE_PIXEL_FORMAT_"
+		/// </summary>
+		public static string FindCommonPrefix(IEnumerable<string> names)
+		{
+			var list = names.ToList();
+			if (list.Count == 0)
+				return string.Empty;
+
+			if (list.Count == 1)
+			{
+				// For a single item, find prefix up to last underscore
+				var lastUnderscore = list[0].LastIndexOf('_');
+				if (lastUnderscore > 0)
+					return list[0].Substring(0, lastUnderscore + 1);
+				return string.Empty;
+			}
+
+			var first = list[0];
+			int prefixLen = first.Length;
+
+			for (int i = 1; i < list.Count; i++)
+			{
+				var other = list[i];
+				int maxLen = System.Math.Min(prefixLen, other.Length);
+				int match = 0;
+				while (match < maxLen && first[match] == other[match])
+					match++;
+				prefixLen = match;
+			}
+
+			// Snap back to the last underscore boundary
+			var prefix = first.Substring(0, prefixLen);
+			var lastSnap = prefix.LastIndexOf('_');
+			if (lastSnap > 0)
+				return prefix.Substring(0, lastSnap + 1);
+
+			return string.Empty;
+		}
+
+		/// <summary>
+		/// Convert a SCREAMING_CASE identifier to PascalCase.
+		/// E.g. DONT_ACTIVATE → DontActivate, SUCCESS → Success, 2D → 2D
+		/// If the result starts with a digit, prefix with underscore.
+		/// </summary>
+		public static string ScreamingToPascalCase(string screaming)
+		{
+			if (string.IsNullOrEmpty(screaming))
+				return screaming;
+
+			var parts = screaming.Split('_');
+			var result = new System.Text.StringBuilder();
+
+			foreach (var part in parts)
+			{
+				if (string.IsNullOrEmpty(part))
+					continue;
+
+				// Numeric-leading segments preserved as-is (e.g. "2D", "8PARAMS")
+				if (char.IsDigit(part[0]))
+				{
+					result.Append(part);
+					continue;
+				}
+
+				// Capitalize first letter, lowercase the rest
+				result.Append(char.ToUpperInvariant(part[0]));
+				if (part.Length > 1)
+					result.Append(part.Substring(1).ToLowerInvariant());
+			}
+
+			var name = result.ToString();
+
+			// C# identifiers cannot start with a digit — prefix with underscore
+			if (name.Length > 0 && char.IsDigit(name[0]))
+				name = "_" + name;
+
+			return name;
 		}
 	}
 }

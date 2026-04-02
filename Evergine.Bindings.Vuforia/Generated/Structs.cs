@@ -29,12 +29,12 @@ namespace Evergine.Bindings.Vuforia
 	/// conversion before use.
 	/// </summary>
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VuMatrix44F
+	public unsafe partial struct Matrix44F
 	{
 		/// <summary>
 		/// Data member for storing matrix values
 		/// </summary>
-		public fixed float data[16];
+		public fixed float Data[16];
 	}
 
 	/// <summary>
@@ -45,124 +45,124 @@ namespace Evergine.Bindings.Vuforia
 	/// data[2], data[5], data[8]
 	/// </summary>
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VuMatrix33F
+	public unsafe partial struct Matrix33F
 	{
 		/// <summary>
 		/// Data member for storing matrix values
 		/// </summary>
-		public fixed float data[9];
+		public fixed float Data[9];
 	}
 
 	/// <summary>
 	/// 2D vector (integer)
 	/// </summary>
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VuVector2I
+	public unsafe partial struct Vector2I
 	{
 		/// <summary>
 		/// Data member for storing vector values
 		/// </summary>
-		public fixed int data[2];
+		public fixed int Data[2];
 	}
 
 	/// <summary>
 	/// 2D vector (float)
 	/// </summary>
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VuVector2F
+	public unsafe partial struct Vector2F
 	{
 		/// <summary>
 		/// Data member for storing vector values
 		/// </summary>
-		public fixed float data[2];
+		public fixed float Data[2];
 	}
 
 	/// <summary>
 	/// 3D vector (integer)
 	/// </summary>
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VuVector3I
+	public unsafe partial struct Vector3I
 	{
 		/// <summary>
 		/// Data member for storing vector values
 		/// </summary>
-		public fixed int data[3];
+		public fixed int Data[3];
 	}
 
 	/// <summary>
 	/// 3D vector (float)
 	/// </summary>
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VuVector3F
+	public unsafe partial struct Vector3F
 	{
 		/// <summary>
 		/// Data member for storing vector values
 		/// </summary>
-		public fixed float data[3];
+		public fixed float Data[3];
 	}
 
 	/// <summary>
 	/// 4D vector (integer)
 	/// </summary>
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VuVector4I
+	public unsafe partial struct Vector4I
 	{
 		/// <summary>
 		/// Data member for storing vector values
 		/// </summary>
-		public fixed int data[4];
+		public fixed int Data[4];
 	}
 
 	/// <summary>
 	/// 4D vector (float)
 	/// </summary>
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VuVector4F
+	public unsafe partial struct Vector4F
 	{
 		/// <summary>
 		/// Data member for storing vector values
 		/// </summary>
-		public fixed float data[4];
+		public fixed float Data[4];
 	}
 
 	/// <summary>
 	/// 8D vector (float)
 	/// </summary>
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VuVector8F
+	public unsafe partial struct Vector8F
 	{
 		/// <summary>
 		/// Data member for storing vector values
 		/// </summary>
-		public fixed float data[8];
+		public fixed float Data[8];
 	}
 
 	/// <summary>
 	/// Vuforia camera intrinsics
 	/// </summary>
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VuCameraIntrinsics
+	public unsafe partial struct CameraIntrinsics
 	{
 		/// <summary>
 		/// Camera frame resolution in pixels
 		/// </summary>
-		public VuVector2F size;
+		public Vector2F Size;
 		/// <summary>
 		/// Focal length in both the x and y directions
 		/// </summary>
-		public VuVector2F focalLength;
+		public Vector2F FocalLength;
 		/// <summary>
 		/// Principal point
 		/// </summary>
-		public VuVector2F principalPoint;
+		public Vector2F PrincipalPoint;
 		/// <summary>
 		/// Camera distortion mode
 		/// </summary>
-		public VuCameraDistortionMode distortionMode;
+		public CameraDistortionMode DistortionMode;
 		/// <summary>
 		/// Radial distortion coefficients
 		/// </summary>
-		public VuVector8F distortionParameters;
+		public Vector8F DistortionParameters;
 	}
 
 	/// <summary>
@@ -171,139 +171,139 @@ namespace Evergine.Bindings.Vuforia
 	/// The face indices consist of integer triplets, where each triplet defines a triangle.
 	/// </summary>
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VuMesh
+	public unsafe partial struct Mesh
 	{
 		/// <summary>
 		/// Number of vertices for the mesh
 		/// </summary>
-		public int numVertices;
+		public int NumVertices;
 		/// <summary>
 		/// Buffer for position coordinates for the mesh
 		/// Each position consists of three subsequent floats per vertex.
 		/// </summary>
-		public float* pos;
+		public float* Pos;
 		/// <summary>
 		/// Buffer for texture coordinates for the mesh
 		/// Each texture coordinate consists of two subsequent floats per vertex.
 		/// This buffer must be set to NULL if the mesh has no texture coordinates.
 		/// </summary>
-		public float* tex;
+		public float* Tex;
 		/// <summary>
 		/// Buffer for normal coordinates for the mesh
 		/// Each normal consists of three subsequent floats per vertex.
 		/// This buffer must be set to NULL if the mesh has no normal coordinates.
 		/// </summary>
-		public float* normal;
+		public float* Normal;
 		/// <summary>
 		/// Number of triangle primitives for the mesh
 		/// </summary>
-		public int numFaces;
+		public int NumFaces;
 		/// <summary>
 		/// Buffer for face indices for the mesh
 		/// </summary>
-		public uint* faceIndices;
+		public uint* FaceIndices;
 	}
 
 	/// <summary>
 	/// Axis-aligned bounding box
 	/// </summary>
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VuAABB
+	public unsafe partial struct AABB
 	{
 		/// <summary>
 		/// Center of bounding box
 		/// </summary>
-		public VuVector3F center;
+		public Vector3F Center;
 		/// <summary>
 		/// Half-extent of bounding box (from center point to corner point)
 		/// </summary>
-		public VuVector3F extent;
+		public Vector3F Extent;
 	}
 
 	/// <summary>
 	/// Coordinates of a 2D rectangle
 	/// </summary>
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VuRectangle
+	public unsafe partial struct Rectangle
 	{
 		/// <summary>
 		/// Coordinates of the rectangle&apos;s top-left corner
 		/// </summary>
-		public VuVector2F topLeftCorner;
+		public Vector2F TopLeftCorner;
 		/// <summary>
 		/// Coordinates of the rectangle&apos;s bottom-right corner
 		/// </summary>
-		public VuVector2F bottomRightCorner;
+		public Vector2F BottomRightCorner;
 	}
 
 	/// <summary>
 	/// Data structure describing image data
 	/// </summary>
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VuImageInfo
+	public unsafe partial struct ImageInfo
 	{
 		/// <summary>
 		/// Width of the image in pixels
 		/// </summary>
-		public int width;
+		public int Width;
 		/// <summary>
 		/// Height of the image in pixels
 		/// </summary>
-		public int height;
+		public int Height;
 		/// <summary>
 		/// Stride of the image in bytes
 		/// </summary>
-		public int stride;
+		public int Stride;
 		/// <summary>
 		/// Buffer width of the image in pixels
 		/// </summary>
-		public int bufferWidth;
+		public int BufferWidth;
 		/// <summary>
 		/// Buffer height of the image in pixels
 		/// </summary>
-		public int bufferHeight;
+		public int BufferHeight;
 		/// <summary>
 		/// Buffer size of the image in bytes
 		/// </summary>
-		public int bufferSize;
+		public int BufferSize;
 		/// <summary>
 		/// Image pixel format
 		/// </summary>
-		public VuImagePixelFormat format;
+		public ImagePixelFormat Format;
 		/// <summary>
 		/// Pixel buffer
 		/// The lifetime of the buffer is bound to the lifetime of the VuImage that was
 		/// used to retrieve this data.
 		/// </summary>
-		public void* buffer;
+		public void* Buffer;
 	}
 
 	/// <summary>
 	/// Vuforia Engine library version information
 	/// </summary>
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VuLibraryVersionInfo
+	public unsafe partial struct LibraryVersionInfo
 	{
 		/// <summary>
 		/// Library version as a string in &quot;major.minor.patch+build&quot; format
 		/// </summary>
-		public byte* versionString;
+		public byte* VersionString;
 		/// <summary>
 		/// Major version
 		/// </summary>
-		public int major;
+		public int Major;
 		/// <summary>
 		/// Minor version
 		/// </summary>
-		public int minor;
+		public int Minor;
 		/// <summary>
 		/// Patch version
 		/// </summary>
-		public int patch;
+		public int Patch;
 		/// <summary>
 		/// Build ID / metadata
 		/// </summary>
-		public byte* build;
+		public byte* Build;
 	}
 
 	/// <summary>
@@ -312,27 +312,27 @@ namespace Evergine.Bindings.Vuforia
 	/// @ref vuObservationGetPoseInfo.
 	/// </summary>
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VuPoseInfo
+	public unsafe partial struct PoseInfo
 	{
 		/// <summary>
 		/// The status of the pose
 		/// Provides information about the availability and reliability of the pose reported as part of an observation.
 		/// VuObservationPoseStatus for possible values and additional information.
 		/// </summary>
-		public VuObservationPoseStatus poseStatus;
+		public ObservationPoseStatus PoseStatus;
 		/// <summary>
 		/// The pose of an observation
 		/// The pose is represented as a pose matrix immediately suitable for rendering in OpenGL.
 		/// For details about the convention used, see the documentation of VuMatrix44F.
 		/// </summary>
-		public VuMatrix44F pose;
+		public Matrix44F Pose;
 	}
 
 	/// <summary>
 	/// Vuforia Render State
 	/// </summary>
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VuRenderState
+	public unsafe partial struct RenderState
 	{
 		/// <summary>
 		/// VIDEO BACKGROUND
@@ -366,7 +366,7 @@ namespace Evergine.Bindings.Vuforia
 		/// or a default one) this will
 		/// be set to the zero-vector.
 		/// </summary>
-		public VuVector4I viewport;
+		public Vector4I Viewport;
 		/// <summary>
 		/// Video background projection matrix immediately suitable for rendering in OpenGL
 		/// If a viewport mode has been set via
@@ -391,7 +391,7 @@ namespace Evergine.Bindings.Vuforia
 		/// or a default one) this will
 		/// be set to the zero-matrix.
 		/// </summary>
-		public VuMatrix44F vbProjectionMatrix;
+		public Matrix44F VbProjectionMatrix;
 		/// <summary>
 		/// Video background mesh
 		/// Will be NULL if the state is acquired before the first camera frame is retrieved by Vuforia or
@@ -403,7 +403,7 @@ namespace Evergine.Bindings.Vuforia
 		/// or a default one) this will
 		/// be set to NULL.
 		/// </summary>
-		public VuMesh* vbMesh;
+		public Mesh* VbMesh;
 		/// <summary>
 		/// AUGMENTATION
 		/// View matrix (inverse of device pose) immediately suitable for rendering in OpenGL
@@ -411,7 +411,7 @@ namespace Evergine.Bindings.Vuforia
 		/// For details about the convention used, see the documentation of
 		/// @ref VuMatrix44F.
 		/// </summary>
-		public VuMatrix44F viewMatrix;
+		public Matrix44F ViewMatrix;
 		/// <summary>
 		/// Projection matrix (using near/far plane values set in render controller)
 		/// Vuforia Engine creates a projection matrix from the latest intrinsic camera calibration information
@@ -460,40 +460,40 @@ namespace Evergine.Bindings.Vuforia
 		/// or a default one) the
 		/// projection matrix will be calculated based on the camera intrinsics, near/far clipping planes and the view orientation.
 		/// </summary>
-		public VuMatrix44F projectionMatrix;
+		public Matrix44F ProjectionMatrix;
 	}
 
 	/// <summary>
 	/// Info about a target in a database
 	/// </summary>
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VuDatabaseTargetInfo
+	public unsafe partial struct DatabaseTargetInfo
 	{
 		/// <summary>
 		/// Observer type that should be used with the target
 		/// </summary>
-		public int observerType;
+		public int ObserverType;
 		/// <summary>
 		/// Target name
 		/// The lifetime of this pointer is bound to the enclosing VuDatabaseTargetInfoList
 		/// </summary>
-		public byte* name;
+		public byte* Name;
 	}
 
 	/// <summary>
 	/// Vuforia Driver configuration data structure
 	/// </summary>
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VuDriverConfig
+	public unsafe partial struct DriverConfig
 	{
 		/// <summary>
 		/// Vuforia Driver library name
 		/// </summary>
-		public byte* driverName;
+		public byte* DriverName;
 		/// <summary>
 		/// User client data that can be passed to your driver
 		/// </summary>
-		public void* userData;
+		public void* UserData;
 	}
 
 	/// <summary>
@@ -501,7 +501,7 @@ namespace Evergine.Bindings.Vuforia
 	/// created
 	/// </summary>
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VuErrorHandlerConfig
+	public unsafe partial struct ErrorHandlerConfig
 	{
 		/// <summary>
 		/// Error handler function to report Engine lifecycle-related errors
@@ -519,37 +519,37 @@ namespace Evergine.Bindings.Vuforia
 		/// is no harmonized, cross-platform behavior.
 		/// See also the general documentation on callbacks and reentrancy in Engine.h.
 		/// </summary>
-		public IntPtr errorHandler;
+		public IntPtr ErrorHandler;
 		/// <summary>
 		/// Client data to pass back when the error handler function is called
 		/// Default value is NULL.
 		/// </summary>
-		public void* clientData;
+		public void* ClientData;
 	}
 
 	/// <summary>
 	/// Vuforia Fusion provider configuration data structure
 	/// </summary>
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VuFusionProviderConfig
+	public unsafe partial struct FusionProviderConfig
 	{
 		/// <summary>
 		/// Enable / disable the usage of platform-based Vuforia fusion provider (if available). Default value is VU_TRUE.
 		/// </summary>
-		public uint usePlatformFusionProvider;
+		public uint UsePlatformFusionProvider;
 	}
 
 	/// <summary>
 	/// License configuration data structure
 	/// </summary>
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VuLicenseConfig
+	public unsafe partial struct LicenseConfig
 	{
 		/// <summary>
 		/// License key
 		/// The key shall not be a null pointer.
 		/// </summary>
-		public byte* key;
+		public byte* Key;
 	}
 
 	/// <summary>
@@ -557,25 +557,25 @@ namespace Evergine.Bindings.Vuforia
 	/// A log event contains information about Vuforia Engine log messages logged to the platform logging system.
 	/// </summary>
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VuLogEvent
+	public unsafe partial struct LogEvent
 	{
 		/// <summary>
 		/// Log level of the message.
 		/// </summary>
-		public VuLogLevel logLevel;
+		public LogLevel LogLevel;
 		/// <summary>
 		/// The message string logged by Vuforia Engine
 		/// The lifetime of the string is bound to the scope of the log callback.
 		/// String data is UTF-8 encoded.
 		/// </summary>
-		public byte* logMessage;
+		public byte* LogMessage;
 	}
 
 	/// <summary>
 	/// Data structure to configure the handling of Engine log messages
 	/// </summary>
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VuLogHandlerConfig
+	public unsafe partial struct LogHandlerConfig
 	{
 		/// <summary>
 		/// Log handler function to report Engine log events
@@ -584,19 +584,19 @@ namespace Evergine.Bindings.Vuforia
 		/// The client has to ensure that the handler function is valid for the life-time of the Engine instance.
 		/// The log handler will be called on a dedicated Engine thread. The client must make sure to properly synchronize the thread.
 		/// </summary>
-		public IntPtr logHandler;
+		public IntPtr LogHandler;
 		/// <summary>
 		/// Client data to pass back when the log handler function is called
 		/// Default value is NULL.
 		/// </summary>
-		public void* clientData;
+		public void* ClientData;
 	}
 
 	/// <summary>
 	/// Plugin configuration data structure
 	/// </summary>
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VuPluginConfig
+	public unsafe partial struct PluginConfig
 	{
 		/// <summary>
 		/// Directory where to search for plugins
@@ -605,14 +605,14 @@ namespace Evergine.Bindings.Vuforia
 		/// Use the &quot;asset://&quot; prefix to search plugins in the assets directory of the application, optionally followed by further
 		/// directory components.
 		/// </summary>
-		public byte* pluginDirectory;
+		public byte* PluginDirectory;
 	}
 
 	/// <summary>
 	/// Render configuration data structure
 	/// </summary>
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VuRenderConfig
+	public unsafe partial struct RenderConfig
 	{
 		/// <summary>
 		/// Choice of video background rendering backend type
@@ -625,7 +625,7 @@ namespace Evergine.Bindings.Vuforia
 		/// @ref VuRenderVBBackendType
 		/// for the supported backend types and their default values per platform.
 		/// </summary>
-		public VuRenderVBBackendType vbRenderBackend;
+		public RenderVBBackendType VbRenderBackend;
 		/// <summary>
 		/// Configure the video background viewport mode
 		/// The video background viewport mode can be changed after Engine creation by calling
@@ -650,82 +650,82 @@ namespace Evergine.Bindings.Vuforia
 		/// Default value is
 		/// @ref VU_VIDEOBG_VIEWPORT_MODE_SCALE_TO_FILL
 		/// </summary>
-		public VuVideoBackgroundViewportMode vbViewportMode;
+		public VideoBackgroundViewportMode VbViewportMode;
 	}
 
 	/// <summary>
 	/// Android-specific platform configuration data structure
 	/// </summary>
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VuPlatformAndroidConfig
+	public unsafe partial struct PlatformAndroidConfig
 	{
 		/// <summary>
 		/// Pointer to the client app&apos;s Android Activity of type &quot;jobject&quot;
 		/// </summary>
-		public void* activity;
+		public void* Activity;
 		/// <summary>
 		/// Pointer to the client app&apos;s JVM of type &quot;JavaVM*&quot;
 		/// </summary>
-		public void* javaVM;
+		public void* JavaVM;
 	}
 
 	/// <summary>
 	/// Configuration for creating an anchor observer
 	/// </summary>
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VuAnchorObserverConfig
+	public unsafe partial struct AnchorObserverConfig
 	{
 		/// <summary>
 		/// Pointer to a device pose observer
 		/// The Anchor observer will only report observations to the state while there
 		/// is an active device pose observer.
 		/// </summary>
-		public VuObserver* devicePoseObserver;
+		public Observer* DevicePoseObserver;
 		/// <summary>
 		/// Observer activation
 		/// The default value is VU_TRUE.
 		/// </summary>
-		public uint activate;
+		public uint Activate;
 	}
 
 	/// <summary>
 	/// Info for an anchor observation
 	/// </summary>
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VuAnchorObservationInfo
+	public unsafe partial struct AnchorObservationInfo
 	{
 		/// <summary>
 		/// Anchor ID
 		/// The ID is a positive number and is unique within a Vuforia session. It is generated at
 		/// runtime and is not persistent across Vuforia sessions.
 		/// </summary>
-		public int anchorId;
+		public int AnchorId;
 	}
 
 	/// <summary>
 	/// Configuration for creating an anchor with pose
 	/// </summary>
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VuAnchorCreationConfig
+	public unsafe partial struct AnchorCreationConfig
 	{
 		/// <summary>
 		/// Pose matrix representing a pose at which the anchor is created
 		/// The pose is represented as a pose matrix using the OpenGL convention.
 		/// The default value is an identity matrix.
 		/// </summary>
-		public VuMatrix44F pose;
+		public Matrix44F Pose;
 	}
 
 	/// <summary>
 	/// Configuration for creatig an anchor with a hit-test result
 	/// </summary>
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VuAnchorCreationHitTestConfig
+	public unsafe partial struct AnchorCreationHitTestConfig
 	{
 		/// <summary>
 		/// Hit-test result used for creating the anchor
 		/// </summary>
-		public VuHitTest* hitTest;
+		public HitTest* HitTest;
 	}
 
 	/// <summary>
@@ -756,24 +756,24 @@ namespace Evergine.Bindings.Vuforia
 	/// A hit test is bound to a specific camera frame retrieved from the Vuforia State.
 	/// </summary>
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VuHitTestConfig
+	public unsafe partial struct HitTestConfig
 	{
 		/// <summary>
 		/// Point in the normalized coordinate space of the camera frame to use as the origin of the ray
 		/// Top left = (0,0), bottom right = (1,1))
 		/// </summary>
-		public VuVector2F point;
+		public Vector2F Point;
 		/// <summary>
 		/// Camera frame retrieved from the Vuforia State that the hit-test should be performed on
 		/// </summary>
-		public VuCameraFrame* frame;
+		public CameraFrame* Frame;
 		/// <summary>
 		/// A hint about the orientation of the plane in the scene.
 		/// Default value is VU_HIT_TEST_HINT_NONE.
 		/// This hint may be ignored internally by Vuforia if the specified hit test
 		/// orientation is not yet supported.
 		/// </summary>
-		public VuHitTestHint hint;
+		public HitTestHint Hint;
 		/// <summary>
 		/// Height of the device center above ground plane in meters.
 		/// Default value is 1.4 meters
@@ -782,40 +782,40 @@ namespace Evergine.Bindings.Vuforia
 		/// to refine this height estimate over time as the device moves, so the value here
 		/// does not need to be exact.
 		/// </summary>
-		public float deviceHeight;
+		public float DeviceHeight;
 	}
 
 	/// <summary>
 	/// Configuration for creating an Area Target observer
 	/// </summary>
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VuAreaTargetConfig
+	public unsafe partial struct AreaTargetConfig
 	{
 		/// <summary>
 		/// Pointer to a device pose observer
 		/// The Area Target observer will only report observations to the state while there
 		/// is an active device pose observer.
 		/// </summary>
-		public VuObserver* devicePoseObserver;
+		public Observer* DevicePoseObserver;
 		/// <summary>
 		/// Path to database containing targets
 		/// </summary>
-		public byte* databasePath;
+		public byte* DatabasePath;
 		/// <summary>
 		/// Target name
 		/// </summary>
-		public byte* targetName;
+		public byte* TargetName;
 		/// <summary>
 		/// Observer activation
 		/// The default value is VU_TRUE.
 		/// </summary>
-		public uint activate;
+		public uint Activate;
 		/// <summary>
 		/// Offset from the origin of the target to the pose reported by an observation, relative to the target&apos;s frame of reference
 		/// The pose offset is represented as a pose matrix using the OpenGL convention.
 		/// The default value is identity matrix.
 		/// </summary>
-		public VuMatrix44F poseOffset;
+		public Matrix44F PoseOffset;
 		/// <summary>
 		/// Require external positions to be set before the observer will begin
 		/// tracking or recover from loss of tracking
@@ -841,43 +841,43 @@ namespace Evergine.Bindings.Vuforia
 		/// VU_AREA_TARGET_CREATION_ERROR_INTERNAL creation error.
 		/// This option defaults to VU_FALSE.
 		/// </summary>
-		public uint requireExternalPositions;
+		public uint RequireExternalPositions;
 	}
 
 	/// <summary>
 	/// Configuration for creating an Area Target observer working with Cloud Area Target
 	/// </summary>
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VuAreaTargetCloudConfig
+	public unsafe partial struct AreaTargetCloudConfig
 	{
 		/// <summary>
 		/// Pointer to a device pose observer
 		/// The Area Target observer will only report observations to the state while there
 		/// is an active device pose observer.
 		/// </summary>
-		public VuObserver* devicePoseObserver;
+		public Observer* DevicePoseObserver;
 		/// <summary>
 		/// OAuth2 client id for authentication with the Vuforia server
 		/// </summary>
-		public byte* userAuth;
+		public byte* UserAuth;
 		/// <summary>
 		/// OAuth2 client secret for authentication with the Vuforia server
 		/// </summary>
-		public byte* secretAuth;
+		public byte* SecretAuth;
 		/// <summary>
 		/// Cloud Area Target ID.
 		/// </summary>
-		public byte* targetId;
+		public byte* TargetId;
 		/// <summary>
 		/// Observer activation
 		/// The default value is VU_TRUE.
 		/// </summary>
-		public uint activate;
+		public uint Activate;
 		/// <summary>
 		/// Offset from the origin of the target to the pose reported by an observation, relative to the target&apos;s frame of reference
 		/// The default value is identity matrix.
 		/// </summary>
-		public VuMatrix44F poseOffset;
+		public Matrix44F PoseOffset;
 		/// <summary>
 		/// Require external positions to be set before the observer will begin
 		/// tracking or recover from loss of tracking
@@ -903,48 +903,48 @@ namespace Evergine.Bindings.Vuforia
 		/// VU_AREA_TARGET_CREATION_ERROR_INTERNAL creation error.
 		/// This option defaults to VU_FALSE.
 		/// </summary>
-		public uint requireExternalPositions;
+		public uint RequireExternalPositions;
 	}
 
 	/// <summary>
 	/// Target info for Area Target from its respective observation
 	/// </summary>
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VuAreaTargetObservationTargetInfo
+	public unsafe partial struct AreaTargetObservationTargetInfo
 	{
 		/// <summary>
 		/// Persistent system-wide unique ID associated with the Area Target
 		/// The unique ID can&apos;t be changed.
 		/// </summary>
-		public byte* uniqueId;
+		public byte* UniqueId;
 		/// <summary>
 		/// Target name
 		/// </summary>
-		public byte* name;
+		public byte* Name;
 		/// <summary>
 		/// Size (dimensions) of the Area Target in meters
 		/// </summary>
-		public VuVector3F size;
+		public Vector3F Size;
 		/// <summary>
 		/// Axis-aligned bounding box of the observed target, relative to the target&apos;s frame of reference
 		/// </summary>
-		public VuAABB bbox;
+		public AABB Bbox;
 		/// <summary>
 		/// Whether the target requires external positions for initial detection
 		/// </summary>
-		public uint requiresExternalPositions;
+		public uint RequiresExternalPositions;
 		/// <summary>
 		/// Pose offset used with the Area Target
 		/// The pose offset is represented as a pose matrix using the OpenGL convention.
 		/// </summary>
-		public VuMatrix44F poseOffset;
+		public Matrix44F PoseOffset;
 	}
 
 	/// <summary>
 	/// Configuration for creating a Mesh observer associated with an Area Target observer
 	/// </summary>
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VuMeshAreaTargetConfig
+	public unsafe partial struct MeshAreaTargetConfig
 	{
 		/// <summary>
 		/// Pointer to Area Target observer
@@ -954,179 +954,179 @@ namespace Evergine.Bindings.Vuforia
 		/// current position within the tracked Area Target. Therefore, the Mesh observations
 		/// might change depending on the device&apos;s position within the target.
 		/// </summary>
-		public VuObserver* areaTargetObserver;
+		public Observer* AreaTargetObserver;
 		/// <summary>
 		/// Path to the external occlusion mesh artifact (occlusion.3dt)
 		/// The external occlusion mesh artifact **must** originate from the Area Target
 		/// that is used for the Area Target observer.
 		/// The provided string is copied, and can be freed, after the Mesh observer is created.
 		/// </summary>
-		public byte* occlusionMeshPath;
+		public byte* OcclusionMeshPath;
 		/// <summary>
 		/// Observer activation
 		/// The default value is VU_TRUE.
 		/// </summary>
-		public uint activate;
+		public uint Activate;
 	}
 
 	/// <summary>
 	/// Configuration for Cloud Image Target observer creation
 	/// </summary>
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VuCloudImageTargetConfig
+	public unsafe partial struct CloudImageTargetConfig
 	{
 		/// <summary>
 		/// User name for logging in to the cloud-based image recognition server
 		/// </summary>
-		public byte* userAuth;
+		public byte* UserAuth;
 		/// <summary>
 		/// Secret key for logging in to the cloud-based image recognition server
 		/// </summary>
-		public byte* secretAuth;
+		public byte* SecretAuth;
 		/// <summary>
 		/// Observer activation
 		/// The default value is VU_TRUE.
 		/// </summary>
-		public uint activate;
+		public uint Activate;
 	}
 
 	/// <summary>
 	/// Target info for a Cloud Image Target from its respective observation
 	/// </summary>
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VuCloudImageTargetObservationTargetInfo
+	public unsafe partial struct CloudImageTargetObservationTargetInfo
 	{
 		/// <summary>
 		/// Target name
 		/// </summary>
-		public byte* name;
+		public byte* Name;
 		/// <summary>
 		/// Persistent system-wide unique ID associated to the Cloud Image Target target
 		/// The unique ID can&apos;t be changed.
 		/// </summary>
-		public byte* uniqueId;
+		public byte* UniqueId;
 		/// <summary>
 		/// Metadata string associated with the Cloud Image Target
 		/// </summary>
-		public byte* metadata;
+		public byte* Metadata;
 		/// <summary>
 		/// Tracking quality rating for the Cloud Image Target
 		/// Integer in the range 0..5 that reflects the expected tracking
 		/// quality of this target. A low quality rating indicates that tracking may
 		/// by poor or unstable for the Cloud Image Target.
 		/// </summary>
-		public sbyte trackingRating;
+		public sbyte TrackingRating;
 	}
 
 	/// <summary>
 	/// Configuration for creating an Image Target observer from a Cloud Image Target observation
 	/// </summary>
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VuImageTargetCloudObservationConfig
+	public unsafe partial struct ImageTargetCloudObservationConfig
 	{
 		/// <summary>
 		/// Cloud Image Target observation
 		/// </summary>
-		public VuObservation* observation;
+		public Observation* Observation;
 		/// <summary>
 		/// Observer activation
 		/// The default value is VU_TRUE.
 		/// </summary>
-		public uint activate;
+		public uint Activate;
 		/// <summary>
 		/// Scale multiplication factor
 		/// The default value is 1.0f.
 		/// </summary>
-		public float scale;
+		public float Scale;
 		/// <summary>
 		/// Offset from the origin of the target to the pose reported by an observation, relative to the target&apos;s frame of reference
 		/// The pose is represented as a pose matrix using the OpenGL convention.
 		/// The default value is an identity matrix.
 		/// </summary>
-		public VuMatrix44F poseOffset;
+		public Matrix44F PoseOffset;
 	}
 
 	/// <summary>
 	/// Configuration for creating a Cylinder Target observer
 	/// </summary>
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VuCylinderTargetConfig
+	public unsafe partial struct CylinderTargetConfig
 	{
 		/// <summary>
 		/// Path to database containing targets
 		/// </summary>
-		public byte* databasePath;
+		public byte* DatabasePath;
 		/// <summary>
 		/// Target name
 		/// </summary>
-		public byte* targetName;
+		public byte* TargetName;
 		/// <summary>
 		/// Observer activation
 		/// The default value is VU_TRUE.
 		/// </summary>
-		public uint activate;
+		public uint Activate;
 		/// <summary>
 		/// Scale multiplication factor
 		/// The default value is 1.0f.
 		/// </summary>
-		public float scale;
+		public float Scale;
 		/// <summary>
 		/// Offset from the origin of the target to the pose reported by an observation, relative to the target&apos;s frame of reference
 		/// The pose offset is represented as a pose matrix using the OpenGL convention.
 		/// The default value is an identity matrix.
 		/// </summary>
-		public VuMatrix44F poseOffset;
+		public Matrix44F PoseOffset;
 	}
 
 	/// <summary>
 	/// Target info for a Cylinder Target from its respective observation
 	/// </summary>
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VuCylinderTargetObservationTargetInfo
+	public unsafe partial struct CylinderTargetObservationTargetInfo
 	{
 		/// <summary>
 		/// Persistent system-wide unique ID associated with the Cylinder Target
 		/// The unique ID can&apos;t be changed.
 		/// </summary>
-		public byte* uniqueId;
+		public byte* UniqueId;
 		/// <summary>
 		/// Target name
 		/// </summary>
-		public byte* name;
+		public byte* Name;
 		/// <summary>
 		/// Side length of the observed target in meters
 		/// </summary>
-		public float sideLength;
+		public float SideLength;
 		/// <summary>
 		/// Top diameter of the observed target in meters
 		/// </summary>
-		public float topDiameter;
+		public float TopDiameter;
 		/// <summary>
 		/// Bottom diameter of the observed target in meters
 		/// </summary>
-		public float bottomDiameter;
+		public float BottomDiameter;
 		/// <summary>
 		/// Axis-aligned bounding box of the observed target, relative to the target&apos;s frame of reference
 		/// </summary>
-		public VuAABB bbox;
+		public AABB Bbox;
 		/// <summary>
 		/// Pose offset used with the observed target
 		/// The pose offset is represented as a pose matrix using the OpenGL convention.
 		/// </summary>
-		public VuMatrix44F poseOffset;
+		public Matrix44F PoseOffset;
 	}
 
 	/// <summary>
 	/// Configuration for creating a Device Pose observer
 	/// </summary>
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VuDevicePoseConfig
+	public unsafe partial struct DevicePoseConfig
 	{
 		/// <summary>
 		/// Observer activation
 		/// The default value is VU_TRUE.
 		/// </summary>
-		public uint activate;
+		public uint Activate;
 		/// <summary>
 		/// Observer mode
 		/// Activate static usage mode of the Device Pose: in this case the pose will be set to identity.
@@ -1137,38 +1137,38 @@ namespace Evergine.Bindings.Vuforia
 		/// not succeed to initialize for lack of movement. Use the staticMode in this setting to configure the device tracker
 		/// to return static poses to stabilize tracking e.g. in case of the object being occluded.
 		/// </summary>
-		public uint staticMode;
+		public uint StaticMode;
 	}
 
 	/// <summary>
 	/// Configuration for illumination observer creation
 	/// </summary>
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VuIlluminationConfig
+	public unsafe partial struct IlluminationConfig
 	{
 		/// <summary>
 		/// Observer activation
 		/// The default value is VU_TRUE.
 		/// </summary>
-		public uint activate;
+		public uint Activate;
 	}
 
 	/// <summary>
 	/// Illumination information for rendering
 	/// </summary>
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VuIlluminationObservationInfo
+	public unsafe partial struct IlluminationObservationInfo
 	{
 		/// <summary>
 		/// Scene ambient intensity in lumen
 		/// Set to VU_ILLUMINATION_AMBIENT_INTENSITY_UNAVAILABLE if not supported on the current platform
 		/// </summary>
-		public int ambientIntensity;
+		public int AmbientIntensity;
 		/// <summary>
 		/// Scene ambient color temperature in Kelvin
 		/// Set to VU_ILLUMINATION_AMBIENT_COLOR_TEMPERATURE_UNAVAILABLE if not supported on the current platform
 		/// </summary>
-		public int ambientColorTemperature;
+		public int AmbientColorTemperature;
 		/// <summary>
 		/// Scene intensity correction values
 		/// A floating point intensity value which can be applied to a
@@ -1185,7 +1185,7 @@ namespace Evergine.Bindings.Vuforia
 		/// The value will always be valid for use. 0.466 (middle grey) is used in cases where
 		/// the platform does not supply a value.
 		/// </summary>
-		public float intensityCorrection;
+		public float IntensityCorrection;
 		/// <summary>
 		/// Scene color correction values
 		/// A Vector4 which contains RGBA color correction
@@ -1201,140 +1201,140 @@ namespace Evergine.Bindings.Vuforia
 		/// The values will always be valid for use. 1.0 is used in cases where
 		/// the platform does not supply values.
 		/// </summary>
-		public VuVector4F colorCorrection;
+		public Vector4F ColorCorrection;
 	}
 
 	/// <summary>
 	/// Configuration for Image Target using a database target
 	/// </summary>
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VuImageTargetConfig
+	public unsafe partial struct ImageTargetConfig
 	{
 		/// <summary>
 		/// Path to database containing targets
 		/// </summary>
-		public byte* databasePath;
+		public byte* DatabasePath;
 		/// <summary>
 		/// Target name
 		/// </summary>
-		public byte* targetName;
+		public byte* TargetName;
 		/// <summary>
 		/// Observer activation
 		/// The default value is VU_TRUE.
 		/// </summary>
-		public uint activate;
+		public uint Activate;
 		/// <summary>
 		/// Scale multiplication factor
 		/// The default value is 1.0f.
 		/// </summary>
-		public float scale;
+		public float Scale;
 		/// <summary>
 		/// Offset from the origin of the target to the pose reported by an observation, relative to the target&apos;s frame of reference
 		/// The pose offset is represented as a pose matrix using the OpenGL convention.
 		/// The default value is an identity matrix.
 		/// </summary>
-		public VuMatrix44F poseOffset;
+		public Matrix44F PoseOffset;
 	}
 
 	/// <summary>
 	/// Configuration for Image Target using a File input
 	/// </summary>
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VuImageTargetFileConfig
+	public unsafe partial struct ImageTargetFileConfig
 	{
 		/// <summary>
 		/// Path to the image file
 		/// Supported file extensions are &quot;jpg&quot;, &quot;jpeg&quot;, &quot;png&quot; and &quot;pgm&quot;.
 		/// </summary>
-		public byte* path;
+		public byte* Path;
 		/// <summary>
 		/// Target name
 		/// </summary>
-		public byte* targetName;
+		public byte* TargetName;
 		/// <summary>
 		/// Target width in meters
 		/// </summary>
-		public float targetWidth;
+		public float TargetWidth;
 		/// <summary>
 		/// Observer activation
 		/// The default value is VU_TRUE.
 		/// </summary>
-		public uint activate;
+		public uint Activate;
 		/// <summary>
 		/// Offset from the origin of the target to the pose reported by an observation, relative to the target&apos;s frame of reference
 		/// The pose offset is represented as a pose matrix using the OpenGL convention.
 		/// The default value is an identity matrix.
 		/// </summary>
-		public VuMatrix44F poseOffset;
+		public Matrix44F PoseOffset;
 	}
 
 	/// <summary>
 	/// Configuration for creating an Image Target using an image buffer
 	/// </summary>
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VuImageTargetBufferConfig
+	public unsafe partial struct ImageTargetBufferConfig
 	{
 		/// <summary>
 		/// Pointer to the Image Target buffer
 		/// </summary>
-		public void* pixelBuffer;
+		public void* PixelBuffer;
 		/// <summary>
 		/// Image Target pixel format
 		/// </summary>
-		public VuImagePixelFormat bufferFormat;
+		public ImagePixelFormat BufferFormat;
 		/// <summary>
 		/// Size of the buffer
 		/// </summary>
-		public VuVector2I bufferSize;
+		public Vector2I BufferSize;
 		/// <summary>
 		/// Target name
 		/// </summary>
-		public byte* targetName;
+		public byte* TargetName;
 		/// <summary>
 		/// Target width in meters
 		/// </summary>
-		public float targetWidth;
+		public float TargetWidth;
 		/// <summary>
 		/// Observer activation
 		/// The default value is VU_TRUE.
 		/// </summary>
-		public uint activate;
+		public uint Activate;
 		/// <summary>
 		/// Offset from the origin of the target to the pose reported by an observation, relative to the target&apos;s frame of reference
 		/// The pose offset is represented as a pose matrix using the OpenGL convention.
 		/// The default value is an identity matrix.
 		/// </summary>
-		public VuMatrix44F poseOffset;
+		public Matrix44F PoseOffset;
 	}
 
 	/// <summary>
 	/// Target info for an Image Target from its respective observation
 	/// </summary>
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VuImageTargetObservationTargetInfo
+	public unsafe partial struct ImageTargetObservationTargetInfo
 	{
 		/// <summary>
 		/// Persistent system-wide unique ID associated with the Image Target
 		/// The unique ID can&apos;t be changed.
 		/// </summary>
-		public byte* uniqueId;
+		public byte* UniqueId;
 		/// <summary>
 		/// Target name
 		/// </summary>
-		public byte* name;
+		public byte* Name;
 		/// <summary>
 		/// Size (dimensions) of the Image Target in meters
 		/// </summary>
-		public VuVector2F size;
+		public Vector2F Size;
 		/// <summary>
 		/// Axis-aligned bounding box of the observed target, relative to the target&apos;s frame of reference
 		/// </summary>
-		public VuAABB bbox;
+		public AABB Bbox;
 		/// <summary>
 		/// Pose offset used with the Image Target
 		/// The pose offset is represented as a pose matrix using the OpenGL convention.
 		/// </summary>
-		public VuMatrix44F poseOffset;
+		public Matrix44F PoseOffset;
 	}
 
 	/// <summary>
@@ -1352,20 +1352,20 @@ namespace Evergine.Bindings.Vuforia
 	/// structure that holds the mesh.
 	/// </summary>
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VuMeshObservationBlock
+	public unsafe partial struct MeshObservationBlock
 	{
 		/// <summary>
 		/// Unique ID of the mesh block
 		/// </summary>
-		public int id;
+		public int Id;
 		/// <summary>
 		/// Timestamp of the last update to the mesh block
 		/// </summary>
-		public long timestamp;
+		public long Timestamp;
 		/// <summary>
 		/// Current version of the mesh block, incremented each time it is updated
 		/// </summary>
-		public int version;
+		public int Version;
 		/// <summary>
 		/// Transformation of the mesh block to the observation coordinate system
 		/// The transformation is represented as a 4x4 matrix using the OpenGL convention. The matrix is decomposable into
@@ -1376,15 +1376,15 @@ namespace Evergine.Bindings.Vuforia
 		/// vuObservationGetPoseInfo(observation, &amp;poseInfo);
 		/// VuMatrix44F modelMatrix = vuMatrix44FMultiplyMatrix(poseInfo.pose, block.transform);
 		/// </summary>
-		public VuMatrix44F transform;
+		public Matrix44F Transform;
 		/// <summary>
 		/// Axis-aligned bounding box of the observed mesh
 		/// </summary>
-		public VuAABB bbox;
+		public AABB Bbox;
 		/// <summary>
 		/// Mesh data
 		/// </summary>
-		public VuMesh* mesh;
+		public Mesh* Mesh;
 	}
 
 	/// <summary>
@@ -1394,40 +1394,40 @@ namespace Evergine.Bindings.Vuforia
 	/// in the list in a previous observation but are no longer reported in the list of the current observation.
 	/// </summary>
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VuMeshObservationInfo
+	public unsafe partial struct MeshObservationInfo
 	{
 		/// <summary>
 		/// Status of the mesh
 		/// </summary>
-		public VuMeshObservationStatus meshStatus;
+		public MeshObservationStatus MeshStatus;
 		/// <summary>
 		/// List of mesh blocks
 		/// The lifetime of the list is bound to the lifetime of the observation.
 		/// </summary>
-		public VuMeshObservationBlockList* meshes;
+		public MeshObservationBlockList* Meshes;
 	}
 
 	/// <summary>
 	/// Configuration for creating a Model Target observer
 	/// </summary>
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VuModelTargetConfig
+	public unsafe partial struct ModelTargetConfig
 	{
 		/// <summary>
 		/// Path to database containing targets
 		/// </summary>
-		public byte* databasePath;
+		public byte* DatabasePath;
 		/// <summary>
 		/// Target name
 		/// </summary>
-		public byte* targetName;
+		public byte* TargetName;
 		/// <summary>
 		/// Name of the Guide View to be active
 		/// Set to NULL to keep the default Guide View defined for this Model Target in the database activated
 		/// Advanced Model Targets do not support Guide Views and creation will fail if the value is not
 		/// set to NULL.
 		/// </summary>
-		public byte* activeGuideViewName;
+		public byte* ActiveGuideViewName;
 		/// <summary>
 		/// Observer activation
 		/// The default value is VU_TRUE.
@@ -1435,18 +1435,18 @@ namespace Evergine.Bindings.Vuforia
 		/// Model Target observers from different databases cannot be active at the same time. Observer creation will fail if &quot;activate&quot; is
 		/// set to VU_TRUE while a Model Target observer from another database is active.
 		/// </summary>
-		public uint activate;
+		public uint Activate;
 		/// <summary>
 		/// Scale multiplication factor
 		/// The default value is 1.0f.
 		/// </summary>
-		public float scale;
+		public float Scale;
 		/// <summary>
 		/// Offset from the origin of the target to the pose reported by an observation, relative to the target&apos;s frame of reference
 		/// The pose offset is represented as a pose matrix using the OpenGL convention.
 		/// The default value is an identity matrix.
 		/// </summary>
-		public VuMatrix44F poseOffset;
+		public Matrix44F PoseOffset;
 		/// <summary>
 		/// Enhance detection performance by caching local detection data for the model target
 		/// If this option is enabled, then local detection data captured during each tracking session
@@ -1484,37 +1484,37 @@ namespace Evergine.Bindings.Vuforia
 		/// The default value is
 		/// @ref VU_FALSE.
 		/// </summary>
-		public uint enhanceRuntimeDetection;
+		public uint EnhanceRuntimeDetection;
 	}
 
 	/// <summary>
 	/// Configuration for creating a Model Target observer from an in-memory buffer
 	/// </summary>
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VuModelTargetBufferConfig
+	public unsafe partial struct ModelTargetBufferConfig
 	{
 		/// <summary>
 		/// Pointer to the start of the memory buffer
 		/// The buffer must contain the contents of the Model Target database .dat file, using .xml files is not supported. The buffer must be
 		/// valid for the duration of the observer creation and can be freed once the observer is created.
 		/// </summary>
-		public void* buffer;
+		public void* Buffer;
 		/// <summary>
 		/// Size of the memory buffer in bytes
 		/// This must correspond to the size of the Model Target database .dat file.
 		/// </summary>
-		public uint bufferSize;
+		public uint BufferSize;
 		/// <summary>
 		/// Target name
 		/// </summary>
-		public byte* targetName;
+		public byte* TargetName;
 		/// <summary>
 		/// Name of the Guide View to be active
 		/// Set to NULL to keep the default Guide View defined for this Model Target in the database activated
 		/// Advanced Model Targets do not support Guide Views and creation will fail if the value is not
 		/// set to NULL.
 		/// </summary>
-		public byte* activeGuideViewName;
+		public byte* ActiveGuideViewName;
 		/// <summary>
 		/// Observer activation
 		/// The default value is VU_TRUE.
@@ -1522,100 +1522,100 @@ namespace Evergine.Bindings.Vuforia
 		/// Model Target observers from different databases cannot be active at the same time. Observer creation will fail if &quot;activate&quot; is
 		/// set to VU_TRUE while a Model Target observer from another database is active.
 		/// </summary>
-		public uint activate;
+		public uint Activate;
 		/// <summary>
 		/// Scale multiplication factor
 		/// The default value is 1.0f.
 		/// </summary>
-		public float scale;
+		public float Scale;
 		/// <summary>
 		/// Offset from the origin of the target to the pose reported by an observation, relative to the target&apos;s frame of reference
 		/// The pose offset is represented as a pose matrix using the OpenGL convention.
 		/// The default value is an identity matrix.
 		/// </summary>
-		public VuMatrix44F poseOffset;
+		public Matrix44F PoseOffset;
 		/// <summary>
 		/// Enhance detection performance by caching local detection data for the model target
 		/// Refer to
 		/// @ref VuModelTargetConfig::enhanceRuntimeDetection
 		/// for more details.
 		/// </summary>
-		public uint enhanceRuntimeDetection;
+		public uint EnhanceRuntimeDetection;
 	}
 
 	/// <summary>
 	/// Target info for a Model Target from its respective observation
 	/// </summary>
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VuModelTargetObservationTargetInfo
+	public unsafe partial struct ModelTargetObservationTargetInfo
 	{
 		/// <summary>
 		/// Persistent system-wide unique ID associated with the Model Target
 		/// The unique ID can&apos;t be changed.
 		/// </summary>
-		public byte* uniqueId;
+		public byte* UniqueId;
 		/// <summary>
 		/// Target name
 		/// </summary>
-		public byte* name;
+		public byte* Name;
 		/// <summary>
 		/// Size (dimensions) of the Model Target in meters
 		/// </summary>
-		public VuVector3F size;
+		public Vector3F Size;
 		/// <summary>
 		/// Axis-aligned bounding box of the observed Model Target, relative to the target&apos;s frame of reference
 		/// </summary>
-		public VuAABB bbox;
+		public AABB Bbox;
 		/// <summary>
 		/// Name of the active Guide View
 		/// Set to NULL for Advanced Model Targets.
 		/// </summary>
-		public byte* activeGuideViewName;
+		public byte* ActiveGuideViewName;
 		/// <summary>
 		/// Tracking optimization
 		/// </summary>
-		public VuTrackingOptimization trackingOptimization;
+		public TrackingOptimization TrackingOptimization;
 		/// <summary>
 		/// Pose offset used with the Model Target
 		/// The pose offset is represented as a pose matrix using the OpenGL convention.
 		/// </summary>
-		public VuMatrix44F poseOffset;
+		public Matrix44F PoseOffset;
 		/// <summary>
 		/// Name of the active Model Target state
 		/// </summary>
-		public byte* activeStateName;
+		public byte* ActiveStateName;
 	}
 
 	/// <summary>
 	/// Info for a Model Target state
 	/// </summary>
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VuModelTargetStateInfo
+	public unsafe partial struct ModelTargetStateInfo
 	{
 		/// <summary>
 		/// The name of the Model Target state
 		/// The lifetime of the string is bound to the lifetime of the observer.
 		/// </summary>
-		public byte* stateName;
+		public byte* StateName;
 	}
 
 	/// <summary>
 	/// Describes the Model Target state associated with a Model Target observation
 	/// </summary>
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VuModelTargetObservationStateInfo
+	public unsafe partial struct ModelTargetObservationStateInfo
 	{
 		/// <summary>
 		/// Name of the state the observation is based on
 		/// </summary>
-		public byte* stateName;
+		public byte* StateName;
 	}
 
 	/// <summary>
 	/// Configuration for creating a Mesh observer associated with a Model Target observer
 	/// </summary>
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VuMeshModelTargetConfig
+	public unsafe partial struct MeshModelTargetConfig
 	{
 		/// <summary>
 		/// Pointer to Model Target observer
@@ -1623,220 +1623,219 @@ namespace Evergine.Bindings.Vuforia
 		/// Mesh observer created with this configuration. The reported Mesh observations provide the latest 3D
 		/// geometry of the Model Target at the position of the tracked Model Target.
 		/// </summary>
-		public VuObserver* modelTargetObserver;
+		public Observer* ModelTargetObserver;
 		/// <summary>
 		/// Observer activation
 		/// The default value is VU_TRUE.
 		/// </summary>
-		public uint activate;
+		public uint Activate;
 	}
 
 	/// <summary>
 	/// Configuration for Multi-Target observer creation
 	/// </summary>
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VuMultiTargetConfig
+	public unsafe partial struct MultiTargetConfig
 	{
 		/// <summary>
 		/// Path to database containing targets
 		/// </summary>
-		public byte* databasePath;
+		public byte* DatabasePath;
 		/// <summary>
 		/// Target name
 		/// </summary>
-		public byte* targetName;
+		public byte* TargetName;
 		/// <summary>
 		/// Observer activation
 		/// The default value is VU_TRUE.
 		/// </summary>
-		public uint activate;
+		public uint Activate;
 		/// <summary>
 		/// Offset from the origin of the target to the pose reported by an observation, relative to the target&apos;s frame of reference
 		/// The pose offset is represented as a pose matrix using the OpenGL convention.
 		/// The default value is an identity matrix.
 		/// </summary>
-		public VuMatrix44F poseOffset;
+		public Matrix44F PoseOffset;
 	}
 
 	/// <summary>
 	/// Configuration for a Multi-Target part
 	/// </summary>
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VuMultiTargetPartConfig
+	public unsafe partial struct MultiTargetPartConfig
 	{
 		/// <summary>
 		/// Target name
 		/// Name of an Image Target from the database that the Multi-Target belongs to.
 		/// </summary>
-		public byte* targetName;
+		public byte* TargetName;
 		/// <summary>
 		/// Pose offset of the part relative to the Multi-Target
 		/// The pose offset is represented as a pose matrix using the OpenGL convention.
 		/// The default value is an identity matrix.
 		/// </summary>
-		public VuMatrix44F poseOffset;
+		public Matrix44F PoseOffset;
 	}
 
 	/// <summary>
 	/// Configuration for a new Multi-Target from parts
 	/// </summary>
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VuMultiTargetPartsConfig
+	public unsafe partial struct MultiTargetPartsConfig
 	{
 		/// <summary>
 		/// Path to database containing targets
 		/// </summary>
-		public byte* databasePath;
+		public byte* DatabasePath;
 		/// <summary>
 		/// Name of the new Multi-Target
 		/// </summary>
-		public byte* targetName;
+		public byte* TargetName;
 		/// <summary>
 		/// Parts that the new Multi-Target should consist of
 		/// </summary>
-		public VuMultiTargetPartConfigList* parts;
+		public MultiTargetPartConfigList* Parts;
 		/// <summary>
 		/// Observer activation
 		/// The default value is VU_TRUE.
 		/// </summary>
-		public uint activate;
+		public uint Activate;
 		/// <summary>
 		/// Offset from the origin of the target to the pose reported by an observation, relative to the target&apos;s frame of reference
 		/// The pose offset is represented as a pose matrix using the OpenGL convention.
 		/// The default value is an identity matrix.
 		/// </summary>
-		public VuMatrix44F poseOffset;
+		public Matrix44F PoseOffset;
 	}
 
 	/// <summary>
 	/// Target info for Multi-Target
 	/// </summary>
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VuMultiTargetObservationTargetInfo
+	public unsafe partial struct MultiTargetObservationTargetInfo
 	{
 		/// <summary>
 		/// Target name
 		/// </summary>
-		public byte* name;
+		public byte* Name;
 		/// <summary>
 		/// Size (dimensions) of the observed target in meters
 		/// </summary>
-		public VuVector3F size;
+		public Vector3F Size;
 		/// <summary>
 		/// Axis-aligned bounding box of the observed target, relative to the target&apos;s frame of reference
 		/// </summary>
-		public VuAABB bbox;
+		public AABB Bbox;
 		/// <summary>
 		/// Pose offset used with the observed target
 		/// The pose offset is represented as a pose matrix using the OpenGL convention.
 		/// </summary>
-		public VuMatrix44F poseOffset;
+		public Matrix44F PoseOffset;
 	}
 
 	/// <summary>
 	/// Configuration for creating a VuMark Observer
 	/// </summary>
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VuVuMarkConfig
+	public unsafe partial struct VuMarkConfig
 	{
 		/// <summary>
 		/// Path to database containing the VuMark template
 		/// </summary>
-		public byte* databasePath;
+		public byte* DatabasePath;
 		/// <summary>
 		/// VuMark template name
 		/// </summary>
-		public byte* templateName;
+		public byte* TemplateName;
 		/// <summary>
 		/// Observer activation
 		/// The default value is VU_TRUE.
 		/// </summary>
-		public uint activate;
+		public uint Activate;
 		/// <summary>
 		/// Scale multiplication factor
 		/// The default value is 1.0f.
 		/// </summary>
-		public float scale;
+		public float Scale;
 		/// <summary>
 		/// Offset from the origin of the VuMark to the pose reported by an observation, relative to the VuMark&apos;s frame of reference
 		/// The pose offset is represented as a pose matrix using the OpenGL convention.
 		/// The default value is an identity matrix.
 		/// </summary>
-		public VuMatrix44F poseOffset;
+		public Matrix44F PoseOffset;
 	}
 
 	/// <summary>
 	/// Template info for a VuMark from its respective observation
 	/// </summary>
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VuVuMarkObservationTemplateInfo
+	public unsafe partial struct VuMarkObservationTemplateInfo
 	{
 		/// <summary>
 		/// Persistent system-wide unique ID associated with the VuMark template
 		/// The unique ID can&apos;t be changed.
 		/// </summary>
-		public byte* uniqueId;
+		public byte* UniqueId;
 		/// <summary>
 		/// VuMark template name
 		/// </summary>
-		public byte* name;
+		public byte* Name;
 		/// <summary>
 		/// VuMark template user data
 		/// </summary>
-		public byte* userData;
+		public byte* UserData;
 		/// <summary>
 		/// Size (dimensions) of the VuMark in meters
 		/// </summary>
-		public VuVector2F size;
+		public Vector2F Size;
 		/// <summary>
 		/// Get the position of VuMark&apos;s origin
 		/// </summary>
-		public VuVector2F origin;
+		public Vector2F Origin;
 		/// <summary>
 		/// Axis-aligned bounding box of the observed VuMark, relative to its frame of reference
 		/// </summary>
-		public VuAABB bbox;
+		public AABB Bbox;
 		/// <summary>
 		/// Pose offset used with VuMark template
 		/// The pose offset is represented as a pose matrix using the OpenGL convention.
 		/// </summary>
-		public VuMatrix44F poseOffset;
+		public Matrix44F PoseOffset;
 	}
 
 	/// <summary>
 	/// Instance info for a VuMark from its respective observation
 	/// </summary>
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VuVuMarkObservationInstanceInfo
+	public unsafe partial struct VuMarkObservationInstanceInfo
 	{
 		/// <summary>
 		/// The type of data stored by the VuMark instance ID
 		/// </summary>
-		public VuMarkInstanceIdType dataType;
+		public MarkInstanceIdType DataType;
 		/// <summary>
 		/// String buffer, filled with length bytes representing the VuMark instance ID if dataType is VU_VUMARK_INSTANCE_ID_STRING or
-		/// VU_VUMARK_INSTANCE_ID_BYTE
 		/// The buffer is set to an empty string if the VuMark instance ID is of type VU_VUMARK_INSTANCE_ID_NUMERIC
 		/// The lifetime of the buffer is bound to the lifetime of the VuMark instance observation
 		/// that was used to retrieve this data.
 		/// </summary>
-		public byte* buffer;
+		public byte* Buffer;
 		/// <summary>
 		/// Byte length of the string buffer
 		/// </summary>
-		public int length;
+		public int Length;
 		/// <summary>
 		/// Numeric representation of the VuMark instance ID if dataType is VU_VUMARK_INSTANCE_ID_NUMERIC
 		/// The value is set to 0 if the VuMark instance ID is not of type VU_VUMARK_INSTANCE_ID_NUMERIC
 		/// </summary>
-		public ulong numericValue;
+		public ulong NumericValue;
 	}
 
 	/// <summary>
 	/// VuMark-specific observation information
 	/// </summary>
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VuVuMarkObservationInfo
+	public unsafe partial struct VuMarkObservationInfo
 	{
 		/// <summary>
 		/// A unique runtime ID for a given VuMark instance
@@ -1847,14 +1846,14 @@ namespace Evergine.Bindings.Vuforia
 		/// The ID is unique within a Vuforia session. It is generated at runtime and is not
 		/// persistent across Vuforia sessions
 		/// </summary>
-		public int id;
+		public int Id;
 	}
 
 	/// <summary>
 	/// Configuration for creating a barcode observer
 	/// </summary>
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VuBarcodeConfig
+	public unsafe partial struct BarcodeConfig
 	{
 		/// <summary>
 		/// Set of types to observe
@@ -1864,53 +1863,53 @@ namespace Evergine.Bindings.Vuforia
 		/// type to be observed by the observer.
 		/// The default value is NULL.
 		/// </summary>
-		public VuBarcodeTypeSet* observedTypes;
+		public BarcodeTypeSet* ObservedTypes;
 		/// <summary>
 		/// Barcode detection mode
 		/// </summary>
-		public VuBarcodeDetectionMode detectionMode;
+		public BarcodeDetectionMode DetectionMode;
 		/// <summary>
 		/// Observer activation
 		/// The default value is VU_TRUE.
 		/// </summary>
-		public uint activate;
+		public uint Activate;
 	}
 
 	/// <summary>
 	/// Instance info for a barcode from its respective observation
 	/// </summary>
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VuBarcodeObservationInstanceInfo
+	public unsafe partial struct BarcodeObservationInstanceInfo
 	{
 		/// <summary>
 		/// Barcode content buffer filled with length bytes representing the payload of the barcode.
 		/// Validity of the pointer is bound to the observation and therefore to the State.
 		/// Textual description, UTF-8 encoding.
 		/// </summary>
-		public byte* buffer;
+		public byte* Buffer;
 		/// <summary>
 		/// Barcode content buffer size
 		/// Size of the buffer in bytes (payload).
 		/// </summary>
-		public int length;
+		public int Length;
 		/// <summary>
 		/// Barcode type (see VuBarcodeType)
 		/// </summary>
-		public VuBarcodeType type;
+		public BarcodeType Type;
 		/// <summary>
 		/// Vertices of the barcode&apos;s bounds in camera image space (normalized coordinates)
 		/// </summary>
-		public VuVector2F vertices_0;
-		public VuVector2F vertices_1;
-		public VuVector2F vertices_2;
-		public VuVector2F vertices_3;
+		public Vector2F Vertices_0;
+		public Vector2F Vertices_1;
+		public Vector2F Vertices_2;
+		public Vector2F Vertices_3;
 	}
 
 	/// <summary>
 	/// Info for a barcode from its respective observation
 	/// </summary>
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VuBarcodeObservationInfo
+	public unsafe partial struct BarcodeObservationInfo
 	{
 		/// <summary>
 		/// A unique runtime ID for a given barcode
@@ -1920,7 +1919,7 @@ namespace Evergine.Bindings.Vuforia
 		/// across Vuforia sessions. The id here is currently for convenience only
 		/// An observation can also be uniquely identified through the type + text (payload) combination
 		/// </summary>
-		public int id;
+		public int Id;
 	}
 
 	/// <summary>
@@ -1928,7 +1927,7 @@ namespace Evergine.Bindings.Vuforia
 	/// The Validation Area is defined by an opaque mask stored in the alpha channel of the image file.
 	/// </summary>
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VuValidationAreaFileConfig
+	public unsafe partial struct ValidationAreaFileConfig
 	{
 		/// <summary>
 		/// Pointer to a device pose observer
@@ -1940,33 +1939,33 @@ namespace Evergine.Bindings.Vuforia
 		/// @ref VU_OBSERVATION_POSE_STATUS_NO_POSE,
 		/// no matter if devicePoseObserver is set to an active device pose observer or not.
 		/// </summary>
-		public VuObserver* devicePoseObserver;
+		public Observer* DevicePoseObserver;
 		/// <summary>
 		/// Path to the image file. The image stored in the file needs to contain an alpha channel, e.g., specify RGBA pixel data.
 		/// Supported file extensions are &quot;png&quot;, &quot;webp&quot; and &quot;avif&quot;.
 		/// &quot;avif&quot; files are only supported on iOS platform.
 		/// </summary>
-		public byte* path;
+		public byte* Path;
 		/// <summary>
 		/// Label for the image
 		/// </summary>
-		public byte* label;
+		public byte* Label;
 		/// <summary>
 		/// Validation Area name
 		/// </summary>
-		public byte* validationAreaName;
+		public byte* ValidationAreaName;
 		/// <summary>
 		/// Observer activation
 		/// The default value is VU_TRUE.
 		/// </summary>
-		public uint activate;
+		public uint Activate;
 		/// <summary>
 		/// Offset from the origin of the Validation Area to the pose reported by an observation, relative
 		/// to the area&apos;s frame of reference
 		/// The pose offset is represented as a pose matrix using the OpenGL convention.
 		/// The default value is an identity matrix.
 		/// </summary>
-		public VuMatrix44F poseOffset;
+		public Matrix44F PoseOffset;
 	}
 
 	/// <summary>
@@ -1974,7 +1973,7 @@ namespace Evergine.Bindings.Vuforia
 	/// The Validation Area is defined by an opaque mask stored in the alpha channel of the image buffer.
 	/// </summary>
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VuValidationAreaBufferConfig
+	public unsafe partial struct ValidationAreaBufferConfig
 	{
 		/// <summary>
 		/// Pointer to a device pose observer
@@ -1986,164 +1985,164 @@ namespace Evergine.Bindings.Vuforia
 		/// @ref VU_OBSERVATION_POSE_STATUS_NO_POSE,
 		/// no matter if devicePoseObserver is set to an active device pose observer or not.
 		/// </summary>
-		public VuObserver* devicePoseObserver;
+		public Observer* DevicePoseObserver;
 		/// <summary>
 		/// Pointer to the image buffer. The buffer needs to contain RGBA pixel data without padding.
 		/// </summary>
-		public void* pixelBuffer;
+		public void* PixelBuffer;
 		/// <summary>
 		/// Array of sizes of each buffer (width, height)
 		/// </summary>
-		public VuVector2I bufferSize;
+		public Vector2I BufferSize;
 		/// <summary>
 		/// Label for the image
 		/// </summary>
-		public byte* label;
+		public byte* Label;
 		/// <summary>
 		/// Validation Area name
 		/// </summary>
-		public byte* validationAreaName;
+		public byte* ValidationAreaName;
 		/// <summary>
 		/// Observer activation
 		/// The default value is VU_TRUE.
 		/// </summary>
-		public uint activate;
+		public uint Activate;
 		/// <summary>
 		/// Offset from the origin of the Validation Area to the pose reported by an observation, relative
 		/// to the area&apos;s frame of reference
 		/// The pose offset is represented as a pose matrix using the OpenGL convention.
 		/// The default value is an identity matrix.
 		/// </summary>
-		public VuMatrix44F poseOffset;
+		public Matrix44F PoseOffset;
 	}
 
 	/// <summary>
 	/// Validation Area info from its respective observation
 	/// </summary>
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VuValidationAreaObservationAreaInfo
+	public unsafe partial struct ValidationAreaObservationAreaInfo
 	{
 		/// <summary>
 		/// Persistent system-wide unique ID associated with the Validation Area
 		/// The unique ID can&apos;t be changed.
 		/// </summary>
-		public byte* uniqueId;
+		public byte* UniqueId;
 		/// <summary>
 		/// Validation Area name
 		/// </summary>
-		public byte* name;
+		public byte* Name;
 		/// <summary>
 		/// Size (dimensions) of the Validation Area in meters
 		/// </summary>
-		public VuVector3F size;
+		public Vector3F Size;
 		/// <summary>
 		/// Pose offset used with the Validation Area
 		/// The pose offset is represented as a pose matrix using the OpenGL convention.
 		/// </summary>
-		public VuMatrix44F poseOffset;
+		public Matrix44F PoseOffset;
 	}
 
 	/// <summary>
 	/// Validation info of a Validation Area observation
 	/// </summary>
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VuValidationAreaObservationValidationInfo
+	public unsafe partial struct ValidationAreaObservationValidationInfo
 	{
 		/// <summary>
 		/// Validation status
 		/// The values of labelName and confidence are valid only when validation status is
 		/// VU_VALIDATION_AREA_OBSERVATION_VALIDATION_STATUS_NORMAL.
 		/// </summary>
-		public VuValidationAreaObservationValidationStatus validationStatus;
+		public ValidationAreaObservationValidationStatus ValidationStatus;
 		/// <summary>
 		/// The label name of the observed Validation Area appearance
 		/// The lifetime of the returned string is bound to the lifetime of the observation.
 		/// </summary>
-		public byte* labelName;
+		public byte* LabelName;
 		/// <summary>
 		/// The confidence of the validation between 0 and 1, higher is better
 		/// </summary>
-		public float confidence;
+		public float Confidence;
 		/// <summary>
 		/// Recommended direction in which the viewer should position its viewpoint to observe the Validation Area
 		/// The direction is in the coordinate system of the Validation Area, from the Validation Area origin towards the viewer.
 		/// The direction will always be a unit vector or (0, 0, 0) if no direction is available.
 		/// </summary>
-		public VuVector3F recommendedViewerDirection;
+		public Vector3F RecommendedViewerDirection;
 		/// <summary>
 		/// Angular guidance around recommendedViewerDirection in degrees
 		/// This angle around recommendedViewerDirection delimits the set of possible viewpoints.
 		/// The angle will be 0 if there is no recommendedViewerDirection.
 		/// </summary>
-		public float recommendedViewerAngle;
+		public float RecommendedViewerAngle;
 		/// <summary>
 		/// Distance guidance for recommendedViewerDirection in meters
 		/// This is the recommended viewer distance when observing the Validation Area from recommendedViewerDirection.
 		/// The distance will be 0 if there is no recommendedViewerDirection.
 		/// </summary>
-		public float recommendedViewerDistance;
+		public float RecommendedViewerDistance;
 		/// <summary>
 		/// The timestamp of the camera frame the validation was performed on (in nanoseconds)
 		/// </summary>
-		public long validationTimestamp;
+		public long ValidationTimestamp;
 		/// <summary>
 		/// Vertices of the Validation Area bounds in camera image space (normalized coordinates)
 		/// </summary>
-		public VuVector2F vertices_0;
-		public VuVector2F vertices_1;
-		public VuVector2F vertices_2;
-		public VuVector2F vertices_3;
+		public Vector2F Vertices_0;
+		public Vector2F Vertices_1;
+		public Vector2F Vertices_2;
+		public Vector2F Vertices_3;
 	}
 
 	/// <summary>
 	/// Data structure for setting and getting focus and exposure regions of interest in the camera image
 	/// </summary>
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VuCameraRegionOfInterest
+	public unsafe partial struct CameraRegionOfInterest
 	{
 		/// <summary>
 		/// Point in the normalized coordinate space of the camera frame to use as the center of the region
 		/// Top left = (0.0f, 0.0f), bottom right = (1.0f, 1.0f)
 		/// </summary>
-		public VuVector2F center;
+		public Vector2F Center;
 		/// <summary>
 		/// Extent of the region as a percentage of the camera frame width and height
 		/// (0.0f) = single pixel, (1.0f) = full width and height of the camera frame
 		/// Setting the extent smaller than 1% is not supported on some platforms
 		/// This property is ignored on iOS
 		/// </summary>
-		public float extent;
+		public float Extent;
 	}
 
 	/// <summary>
 	/// Camera video mode description
 	/// </summary>
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VuCameraVideoMode
+	public unsafe partial struct CameraVideoMode
 	{
 		/// <summary>
 		/// Camera video mode preset mode
 		/// </summary>
-		public VuCameraVideoModePreset presetMode;
+		public CameraVideoModePreset PresetMode;
 		/// <summary>
 		/// Video frame resolution
 		/// </summary>
-		public VuVector2I resolution;
+		public Vector2I Resolution;
 		/// <summary>
 		/// Video frame rate
 		/// </summary>
-		public float frameRate;
+		public float FrameRate;
 		/// <summary>
 		/// Video frame format
 		/// </summary>
-		public VuImagePixelFormat format;
+		public ImagePixelFormat Format;
 	}
 
 	/// <summary>
 	/// configure the current view
 	/// </summary>
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VuRenderViewConfig
+	public unsafe partial struct RenderViewConfig
 	{
 		/// <summary>
 		/// Resolution of the current view or render target in pixels
@@ -2153,14 +2152,14 @@ namespace Evergine.Bindings.Vuforia
 		/// @ref vuPlatformControllerSetViewOrientation
 		/// for more information on the view orientation.
 		/// </summary>
-		public VuVector2I resolution;
+		public Vector2I Resolution;
 	}
 
 	/// <summary>
 	/// Video background view information
 	/// </summary>
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VuVideoBackgroundViewInfo
+	public unsafe partial struct VideoBackgroundViewInfo
 	{
 		/// <summary>
 		/// Video background viewport (its location/size in the view)
@@ -2168,22 +2167,22 @@ namespace Evergine.Bindings.Vuforia
 		/// @ref vuRenderControllerGetVideoBackgroundViewport.
 		/// vuRenderControllerGetVideoBackgroundViewport for details on the viewport.
 		/// </summary>
-		public VuVector4I viewport;
+		public Vector4I Viewport;
 		/// <summary>
 		/// Image size used for rendering
 		/// </summary>
-		public VuVector2I cameraImageSize;
+		public Vector2I CameraImageSize;
 		/// <summary>
 		/// Size of the video background rendered on screen (can be stretched)
 		/// </summary>
-		public VuVector2I vBTextureSize;
+		public Vector2I VBTextureSize;
 	}
 
 	/// <summary>
 	/// Video background texture input
 	/// </summary>
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VuRenderVideoBackgroundData
+	public unsafe partial struct RenderVideoBackgroundData
 	{
 		/// <summary>
 		/// Render data used for video background
@@ -2193,7 +2192,7 @@ namespace Evergine.Bindings.Vuforia
 		/// &lt;MTLRenderCommandEncoder
 		/// &gt;
 		/// </summary>
-		public void* renderData;
+		public void* RenderData;
 		/// <summary>
 		/// Texture data used for video background
 		/// OpenGL ES: NULL
@@ -2202,21 +2201,21 @@ namespace Evergine.Bindings.Vuforia
 		/// &lt;MTLTexture
 		/// &gt;
 		/// </summary>
-		public void* textureData;
+		public void* TextureData;
 		/// <summary>
 		/// Texture unit used for video background
 		/// OpenGL ES: int* pointing to a variable holding the texture unit ID
 		/// DX11: NULL
 		/// Metal: int* pointing to a variable holding the texture unit ID
 		/// </summary>
-		public void* textureUnitData;
+		public void* TextureUnitData;
 	}
 
 	/// <summary>
 	/// Configuration options for a recording session
 	/// </summary>
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VuRecordingConfig
+	public unsafe partial struct RecordingConfig
 	{
 		/// <summary>
 		/// Bitmask specifying data to be recorded
@@ -2227,7 +2226,7 @@ namespace Evergine.Bindings.Vuforia
 		/// data flags that are appropriate for the current device. The flags returned by that function
 		/// will lead to a recording that can be used for playing back AR sessions.
 		/// </summary>
-		public uint dataFlags;
+		public uint DataFlags;
 		/// <summary>
 		/// The frame rate to record camera images at
 		/// vuRecordingConfigDefault() will set this to VU_RECORDING_FRAME_RATE_AUTO and the appropriate
@@ -2236,7 +2235,7 @@ namespace Evergine.Bindings.Vuforia
 		/// If overriding the default recording frame rate, please note that this feature is for advanced users who are sure
 		/// that their devices are powerful enough to handle recording frame rates that are higher than the default.
 		/// </summary>
-		public VuRecordingFrameRate frameRate;
+		public RecordingFrameRate FrameRate;
 		/// <summary>
 		/// The scale applied to the camera images when recorded
 		/// vuRecordingConfigDefault() will set this to VU_RECORDING_IMAGE_SCALE_AUTO and the appropriate
@@ -2245,12 +2244,12 @@ namespace Evergine.Bindings.Vuforia
 		/// If overriding the default image scale, please note that this feature is for advanced users who are sure that their devices
 		/// are powerful enough to handle recording camera images at a scale that is higher than the default.
 		/// </summary>
-		public VuRecordingImageScale scale;
+		public RecordingImageScale Scale;
 		/// <summary>
 		/// Recording format
 		/// The default value is VU_RECORDING_FORMAT_DEFAULT.
 		/// </summary>
-		public VuRecordingFormat format;
+		public RecordingFormat Format;
 		/// <summary>
 		/// Path to the directory where the recording should be stored.
 		/// This parameter is optional. The default value is NULL. The directory must
@@ -2259,42 +2258,42 @@ namespace Evergine.Bindings.Vuforia
 		/// location.
 		/// The provided string is copied, and can be freed, after the recording is created.
 		/// </summary>
-		public byte* outputDirectory;
+		public byte* OutputDirectory;
 		/// <summary>
 		/// Flag to control whether a recording should start immediately on creation
 		/// The default value is VU_FALSE.
 		/// </summary>
-		public uint start;
+		public uint Start;
 		/// <summary>
 		/// Video encoding quality
 		/// The default value is VU_RECORDING_VIDEO_ENCODING_QUALITY_HIGH.
 		/// </summary>
-		public VuRecordingVideoEncodingQuality videoEncodingQuality;
+		public RecordingVideoEncodingQuality VideoEncodingQuality;
 	}
 
 	/// <summary>
 	/// Configuration options for Area Target Capture instance creation
 	/// </summary>
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VuAreaTargetCaptureConfig
+	public unsafe partial struct AreaTargetCaptureConfig
 	{
 		/// <summary>
 		/// Device pose observer
 		/// The Area Target Capture instance can only capture data while the device pose observer is active.
 		/// </summary>
-		public VuObserver* devicePoseObserver;
+		public Observer* DevicePoseObserver;
 		/// <summary>
 		/// Set to VU_TRUE to immediately start the capture after creation
 		/// Default value is VU_FALSE
 		/// </summary>
-		public uint start;
+		public uint Start;
 	}
 
 	/// <summary>
 	/// Configuration options for Area Target generation
 	/// </summary>
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VuAreaTargetCaptureGenerationConfig
+	public unsafe partial struct AreaTargetCaptureGenerationConfig
 	{
 		/// <summary>
 		/// User name for authentication with the Vuforia server
@@ -2302,14 +2301,14 @@ namespace Evergine.Bindings.Vuforia
 		/// @ref vuAreaTargetCaptureGenerate
 		/// and can be freed afterwards.
 		/// </summary>
-		public byte* userAuth;
+		public byte* UserAuth;
 		/// <summary>
 		/// Secret key for authentication with the Vuforia server
 		/// The provided string is copied by
 		/// @ref vuAreaTargetCaptureGenerate
 		/// and can be freed afterwards.
 		/// </summary>
-		public byte* secretAuth;
+		public byte* SecretAuth;
 		/// <summary>
 		/// Output directory path
 		/// The output directory path can be absolute or relative. The capture will store the files it was configured to
@@ -2318,7 +2317,7 @@ namespace Evergine.Bindings.Vuforia
 		/// @ref vuAreaTargetCaptureGenerate
 		/// and can be freed afterwards.
 		/// </summary>
-		public byte* outputDirectory;
+		public byte* OutputDirectory;
 		/// <summary>
 		/// Target name
 		/// The name of the generated Area Target is required to respect the following restrictions:
@@ -2330,7 +2329,7 @@ namespace Evergine.Bindings.Vuforia
 		/// @ref vuAreaTargetCaptureGenerate
 		/// and can be freed afterwards.
 		/// </summary>
-		public byte* targetName;
+		public byte* TargetName;
 		/// <summary>
 		/// Generate authoring files
 		/// If set to VU_TRUE, the following files are generated:
@@ -2345,7 +2344,7 @@ namespace Evergine.Bindings.Vuforia
 		/// or path finding representation for the captured space.
 		/// Default value is VU_TRUE
 		/// </summary>
-		public uint generateAuthoringFiles;
+		public uint GenerateAuthoringFiles;
 		/// <summary>
 		/// Generate Area Target database
 		/// If set to VU_TRUE, the following files are generated:
@@ -2359,7 +2358,7 @@ namespace Evergine.Bindings.Vuforia
 		/// with the Vuforia server.
 		/// Default value is VU_TRUE
 		/// </summary>
-		public uint generateDatabase;
+		public uint GenerateDatabase;
 		/// <summary>
 		/// Generate packages
 		/// If set to VU_TRUE, an Area Target Unity Asset package to use with the Vuforia Engine Extension for Unity is generated.
@@ -2373,7 +2372,7 @@ namespace Evergine.Bindings.Vuforia
 		/// otherwise Area Target generation will fail to start.
 		/// Default value is VU_FALSE.
 		/// </summary>
-		public uint generatePackages;
+		public uint GeneratePackages;
 		/// <summary>
 		/// Optional path to database containing an Area Target to use for alignment of the generated Area Target Capture
 		/// If generation is successful, then the newly generated Area Target will be aligned to the alignment target coordinate system.
@@ -2393,7 +2392,7 @@ namespace Evergine.Bindings.Vuforia
 		/// @ref vuAreaTargetCaptureGenerate
 		/// and can be freed afterwards.
 		/// </summary>
-		public byte* alignmentDatabasePath;
+		public byte* AlignmentDatabasePath;
 		/// <summary>
 		/// Optional name of an Area Target to use for alignment
 		/// If generation is successful, then the newly generated Area Target will be aligned to the alignment target coordinate system.
@@ -2410,26 +2409,26 @@ namespace Evergine.Bindings.Vuforia
 		/// @ref vuAreaTargetCaptureGenerate
 		/// and can be freed afterwards.
 		/// </summary>
-		public byte* alignmentTargetName;
+		public byte* AlignmentTargetName;
 	}
 
 	/// <summary>
 	/// Configuration for creating a Mesh observer using an Area Target Capture instance
 	/// </summary>
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VuMeshAreaTargetCaptureConfig
+	public unsafe partial struct MeshAreaTargetCaptureConfig
 	{
 		/// <summary>
 		/// Pointer to the Area Target Capture instance
 		/// The Area Target Capture instance is the exclusive source of the Mesh observations
 		/// that are reported by a Mesh observer created with this configuration.
 		/// </summary>
-		public VuAreaTargetCapture* capture;
+		public AreaTargetCapture* Capture;
 		/// <summary>
 		/// Observer activation
 		/// The default value is VU_TRUE.
 		/// </summary>
-		public uint activate;
+		public uint Activate;
 	}
 
 	/// <summary>
@@ -2472,7 +2471,7 @@ namespace Evergine.Bindings.Vuforia
 	/// appropriately.
 	/// </summary>
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VuPlatformARCoreInfo
+	public unsafe partial struct PlatformARCoreInfo
 	{
 		/// <summary>
 		/// ARCore session, pointer of type &quot;ArSession&quot;
@@ -2481,7 +2480,7 @@ namespace Evergine.Bindings.Vuforia
 		/// &lt;ArSession
 		/// *&gt;(info.arSession);
 		/// </summary>
-		public void* arSession;
+		public void* ArSession;
 		/// <summary>
 		/// ARCore frame, pointer of type &quot;ArFrame&quot;
 		/// The caller needs to cast the arFrame pointer to the appropriate type as follows:
@@ -2491,14 +2490,14 @@ namespace Evergine.Bindings.Vuforia
 		/// Do not update the ArSession to get the ArFrame, doing so will cause
 		/// Vuforia Engine to enter an undefined state.
 		/// </summary>
-		public void* arFrame;
+		public void* ArFrame;
 	}
 
 	/// <summary>
 	/// iOS-specific platform configuration data structure
 	/// </summary>
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VuPlatformiOSConfig
+	public unsafe partial struct PlatformiOSConfig
 	{
 		/// <summary>
 		/// The view orientation to initialize Engine with. The value is a pointer to a UIInterfaceOrientation instance
@@ -2506,10 +2505,8 @@ namespace Evergine.Bindings.Vuforia
 		/// until
 		/// @ref vuPlatformControllerSetViewOrientation
 		/// is called with the actual value.
-		/// vuPlatformControllerSetViewOrientation
-		/// vuPlatformControllerConvertPlatformViewOrientation
 		/// </summary>
-		public void* interfaceOrientation;
+		public void* InterfaceOrientation;
 		/// <summary>
 		/// App group identifier
 		/// This is required for the app to be able to access the app group&apos;s shared storage location. Supplying a nullptr here (default) will
@@ -2517,7 +2514,7 @@ namespace Evergine.Bindings.Vuforia
 		/// per https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_security_application-groups?language=objc
 		/// The provided string is copied, and can be freed, after the Engine instance has been created.
 		/// </summary>
-		public byte* appGroup;
+		public byte* AppGroup;
 	}
 
 	/// <summary>
@@ -2557,14 +2554,14 @@ namespace Evergine.Bindings.Vuforia
 	/// appropriately.
 	/// </summary>
 	[StructLayout(LayoutKind.Sequential)]
-	public unsafe partial struct VuPlatformARKitInfo
+	public unsafe partial struct PlatformARKitInfo
 	{
 		/// <summary>
 		/// ARKit session, pointer of type &quot;ARSession&quot;
 		/// The caller needs to cast the arSession pointer to the appropriate type as follows:
 		/// ARSession* session = (__bridge ARSession*)info.arSession;
 		/// </summary>
-		public void* arSession;
+		public void* ArSession;
 		/// <summary>
 		/// ARKit frame, pointer of type &quot;ARFrame&quot;
 		/// The caller needs to cast the arFrame pointer to the appropriate type as follows:
@@ -2572,7 +2569,7 @@ namespace Evergine.Bindings.Vuforia
 		/// Alternatively the frame can also be obtained directly from the ARSession,
 		/// using arSession.currentFrame;
 		/// </summary>
-		public void* arFrame;
+		public void* ArFrame;
 	}
 
 }

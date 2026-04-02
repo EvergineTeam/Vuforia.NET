@@ -4,21 +4,21 @@ using System.Runtime.InteropServices;
 
 namespace Evergine.Bindings.Vuforia
 {
-	public static unsafe partial class VuforiaNative
+	public static unsafe partial class Vuforia
 	{
 		/// <summary>
 		/// Get the associated field-of-view of camera intrinsics in degrees
 		/// The function returns a zero vector upon an error.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuVector2F vuCameraIntrinsicsGetFov(VuCameraIntrinsics* intrinsics);
+		[DllImport("VuforiaEngine", EntryPoint = "vuCameraIntrinsicsGetFov", CallingConvention = CallingConvention.StdCall)]
+		public static extern Vector2F CameraIntrinsicsGetFov(CameraIntrinsics* intrinsics);
 
 		/// <summary>
 		/// Get a 3x3 matrix of the camera intrinsics using a pinhole camera model
 		/// The function returns a zero matrix upon an error.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuMatrix33F vuCameraIntrinsicsGetMatrix(VuCameraIntrinsics* intrinsics);
+		[DllImport("VuforiaEngine", EntryPoint = "vuCameraIntrinsicsGetMatrix", CallingConvention = CallingConvention.StdCall)]
+		public static extern Matrix33F CameraIntrinsicsGetMatrix(CameraIntrinsics* intrinsics);
 
 		/// <summary>
 		/// Create a perspective projection matrix from camera intrinsics data that is immediately suitable for rendering in OpenGL
@@ -33,110 +33,110 @@ namespace Evergine.Bindings.Vuforia
 		/// Rotation to apply to the projection matrix (e.g. can be used for baking screen rotation into the projection matrix)
 		/// Projection matrix
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuMatrix44F vuCameraIntrinsicsGetProjectionMatrix(VuCameraIntrinsics* intrinsics, float nearPlane, float farPlane, VuRotation rotation);
+		[DllImport("VuforiaEngine", EntryPoint = "vuCameraIntrinsicsGetProjectionMatrix", CallingConvention = CallingConvention.StdCall)]
+		public static extern Matrix44F CameraIntrinsicsGetProjectionMatrix(CameraIntrinsics* intrinsics, float nearPlane, float farPlane, Rotation rotation);
 
 		/// <summary>
 		/// Get minimum value from axis-aligned bounding box
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuVector3F vuAABBMin(VuAABB* aabb);
+		[DllImport("VuforiaEngine", EntryPoint = "vuAABBMin", CallingConvention = CallingConvention.StdCall)]
+		public static extern Vector3F AABBMin(AABB* aabb);
 
 		/// <summary>
 		/// Get maximum value from axis-aligned bounding box
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuVector3F vuAABBMax(VuAABB* aabb);
+		[DllImport("VuforiaEngine", EntryPoint = "vuAABBMax", CallingConvention = CallingConvention.StdCall)]
+		public static extern Vector3F AABBMax(AABB* aabb);
 
 		/// <summary>
 		/// Create an image pixel format list
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuImagePixelFormatListCreate(VuImagePixelFormatList** list);
+		[DllImport("VuforiaEngine", EntryPoint = "vuImagePixelFormatListCreate", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result ImagePixelFormatListCreate(ImagePixelFormatList** list);
 
 		/// <summary>
 		/// Get number of elements in an image pixel format list
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuImagePixelFormatListGetSize(VuImagePixelFormatList* list, int* listSize);
+		[DllImport("VuforiaEngine", EntryPoint = "vuImagePixelFormatListGetSize", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result ImagePixelFormatListGetSize(ImagePixelFormatList* list, int* listSize);
 
 		/// <summary>
 		/// Get an element in an image pixel format list
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuImagePixelFormatListGetElement(VuImagePixelFormatList* list, int element, VuImagePixelFormat* format);
+		[DllImport("VuforiaEngine", EntryPoint = "vuImagePixelFormatListGetElement", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result ImagePixelFormatListGetElement(ImagePixelFormatList* list, int element, ImagePixelFormat* format);
 
 		/// <summary>
 		/// Destroy an image pixel format list
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuImagePixelFormatListDestroy(VuImagePixelFormatList* list);
+		[DllImport("VuforiaEngine", EntryPoint = "vuImagePixelFormatListDestroy", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result ImagePixelFormatListDestroy(ImagePixelFormatList* list);
 
 		/// <summary>
 		/// Get Image data
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuImageGetImageInfo(VuImage* image, VuImageInfo* imageInfo);
+		[DllImport("VuforiaEngine", EntryPoint = "vuImageGetImageInfo", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result ImageGetImageInfo(Image* image, ImageInfo* imageInfo);
 
 		/// <summary>
 		/// Acquire a new reference to the given image
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuImageAcquireReference(VuImage* image, VuImage** imageOut);
+		[DllImport("VuforiaEngine", EntryPoint = "vuImageAcquireReference", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result ImageAcquireReference(Image* image, Image** imageOut);
 
 		/// <summary>
 		/// Release the given image
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuImageRelease(VuImage* image);
+		[DllImport("VuforiaEngine", EntryPoint = "vuImageRelease", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result ImageRelease(Image* image);
 
 		/// <summary>
 		/// Create an image list
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuImageListCreate(VuImageList** list);
+		[DllImport("VuforiaEngine", EntryPoint = "vuImageListCreate", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result ImageListCreate(ImageList** list);
 
 		/// <summary>
 		/// Get number of elements in an image list
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuImageListGetSize(VuImageList* list, int* numElements);
+		[DllImport("VuforiaEngine", EntryPoint = "vuImageListGetSize", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result ImageListGetSize(ImageList* list, int* numElements);
 
 		/// <summary>
 		/// Get an element in an image list
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuImageListGetElement(VuImageList* list, int element, VuImage** image);
+		[DllImport("VuforiaEngine", EntryPoint = "vuImageListGetElement", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result ImageListGetElement(ImageList* list, int element, Image** image);
 
 		/// <summary>
 		/// Append an element to an image list
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuImageListAppendElement(VuImageList* list, VuImage* image);
+		[DllImport("VuforiaEngine", EntryPoint = "vuImageListAppendElement", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result ImageListAppendElement(ImageList* list, Image* image);
 
 		/// <summary>
 		/// Destroy an image list
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuImageListDestroy(VuImageList* list);
+		[DllImport("VuforiaEngine", EntryPoint = "vuImageListDestroy", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result ImageListDestroy(ImageList* list);
 
 		/// <summary>
 		/// Create a container to hold a list of EngineConfig configuration data
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuEngineConfigSetCreate(VuEngineConfigSet** configSet);
+		[DllImport("VuforiaEngine", EntryPoint = "vuEngineConfigSetCreate", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result EngineConfigSetCreate(EngineConfigSet** configSet);
 
 		/// <summary>
 		/// Destroy a container holding a list of EngineConfig configuration data
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuEngineConfigSetDestroy(VuEngineConfigSet* configSet);
+		[DllImport("VuforiaEngine", EntryPoint = "vuEngineConfigSetDestroy", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result EngineConfigSetDestroy(EngineConfigSet* configSet);
 
 		/// <summary>
 		/// Return the number of elements in the list of EngineConfig configuration data in a container
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuEngineConfigSetGetSize(VuEngineConfigSet* configSet, int* setSize);
+		[DllImport("VuforiaEngine", EntryPoint = "vuEngineConfigSetGetSize", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result EngineConfigSetGetSize(EngineConfigSet* configSet, int* setSize);
 
 		/// <summary>
 		/// Create a Vuforia Engine instance
@@ -208,8 +208,8 @@ namespace Evergine.Bindings.Vuforia
 		/// services and ensure an optimal AR experience on all devices by downloading device-specific Engine settings
 		/// - Perception system permissions: Add &quot;LowLatencyLightwear&quot;, &quot;PcfRead&quot; and &quot;WorldReconstruction&quot; permissions to the manifest.xml
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuEngineCreate(VuEngine** engine, VuEngineConfigSet* configSet, int* errorCode);
+		[DllImport("VuforiaEngine", EntryPoint = "vuEngineCreate", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result EngineCreate(Engine** engine, EngineConfigSet* configSet, int* errorCode);
 
 		/// <summary>
 		/// Destroy a Vuforia Engine instance
@@ -223,8 +223,8 @@ namespace Evergine.Bindings.Vuforia
 		/// API functions to be called reentrant from a callback, i.e. to enter the API again on the same callstack.
 		/// See also section &quot;Callbacks and reentrancy&quot; for more information.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuEngineDestroy(VuEngine* engine);
+		[DllImport("VuforiaEngine", EntryPoint = "vuEngineDestroy", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result EngineDestroy(Engine* engine);
 
 		/// <summary>
 		/// Start a Vuforia Engine instance
@@ -235,8 +235,8 @@ namespace Evergine.Bindings.Vuforia
 		/// Please also see the documentation of the respective Engine features.
 		/// This function will fail if the Engine instance is already running
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuEngineStart(VuEngine* engine);
+		[DllImport("VuforiaEngine", EntryPoint = "vuEngineStart", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result EngineStart(Engine* engine);
 
 		/// <summary>
 		/// Stop a Vuforia Engine instance
@@ -248,134 +248,134 @@ namespace Evergine.Bindings.Vuforia
 		/// API functions to be called reentrant from a callback, i.e. to enter the API again on the same callstack.
 		/// See also section &quot;Callbacks and reentrancy&quot; for more information.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuEngineStop(VuEngine* engine);
+		[DllImport("VuforiaEngine", EntryPoint = "vuEngineStop", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result EngineStop(Engine* engine);
 
 		/// <summary>
 		/// Return VU_TRUE if the given Vuforia Engine instance has been started
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern uint vuEngineIsRunning(VuEngine* engine);
+		[DllImport("VuforiaEngine", EntryPoint = "vuEngineIsRunning", CallingConvention = CallingConvention.StdCall)]
+		public static extern uint EngineIsRunning(Engine* engine);
 
 		/// <summary>
 		/// Get the Vuforia Engine library version information
 		/// A data structure with the Vuforia Engine library version information
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuLibraryVersionInfo vuEngineGetLibraryVersionInfo();
+		[DllImport("VuforiaEngine", EntryPoint = "vuEngineGetLibraryVersionInfo", CallingConvention = CallingConvention.StdCall)]
+		public static extern LibraryVersionInfo EngineGetLibraryVersionInfo();
 
 		/// <summary>
 		/// Get a unique ID associated with an observer
 		/// The ID is a positive number and is unique within a Vuforia session. It is generated at
 		/// runtime and is not persistent across Vuforia sessions
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern int vuObserverGetId(VuObserver* observer);
+		[DllImport("VuforiaEngine", EntryPoint = "vuObserverGetId", CallingConvention = CallingConvention.StdCall)]
+		public static extern int ObserverGetId(Observer* observer);
 
 		/// <summary>
 		/// Get the type of an observer
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuObserverGetType(VuObserver* observer, int* observerType);
+		[DllImport("VuforiaEngine", EntryPoint = "vuObserverGetType", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result ObserverGetType(Observer* observer, int* observerType);
 
 		/// <summary>
 		/// Check the type of an observer
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern uint vuObserverIsType(VuObserver* observer, int observerType);
+		[DllImport("VuforiaEngine", EntryPoint = "vuObserverIsType", CallingConvention = CallingConvention.StdCall)]
+		public static extern uint ObserverIsType(Observer* observer, int observerType);
 
 		/// <summary>
 		/// Create an observer list
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuObserverListCreate(VuObserverList** list);
+		[DllImport("VuforiaEngine", EntryPoint = "vuObserverListCreate", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result ObserverListCreate(ObserverList** list);
 
 		/// <summary>
 		/// Get number of elements in an observer list
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuObserverListGetSize(VuObserverList* list, int* listSize);
+		[DllImport("VuforiaEngine", EntryPoint = "vuObserverListGetSize", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result ObserverListGetSize(ObserverList* list, int* listSize);
 
 		/// <summary>
 		/// Get an element in an observer list
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuObserverListGetElement(VuObserverList* list, int element, VuObserver** observer);
+		[DllImport("VuforiaEngine", EntryPoint = "vuObserverListGetElement", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result ObserverListGetElement(ObserverList* list, int element, Observer** observer);
 
 		/// <summary>
 		/// Destroy an observer list
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuObserverListDestroy(VuObserverList* list);
+		[DllImport("VuforiaEngine", EntryPoint = "vuObserverListDestroy", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result ObserverListDestroy(ObserverList* list);
 
 		/// <summary>
 		/// Get an observer from Vuforia Engine using its unique ID
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuEngineGetObserver(VuEngine* engine, int observerId, VuObserver** observer);
+		[DllImport("VuforiaEngine", EntryPoint = "vuEngineGetObserver", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result EngineGetObserver(Engine* engine, int observerId, Observer** observer);
 
 		/// <summary>
 		/// Get all observers from Vuforia Engine
 		/// Any previous content of the given list will be removed if the operation is successful.
 		/// On failure the list will not be modified.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuEngineGetObservers(VuEngine* engine, VuObserverList* observerList);
+		[DllImport("VuforiaEngine", EntryPoint = "vuEngineGetObservers", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result EngineGetObservers(Engine* engine, ObserverList* observerList);
 
 		/// <summary>
 		/// Destroy an observer
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuObserverDestroy(VuObserver* observer);
+		[DllImport("VuforiaEngine", EntryPoint = "vuObserverDestroy", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result ObserverDestroy(Observer* observer);
 
 		/// <summary>
 		/// Destroy multiple observers
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuObserversDestroy(VuObserverList* observerList);
+		[DllImport("VuforiaEngine", EntryPoint = "vuObserversDestroy", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result ObserversDestroy(ObserverList* observerList);
 
 		/// <summary>
 		/// Destroy all observers in Vuforia Engine
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuEngineDestroyObservers(VuEngine* engine);
+		[DllImport("VuforiaEngine", EntryPoint = "vuEngineDestroyObservers", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result EngineDestroyObservers(Engine* engine);
 
 		/// <summary>
 		/// Activate an observer
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuObserverActivate(VuObserver* observer);
+		[DllImport("VuforiaEngine", EntryPoint = "vuObserverActivate", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result ObserverActivate(Observer* observer);
 
 		/// <summary>
 		/// Deactivate an observer
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuObserverDeactivate(VuObserver* observer);
+		[DllImport("VuforiaEngine", EntryPoint = "vuObserverDeactivate", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result ObserverDeactivate(Observer* observer);
 
 		/// <summary>
 		/// Check whether an observer is activated
 		/// VU_TRUE if the observer is activated, VU_FALSE if the observer is not activated
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern uint vuObserverIsActivated(VuObserver* observer);
+		[DllImport("VuforiaEngine", EntryPoint = "vuObserverIsActivated", CallingConvention = CallingConvention.StdCall)]
+		public static extern uint ObserverIsActivated(Observer* observer);
 
 		/// <summary>
 		/// Get the type of an observation
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuObservationGetType(VuObservation* observation, int* observationType);
+		[DllImport("VuforiaEngine", EntryPoint = "vuObservationGetType", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result ObservationGetType(Observation* observation, int* observationType);
 
 		/// <summary>
 		/// Check the type of an observation
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern uint vuObservationIsType(VuObservation* observation, int observationType);
+		[DllImport("VuforiaEngine", EntryPoint = "vuObservationIsType", CallingConvention = CallingConvention.StdCall)]
+		public static extern uint ObservationIsType(Observation* observation, int observationType);
 
 		/// <summary>
 		/// Get ID of the observer which has created given observation
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern int vuObservationGetObserverId(VuObservation* observation);
+		[DllImport("VuforiaEngine", EntryPoint = "vuObservationGetObserverId", CallingConvention = CallingConvention.StdCall)]
+		public static extern int ObservationGetObserverId(Observation* observation);
 
 		/// <summary>
 		/// Check whether an observation contains pose information
@@ -391,8 +391,8 @@ namespace Evergine.Bindings.Vuforia
 		/// @ref VU_FALSE.
 		/// vuStateGetObservationsWithPoseInfo to retrieve all observations from the State that contain pose information.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern uint vuObservationHasPoseInfo(VuObservation* observation);
+		[DllImport("VuforiaEngine", EntryPoint = "vuObservationHasPoseInfo", CallingConvention = CallingConvention.StdCall)]
+		public static extern uint ObservationHasPoseInfo(Observation* observation);
 
 		/// <summary>
 		/// Get pose information associated to an observation
@@ -404,32 +404,32 @@ namespace Evergine.Bindings.Vuforia
 		/// provides pose information.
 		/// vuStateGetObservationsWithPoseInfo to retrieve all observations from the State that contain pose information.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuObservationGetPoseInfo(VuObservation* observation, VuPoseInfo* poseInfo);
+		[DllImport("VuforiaEngine", EntryPoint = "vuObservationGetPoseInfo", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result ObservationGetPoseInfo(Observation* observation, PoseInfo* poseInfo);
 
 		/// <summary>
 		/// Create an observation list
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuObservationListCreate(VuObservationList** list);
+		[DllImport("VuforiaEngine", EntryPoint = "vuObservationListCreate", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result ObservationListCreate(ObservationList** list);
 
 		/// <summary>
 		/// Get number of elements in an observation list
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuObservationListGetSize(VuObservationList* list, int* listSize);
+		[DllImport("VuforiaEngine", EntryPoint = "vuObservationListGetSize", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result ObservationListGetSize(ObservationList* list, int* listSize);
 
 		/// <summary>
 		/// Get an element in an observation list
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuObservationListGetElement(VuObservationList* list, int element, VuObservation** observation);
+		[DllImport("VuforiaEngine", EntryPoint = "vuObservationListGetElement", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result ObservationListGetElement(ObservationList* list, int element, Observation** observation);
 
 		/// <summary>
 		/// Destroy an observation list
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuObservationListDestroy(VuObservationList* list);
+		[DllImport("VuforiaEngine", EntryPoint = "vuObservationListDestroy", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result ObservationListDestroy(ObservationList* list);
 
 		/// <summary>
 		/// Return the latest Vuforia State from Vuforia Engine
@@ -439,22 +439,22 @@ namespace Evergine.Bindings.Vuforia
 		/// The state does not contain any camera frame or render state data if it is acquired
 		/// after calling vuEngineStart() but before the first camera frame is retrieved by Vuforia.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuEngineAcquireLatestState(VuEngine* engine, VuState** state);
+		[DllImport("VuforiaEngine", EntryPoint = "vuEngineAcquireLatestState", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result EngineAcquireLatestState(Engine* engine, State** state);
 
 		/// <summary>
 		/// Release the given state
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuStateRelease(VuState* state);
+		[DllImport("VuforiaEngine", EntryPoint = "vuStateRelease", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result StateRelease(State* state);
 
 		/// <summary>
 		/// Acquire a new reference to the given state
 		/// The acquired state reference must be released by calling vuStateRelease() when
 		/// no longer needed to avoid leaking memory.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuStateAcquireReference(VuState* state, VuState** stateOut);
+		[DllImport("VuforiaEngine", EntryPoint = "vuStateAcquireReference", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result StateAcquireReference(State* state, State** stateOut);
 
 		/// <summary>
 		/// Register a state handler to get Vuforia State updates
@@ -469,8 +469,8 @@ namespace Evergine.Bindings.Vuforia
 		/// The handler for receiving state updates
 		/// The client data to pass with the state updates
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuEngineRegisterStateHandler(VuEngine* engine, IntPtr handler, void* clientData);
+		[DllImport("VuforiaEngine", EntryPoint = "vuEngineRegisterStateHandler", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result EngineRegisterStateHandler(Engine* engine, IntPtr handler, void* clientData);
 
 		/// <summary>
 		/// Get all observations from the state
@@ -478,8 +478,8 @@ namespace Evergine.Bindings.Vuforia
 		/// On failure the list will not be modified.
 		/// The content of the list is bound to the lifetime of the state.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuStateGetObservations(VuState* state, VuObservationList* list);
+		[DllImport("VuforiaEngine", EntryPoint = "vuStateGetObservations", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result StateGetObservations(State* state, ObservationList* list);
 
 		/// <summary>
 		/// Get all observations from the state that contain pose information
@@ -490,8 +490,8 @@ namespace Evergine.Bindings.Vuforia
 		/// On failure the list will not be modified.
 		/// The content of the list is bound to the lifetime of the state.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuStateGetObservationsWithPoseInfo(VuState* state, VuObservationList* list);
+		[DllImport("VuforiaEngine", EntryPoint = "vuStateGetObservationsWithPoseInfo", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result StateGetObservationsWithPoseInfo(State* state, ObservationList* list);
 
 		/// <summary>
 		/// Get all observations from the state that have been created by a given observer.
@@ -499,14 +499,14 @@ namespace Evergine.Bindings.Vuforia
 		/// On failure the list will not be modified.
 		/// The content of the list is bound to the lifetime of the state.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuStateGetObservationsByObserver(VuState* state, VuObserver* observer, VuObservationList* list);
+		[DllImport("VuforiaEngine", EntryPoint = "vuStateGetObservationsByObserver", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result StateGetObservationsByObserver(State* state, Observer* observer, ObservationList* list);
 
 		/// <summary>
 		/// Get the camera intrinsics from the state
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuStateGetCameraIntrinsics(VuState* state, VuCameraIntrinsics* cameraIntrinsics);
+		[DllImport("VuforiaEngine", EntryPoint = "vuStateGetCameraIntrinsics", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result StateGetCameraIntrinsics(State* state, CameraIntrinsics* cameraIntrinsics);
 
 		/// <summary>
 		/// Return true if the state contains camera frame data
@@ -514,8 +514,8 @@ namespace Evergine.Bindings.Vuforia
 		/// vuEngineStart() but before the first camera frame is retrieved by Vuforia. There is always a
 		/// valid camera frame when using a VuStateHandler callback
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern uint vuStateHasCameraFrame(VuState* state);
+		[DllImport("VuforiaEngine", EntryPoint = "vuStateHasCameraFrame", CallingConvention = CallingConvention.StdCall)]
+		public static extern uint StateHasCameraFrame(State* state);
 
 		/// <summary>
 		/// Get the camera frame from the state
@@ -524,20 +524,20 @@ namespace Evergine.Bindings.Vuforia
 		/// Vuforia.
 		/// The lifetime of the camera frame is bound to the lifetime of the state.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuStateGetCameraFrame(VuState* state, VuCameraFrame** cameraFrame);
+		[DllImport("VuforiaEngine", EntryPoint = "vuStateGetCameraFrame", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result StateGetCameraFrame(State* state, CameraFrame** cameraFrame);
 
 		/// <summary>
 		/// Get index from a camera frame
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuCameraFrameGetIndex(VuCameraFrame* cameraFrame, long* index);
+		[DllImport("VuforiaEngine", EntryPoint = "vuCameraFrameGetIndex", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result CameraFrameGetIndex(CameraFrame* cameraFrame, long* index);
 
 		/// <summary>
 		/// Get timestamp from a camera frame
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuCameraFrameGetTimestamp(VuCameraFrame* cameraFrame, long* timestamp);
+		[DllImport("VuforiaEngine", EntryPoint = "vuCameraFrameGetTimestamp", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result CameraFrameGetTimestamp(CameraFrame* cameraFrame, long* timestamp);
 
 		/// <summary>
 		/// Get camera image list from a camera frame
@@ -545,8 +545,8 @@ namespace Evergine.Bindings.Vuforia
 		/// On failure the list will not be modified.
 		/// The content of the list is bound to the lifetime of the camera frame.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuCameraFrameGetImages(VuCameraFrame* cameraFrame, VuImageList* list);
+		[DllImport("VuforiaEngine", EntryPoint = "vuCameraFrameGetImages", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result CameraFrameGetImages(CameraFrame* cameraFrame, ImageList* list);
 
 		/// <summary>
 		/// Return
@@ -564,8 +564,8 @@ namespace Evergine.Bindings.Vuforia
 		/// callback.
 		/// \note This function is part of a feature in beta and may change from release to release without notice.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern uint vuStateHasDefaultDepthFrame(VuState* state);
+		[DllImport("VuforiaEngine", EntryPoint = "vuStateHasDefaultDepthFrame", CallingConvention = CallingConvention.StdCall)]
+		public static extern uint StateHasDefaultDepthFrame(State* state);
 
 		/// <summary>
 		/// Get the default depth frame (as used by Vuforia Engine) from the state
@@ -585,8 +585,8 @@ namespace Evergine.Bindings.Vuforia
 		/// retrieved by Vuforia Engine.
 		/// \note This function is part of a feature in beta and may change from release to release without notice.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuStateGetDefaultDepthFrame(VuState* state, VuDepthFrame** depthFrame);
+		[DllImport("VuforiaEngine", EntryPoint = "vuStateGetDefaultDepthFrame", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result StateGetDefaultDepthFrame(State* state, DepthFrame** depthFrame);
 
 		/// <summary>
 		/// Get the depth map image from the depth frame
@@ -597,8 +597,8 @@ namespace Evergine.Bindings.Vuforia
 		/// @ref vuImageRelease.
 		/// \note This function is part of a feature in beta and may change from release to release without notice.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuDepthFrameGetDepthMap(VuDepthFrame* depthFrame, VuImage** depthMap);
+		[DllImport("VuforiaEngine", EntryPoint = "vuDepthFrameGetDepthMap", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result DepthFrameGetDepthMap(DepthFrame* depthFrame, Image** depthMap);
 
 		/// <summary>
 		/// Get the confidence map image from the depth frame
@@ -609,8 +609,8 @@ namespace Evergine.Bindings.Vuforia
 		/// @ref vuImageRelease.
 		/// \note This function is part of a feature in beta and may change from release to release without notice.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuDepthFrameGetConfidenceMap(VuDepthFrame* depthFrame, VuImage** confidenceMap);
+		[DllImport("VuforiaEngine", EntryPoint = "vuDepthFrameGetConfidenceMap", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result DepthFrameGetConfidenceMap(DepthFrame* depthFrame, Image** confidenceMap);
 
 		/// <summary>
 		/// Get the render state from the Vuforia state
@@ -626,456 +626,456 @@ namespace Evergine.Bindings.Vuforia
 		/// for details.
 		/// VU_SUCCESS if the render state could be retrieved, VU_FAILED otherwise
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuStateGetRenderState(VuState* state, VuRenderState* renderState);
+		[DllImport("VuforiaEngine", EntryPoint = "vuStateGetRenderState", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result StateGetRenderState(State* state, RenderState* renderState);
 
 		/// <summary>
 		/// Create a database target info list
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuDatabaseTargetInfoListCreate(VuDatabaseTargetInfoList** list);
+		[DllImport("VuforiaEngine", EntryPoint = "vuDatabaseTargetInfoListCreate", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result DatabaseTargetInfoListCreate(DatabaseTargetInfoList** list);
 
 		/// <summary>
 		/// Get number of elements in database target info list
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuDatabaseTargetInfoListGetSize(VuDatabaseTargetInfoList* list, int* listSize);
+		[DllImport("VuforiaEngine", EntryPoint = "vuDatabaseTargetInfoListGetSize", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result DatabaseTargetInfoListGetSize(DatabaseTargetInfoList* list, int* listSize);
 
 		/// <summary>
 		/// Get an element in a database target info list
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuDatabaseTargetInfoListGetElement(VuDatabaseTargetInfoList* list, int element, VuDatabaseTargetInfo* targetInfo);
+		[DllImport("VuforiaEngine", EntryPoint = "vuDatabaseTargetInfoListGetElement", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result DatabaseTargetInfoListGetElement(DatabaseTargetInfoList* list, int element, DatabaseTargetInfo* targetInfo);
 
 		/// <summary>
 		/// Destroy a database target info list
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuDatabaseTargetInfoListDestroy(VuDatabaseTargetInfoList* list);
+		[DllImport("VuforiaEngine", EntryPoint = "vuDatabaseTargetInfoListDestroy", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result DatabaseTargetInfoListDestroy(DatabaseTargetInfoList* list);
 
 		/// <summary>
 		/// Extract info on all targets from a database from which observers can be created
 		/// Note that loading the database may take a significant amount of time, it is therefore recommended that this method is not called on
 		/// the main/UI thread.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuEngineGetDatabaseTargetInfo(VuEngine* engine, [MarshalAs(UnmanagedType.LPStr)] string databasePath, VuDatabaseTargetInfoList* targetInfos, VuDatabaseTargetInfoError* errorCode);
+		[DllImport("VuforiaEngine", EntryPoint = "vuEngineGetDatabaseTargetInfo", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result EngineGetDatabaseTargetInfo(Engine* engine, [MarshalAs(UnmanagedType.LPStr)] string databasePath, DatabaseTargetInfoList* targetInfos, DatabaseTargetInfoError* errorCode);
 
 		/// <summary>
 		/// Get a 2D zero vector (0,0)
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuVector2F vuZeroVector2F();
+		[DllImport("VuforiaEngine", EntryPoint = "vuZeroVector2F", CallingConvention = CallingConvention.StdCall)]
+		public static extern Vector2F ZeroVector2F();
 
 		/// <summary>
 		/// Get a 2D one vector (1,1)
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuVector2F vuOneVector2F();
+		[DllImport("VuforiaEngine", EntryPoint = "vuOneVector2F", CallingConvention = CallingConvention.StdCall)]
+		public static extern Vector2F OneVector2F();
 
 		/// <summary>
 		/// Negate a 2D vector
 		/// result = -v
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuVector2F vuVector2FNegate(VuVector2F v);
+		[DllImport("VuforiaEngine", EntryPoint = "vuVector2FNegate", CallingConvention = CallingConvention.StdCall)]
+		public static extern Vector2F Vector2FNegate(Vector2F v);
 
 		/// <summary>
 		/// Get the absolute vector of a 2D vector
 		/// result = |v|
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuVector2F vuVector2FAbs(VuVector2F v);
+		[DllImport("VuforiaEngine", EntryPoint = "vuVector2FAbs", CallingConvention = CallingConvention.StdCall)]
+		public static extern Vector2F Vector2FAbs(Vector2F v);
 
 		/// <summary>
 		/// Compute the Euclidian norm of a 2D vector
 		/// result = ||v||
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern float vuVector2FMag(VuVector2F v);
+		[DllImport("VuforiaEngine", EntryPoint = "vuVector2FMag", CallingConvention = CallingConvention.StdCall)]
+		public static extern float Vector2FMag(Vector2F v);
 
 		/// <summary>
 		/// Compute the Squared Euclidian norm of a 2D vector
 		/// result = ||v||^2
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern float vuVector2FMagSquared(VuVector2F v);
+		[DllImport("VuforiaEngine", EntryPoint = "vuVector2FMagSquared", CallingConvention = CallingConvention.StdCall)]
+		public static extern float Vector2FMagSquared(Vector2F v);
 
 		/// <summary>
 		/// Get a normalized 2D vector
 		/// result = v/||v||
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuVector2F vuVector2FNormalize(VuVector2F v);
+		[DllImport("VuforiaEngine", EntryPoint = "vuVector2FNormalize", CallingConvention = CallingConvention.StdCall)]
+		public static extern Vector2F Vector2FNormalize(Vector2F v);
 
 		/// <summary>
 		/// Multiply a 2D vector by a scalar value
 		/// result = v * s
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuVector2F vuVector2FScale(VuVector2F v, float s);
+		[DllImport("VuforiaEngine", EntryPoint = "vuVector2FScale", CallingConvention = CallingConvention.StdCall)]
+		public static extern Vector2F Vector2FScale(Vector2F v, float s);
 
 		/// <summary>
 		/// Get the sum of two 2D vectors
 		/// result = v1 + v2
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuVector2F vuVector2FAdd(VuVector2F v1, VuVector2F v2);
+		[DllImport("VuforiaEngine", EntryPoint = "vuVector2FAdd", CallingConvention = CallingConvention.StdCall)]
+		public static extern Vector2F Vector2FAdd(Vector2F v1, Vector2F v2);
 
 		/// <summary>
 		/// Get the difference of two 2D vectors
 		/// result = v1 - v2
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuVector2F vuVector2FSub(VuVector2F v1, VuVector2F v2);
+		[DllImport("VuforiaEngine", EntryPoint = "vuVector2FSub", CallingConvention = CallingConvention.StdCall)]
+		public static extern Vector2F Vector2FSub(Vector2F v1, Vector2F v2);
 
 		/// <summary>
 		/// Compute the angle between two 2D vectors in degrees
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern float vuVector2FAngle(VuVector2F v1, VuVector2F v2);
+		[DllImport("VuforiaEngine", EntryPoint = "vuVector2FAngle", CallingConvention = CallingConvention.StdCall)]
+		public static extern float Vector2FAngle(Vector2F v1, Vector2F v2);
 
 		/// <summary>
 		/// Compute the Euclidean distance between two 2D vectors
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern float vuVector2FDist(VuVector2F v1, VuVector2F v2);
+		[DllImport("VuforiaEngine", EntryPoint = "vuVector2FDist", CallingConvention = CallingConvention.StdCall)]
+		public static extern float Vector2FDist(Vector2F v1, Vector2F v2);
 
 		/// <summary>
 		/// Compute the linear interpolation between two 2D vectors
 		/// result = v1*t+(1-t)*v2
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuVector2F vuVector2FLerp(VuVector2F v1, VuVector2F v2, float t);
+		[DllImport("VuforiaEngine", EntryPoint = "vuVector2FLerp", CallingConvention = CallingConvention.StdCall)]
+		public static extern Vector2F Vector2FLerp(Vector2F v1, Vector2F v2, float t);
 
 		/// <summary>
 		/// Compute the dot product of two 2D vectors
 		/// result = v1.v2
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern float vuVector2FDot(VuVector2F v1, VuVector2F v2);
+		[DllImport("VuforiaEngine", EntryPoint = "vuVector2FDot", CallingConvention = CallingConvention.StdCall)]
+		public static extern float Vector2FDot(Vector2F v1, Vector2F v2);
 
 		/// <summary>
 		/// Get a 3D zero vector (0,0,0)
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuVector3F vuZeroVector3F();
+		[DllImport("VuforiaEngine", EntryPoint = "vuZeroVector3F", CallingConvention = CallingConvention.StdCall)]
+		public static extern Vector3F ZeroVector3F();
 
 		/// <summary>
 		/// Get a 3D one vector (1,1,1)
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuVector3F vuOneVector3F();
+		[DllImport("VuforiaEngine", EntryPoint = "vuOneVector3F", CallingConvention = CallingConvention.StdCall)]
+		public static extern Vector3F OneVector3F();
 
 		/// <summary>
 		/// Convert a 2D vector to a 3D vector (insert 0 as the last component)
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuVector3F vuVector2FToVector3F(VuVector2F v);
+		[DllImport("VuforiaEngine", EntryPoint = "vuVector2FToVector3F", CallingConvention = CallingConvention.StdCall)]
+		public static extern Vector3F Vector2FToVector3F(Vector2F v);
 
 		/// <summary>
 		/// Negate a 3D vector
 		/// result = -v
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuVector3F vuVector3FNegate(VuVector3F v);
+		[DllImport("VuforiaEngine", EntryPoint = "vuVector3FNegate", CallingConvention = CallingConvention.StdCall)]
+		public static extern Vector3F Vector3FNegate(Vector3F v);
 
 		/// <summary>
 		/// Get the absolute vector of a 3D vector
 		/// result = |v|
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuVector3F vuVector3FAbs(VuVector3F v);
+		[DllImport("VuforiaEngine", EntryPoint = "vuVector3FAbs", CallingConvention = CallingConvention.StdCall)]
+		public static extern Vector3F Vector3FAbs(Vector3F v);
 
 		/// <summary>
 		/// Compute the Euclidian norm of a 3D vector
 		/// result = ||v||
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern float vuVector3FMag(VuVector3F v);
+		[DllImport("VuforiaEngine", EntryPoint = "vuVector3FMag", CallingConvention = CallingConvention.StdCall)]
+		public static extern float Vector3FMag(Vector3F v);
 
 		/// <summary>
 		/// Compute the Squared Euclidian norm of a 3D vector
 		/// result = ||v||^2
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern float vuVector3FMagSquared(VuVector3F v);
+		[DllImport("VuforiaEngine", EntryPoint = "vuVector3FMagSquared", CallingConvention = CallingConvention.StdCall)]
+		public static extern float Vector3FMagSquared(Vector3F v);
 
 		/// <summary>
 		/// Get a normalized 3D vector
 		/// result = v/||v||
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuVector3F vuVector3FNormalize(VuVector3F v);
+		[DllImport("VuforiaEngine", EntryPoint = "vuVector3FNormalize", CallingConvention = CallingConvention.StdCall)]
+		public static extern Vector3F Vector3FNormalize(Vector3F v);
 
 		/// <summary>
 		/// Multiply a 3D vector by a scalar value
 		/// result = v * s
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuVector3F vuVector3FScale(VuVector3F v, float s);
+		[DllImport("VuforiaEngine", EntryPoint = "vuVector3FScale", CallingConvention = CallingConvention.StdCall)]
+		public static extern Vector3F Vector3FScale(Vector3F v, float s);
 
 		/// <summary>
 		/// Get the sum of two 3D vectors
 		/// result = v1 + v2
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuVector3F vuVector3FAdd(VuVector3F v1, VuVector3F v2);
+		[DllImport("VuforiaEngine", EntryPoint = "vuVector3FAdd", CallingConvention = CallingConvention.StdCall)]
+		public static extern Vector3F Vector3FAdd(Vector3F v1, Vector3F v2);
 
 		/// <summary>
 		/// Get the difference of two 3D vectors
 		/// result = v1 - v2
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuVector3F vuVector3FSub(VuVector3F v1, VuVector3F v2);
+		[DllImport("VuforiaEngine", EntryPoint = "vuVector3FSub", CallingConvention = CallingConvention.StdCall)]
+		public static extern Vector3F Vector3FSub(Vector3F v1, Vector3F v2);
 
 		/// <summary>
 		/// Compute the angle between two 3D vectors in degrees
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern float vuVector3FAngle(VuVector3F v1, VuVector3F v2);
+		[DllImport("VuforiaEngine", EntryPoint = "vuVector3FAngle", CallingConvention = CallingConvention.StdCall)]
+		public static extern float Vector3FAngle(Vector3F v1, Vector3F v2);
 
 		/// <summary>
 		/// Compute the Euclidean distance between two 3D vectors
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern float vuVector3FDist(VuVector3F v1, VuVector3F v2);
+		[DllImport("VuforiaEngine", EntryPoint = "vuVector3FDist", CallingConvention = CallingConvention.StdCall)]
+		public static extern float Vector3FDist(Vector3F v1, Vector3F v2);
 
 		/// <summary>
 		/// Compute the linear interpolation between two 3D vectors
 		/// result = v1*t+(1-t)*v2
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuVector3F vuVector3FLerp(VuVector3F v1, VuVector3F v2, float t);
+		[DllImport("VuforiaEngine", EntryPoint = "vuVector3FLerp", CallingConvention = CallingConvention.StdCall)]
+		public static extern Vector3F Vector3FLerp(Vector3F v1, Vector3F v2, float t);
 
 		/// <summary>
 		/// Compute the dot product of two 3D vectors
 		/// result = v1.v2
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern float vuVector3FDot(VuVector3F v1, VuVector3F v2);
+		[DllImport("VuforiaEngine", EntryPoint = "vuVector3FDot", CallingConvention = CallingConvention.StdCall)]
+		public static extern float Vector3FDot(Vector3F v1, Vector3F v2);
 
 		/// <summary>
 		/// Compute the cross product of two 3D vectors
 		/// result = v1 x v2
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuVector3F vuVector3FCross(VuVector3F v1, VuVector3F v2);
+		[DllImport("VuforiaEngine", EntryPoint = "vuVector3FCross", CallingConvention = CallingConvention.StdCall)]
+		public static extern Vector3F Vector3FCross(Vector3F v1, Vector3F v2);
 
 		/// <summary>
 		/// Transform a 3D vector by a 4x4 matrix
 		/// result = m * v (pre-multiply)
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuVector3F vuVector3FTransform(VuMatrix44F m, VuVector3F v);
+		[DllImport("VuforiaEngine", EntryPoint = "vuVector3FTransform", CallingConvention = CallingConvention.StdCall)]
+		public static extern Vector3F Vector3FTransform(Matrix44F m, Vector3F v);
 
 		/// <summary>
 		/// Transform a 3D vector by a 4x4 matrix
 		/// result = v * m (post-multiply)
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuVector3F vuVector3FTransformR(VuVector3F v, VuMatrix44F m);
+		[DllImport("VuforiaEngine", EntryPoint = "vuVector3FTransformR", CallingConvention = CallingConvention.StdCall)]
+		public static extern Vector3F Vector3FTransformR(Vector3F v, Matrix44F m);
 
 		/// <summary>
 		/// Transform a normal by a 4x4 matrix (rotation only)
 		/// result = m * v (pre-multiply)
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuVector3F vuVector3FTransformNormal(VuMatrix44F m, VuVector3F v);
+		[DllImport("VuforiaEngine", EntryPoint = "vuVector3FTransformNormal", CallingConvention = CallingConvention.StdCall)]
+		public static extern Vector3F Vector3FTransformNormal(Matrix44F m, Vector3F v);
 
 		/// <summary>
 		/// Transform a normal by a 4x4 matrix (rotation only)
 		/// result = v * m (post-multiply)
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuVector3F vuVector3FTransformNormalR(VuVector3F v, VuMatrix44F m);
+		[DllImport("VuforiaEngine", EntryPoint = "vuVector3FTransformNormalR", CallingConvention = CallingConvention.StdCall)]
+		public static extern Vector3F Vector3FTransformNormalR(Vector3F v, Matrix44F m);
 
 		/// <summary>
 		/// Get a 4D zero vector (0,0,0,0)
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuVector4F vuZeroVector4F();
+		[DllImport("VuforiaEngine", EntryPoint = "vuZeroVector4F", CallingConvention = CallingConvention.StdCall)]
+		public static extern Vector4F ZeroVector4F();
 
 		/// <summary>
 		/// Get a 4D one vector (1,1,1,1)
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuVector4F vuOneVector4F();
+		[DllImport("VuforiaEngine", EntryPoint = "vuOneVector4F", CallingConvention = CallingConvention.StdCall)]
+		public static extern Vector4F OneVector4F();
 
 		/// <summary>
 		/// Negate a 4D vector
 		/// result = -v
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuVector4F vuVector4FNegate(VuVector4F v);
+		[DllImport("VuforiaEngine", EntryPoint = "vuVector4FNegate", CallingConvention = CallingConvention.StdCall)]
+		public static extern Vector4F Vector4FNegate(Vector4F v);
 
 		/// <summary>
 		/// Get the absolute vector of a 4D vector
 		/// result = |v|
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuVector4F vuVector4FAbs(VuVector4F v);
+		[DllImport("VuforiaEngine", EntryPoint = "vuVector4FAbs", CallingConvention = CallingConvention.StdCall)]
+		public static extern Vector4F Vector4FAbs(Vector4F v);
 
 		/// <summary>
 		/// Compute the Euclidian norm of a 4D vector
 		/// result = ||v||
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern float vuVector4FMag(VuVector4F v);
+		[DllImport("VuforiaEngine", EntryPoint = "vuVector4FMag", CallingConvention = CallingConvention.StdCall)]
+		public static extern float Vector4FMag(Vector4F v);
 
 		/// <summary>
 		/// Compute the Squared Euclidian norm of a 4D vector
 		/// result = ||v||^2
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern float vuVector4FMagSquared(VuVector4F v);
+		[DllImport("VuforiaEngine", EntryPoint = "vuVector4FMagSquared", CallingConvention = CallingConvention.StdCall)]
+		public static extern float Vector4FMagSquared(Vector4F v);
 
 		/// <summary>
 		/// Get a normalized 4D vector
 		/// result = v/||v||
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuVector4F vuVector4FNormalize(VuVector4F v);
+		[DllImport("VuforiaEngine", EntryPoint = "vuVector4FNormalize", CallingConvention = CallingConvention.StdCall)]
+		public static extern Vector4F Vector4FNormalize(Vector4F v);
 
 		/// <summary>
 		/// Multiply a 4D vector by a scalar value
 		/// result = v * s
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuVector4F vuVector4FScale(VuVector4F v, float s);
+		[DllImport("VuforiaEngine", EntryPoint = "vuVector4FScale", CallingConvention = CallingConvention.StdCall)]
+		public static extern Vector4F Vector4FScale(Vector4F v, float s);
 
 		/// <summary>
 		/// Get the sum of two 4D vectors
 		/// result = v1 + v2
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuVector4F vuVector4FAdd(VuVector4F v1, VuVector4F v2);
+		[DllImport("VuforiaEngine", EntryPoint = "vuVector4FAdd", CallingConvention = CallingConvention.StdCall)]
+		public static extern Vector4F Vector4FAdd(Vector4F v1, Vector4F v2);
 
 		/// <summary>
 		/// Get the difference of two 4D vectors
 		/// result = v1 - v2
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuVector4F vuVector4FSub(VuVector4F v1, VuVector4F v2);
+		[DllImport("VuforiaEngine", EntryPoint = "vuVector4FSub", CallingConvention = CallingConvention.StdCall)]
+		public static extern Vector4F Vector4FSub(Vector4F v1, Vector4F v2);
 
 		/// <summary>
 		/// Compute the Euclidean distance between two 4D vectors
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern float vuVector4FDist(VuVector4F v1, VuVector4F v2);
+		[DllImport("VuforiaEngine", EntryPoint = "vuVector4FDist", CallingConvention = CallingConvention.StdCall)]
+		public static extern float Vector4FDist(Vector4F v1, Vector4F v2);
 
 		/// <summary>
 		/// Compute the linear interpolation between two 4D vectors
 		/// result = v1*t+(1-t)*v2
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuVector4F vuVector4FLerp(VuVector4F v1, VuVector4F v2, float t);
+		[DllImport("VuforiaEngine", EntryPoint = "vuVector4FLerp", CallingConvention = CallingConvention.StdCall)]
+		public static extern Vector4F Vector4FLerp(Vector4F v1, Vector4F v2, float t);
 
 		/// <summary>
 		/// Compute the dot product of two 4D vectors
 		/// result = v1.v2
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern float vuVector4FDot(VuVector4F v1, VuVector4F v2);
+		[DllImport("VuforiaEngine", EntryPoint = "vuVector4FDot", CallingConvention = CallingConvention.StdCall)]
+		public static extern float Vector4FDot(Vector4F v1, Vector4F v2);
 
 		/// <summary>
 		/// Transform a 4D vector by a 4x4 matrix
 		/// result = m * v (pre-multiply)
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuVector4F vuVector4FTransform(VuMatrix44F m, VuVector4F v);
+		[DllImport("VuforiaEngine", EntryPoint = "vuVector4FTransform", CallingConvention = CallingConvention.StdCall)]
+		public static extern Vector4F Vector4FTransform(Matrix44F m, Vector4F v);
 
 		/// <summary>
 		/// Transform a 4D vector by 4x4 matrix and return the result
 		/// result = v * m (post-multiply)
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuVector4F vuVector4FTransformR(VuVector4F v, VuMatrix44F m);
+		[DllImport("VuforiaEngine", EntryPoint = "vuVector4FTransformR", CallingConvention = CallingConvention.StdCall)]
+		public static extern Vector4F Vector4FTransformR(Vector4F v, Matrix44F m);
 
 		/// <summary>
 		/// Get an 8D zero vector (0,0,0,0,0,0,0,0)
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuVector8F vuZeroVector8F();
+		[DllImport("VuforiaEngine", EntryPoint = "vuZeroVector8F", CallingConvention = CallingConvention.StdCall)]
+		public static extern Vector8F ZeroVector8F();
 
 		/// <summary>
 		/// Get an 8D one vector (1,1,1,1,1,1,1,1)
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuVector8F vuOneVector8F();
+		[DllImport("VuforiaEngine", EntryPoint = "vuOneVector8F", CallingConvention = CallingConvention.StdCall)]
+		public static extern Vector8F OneVector8F();
 
 		/// <summary>
 		/// Get a 3x3 zero matrix
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuMatrix33F vuZeroMatrix33F();
+		[DllImport("VuforiaEngine", EntryPoint = "vuZeroMatrix33F", CallingConvention = CallingConvention.StdCall)]
+		public static extern Matrix33F ZeroMatrix33F();
 
 		/// <summary>
 		/// Get a 3x3 identity matrix
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuMatrix33F vuIdentityMatrix33F();
+		[DllImport("VuforiaEngine", EntryPoint = "vuIdentityMatrix33F", CallingConvention = CallingConvention.StdCall)]
+		public static extern Matrix33F IdentityMatrix33F();
 
 		/// <summary>
 		/// Get a 4x4 zero matrix
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuMatrix44F vuZeroMatrix44F();
+		[DllImport("VuforiaEngine", EntryPoint = "vuZeroMatrix44F", CallingConvention = CallingConvention.StdCall)]
+		public static extern Matrix44F ZeroMatrix44F();
 
 		/// <summary>
 		/// Get a 4x4 identity matrix
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuMatrix44F vuIdentityMatrix44F();
+		[DllImport("VuforiaEngine", EntryPoint = "vuIdentityMatrix44F", CallingConvention = CallingConvention.StdCall)]
+		public static extern Matrix44F IdentityMatrix44F();
 
 		/// <summary>
 		/// Check whether the 4x4 matrix is an identity matrix
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern uint vuMatrix44FIsIdentity(VuMatrix44F m);
+		[DllImport("VuforiaEngine", EntryPoint = "vuMatrix44FIsIdentity", CallingConvention = CallingConvention.StdCall)]
+		public static extern uint Matrix44FIsIdentity(Matrix44F m);
 
 		/// <summary>
 		/// Get the transpose of a 4x4 matrix
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuMatrix44F vuMatrix44FTranspose(VuMatrix44F m);
+		[DllImport("VuforiaEngine", EntryPoint = "vuMatrix44FTranspose", CallingConvention = CallingConvention.StdCall)]
+		public static extern Matrix44F Matrix44FTranspose(Matrix44F m);
 
 		/// <summary>
 		/// Get the determinant of a 4x4 matrix
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern float vuMatrix44FDeterminant(VuMatrix44F m);
+		[DllImport("VuforiaEngine", EntryPoint = "vuMatrix44FDeterminant", CallingConvention = CallingConvention.StdCall)]
+		public static extern float Matrix44FDeterminant(Matrix44F m);
 
 		/// <summary>
 		/// Get the inverse of a 4x4 matrix
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuMatrix44F vuMatrix44FInverse(VuMatrix44F m);
+		[DllImport("VuforiaEngine", EntryPoint = "vuMatrix44FInverse", CallingConvention = CallingConvention.StdCall)]
+		public static extern Matrix44F Matrix44FInverse(Matrix44F m);
 
 		/// <summary>
 		/// Get a rotation matrix specified by axis-angle rotation (angle is in degrees)
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuMatrix44F vuMatrix44FRotationMatrix(float angle, VuVector3F axis);
+		[DllImport("VuforiaEngine", EntryPoint = "vuMatrix44FRotationMatrix", CallingConvention = CallingConvention.StdCall)]
+		public static extern Matrix44F Matrix44FRotationMatrix(float angle, Vector3F axis);
 
 		/// <summary>
 		/// Get a translation matrix specified by a translation vector
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuMatrix44F vuMatrix44FTranslationMatrix(VuVector3F trans);
+		[DllImport("VuforiaEngine", EntryPoint = "vuMatrix44FTranslationMatrix", CallingConvention = CallingConvention.StdCall)]
+		public static extern Matrix44F Matrix44FTranslationMatrix(Vector3F trans);
 
 		/// <summary>
 		/// Get a scaling matrix specified by a scale vector
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuMatrix44F vuMatrix44FScalingMatrix(VuVector3F scale);
+		[DllImport("VuforiaEngine", EntryPoint = "vuMatrix44FScalingMatrix", CallingConvention = CallingConvention.StdCall)]
+		public static extern Matrix44F Matrix44FScalingMatrix(Vector3F scale);
 
 		/// <summary>
 		/// Get a transformation matrix composed of a translation vector, axis-angle rotation, and scaling vector
 		/// result = T(trans) * R(angle, axis) * S(scale)
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuMatrix44F vuMatrix44FTRSMatrix(VuVector3F trans, float angle, VuVector3F axis, VuVector3F scale);
+		[DllImport("VuforiaEngine", EntryPoint = "vuMatrix44FTRSMatrix", CallingConvention = CallingConvention.StdCall)]
+		public static extern Matrix44F Matrix44FTRSMatrix(Vector3F trans, float angle, Vector3F axis, Vector3F scale);
 
 		/// <summary>
 		/// Get a transformation matrix composed of a translation vector and rotation (quaternion)
@@ -1083,29 +1083,29 @@ namespace Evergine.Bindings.Vuforia
 		/// Input rotation as quaternion in [x y z w] order
 		/// The resulting transformation matrix
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuMatrix44F vuMatrix44FPoseQuatMatrix(VuVector3F trans, VuVector4F quat);
+		[DllImport("VuforiaEngine", EntryPoint = "vuMatrix44FPoseQuatMatrix", CallingConvention = CallingConvention.StdCall)]
+		public static extern Matrix44F Matrix44FPoseQuatMatrix(Vector3F trans, Vector4F quat);
 
 		/// <summary>
 		/// Translate a matrix by a vector and return the result
 		/// The resulting matrix is post-multiplied: result = M * T(trans)
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuMatrix44F vuMatrix44FTranslate(VuVector3F trans, VuMatrix44F m);
+		[DllImport("VuforiaEngine", EntryPoint = "vuMatrix44FTranslate", CallingConvention = CallingConvention.StdCall)]
+		public static extern Matrix44F Matrix44FTranslate(Vector3F trans, Matrix44F m);
 
 		/// <summary>
 		/// Rotate a matrix by a given axis/angle rotation (angle is in degrees)
 		/// The result is post-multiplied: result = M * R(angle, axis)
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuMatrix44F vuMatrix44FRotate(float angle, VuVector3F axis, VuMatrix44F m);
+		[DllImport("VuforiaEngine", EntryPoint = "vuMatrix44FRotate", CallingConvention = CallingConvention.StdCall)]
+		public static extern Matrix44F Matrix44FRotate(float angle, Vector3F axis, Matrix44F m);
 
 		/// <summary>
 		/// Scale a matrix by a scalig vector
 		/// The result is post-multiplied: result = M * S (scale)
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuMatrix44F vuMatrix44FScale(VuVector3F scale, VuMatrix44F m);
+		[DllImport("VuforiaEngine", EntryPoint = "vuMatrix44FScale", CallingConvention = CallingConvention.StdCall)]
+		public static extern Matrix44F Matrix44FScale(Vector3F scale, Matrix44F m);
 
 		/// <summary>
 		/// Create a perspective projection matrix immediately suitable for rendering in OpenGL (Z axis pointing towards the viewer)
@@ -1115,8 +1115,8 @@ namespace Evergine.Bindings.Vuforia
 		/// Far clipping plane
 		/// Perspective projection matrix
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuMatrix44F vuMatrix44FPerspective(float fovy, float aspectRatio, float nearPlane, float farPlane);
+		[DllImport("VuforiaEngine", EntryPoint = "vuMatrix44FPerspective", CallingConvention = CallingConvention.StdCall)]
+		public static extern Matrix44F Matrix44FPerspective(float fovy, float aspectRatio, float nearPlane, float farPlane);
 
 		/// <summary>
 		/// Create an orthographic projection matrix immediately suitable for rendering in OpenGL (Z axis pointing towards the viewer)
@@ -1128,8 +1128,8 @@ namespace Evergine.Bindings.Vuforia
 		/// Far clipping plane
 		/// Orthographic projection matrix
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuMatrix44F vuMatrix44FOrthographic(float left, float right, float bottom, float top, float nearPlane, float farPlane);
+		[DllImport("VuforiaEngine", EntryPoint = "vuMatrix44FOrthographic", CallingConvention = CallingConvention.StdCall)]
+		public static extern Matrix44F Matrix44FOrthographic(float left, float right, float bottom, float top, float nearPlane, float farPlane);
 
 		/// <summary>
 		/// Create a &quot;look-at&quot; view matrix immediately suitable for rendering in OpenGL
@@ -1138,14 +1138,14 @@ namespace Evergine.Bindings.Vuforia
 		/// Direction of the up vector
 		/// View matrix
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuMatrix44F vuMatrix44FLookAt(VuVector3F eye, VuVector3F target, VuVector3F up);
+		[DllImport("VuforiaEngine", EntryPoint = "vuMatrix44FLookAt", CallingConvention = CallingConvention.StdCall)]
+		public static extern Matrix44F Matrix44FLookAt(Vector3F eye, Vector3F target, Vector3F up);
 
 		/// <summary>
 		/// Multiply the two 4x4 matrices A and B and return (mA * mB)
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuMatrix44F vuMatrix44FMultiplyMatrix(VuMatrix44F mA, VuMatrix44F mB);
+		[DllImport("VuforiaEngine", EntryPoint = "vuMatrix44FMultiplyMatrix", CallingConvention = CallingConvention.StdCall)]
+		public static extern Matrix44F Matrix44FMultiplyMatrix(Matrix44F mA, Matrix44F mB);
 
 		/// <summary>
 		/// Extract translation and rotation (axis-angle; angle is in degrees) from a 4x4 matrix
@@ -1154,8 +1154,8 @@ namespace Evergine.Bindings.Vuforia
 		/// Output axis of rotation (axis-angle)
 		/// Output angle of rotation in degrees (axis-angle)
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern void vuMatrix44FGetPoseRot(VuMatrix44F m, VuVector3F* trans, VuVector3F* axis, float* angle);
+		[DllImport("VuforiaEngine", EntryPoint = "vuMatrix44FGetPoseRot", CallingConvention = CallingConvention.StdCall)]
+		public static extern void Matrix44FGetPoseRot(Matrix44F m, Vector3F* trans, Vector3F* axis, float* angle);
 
 		/// <summary>
 		/// Extract translation and rotation (quaternion) from a 4x4 matrix
@@ -1163,8 +1163,8 @@ namespace Evergine.Bindings.Vuforia
 		/// Output translation vector
 		/// Output rotation as quaternion in [x y z w] order
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern void vuMatrix44FGetPoseQuat(VuMatrix44F m, VuVector3F* trans, VuVector4F* quat);
+		[DllImport("VuforiaEngine", EntryPoint = "vuMatrix44FGetPoseQuat", CallingConvention = CallingConvention.StdCall)]
+		public static extern void Matrix44FGetPoseQuat(Matrix44F m, Vector3F* trans, Vector4F* quat);
 
 		/// <summary>
 		/// Decompose a 4x4 matrix into translation, rotation and non-uniform scale components
@@ -1176,10 +1176,9 @@ namespace Evergine.Bindings.Vuforia
 		/// Output rotation angle in degrees
 		/// Output rotation axis (normalized)
 		/// Output vector containing the diagonal entries of a scale matrix S
-		/// vuMatrix44FTRSMatrix
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern void vuMatrix44FGetTRS(VuMatrix44F m, VuVector3F* trans, VuVector3F* axis, float* angle, VuVector3F* scale);
+		[DllImport("VuforiaEngine", EntryPoint = "vuMatrix44FGetTRS", CallingConvention = CallingConvention.StdCall)]
+		public static extern void Matrix44FGetTRS(Matrix44F m, Vector3F* trans, Vector3F* axis, float* angle, Vector3F* scale);
 
 		/// <summary>
 		/// Decompose a 4x4 matrix into translation, rotation and non-uniform scale components
@@ -1190,72 +1189,71 @@ namespace Evergine.Bindings.Vuforia
 		/// Output translation vector
 		/// Output rotation as a normalized quaternion in [x y z w] order
 		/// Output vector containing the diagonal entries of a scale matrix S
-		/// vuMatrix44FTRSMatrix
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern void vuMatrix44FGetTRSQuat(VuMatrix44F m, VuVector3F* trans, VuVector4F* quat, VuVector3F* scale);
+		[DllImport("VuforiaEngine", EntryPoint = "vuMatrix44FGetTRSQuat", CallingConvention = CallingConvention.StdCall)]
+		public static extern void Matrix44FGetTRSQuat(Matrix44F m, Vector3F* trans, Vector4F* quat, Vector3F* scale);
 
 		/// <summary>
 		/// Default Vuforia Driver Platform configuration
 		/// Use this function to initialize the VuDriverConfig data structure with default values.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuDriverConfig vuDriverConfigDefault();
+		[DllImport("VuforiaEngine", EntryPoint = "vuDriverConfigDefault", CallingConvention = CallingConvention.StdCall)]
+		public static extern DriverConfig DriverConfigDefault();
 
 		/// <summary>
 		/// Add a Vuforia Driver configuration to the engine configuration
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuEngineConfigSetAddDriverConfig(VuEngineConfigSet* configSet, VuDriverConfig* config);
+		[DllImport("VuforiaEngine", EntryPoint = "vuEngineConfigSetAddDriverConfig", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result EngineConfigSetAddDriverConfig(EngineConfigSet* configSet, DriverConfig* config);
 
 		/// <summary>
 		/// Default error handler configuration
 		/// Use this function to initialize the VuErrorHandlerConfig data structure with default values.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuErrorHandlerConfig vuErrorHandlerConfigDefault();
+		[DllImport("VuforiaEngine", EntryPoint = "vuErrorHandlerConfigDefault", CallingConvention = CallingConvention.StdCall)]
+		public static extern ErrorHandlerConfig ErrorHandlerConfigDefault();
 
 		/// <summary>
 		/// Add error handler configuration to the engine configuration to handle errors that impact the Engine lifecycle and occur
 		/// asynchronously after the Engine instance has been created
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuEngineConfigSetAddErrorHandlerConfig(VuEngineConfigSet* configSet, VuErrorHandlerConfig* config);
+		[DllImport("VuforiaEngine", EntryPoint = "vuEngineConfigSetAddErrorHandlerConfig", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result EngineConfigSetAddErrorHandlerConfig(EngineConfigSet* configSet, ErrorHandlerConfig* config);
 
 		/// <summary>
 		/// Default Vuforia Fusion provider configuration
 		/// Use this function to initialize the VuFusionProviderConfig data structure with default values.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuFusionProviderConfig vuFusionProviderConfigDefault();
+		[DllImport("VuforiaEngine", EntryPoint = "vuFusionProviderConfigDefault", CallingConvention = CallingConvention.StdCall)]
+		public static extern FusionProviderConfig FusionProviderConfigDefault();
 
 		/// <summary>
 		/// Add a Vuforia Fusion provider configuration to the engine config
 		/// If we cannot set the platform fusion provider, Engine will fall back to using a non-platform-based Vuforia fusion provider
 		/// You can query the Vuforia fusion provider actually used by Engine via vuPlatformControllerGetFusionProviderType.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuEngineConfigSetAddFusionProviderConfig(VuEngineConfigSet* configSet, VuFusionProviderConfig* config);
+		[DllImport("VuforiaEngine", EntryPoint = "vuEngineConfigSetAddFusionProviderConfig", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result EngineConfigSetAddFusionProviderConfig(EngineConfigSet* configSet, FusionProviderConfig* config);
 
 		/// <summary>
 		/// Default license configuration
 		/// Use this function to initialize the VuLicenseConfig data structure with default values.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuLicenseConfig vuLicenseConfigDefault();
+		[DllImport("VuforiaEngine", EntryPoint = "vuLicenseConfigDefault", CallingConvention = CallingConvention.StdCall)]
+		public static extern LicenseConfig LicenseConfigDefault();
 
 		/// <summary>
 		/// Add a license configuration to the engine configuration
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuEngineConfigSetAddLicenseConfig(VuEngineConfigSet* configSet, VuLicenseConfig* config);
+		[DllImport("VuforiaEngine", EntryPoint = "vuEngineConfigSetAddLicenseConfig", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result EngineConfigSetAddLicenseConfig(EngineConfigSet* configSet, LicenseConfig* config);
 
 		/// <summary>
 		/// Default error handler configuration
 		/// Use this function to initialize the VuLogHandlerConfig data structure with default values.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuLogHandlerConfig vuLogHandlerConfigDefault();
+		[DllImport("VuforiaEngine", EntryPoint = "vuLogHandlerConfigDefault", CallingConvention = CallingConvention.StdCall)]
+		public static extern LogHandlerConfig LogHandlerConfigDefault();
 
 		/// <summary>
 		/// Add log handler configuration to the engine configuration to handle log events from Engine.
@@ -1278,162 +1276,162 @@ namespace Evergine.Bindings.Vuforia
 		/// As the log messages contain largely the same information as is logged by Vuforia Engine to the platform logging system
 		/// the same considerations apply regarding any sensitive information contained in the logs.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuEngineConfigSetAddLogHandlerConfig(VuEngineConfigSet* configSet, VuLogHandlerConfig* config);
+		[DllImport("VuforiaEngine", EntryPoint = "vuEngineConfigSetAddLogHandlerConfig", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result EngineConfigSetAddLogHandlerConfig(EngineConfigSet* configSet, LogHandlerConfig* config);
 
 		/// <summary>
 		/// Default plugin configuration
 		/// Use this function to initialize the VuPluginConfig data structure with default values.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuPluginConfig vuPluginConfigDefault();
+		[DllImport("VuforiaEngine", EntryPoint = "vuPluginConfigDefault", CallingConvention = CallingConvention.StdCall)]
+		public static extern PluginConfig PluginConfigDefault();
 
 		/// <summary>
 		/// Add a plugin configuration to the engine configuration
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuEngineConfigSetAddPluginConfig(VuEngineConfigSet* configSet, VuPluginConfig* config);
+		[DllImport("VuforiaEngine", EntryPoint = "vuEngineConfigSetAddPluginConfig", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result EngineConfigSetAddPluginConfig(EngineConfigSet* configSet, PluginConfig* config);
 
 		/// <summary>
 		/// Default render configuration
 		/// Use this function to initialize the VuRenderConfig data structure with default values.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuRenderConfig vuRenderConfigDefault();
+		[DllImport("VuforiaEngine", EntryPoint = "vuRenderConfigDefault", CallingConvention = CallingConvention.StdCall)]
+		public static extern RenderConfig RenderConfigDefault();
 
 		/// <summary>
 		/// Add a render configuration to the engine config
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuEngineConfigSetAddRenderConfig(VuEngineConfigSet* configSet, VuRenderConfig* config);
+		[DllImport("VuforiaEngine", EntryPoint = "vuEngineConfigSetAddRenderConfig", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result EngineConfigSetAddRenderConfig(EngineConfigSet* configSet, RenderConfig* config);
 
 		/// <summary>
 		/// Default Android-specific configuration
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuPlatformAndroidConfig vuPlatformAndroidConfigDefault();
+		[DllImport("VuforiaEngine", EntryPoint = "vuPlatformAndroidConfigDefault", CallingConvention = CallingConvention.StdCall)]
+		public static extern PlatformAndroidConfig PlatformAndroidConfigDefault();
 
 		/// <summary>
 		/// Add an Android-specific configuration to the engine config
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuEngineConfigSetAddPlatformAndroidConfig(VuEngineConfigSet* configSet, VuPlatformAndroidConfig* config);
+		[DllImport("VuforiaEngine", EntryPoint = "vuEngineConfigSetAddPlatformAndroidConfig", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result EngineConfigSetAddPlatformAndroidConfig(EngineConfigSet* configSet, PlatformAndroidConfig* config);
 
 		/// <summary>
 		/// Default anchor observer configuration
 		/// Use this function to initialize the VuAnchorObserverConfig data structure with default values.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuAnchorObserverConfig vuAnchorObserverConfigDefault();
+		[DllImport("VuforiaEngine", EntryPoint = "vuAnchorObserverConfigDefault", CallingConvention = CallingConvention.StdCall)]
+		public static extern AnchorObserverConfig AnchorObserverConfigDefault();
 
 		/// <summary>
 		/// Default anchor with pose creation configuration
 		/// Use this function to initialize the VuAnchorCreationConfig data structure with default values.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuAnchorCreationConfig vuAnchorCreationConfigDefault();
+		[DllImport("VuforiaEngine", EntryPoint = "vuAnchorCreationConfigDefault", CallingConvention = CallingConvention.StdCall)]
+		public static extern AnchorCreationConfig AnchorCreationConfigDefault();
 
 		/// <summary>
 		/// Default anchor from hit test creation configuration
 		/// Use this function to initialize the VuAnchorCreationHitTestConfig data structure with default values.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuAnchorCreationHitTestConfig vuAnchorCreationHitTestConfigDefault();
+		[DllImport("VuforiaEngine", EntryPoint = "vuAnchorCreationHitTestConfigDefault", CallingConvention = CallingConvention.StdCall)]
+		public static extern AnchorCreationHitTestConfig AnchorCreationHitTestConfigDefault();
 
 		/// <summary>
 		/// Default hit test configuration
 		/// Use this function to initialize the VuHitTestConfig data structure with default values.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuHitTestConfig vuHitTestConfigDefault();
+		[DllImport("VuforiaEngine", EntryPoint = "vuHitTestConfigDefault", CallingConvention = CallingConvention.StdCall)]
+		public static extern HitTestConfig HitTestConfigDefault();
 
 		/// <summary>
 		/// HIT-TEST LIST SUPPORT
 		/// Create a hit-test list
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuHitTestListCreate(VuHitTestList** list);
+		[DllImport("VuforiaEngine", EntryPoint = "vuHitTestListCreate", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result HitTestListCreate(HitTestList** list);
 
 		/// <summary>
 		/// Get number of elements in a hit-test list
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuHitTestListGetSize(VuHitTestList* list, int* listSize);
+		[DllImport("VuforiaEngine", EntryPoint = "vuHitTestListGetSize", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result HitTestListGetSize(HitTestList* list, int* listSize);
 
 		/// <summary>
 		/// Get an element in a hit-test list
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuHitTestListGetElement(VuHitTestList* list, int element, VuHitTest** hitTest);
+		[DllImport("VuforiaEngine", EntryPoint = "vuHitTestListGetElement", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result HitTestListGetElement(HitTestList* list, int element, HitTest** hitTest);
 
 		/// <summary>
 		/// Destroy a hit-test list
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuHitTestListDestroy(VuHitTestList* list);
+		[DllImport("VuforiaEngine", EntryPoint = "vuHitTestListDestroy", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result HitTestListDestroy(HitTestList* list);
 
 		/// <summary>
 		/// Get hit-test pose
 		/// The pose is represented as a pose matrix using the OpenGL convention.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuHitTestGetPose(VuHitTest* hitTest, VuMatrix44F* pose);
+		[DllImport("VuforiaEngine", EntryPoint = "vuHitTestGetPose", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result HitTestGetPose(HitTest* hitTest, Matrix44F* pose);
 
 		/// <summary>
 		/// Create an anchor target observer
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuEngineCreateAnchorObserver(VuEngine* engine, VuObserver** observer, VuAnchorObserverConfig* config, VuAnchorCreationError* errorCode);
+		[DllImport("VuforiaEngine", EntryPoint = "vuEngineCreateAnchorObserver", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result EngineCreateAnchorObserver(Engine* engine, Observer** observer, AnchorObserverConfig* config, AnchorCreationError* errorCode);
 
 		/// <summary>
 		/// Get all anchor target observers
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuEngineGetAnchorObservers(VuEngine* engine, VuObserverList* observerList);
+		[DllImport("VuforiaEngine", EntryPoint = "vuEngineGetAnchorObservers", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result EngineGetAnchorObservers(Engine* engine, ObserverList* observerList);
 
 		/// <summary>
 		/// Perform a hit-test with an anchor observer
 		/// Hit-test is not supported on Hololens
 		/// The obtained VuHitTest results will only be valid until the next call to vuAnchorObserverHitTest()
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuAnchorObserverHitTest(VuObserver* observer, VuHitTestConfig* config, VuHitTestList* hittestList);
+		[DllImport("VuforiaEngine", EntryPoint = "vuAnchorObserverHitTest", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result AnchorObserverHitTest(Observer* observer, HitTestConfig* config, HitTestList* hittestList);
 
 		/// <summary>
 		/// Create an anchor with an anchor observer
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuAnchorObserverCreateAnchor(VuObserver* observer, VuAnchorCreationConfig* config, int* anchorId);
+		[DllImport("VuforiaEngine", EntryPoint = "vuAnchorObserverCreateAnchor", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result AnchorObserverCreateAnchor(Observer* observer, AnchorCreationConfig* config, int* anchorId);
 
 		/// <summary>
 		/// Create an anchor from hit-test with an anchor observer
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuAnchorObserverCreateAnchorWithHitTest(VuObserver* observer, VuAnchorCreationHitTestConfig* config, int* anchorId);
+		[DllImport("VuforiaEngine", EntryPoint = "vuAnchorObserverCreateAnchorWithHitTest", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result AnchorObserverCreateAnchorWithHitTest(Observer* observer, AnchorCreationHitTestConfig* config, int* anchorId);
 
 		/// <summary>
 		/// Destroy an anchor with an anchor observer
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuAnchorObserverDestroyAnchor(VuObserver* observer, int anchorId);
+		[DllImport("VuforiaEngine", EntryPoint = "vuAnchorObserverDestroyAnchor", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result AnchorObserverDestroyAnchor(Observer* observer, int anchorId);
 
 		/// <summary>
 		/// Destroy all anchors with an anchor observer
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuAnchorObserverDestroyAnchors(VuObserver* observer);
+		[DllImport("VuforiaEngine", EntryPoint = "vuAnchorObserverDestroyAnchors", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result AnchorObserverDestroyAnchors(Observer* observer);
 
 		/// <summary>
 		/// Return list of all managed anchors from an anchor observer
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuAnchorObserverGetAnchors(VuObserver* observer, VuAnchorList* anchorList);
+		[DllImport("VuforiaEngine", EntryPoint = "vuAnchorObserverGetAnchors", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result AnchorObserverGetAnchors(Observer* observer, AnchorList* anchorList);
 
 		/// <summary>
 		/// Get all anchor observations from the Vuforia State
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuStateGetAnchorObservations(VuState* state, VuObservationList* observationList);
+		[DllImport("VuforiaEngine", EntryPoint = "vuStateGetAnchorObservations", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result StateGetAnchorObservations(State* state, ObservationList* observationList);
 
 		/// <summary>
 		/// Get status info associated to the pose status of an anchor observation.
@@ -1442,60 +1440,60 @@ namespace Evergine.Bindings.Vuforia
 		/// retrieved via
 		/// @ref vuObservationGetPoseInfo.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuAnchorObservationGetStatusInfo(VuObservation* observation, VuAnchorObservationStatusInfo* statusInfo);
+		[DllImport("VuforiaEngine", EntryPoint = "vuAnchorObservationGetStatusInfo", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result AnchorObservationGetStatusInfo(Observation* observation, AnchorObservationStatusInfo* statusInfo);
 
 		/// <summary>
 		/// Get info associated with an anchor observation
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuAnchorObservationGetInfo(VuObservation* observation, VuAnchorObservationInfo* anchorInfo);
+		[DllImport("VuforiaEngine", EntryPoint = "vuAnchorObservationGetInfo", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result AnchorObservationGetInfo(Observation* observation, AnchorObservationInfo* anchorInfo);
 
 		/// <summary>
 		/// Create anchor list
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuAnchorListCreate(VuAnchorList** list);
+		[DllImport("VuforiaEngine", EntryPoint = "vuAnchorListCreate", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result AnchorListCreate(AnchorList** list);
 
 		/// <summary>
 		/// Get number of elements in an anchor list
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuAnchorListGetSize(VuAnchorList* list, int* listSize);
+		[DllImport("VuforiaEngine", EntryPoint = "vuAnchorListGetSize", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result AnchorListGetSize(AnchorList* list, int* listSize);
 
 		/// <summary>
 		/// Get an element in an anchor list
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuAnchorListGetElement(VuAnchorList* list, int element, int* anchorId);
+		[DllImport("VuforiaEngine", EntryPoint = "vuAnchorListGetElement", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result AnchorListGetElement(AnchorList* list, int element, int* anchorId);
 
 		/// <summary>
 		/// Destroy an anchor list
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuAnchorListDestroy(VuAnchorList* list);
+		[DllImport("VuforiaEngine", EntryPoint = "vuAnchorListDestroy", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result AnchorListDestroy(AnchorList* list);
 
 		/// <summary>
 		/// Default Area Target configuration
 		/// Use this function to initialize the VuAreaTargetConfig data structure with default values.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuAreaTargetConfig vuAreaTargetConfigDefault();
+		[DllImport("VuforiaEngine", EntryPoint = "vuAreaTargetConfigDefault", CallingConvention = CallingConvention.StdCall)]
+		public static extern AreaTargetConfig AreaTargetConfigDefault();
 
 		/// <summary>
 		/// Default Area Target Cloud configuration
 		/// Use this function to initialize the VuAreaTargetCloudConfig data structure with default values.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuAreaTargetCloudConfig vuAreaTargetCloudConfigDefault();
+		[DllImport("VuforiaEngine", EntryPoint = "vuAreaTargetCloudConfigDefault", CallingConvention = CallingConvention.StdCall)]
+		public static extern AreaTargetCloudConfig AreaTargetCloudConfigDefault();
 
 		/// <summary>
 		/// Create an Area Target observer from database
 		/// Note that loading the database may take a significant amount of time, it is therefore recommended that this method is not called on
 		/// the main/UI thread.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuEngineCreateAreaTargetObserver(VuEngine* engine, VuObserver** observer, VuAreaTargetConfig* config, VuAreaTargetCreationError* errorCode);
+		[DllImport("VuforiaEngine", EntryPoint = "vuEngineCreateAreaTargetObserver", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result EngineCreateAreaTargetObserver(Engine* engine, Observer** observer, AreaTargetConfig* config, AreaTargetCreationError* errorCode);
 
 		/// <summary>
 		/// Create an Area Target observer for a Cloud Area Target
@@ -1509,55 +1507,55 @@ namespace Evergine.Bindings.Vuforia
 		/// Note that loading the database may take a significant amount of time, it is therefore recommended that this method is not called on
 		/// the main/UI thread.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuEngineCreateAreaTargetObserverFromCloudConfig(VuEngine* engine, VuObserver** observer, VuAreaTargetCloudConfig* config, VuAreaTargetCloudCreationError* errorCode);
+		[DllImport("VuforiaEngine", EntryPoint = "vuEngineCreateAreaTargetObserverFromCloudConfig", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result EngineCreateAreaTargetObserverFromCloudConfig(Engine* engine, Observer** observer, AreaTargetCloudConfig* config, AreaTargetCloudCreationError* errorCode);
 
 		/// <summary>
 		/// Get all Area Target observers
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuEngineGetAreaTargetObservers(VuEngine* engine, VuObserverList* observerList);
+		[DllImport("VuforiaEngine", EntryPoint = "vuEngineGetAreaTargetObservers", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result EngineGetAreaTargetObservers(Engine* engine, ObserverList* observerList);
 
 		/// <summary>
 		/// Get the unique ID associated to the target from an Area Target observer
 		/// The lifetime of the returned string is bound to the lifetime of the observer.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuAreaTargetObserverGetTargetUniqueId(VuObserver* observer, byte** targetId);
+		[DllImport("VuforiaEngine", EntryPoint = "vuAreaTargetObserverGetTargetUniqueId", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result AreaTargetObserverGetTargetUniqueId(Observer* observer, byte** targetId);
 
 		/// <summary>
 		/// Get the name associated to the target from an Area Target observer
 		/// The lifetime of the returned string is bound to the lifetime of the observer.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuAreaTargetObserverGetTargetName(VuObserver* observer, byte** targetName);
+		[DllImport("VuforiaEngine", EntryPoint = "vuAreaTargetObserverGetTargetName", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result AreaTargetObserverGetTargetName(Observer* observer, byte** targetName);
 
 		/// <summary>
 		/// Get the size in meters associated to the target from an Area Target observer
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuAreaTargetObserverGetTargetSize(VuObserver* observer, VuVector3F* size);
+		[DllImport("VuforiaEngine", EntryPoint = "vuAreaTargetObserverGetTargetSize", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result AreaTargetObserverGetTargetSize(Observer* observer, Vector3F* size);
 
 		/// <summary>
 		/// Get the pose transformation offset associated to the target from an Area Target observer
 		/// The offset is represented as a pose matrix using the OpenGL convention.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuAreaTargetObserverGetTargetPoseOffset(VuObserver* observer, VuMatrix44F* offset);
+		[DllImport("VuforiaEngine", EntryPoint = "vuAreaTargetObserverGetTargetPoseOffset", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result AreaTargetObserverGetTargetPoseOffset(Observer* observer, Matrix44F* offset);
 
 		/// <summary>
 		/// Set the pose transformation offset associated to the target from an Area Target observer
 		/// The offset is represented as a pose matrix using the OpenGL convention.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuAreaTargetObserverSetTargetPoseOffset(VuObserver* observer, VuMatrix44F* poseOffset);
+		[DllImport("VuforiaEngine", EntryPoint = "vuAreaTargetObserverSetTargetPoseOffset", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result AreaTargetObserverSetTargetPoseOffset(Observer* observer, Matrix44F* poseOffset);
 
 		/// <summary>
 		/// Get the axis-aligned bounding box associated to the target from an Area Target observer, relative to the target&apos;s frame of
 		/// reference
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuAreaTargetObserverGetAABB(VuObserver* observer, VuAABB* bbox);
+		[DllImport("VuforiaEngine", EntryPoint = "vuAreaTargetObserverGetAABB", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result AreaTargetObserverGetAABB(Observer* observer, AABB* bbox);
 
 		/// <summary>
 		/// Set approximate 2D position within an Area Target from an external localization source (DEPRECATED)
@@ -1574,8 +1572,8 @@ namespace Evergine.Bindings.Vuforia
 		/// Horizontal accuracy (radial) of the position in meters. Must be positive.
 		/// VU_SUCCESS on success, VU_FAILED on failure.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuAreaTargetObserverSetExternalPosition(VuObserver* observer, VuVector2F position, float horizontalAccuracy);
+		[DllImport("VuforiaEngine", EntryPoint = "vuAreaTargetObserverSetExternalPosition", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result AreaTargetObserverSetExternalPosition(Observer* observer, Vector2F position, float horizontalAccuracy);
 
 		/// <summary>
 		/// Set approximate 2D position within an Area Target from an external localization source
@@ -1589,8 +1587,8 @@ namespace Evergine.Bindings.Vuforia
 		/// Horizontal accuracy (radial) of the position in meters. Must be positive.
 		/// VU_SUCCESS on success, VU_FAILED on failure.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuAreaTargetObserverSetExternalPositionFrom2D(VuObserver* observer, VuVector2F position, float horizontalAccuracy);
+		[DllImport("VuforiaEngine", EntryPoint = "vuAreaTargetObserverSetExternalPositionFrom2D", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result AreaTargetObserverSetExternalPositionFrom2D(Observer* observer, Vector2F position, float horizontalAccuracy);
 
 		/// <summary>
 		/// Set approximate 3D position within an Area Target from an external localization source
@@ -1605,8 +1603,8 @@ namespace Evergine.Bindings.Vuforia
 		/// Vertical accuracy of the position in meters. Must be positive.
 		/// VU_SUCCESS on success, VU_FAILED on failure.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuAreaTargetObserverSetExternalPositionFrom3D(VuObserver* observer, VuVector3F position, float horizontalAccuracy, float verticalAccuracy);
+		[DllImport("VuforiaEngine", EntryPoint = "vuAreaTargetObserverSetExternalPositionFrom3D", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result AreaTargetObserverSetExternalPositionFrom3D(Observer* observer, Vector3F position, float horizontalAccuracy, float verticalAccuracy);
 
 		/// <summary>
 		/// Check whether the target requires external positions for initial detection
@@ -1622,14 +1620,14 @@ namespace Evergine.Bindings.Vuforia
 		/// for initial detection or after extended loss of tracking, VU_FALSE otherwise.
 		/// VU_SUCCESS on success, VU_FAILED on failure.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuAreaTargetObserverRequiresExternalPositions(VuObserver* observer, uint* requiresExternalPositions);
+		[DllImport("VuforiaEngine", EntryPoint = "vuAreaTargetObserverRequiresExternalPositions", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result AreaTargetObserverRequiresExternalPositions(Observer* observer, uint* requiresExternalPositions);
 
 		/// <summary>
 		/// Get all Area Target observations
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuStateGetAreaTargetObservations(VuState* state, VuObservationList* observationList);
+		[DllImport("VuforiaEngine", EntryPoint = "vuStateGetAreaTargetObservations", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result StateGetAreaTargetObservations(State* state, ObservationList* observationList);
 
 		/// <summary>
 		/// Get status info associated to the pose status of an Area Target observation.
@@ -1638,14 +1636,14 @@ namespace Evergine.Bindings.Vuforia
 		/// retrieved via
 		/// @ref vuObservationGetPoseInfo.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuAreaTargetObservationGetStatusInfo(VuObservation* observation, VuAreaTargetObservationStatusInfo* statusInfo);
+		[DllImport("VuforiaEngine", EntryPoint = "vuAreaTargetObservationGetStatusInfo", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result AreaTargetObservationGetStatusInfo(Observation* observation, AreaTargetObservationStatusInfo* statusInfo);
 
 		/// <summary>
 		/// Get target info associated with an Area Target observation
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuAreaTargetObservationGetTargetInfo(VuObservation* observation, VuAreaTargetObservationTargetInfo* targetInfo);
+		[DllImport("VuforiaEngine", EntryPoint = "vuAreaTargetObservationGetTargetInfo", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result AreaTargetObservationGetTargetInfo(Observation* observation, AreaTargetObservationTargetInfo* targetInfo);
 
 		/// <summary>
 		/// Remove all data cached by Area Target observers
@@ -1654,15 +1652,15 @@ namespace Evergine.Bindings.Vuforia
 		/// Note that clearing the cache may take a significant amount of time, it is therefore recommended that this method is not called on
 		/// the main/UI thread.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuEngineClearAreaTargetObserverCloudCache(VuEngine* engine);
+		[DllImport("VuforiaEngine", EntryPoint = "vuEngineClearAreaTargetObserverCloudCache", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result EngineClearAreaTargetObserverCloudCache(Engine* engine);
 
 		/// <summary>
 		/// Default Mesh observer configuration with Area Target observer
 		/// Use this function to initialize the VuMeshAreaTargetConfig data structure with default values.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuMeshAreaTargetConfig vuMeshAreaTargetConfigDefault();
+		[DllImport("VuforiaEngine", EntryPoint = "vuMeshAreaTargetConfigDefault", CallingConvention = CallingConvention.StdCall)]
+		public static extern MeshAreaTargetConfig MeshAreaTargetConfigDefault();
 
 		/// <summary>
 		/// Create a Mesh observer with an Area Target observer as source
@@ -1671,15 +1669,15 @@ namespace Evergine.Bindings.Vuforia
 		/// existence of the Area Target observer, one has to make sure to destroy the Mesh observer before
 		/// the associated Area Target observer is destroyed.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuEngineCreateMeshObserverFromAreaTargetConfig(VuEngine* engine, VuObserver** observer, VuMeshAreaTargetConfig* config, VuMeshAreaTargetCreationError* errorCode);
+		[DllImport("VuforiaEngine", EntryPoint = "vuEngineCreateMeshObserverFromAreaTargetConfig", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result EngineCreateMeshObserverFromAreaTargetConfig(Engine* engine, Observer** observer, MeshAreaTargetConfig* config, MeshAreaTargetCreationError* errorCode);
 
 		/// <summary>
 		/// Default Cloud Image Target observer configuration
 		/// Use this function to initialize the VuCloudImageTargetConfig data structure with default values
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuCloudImageTargetConfig vuCloudImageTargetConfigDefault();
+		[DllImport("VuforiaEngine", EntryPoint = "vuCloudImageTargetConfigDefault", CallingConvention = CallingConvention.StdCall)]
+		public static extern CloudImageTargetConfig CloudImageTargetConfigDefault();
 
 		/// <summary>
 		/// Create a Cloud Image Target observer
@@ -1696,14 +1694,14 @@ namespace Evergine.Bindings.Vuforia
 		/// has detected in the camera feed. You can inspect information about the detected
 		/// targets by calling the vuCloudImageTargetObservationGetTargetInfo function.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuEngineCreateCloudImageTargetObserver(VuEngine* engine, VuObserver** observer, VuCloudImageTargetConfig* config, VuCloudImageTargetCreationError* errorCode);
+		[DllImport("VuforiaEngine", EntryPoint = "vuEngineCreateCloudImageTargetObserver", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result EngineCreateCloudImageTargetObserver(Engine* engine, Observer** observer, CloudImageTargetConfig* config, CloudImageTargetCreationError* errorCode);
 
 		/// <summary>
 		/// Get all Cloud Image Target observers
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuEngineGetCloudImageTargetObservers(VuEngine* engine, VuObserverList* observerList);
+		[DllImport("VuforiaEngine", EntryPoint = "vuEngineGetCloudImageTargetObservers", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result EngineGetCloudImageTargetObservers(Engine* engine, ObserverList* observerList);
 
 		/// <summary>
 		/// Register handlers for Cloud Image Targets
@@ -1722,125 +1720,125 @@ namespace Evergine.Bindings.Vuforia
 		/// The client data to pass with the observation and error updates
 		/// VU_SUCCESS on success, VU_FALSE on failure.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuCloudImageTargetObserverRegisterHandlers(VuObserver* observer, IntPtr observationHandler, IntPtr errorHandler, void* clientData);
+		[DllImport("VuforiaEngine", EntryPoint = "vuCloudImageTargetObserverRegisterHandlers", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result CloudImageTargetObserverRegisterHandlers(Observer* observer, IntPtr observationHandler, IntPtr errorHandler, void* clientData);
 
 		/// <summary>
 		/// Returns whether the Cloud Image Target observer is currently performing a cloud request
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern uint vuCloudImageTargetObserverIsRequesting(VuObserver* observer);
+		[DllImport("VuforiaEngine", EntryPoint = "vuCloudImageTargetObserverIsRequesting", CallingConvention = CallingConvention.StdCall)]
+		public static extern uint CloudImageTargetObserverIsRequesting(Observer* observer);
 
 		/// <summary>
 		/// Get target info associated with a Cloud Image Target observation
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuCloudImageTargetObservationGetTargetInfo(VuObservation* observation, VuCloudImageTargetObservationTargetInfo* targetInfo);
+		[DllImport("VuforiaEngine", EntryPoint = "vuCloudImageTargetObservationGetTargetInfo", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result CloudImageTargetObservationGetTargetInfo(Observation* observation, CloudImageTargetObservationTargetInfo* targetInfo);
 
 		/// <summary>
 		/// Default configuration for creating an Image Target observer from a Cloud Image Target observation
 		/// Use this function to initialize the VuImageTargetCloudObservationConfig data structure with default values.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuImageTargetCloudObservationConfig vuImageTargetCloudObservationConfigDefault();
+		[DllImport("VuforiaEngine", EntryPoint = "vuImageTargetCloudObservationConfigDefault", CallingConvention = CallingConvention.StdCall)]
+		public static extern ImageTargetCloudObservationConfig ImageTargetCloudObservationConfigDefault();
 
 		/// <summary>
 		/// Create an Image Target observer from a Cloud Image Target observation
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuEngineCreateImageTargetObserverFromCloudObservation(VuEngine* engine, VuObserver** observer, VuImageTargetCloudObservationConfig* config, VuImageTargetCloudObservationCreationError* errorCode);
+		[DllImport("VuforiaEngine", EntryPoint = "vuEngineCreateImageTargetObserverFromCloudObservation", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result EngineCreateImageTargetObserverFromCloudObservation(Engine* engine, Observer** observer, ImageTargetCloudObservationConfig* config, ImageTargetCloudObservationCreationError* errorCode);
 
 		/// <summary>
 		/// Default Cylinder Target configuration
 		/// Use this function to initialize the VuCylinderTargetConfig data structure with default values.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuCylinderTargetConfig vuCylinderTargetConfigDefault();
+		[DllImport("VuforiaEngine", EntryPoint = "vuCylinderTargetConfigDefault", CallingConvention = CallingConvention.StdCall)]
+		public static extern CylinderTargetConfig CylinderTargetConfigDefault();
 
 		/// <summary>
 		/// Create a Cylinder Target observer from a database
 		/// Note that loading the database may take a significant amount of time, it is therefore recommended that this method is not called on
 		/// the main/UI thread.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuEngineCreateCylinderTargetObserver(VuEngine* engine, VuObserver** observer, VuCylinderTargetConfig* config, VuCylinderTargetCreationError* errorCode);
+		[DllImport("VuforiaEngine", EntryPoint = "vuEngineCreateCylinderTargetObserver", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result EngineCreateCylinderTargetObserver(Engine* engine, Observer** observer, CylinderTargetConfig* config, CylinderTargetCreationError* errorCode);
 
 		/// <summary>
 		/// Get all Cylinder Target observers
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuEngineGetCylinderTargetObservers(VuEngine* engine, VuObserverList* observerList);
+		[DllImport("VuforiaEngine", EntryPoint = "vuEngineGetCylinderTargetObservers", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result EngineGetCylinderTargetObservers(Engine* engine, ObserverList* observerList);
 
 		/// <summary>
 		/// Get the unique ID associated to the target from a Cylinder Target observer
 		/// The lifetime of the returned string is bound to the lifetime of the observer.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuCylinderTargetObserverGetTargetUniqueId(VuObserver* observer, byte** targetId);
+		[DllImport("VuforiaEngine", EntryPoint = "vuCylinderTargetObserverGetTargetUniqueId", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result CylinderTargetObserverGetTargetUniqueId(Observer* observer, byte** targetId);
 
 		/// <summary>
 		/// Get the name associated to the target from a Cylinder Target observer
 		/// The lifetime of the returned string is bound to the lifetime of the observer.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuCylinderTargetObserverGetTargetName(VuObserver* observer, byte** targetName);
+		[DllImport("VuforiaEngine", EntryPoint = "vuCylinderTargetObserverGetTargetName", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result CylinderTargetObserverGetTargetName(Observer* observer, byte** targetName);
 
 		/// <summary>
 		/// Get the side length in meters associated to the target from a Cylinder Target observer
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuCylinderTargetObserverGetTargetSideLength(VuObserver* observer, float* sideLength);
+		[DllImport("VuforiaEngine", EntryPoint = "vuCylinderTargetObserverGetTargetSideLength", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result CylinderTargetObserverGetTargetSideLength(Observer* observer, float* sideLength);
 
 		/// <summary>
 		/// Set the side length in meters associated to the target from a Cylinder Target observer
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuCylinderTargetObserverSetTargetSideLength(VuObserver* observer, float sideLength);
+		[DllImport("VuforiaEngine", EntryPoint = "vuCylinderTargetObserverSetTargetSideLength", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result CylinderTargetObserverSetTargetSideLength(Observer* observer, float sideLength);
 
 		/// <summary>
 		/// Get the top diameter in meters associated to the target from a Cylinder Target observer
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuCylinderTargetObserverGetTargetTopDiameter(VuObserver* observer, float* topDiameter);
+		[DllImport("VuforiaEngine", EntryPoint = "vuCylinderTargetObserverGetTargetTopDiameter", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result CylinderTargetObserverGetTargetTopDiameter(Observer* observer, float* topDiameter);
 
 		/// <summary>
 		/// Set the top diameter in meters associated to the target from a Cylinder Target observer
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuCylinderTargetObserverSetTargetTopDiameter(VuObserver* observer, float topDiameter);
+		[DllImport("VuforiaEngine", EntryPoint = "vuCylinderTargetObserverSetTargetTopDiameter", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result CylinderTargetObserverSetTargetTopDiameter(Observer* observer, float topDiameter);
 
 		/// <summary>
 		/// Get the bottom diameter in meters associated to the target from a Cylinder Target observer
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuCylinderTargetObserverGetTargetBottomDiameter(VuObserver* observer, float* bottomDiameter);
+		[DllImport("VuforiaEngine", EntryPoint = "vuCylinderTargetObserverGetTargetBottomDiameter", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result CylinderTargetObserverGetTargetBottomDiameter(Observer* observer, float* bottomDiameter);
 
 		/// <summary>
 		/// Set the bottom diameter in meters associated to the target from a Cylinder Target observer
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuCylinderTargetObserverSetTargetBottomDiameter(VuObserver* observer, float bottomDiameter);
+		[DllImport("VuforiaEngine", EntryPoint = "vuCylinderTargetObserverSetTargetBottomDiameter", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result CylinderTargetObserverSetTargetBottomDiameter(Observer* observer, float bottomDiameter);
 
 		/// <summary>
 		/// Get the axis-aligned bounding box associated to the target from a Cylinder Target observer, relative to the target&apos;s frame of
 		/// reference
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuCylinderTargetObserverGetAABB(VuObserver* observer, VuAABB* bbox);
+		[DllImport("VuforiaEngine", EntryPoint = "vuCylinderTargetObserverGetAABB", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result CylinderTargetObserverGetAABB(Observer* observer, AABB* bbox);
 
 		/// <summary>
 		/// Get the pose transformation offset associated to the target from a Cylinder Target observer
 		/// The pose offset is represented as a pose matrix using the OpenGL convention.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuCylinderTargetObserverGetTargetPoseOffset(VuObserver* observer, VuMatrix44F* poseOffset);
+		[DllImport("VuforiaEngine", EntryPoint = "vuCylinderTargetObserverGetTargetPoseOffset", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result CylinderTargetObserverGetTargetPoseOffset(Observer* observer, Matrix44F* poseOffset);
 
 		/// <summary>
 		/// Set the pose transformation offset associated to the target from a Cylinder Target observer
 		/// The pose offset is represented as a pose matrix using the OpenGL convention.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuCylinderTargetObserverSetTargetPoseOffset(VuObserver* observer, VuMatrix44F* poseOffset);
+		[DllImport("VuforiaEngine", EntryPoint = "vuCylinderTargetObserverSetTargetPoseOffset", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result CylinderTargetObserverSetTargetPoseOffset(Observer* observer, Matrix44F* poseOffset);
 
 		/// <summary>
 		/// Set the tracking optimization of the target associated to the Cylinder Target observer.
@@ -1850,20 +1848,20 @@ namespace Evergine.Bindings.Vuforia
 		/// This operation will reset any tracking operation for the Cylinder Target observer.
 		/// It is recommended to use this function before starting the Vuforia Engine.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuCylinderTargetObserverSetTrackingOptimization(VuObserver* observer, VuTrackingOptimization optimization);
+		[DllImport("VuforiaEngine", EntryPoint = "vuCylinderTargetObserverSetTrackingOptimization", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result CylinderTargetObserverSetTrackingOptimization(Observer* observer, TrackingOptimization optimization);
 
 		/// <summary>
 		/// Get the tracking optimization of the target associated to the Cylinder Target observer.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuCylinderTargetObserverGetTrackingOptimization(VuObserver* observer, VuTrackingOptimization* optimization);
+		[DllImport("VuforiaEngine", EntryPoint = "vuCylinderTargetObserverGetTrackingOptimization", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result CylinderTargetObserverGetTrackingOptimization(Observer* observer, TrackingOptimization* optimization);
 
 		/// <summary>
 		/// Get all Cylinder Target observations
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuStateGetCylinderTargetObservations(VuState* state, VuObservationList* observationList);
+		[DllImport("VuforiaEngine", EntryPoint = "vuStateGetCylinderTargetObservations", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result StateGetCylinderTargetObservations(State* state, ObservationList* observationList);
 
 		/// <summary>
 		/// Get status info associated to the pose status of a Cylinder Target observation.
@@ -1872,39 +1870,39 @@ namespace Evergine.Bindings.Vuforia
 		/// retrieved via
 		/// @ref vuObservationGetPoseInfo.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuCylinderTargetObservationGetStatusInfo(VuObservation* observation, VuCylinderTargetObservationStatusInfo* statusInfo);
+		[DllImport("VuforiaEngine", EntryPoint = "vuCylinderTargetObservationGetStatusInfo", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result CylinderTargetObservationGetStatusInfo(Observation* observation, CylinderTargetObservationStatusInfo* statusInfo);
 
 		/// <summary>
 		/// Get target info associated with a Cylinder Target observation
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuCylinderTargetObservationGetTargetInfo(VuObservation* observation, VuCylinderTargetObservationTargetInfo* targetInfo);
+		[DllImport("VuforiaEngine", EntryPoint = "vuCylinderTargetObservationGetTargetInfo", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result CylinderTargetObservationGetTargetInfo(Observation* observation, CylinderTargetObservationTargetInfo* targetInfo);
 
 		/// <summary>
 		/// Default Device Pose configuration
 		/// Use this function to initialize the VuDevicePoseConfig data structure with default values.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuDevicePoseConfig vuDevicePoseConfigDefault();
+		[DllImport("VuforiaEngine", EntryPoint = "vuDevicePoseConfigDefault", CallingConvention = CallingConvention.StdCall)]
+		public static extern DevicePoseConfig DevicePoseConfigDefault();
 
 		/// <summary>
 		/// Create a Device Pose observer
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuEngineCreateDevicePoseObserver(VuEngine* engine, VuObserver** observer, VuDevicePoseConfig* config, VuDevicePoseCreationError* errorCode);
+		[DllImport("VuforiaEngine", EntryPoint = "vuEngineCreateDevicePoseObserver", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result EngineCreateDevicePoseObserver(Engine* engine, Observer** observer, DevicePoseConfig* config, DevicePoseCreationError* errorCode);
 
 		/// <summary>
 		/// Get all Device Pose observers
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuEngineGetDevicePoseObservers(VuEngine* engine, VuObserverList* observerList);
+		[DllImport("VuforiaEngine", EntryPoint = "vuEngineGetDevicePoseObservers", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result EngineGetDevicePoseObservers(Engine* engine, ObserverList* observerList);
 
 		/// <summary>
 		/// Get all Device Pose observations
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuStateGetDevicePoseObservations(VuState* state, VuObservationList* observationList);
+		[DllImport("VuforiaEngine", EntryPoint = "vuStateGetDevicePoseObservations", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result StateGetDevicePoseObservations(State* state, ObservationList* observationList);
 
 		/// <summary>
 		/// Get status info associated to the pose status of a Device Pose observation.
@@ -1913,8 +1911,8 @@ namespace Evergine.Bindings.Vuforia
 		/// retrieved via
 		/// @ref vuObservationGetPoseInfo.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuDevicePoseObservationGetStatusInfo(VuObservation* observation, VuDevicePoseObservationStatusInfo* statusInfo);
+		[DllImport("VuforiaEngine", EntryPoint = "vuDevicePoseObservationGetStatusInfo", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result DevicePoseObservationGetStatusInfo(Observation* observation, DevicePoseObservationStatusInfo* statusInfo);
 
 		/// <summary>
 		/// Set the Device Pose to static
@@ -1925,14 +1923,14 @@ namespace Evergine.Bindings.Vuforia
 		/// are reset to VU_OBSERVATION_POSE_STATUS_NO_POSE and tracking is lost on any targets tracked by extended tracking. Any anchors created
 		/// during the session are destroyed.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuDevicePoseObserverSetStaticMode(VuObserver* observer, uint staticModeEnabled);
+		[DllImport("VuforiaEngine", EntryPoint = "vuDevicePoseObserverSetStaticMode", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result DevicePoseObserverSetStaticMode(Observer* observer, uint staticModeEnabled);
 
 		/// <summary>
 		/// Get if the Device Pose is set to static
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuDevicePoseObserverGetStaticMode(VuObserver* observer, uint* staticModeEnabled);
+		[DllImport("VuforiaEngine", EntryPoint = "vuDevicePoseObserverGetStaticMode", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result DevicePoseObserverGetStaticMode(Observer* observer, uint* staticModeEnabled);
 
 		/// <summary>
 		/// Reset world tracking
@@ -1940,135 +1938,135 @@ namespace Evergine.Bindings.Vuforia
 		/// VU_OBSERVATION_POSE_STATUS_NO_POSE and tracking is lost on any targets tracked by
 		/// extended tracking. Any anchors created during the session are destroyed.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuEngineResetWorldTracking(VuEngine* engine);
+		[DllImport("VuforiaEngine", EntryPoint = "vuEngineResetWorldTracking", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result EngineResetWorldTracking(Engine* engine);
 
 		/// <summary>
 		/// Default illumination observer configuration
 		/// Use this function to initialize the VuIlluminationConfig data structure with default values.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuIlluminationConfig vuIlluminationConfigDefault();
+		[DllImport("VuforiaEngine", EntryPoint = "vuIlluminationConfigDefault", CallingConvention = CallingConvention.StdCall)]
+		public static extern IlluminationConfig IlluminationConfigDefault();
 
 		/// <summary>
 		/// Create an illumination observer
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuEngineCreateIlluminationObserver(VuEngine* engine, VuObserver** observer, VuIlluminationConfig* config, VuIlluminationCreationError* errorCode);
+		[DllImport("VuforiaEngine", EntryPoint = "vuEngineCreateIlluminationObserver", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result EngineCreateIlluminationObserver(Engine* engine, Observer** observer, IlluminationConfig* config, IlluminationCreationError* errorCode);
 
 		/// <summary>
 		/// Get all target illumination observers
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuEngineGetIlluminationObservers(VuEngine* engine, VuObserverList* observerList);
+		[DllImport("VuforiaEngine", EntryPoint = "vuEngineGetIlluminationObservers", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result EngineGetIlluminationObservers(Engine* engine, ObserverList* observerList);
 
 		/// <summary>
 		/// Get all illumination observations
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuStateGetIlluminationObservations(VuState* state, VuObservationList* observationList);
+		[DllImport("VuforiaEngine", EntryPoint = "vuStateGetIlluminationObservations", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result StateGetIlluminationObservations(State* state, ObservationList* observationList);
 
 		/// <summary>
 		/// Get info associated with an illumination observation
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuIlluminationObservationGetInfo(VuObservation* observation, VuIlluminationObservationInfo* illuminationInfo);
+		[DllImport("VuforiaEngine", EntryPoint = "vuIlluminationObservationGetInfo", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result IlluminationObservationGetInfo(Observation* observation, IlluminationObservationInfo* illuminationInfo);
 
 		/// <summary>
 		/// Default Image Target configuration
 		/// Use this function to initialize the VuImageTargetConfig data structure with default values.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuImageTargetConfig vuImageTargetConfigDefault();
+		[DllImport("VuforiaEngine", EntryPoint = "vuImageTargetConfigDefault", CallingConvention = CallingConvention.StdCall)]
+		public static extern ImageTargetConfig ImageTargetConfigDefault();
 
 		/// <summary>
 		/// Default Image Target file configuration
 		/// Use this function to initialize the VuImageTargetFileConfig data structure with default values.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuImageTargetFileConfig vuImageTargetFileConfigDefault();
+		[DllImport("VuforiaEngine", EntryPoint = "vuImageTargetFileConfigDefault", CallingConvention = CallingConvention.StdCall)]
+		public static extern ImageTargetFileConfig ImageTargetFileConfigDefault();
 
 		/// <summary>
 		/// Configuration for an Image Target using a Cloud Image Target observation
 		/// Use this function to initialize the VuImageTargetBufferConfig data structure with default values.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuImageTargetBufferConfig vuImageTargetBufferConfigDefault();
+		[DllImport("VuforiaEngine", EntryPoint = "vuImageTargetBufferConfigDefault", CallingConvention = CallingConvention.StdCall)]
+		public static extern ImageTargetBufferConfig ImageTargetBufferConfigDefault();
 
 		/// <summary>
 		/// Create an Image Target observer from database
 		/// Note that loading the database may take a significant amount of time, it is therefore recommended that this method is not called on
 		/// the main/UI thread.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuEngineCreateImageTargetObserver(VuEngine* engine, VuObserver** observer, VuImageTargetConfig* config, VuImageTargetCreationError* errorCode);
+		[DllImport("VuforiaEngine", EntryPoint = "vuEngineCreateImageTargetObserver", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result EngineCreateImageTargetObserver(Engine* engine, Observer** observer, ImageTargetConfig* config, ImageTargetCreationError* errorCode);
 
 		/// <summary>
 		/// Create an Image Target observer from file configuration
 		/// Images with width or height bigger than 2048 pixels are not supported.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuEngineCreateImageTargetObserverFromFileConfig(VuEngine* engine, VuObserver** observer, VuImageTargetFileConfig* config, VuImageTargetFileCreationError* errorCode);
+		[DllImport("VuforiaEngine", EntryPoint = "vuEngineCreateImageTargetObserverFromFileConfig", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result EngineCreateImageTargetObserverFromFileConfig(Engine* engine, Observer** observer, ImageTargetFileConfig* config, ImageTargetFileCreationError* errorCode);
 
 		/// <summary>
 		/// Create an Image Target observer from buffer configuration
 		/// Images with width or height bigger than 2048 pixels are not supported.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuEngineCreateImageTargetObserverFromBufferConfig(VuEngine* engine, VuObserver** observer, VuImageTargetBufferConfig* config, VuImageTargetBufferCreationError* errorCode);
+		[DllImport("VuforiaEngine", EntryPoint = "vuEngineCreateImageTargetObserverFromBufferConfig", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result EngineCreateImageTargetObserverFromBufferConfig(Engine* engine, Observer** observer, ImageTargetBufferConfig* config, ImageTargetBufferCreationError* errorCode);
 
 		/// <summary>
 		/// Get all Image Target observers
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuEngineGetImageTargetObservers(VuEngine* engine, VuObserverList* observerList);
+		[DllImport("VuforiaEngine", EntryPoint = "vuEngineGetImageTargetObservers", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result EngineGetImageTargetObservers(Engine* engine, ObserverList* observerList);
 
 		/// <summary>
 		/// Get the unique ID associated to an Image Target from its respective observer
 		/// The lifetime of the returned string is bound to the lifetime of the observer.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuImageTargetObserverGetTargetUniqueId(VuObserver* observer, byte** targetId);
+		[DllImport("VuforiaEngine", EntryPoint = "vuImageTargetObserverGetTargetUniqueId", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result ImageTargetObserverGetTargetUniqueId(Observer* observer, byte** targetId);
 
 		/// <summary>
 		/// Get the name associated to an Image Target from its respective observer
 		/// The lifetime of the returned string is bound to the lifetime of the observer.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuImageTargetObserverGetTargetName(VuObserver* observer, byte** targetName);
+		[DllImport("VuforiaEngine", EntryPoint = "vuImageTargetObserverGetTargetName", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result ImageTargetObserverGetTargetName(Observer* observer, byte** targetName);
 
 		/// <summary>
 		/// Get the axis-aligned bounding box associated to an Image Target from its respective observer, relative to the target&apos;s frame of
 		/// reference
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuImageTargetObserverGetAABB(VuObserver* observer, VuAABB* bbox);
+		[DllImport("VuforiaEngine", EntryPoint = "vuImageTargetObserverGetAABB", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result ImageTargetObserverGetAABB(Observer* observer, AABB* bbox);
 
 		/// <summary>
 		/// Get the size in meters associated with an Image Target from its respective observer
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuImageTargetObserverGetTargetSize(VuObserver* observer, VuVector2F* size);
+		[DllImport("VuforiaEngine", EntryPoint = "vuImageTargetObserverGetTargetSize", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result ImageTargetObserverGetTargetSize(Observer* observer, Vector2F* size);
 
 		/// <summary>
 		/// Re-scale the size of an Image Target via its respective observer
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuImageTargetObserverSetTargetScale(VuObserver* observer, float scale);
+		[DllImport("VuforiaEngine", EntryPoint = "vuImageTargetObserverSetTargetScale", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result ImageTargetObserverSetTargetScale(Observer* observer, float scale);
 
 		/// <summary>
 		/// Get the pose transformation offset associated with an Image Target from its respective observer
 		/// The pose offset is represented as a pose matrix using the OpenGL convention.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuImageTargetObserverGetTargetPoseOffset(VuObserver* observer, VuMatrix44F* poseOffset);
+		[DllImport("VuforiaEngine", EntryPoint = "vuImageTargetObserverGetTargetPoseOffset", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result ImageTargetObserverGetTargetPoseOffset(Observer* observer, Matrix44F* poseOffset);
 
 		/// <summary>
 		/// Set the pose transformation offset associated with an Image Target via its respective observer
 		/// The pose offset is represented as a pose matrix using the OpenGL convention.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuImageTargetObserverSetTargetPoseOffset(VuObserver* observer, VuMatrix44F* poseOffset);
+		[DllImport("VuforiaEngine", EntryPoint = "vuImageTargetObserverSetTargetPoseOffset", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result ImageTargetObserverSetTargetPoseOffset(Observer* observer, Matrix44F* poseOffset);
 
 		/// <summary>
 		/// Set the tracking optimization of the target associated to the Image Target observer.
@@ -2078,14 +2076,14 @@ namespace Evergine.Bindings.Vuforia
 		/// This operation will reset any tracking operation for the Image Target observer.
 		/// It is recommended to use this function before starting the Vuforia Engine.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuImageTargetObserverSetTrackingOptimization(VuObserver* observer, VuTrackingOptimization optimization);
+		[DllImport("VuforiaEngine", EntryPoint = "vuImageTargetObserverSetTrackingOptimization", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result ImageTargetObserverSetTrackingOptimization(Observer* observer, TrackingOptimization optimization);
 
 		/// <summary>
 		/// Get the tracking optimization of the target associated to the Image Target observer.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuImageTargetObserverGetTrackingOptimization(VuObserver* observer, VuTrackingOptimization* optimization);
+		[DllImport("VuforiaEngine", EntryPoint = "vuImageTargetObserverGetTrackingOptimization", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result ImageTargetObserverGetTrackingOptimization(Observer* observer, TrackingOptimization* optimization);
 
 		/// <summary>
 		/// Set the maximum number of image-based targets tracked at the same time
@@ -2094,26 +2092,26 @@ namespace Evergine.Bindings.Vuforia
 		/// should be set to 2. This setting controls Image Targets, Cylinder Targets, Multi-Targets and VuMarks.
 		/// The default value is 1.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuEngineSetMaximumSimultaneousTrackedImages(VuEngine* engine, int maxNumberOfTargets);
+		[DllImport("VuforiaEngine", EntryPoint = "vuEngineSetMaximumSimultaneousTrackedImages", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result EngineSetMaximumSimultaneousTrackedImages(Engine* engine, int maxNumberOfTargets);
 
 		/// <summary>
 		/// Get the maximum number of image-based targets tracked at the same time
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuEngineGetMaximumSimultaneousTrackedImages(VuEngine* engine, int* maxNumberOfTargets);
+		[DllImport("VuforiaEngine", EntryPoint = "vuEngineGetMaximumSimultaneousTrackedImages", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result EngineGetMaximumSimultaneousTrackedImages(Engine* engine, int* maxNumberOfTargets);
 
 		/// <summary>
 		/// Get all Image Target observations
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuStateGetImageTargetObservations(VuState* state, VuObservationList* list);
+		[DllImport("VuforiaEngine", EntryPoint = "vuStateGetImageTargetObservations", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result StateGetImageTargetObservations(State* state, ObservationList* list);
 
 		/// <summary>
 		/// Get target info associated with an Image Target observation
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuImageTargetObservationGetTargetInfo(VuObservation* observation, VuImageTargetObservationTargetInfo* targetInfo);
+		[DllImport("VuforiaEngine", EntryPoint = "vuImageTargetObservationGetTargetInfo", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result ImageTargetObservationGetTargetInfo(Observation* observation, ImageTargetObservationTargetInfo* targetInfo);
 
 		/// <summary>
 		/// Get status info associated to the pose status of an Image Target observation.
@@ -2122,38 +2120,38 @@ namespace Evergine.Bindings.Vuforia
 		/// retrieved via
 		/// @ref vuObservationGetPoseInfo.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuImageTargetObservationGetStatusInfo(VuObservation* observation, VuImageTargetObservationStatusInfo* statusInfo);
+		[DllImport("VuforiaEngine", EntryPoint = "vuImageTargetObservationGetStatusInfo", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result ImageTargetObservationGetStatusInfo(Observation* observation, ImageTargetObservationStatusInfo* statusInfo);
 
 		/// <summary>
 		/// Get all Mesh observers
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuEngineGetMeshObservers(VuEngine* engine, VuObserverList* observerList);
+		[DllImport("VuforiaEngine", EntryPoint = "vuEngineGetMeshObservers", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result EngineGetMeshObservers(Engine* engine, ObserverList* observerList);
 
 		/// <summary>
 		/// Get all Mesh observations from the Vuforia state
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuStateGetMeshObservations(VuState* state, VuObservationList* list);
+		[DllImport("VuforiaEngine", EntryPoint = "vuStateGetMeshObservations", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result StateGetMeshObservations(State* state, ObservationList* list);
 
 		/// <summary>
 		/// Get number of elements in a Mesh observation block list
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuMeshObservationBlockListGetSize(VuMeshObservationBlockList* list, int* listSize);
+		[DllImport("VuforiaEngine", EntryPoint = "vuMeshObservationBlockListGetSize", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result MeshObservationBlockListGetSize(MeshObservationBlockList* list, int* listSize);
 
 		/// <summary>
 		/// Get an element in a Mesh observation block list
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuMeshObservationBlockListGetElement(VuMeshObservationBlockList* list, int element, VuMeshObservationBlock* block);
+		[DllImport("VuforiaEngine", EntryPoint = "vuMeshObservationBlockListGetElement", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result MeshObservationBlockListGetElement(MeshObservationBlockList* list, int element, MeshObservationBlock* block);
 
 		/// <summary>
 		/// Get observation info associated with a Mesh observation
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuMeshObservationGetInfo(VuObservation* observation, VuMeshObservationInfo* info);
+		[DllImport("VuforiaEngine", EntryPoint = "vuMeshObservationGetInfo", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result MeshObservationGetInfo(Observation* observation, MeshObservationInfo* info);
 
 		/// <summary>
 		/// Get status info associated to the pose status of a Mesh observation.
@@ -2162,46 +2160,46 @@ namespace Evergine.Bindings.Vuforia
 		/// retrieved via
 		/// @ref vuObservationGetPoseInfo.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuMeshObservationGetStatusInfo(VuObservation* observation, VuMeshObservationStatusInfo* statusInfo);
+		[DllImport("VuforiaEngine", EntryPoint = "vuMeshObservationGetStatusInfo", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result MeshObservationGetStatusInfo(Observation* observation, MeshObservationStatusInfo* statusInfo);
 
 		/// <summary>
 		/// Default Model Target configuration
 		/// Use this function to initialize the VuModelTargetConfig data structure with default values.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuModelTargetConfig vuModelTargetConfigDefault();
+		[DllImport("VuforiaEngine", EntryPoint = "vuModelTargetConfigDefault", CallingConvention = CallingConvention.StdCall)]
+		public static extern ModelTargetConfig ModelTargetConfigDefault();
 
 		/// <summary>
 		/// Default Model Target configuration
 		/// Use this function to initialize the VuModelTargetConfig data structure with default values.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuModelTargetBufferConfig vuModelTargetBufferConfigDefault();
+		[DllImport("VuforiaEngine", EntryPoint = "vuModelTargetBufferConfigDefault", CallingConvention = CallingConvention.StdCall)]
+		public static extern ModelTargetBufferConfig ModelTargetBufferConfigDefault();
 
 		/// <summary>
 		/// Create a guide view list
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuGuideViewListCreate(VuGuideViewList** list);
+		[DllImport("VuforiaEngine", EntryPoint = "vuGuideViewListCreate", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result GuideViewListCreate(GuideViewList** list);
 
 		/// <summary>
 		/// Get the number of elements in the guide view list
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuGuideViewListGetSize(VuGuideViewList* list, int* listSize);
+		[DllImport("VuforiaEngine", EntryPoint = "vuGuideViewListGetSize", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result GuideViewListGetSize(GuideViewList* list, int* listSize);
 
 		/// <summary>
 		/// Get the element at the specified index from the guide view list
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuGuideViewListGetElement(VuGuideViewList* list, int element, VuGuideView** guideView);
+		[DllImport("VuforiaEngine", EntryPoint = "vuGuideViewListGetElement", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result GuideViewListGetElement(GuideViewList* list, int element, GuideView** guideView);
 
 		/// <summary>
 		/// Destroy the guide view list
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuGuideViewListDestroy(VuGuideViewList* list);
+		[DllImport("VuforiaEngine", EntryPoint = "vuGuideViewListDestroy", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result GuideViewListDestroy(GuideViewList* list);
 
 		/// <summary>
 		/// Create a Model Target state list
@@ -2209,8 +2207,8 @@ namespace Evergine.Bindings.Vuforia
 		/// @ref vuModelTargetStateInfoListCreate
 		/// instead.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuModelTargetStateListCreate(VuModelTargetStateList** list);
+		[DllImport("VuforiaEngine", EntryPoint = "vuModelTargetStateListCreate", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result ModelTargetStateListCreate(ModelTargetStateList** list);
 
 		/// <summary>
 		/// Destroys a Model Target state list
@@ -2218,8 +2216,8 @@ namespace Evergine.Bindings.Vuforia
 		/// @ref vuModelTargetStateInfoListDestroy
 		/// instead.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuModelTargetStateListDestroy(VuModelTargetStateList* list);
+		[DllImport("VuforiaEngine", EntryPoint = "vuModelTargetStateListDestroy", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result ModelTargetStateListDestroy(ModelTargetStateList* list);
 
 		/// <summary>
 		/// Get the number of elements in the Model Target state list
@@ -2227,8 +2225,8 @@ namespace Evergine.Bindings.Vuforia
 		/// @ref vuModelTargetStateInfoListGetSize
 		/// instead.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuModelTargetStateListGetSize(VuModelTargetStateList* list, int* listSize);
+		[DllImport("VuforiaEngine", EntryPoint = "vuModelTargetStateListGetSize", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result ModelTargetStateListGetSize(ModelTargetStateList* list, int* listSize);
 
 		/// <summary>
 		/// Get the element at the specified index from the Model Target state list
@@ -2236,54 +2234,54 @@ namespace Evergine.Bindings.Vuforia
 		/// @ref vuModelTargetStateInfoListGetElement
 		/// instead.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuModelTargetStateListGetElement(VuModelTargetStateList* list, int element, VuModelTargetState** state);
+		[DllImport("VuforiaEngine", EntryPoint = "vuModelTargetStateListGetElement", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result ModelTargetStateListGetElement(ModelTargetStateList* list, int element, ModelTargetState** state);
 
 		/// <summary>
 		/// Create a Model Target state info list
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuModelTargetStateInfoListCreate(VuModelTargetStateInfoList** list);
+		[DllImport("VuforiaEngine", EntryPoint = "vuModelTargetStateInfoListCreate", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result ModelTargetStateInfoListCreate(ModelTargetStateInfoList** list);
 
 		/// <summary>
 		/// Destroys a Model Target state info list
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuModelTargetStateInfoListDestroy(VuModelTargetStateInfoList* list);
+		[DllImport("VuforiaEngine", EntryPoint = "vuModelTargetStateInfoListDestroy", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result ModelTargetStateInfoListDestroy(ModelTargetStateInfoList* list);
 
 		/// <summary>
 		/// Get the number of elements in the Model Target state info list
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuModelTargetStateInfoListGetSize(VuModelTargetStateInfoList* list, int* listSize);
+		[DllImport("VuforiaEngine", EntryPoint = "vuModelTargetStateInfoListGetSize", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result ModelTargetStateInfoListGetSize(ModelTargetStateInfoList* list, int* listSize);
 
 		/// <summary>
 		/// Get the element at the specified index from the Model Target state info list
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuModelTargetStateInfoListGetElement(VuModelTargetStateInfoList* list, int element, VuModelTargetStateInfo* stateInfo);
+		[DllImport("VuforiaEngine", EntryPoint = "vuModelTargetStateInfoListGetElement", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result ModelTargetStateInfoListGetElement(ModelTargetStateInfoList* list, int element, ModelTargetStateInfo* stateInfo);
 
 		/// <summary>
 		/// Create a Model Target observer from database
 		/// Note that loading the database may take a significant amount of time, it is therefore recommended that this method is not called on
 		/// the main/UI thread.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuEngineCreateModelTargetObserver(VuEngine* engine, VuObserver** observer, VuModelTargetConfig* config, VuModelTargetCreationError* errorCode);
+		[DllImport("VuforiaEngine", EntryPoint = "vuEngineCreateModelTargetObserver", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result EngineCreateModelTargetObserver(Engine* engine, Observer** observer, ModelTargetConfig* config, ModelTargetCreationError* errorCode);
 
 		/// <summary>
 		/// Create a Model Target observer from memory buffer
 		/// Note that loading the database may take a significant amount of time, it is therefore recommended that this method is not called on
 		/// the main/UI thread.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuEngineCreateModelTargetObserverFromBufferConfig(VuEngine* engine, VuObserver** observer, VuModelTargetBufferConfig* config, VuModelTargetCreationError* errorCode);
+		[DllImport("VuforiaEngine", EntryPoint = "vuEngineCreateModelTargetObserverFromBufferConfig", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result EngineCreateModelTargetObserverFromBufferConfig(Engine* engine, Observer** observer, ModelTargetBufferConfig* config, ModelTargetCreationError* errorCode);
 
 		/// <summary>
 		/// Get all Model Target observers
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuEngineGetModelTargetObservers(VuEngine* engine, VuObserverList* observerList);
+		[DllImport("VuforiaEngine", EntryPoint = "vuEngineGetModelTargetObservers", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result EngineGetModelTargetObservers(Engine* engine, ObserverList* observerList);
 
 		/// <summary>
 		/// Remove all detection data cached by Model Target observers
@@ -2292,8 +2290,8 @@ namespace Evergine.Bindings.Vuforia
 		/// Note that clearing the cache may take a significant amount of time, it is therefore recommended that this
 		/// method is not called on the main/UI thread.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuEngineClearModelTargetObserverDetectionCache(VuEngine* engine);
+		[DllImport("VuforiaEngine", EntryPoint = "vuEngineClearModelTargetObserverDetectionCache", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result EngineClearModelTargetObserverDetectionCache(Engine* engine);
 
 		/// <summary>
 		/// Reset tracking of this Model Target observer
@@ -2302,48 +2300,48 @@ namespace Evergine.Bindings.Vuforia
 		/// If enhanced runtime detection is enabled, calling this function will remove any existing cached data for the Model Target.
 		/// The caching will automatically restart if the Model Target is detected again.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuModelTargetObserverReset(VuObserver* observer);
+		[DllImport("VuforiaEngine", EntryPoint = "vuModelTargetObserverReset", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result ModelTargetObserverReset(Observer* observer);
 
 		/// <summary>
 		/// Get the unique ID associated to the target from a Model Target observer
 		/// The lifetime of the returned string is bound to the lifetime of the observer.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuModelTargetObserverGetTargetUniqueId(VuObserver* observer, byte** targetId);
+		[DllImport("VuforiaEngine", EntryPoint = "vuModelTargetObserverGetTargetUniqueId", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result ModelTargetObserverGetTargetUniqueId(Observer* observer, byte** targetId);
 
 		/// <summary>
 		/// Get the name associated to the target from a Model Target observer
 		/// The lifetime of the returned string is bound to the lifetime of the observer.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuModelTargetObserverGetTargetName(VuObserver* observer, byte** targetName);
+		[DllImport("VuforiaEngine", EntryPoint = "vuModelTargetObserverGetTargetName", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result ModelTargetObserverGetTargetName(Observer* observer, byte** targetName);
 
 		/// <summary>
 		/// Get the size in meters associated to the target from a Model Target observer
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuModelTargetObserverGetTargetSize(VuObserver* observer, VuVector3F* size);
+		[DllImport("VuforiaEngine", EntryPoint = "vuModelTargetObserverGetTargetSize", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result ModelTargetObserverGetTargetSize(Observer* observer, Vector3F* size);
 
 		/// <summary>
 		/// Re-scale the target size associated to a Model Target observer
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuModelTargetObserverSetTargetScale(VuObserver* observer, float scale);
+		[DllImport("VuforiaEngine", EntryPoint = "vuModelTargetObserverSetTargetScale", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result ModelTargetObserverSetTargetScale(Observer* observer, float scale);
 
 		/// <summary>
 		/// Get the pose transformation offset associated to the target from a Model Target observer
 		/// The pose offset is represented as a pose matrix using the OpenGL convention.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuModelTargetObserverGetTargetPoseOffset(VuObserver* observer, VuMatrix44F* poseOffset);
+		[DllImport("VuforiaEngine", EntryPoint = "vuModelTargetObserverGetTargetPoseOffset", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result ModelTargetObserverGetTargetPoseOffset(Observer* observer, Matrix44F* poseOffset);
 
 		/// <summary>
 		/// Set the pose transformation offset associated to the target from a Model Target observer
 		/// The pose offset is represented as a pose matrix using the OpenGL convention.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuModelTargetObserverSetTargetPoseOffset(VuObserver* observer, VuMatrix44F* poseOffset);
+		[DllImport("VuforiaEngine", EntryPoint = "vuModelTargetObserverSetTargetPoseOffset", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result ModelTargetObserverSetTargetPoseOffset(Observer* observer, Matrix44F* poseOffset);
 
 		/// <summary>
 		/// Set the tracking optimization of the target associated to the Model Target observer.
@@ -2353,21 +2351,21 @@ namespace Evergine.Bindings.Vuforia
 		/// Enhanced runtime detection is incompatible with VU_TRACKING_OPTIMIZATION_LOW_FEATURE_OBJECTS and will be disabled until a different
 		/// tracking optimization is set.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuModelTargetObserverSetTrackingOptimization(VuObserver* observer, VuTrackingOptimization optimization);
+		[DllImport("VuforiaEngine", EntryPoint = "vuModelTargetObserverSetTrackingOptimization", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result ModelTargetObserverSetTrackingOptimization(Observer* observer, TrackingOptimization optimization);
 
 		/// <summary>
 		/// Get the tracking optimization of the target associated to the Model Target observer.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuModelTargetObserverGetTrackingOptimization(VuObserver* observer, VuTrackingOptimization* optimization);
+		[DllImport("VuforiaEngine", EntryPoint = "vuModelTargetObserverGetTrackingOptimization", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result ModelTargetObserverGetTrackingOptimization(Observer* observer, TrackingOptimization* optimization);
 
 		/// <summary>
 		/// Get the axis-aligned bounding box associated to the target from a Model Target observer, relative to the target&apos;s frame of
 		/// reference
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuModelTargetObserverGetAABB(VuObserver* observer, VuAABB* bbox);
+		[DllImport("VuforiaEngine", EntryPoint = "vuModelTargetObserverGetAABB", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result ModelTargetObserverGetAABB(Observer* observer, AABB* bbox);
 
 		/// <summary>
 		/// Get a list of the guide views defined for a Model Target observer
@@ -2383,8 +2381,8 @@ namespace Evergine.Bindings.Vuforia
 		/// The Model Target observer
 		/// The list to fill with the guide views.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuModelTargetObserverGetGuideViews(VuObserver* observer, VuGuideViewList* list);
+		[DllImport("VuforiaEngine", EntryPoint = "vuModelTargetObserverGetGuideViews", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result ModelTargetObserverGetGuideViews(Observer* observer, GuideViewList* list);
 
 		/// <summary>
 		/// Get the name of the currently active guide view
@@ -2392,16 +2390,16 @@ namespace Evergine.Bindings.Vuforia
 		/// Getting the active Guide View of an Advanced Model Target is not possible and the function will
 		/// return VU_FAILED.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuModelTargetObserverGetActiveGuideViewName(VuObserver* observer, byte** name);
+		[DllImport("VuforiaEngine", EntryPoint = "vuModelTargetObserverGetActiveGuideViewName", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result ModelTargetObserverGetActiveGuideViewName(Observer* observer, byte** name);
 
 		/// <summary>
 		/// Set the guide view you want to be active by name
 		/// Setting an active Guide View of an Advanced Model Target is not possible and the function will
 		/// return VU_FAILED.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuModelTargetObserverSetActiveGuideViewName(VuObserver* observer, [MarshalAs(UnmanagedType.LPStr)] string name);
+		[DllImport("VuforiaEngine", EntryPoint = "vuModelTargetObserverSetActiveGuideViewName", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result ModelTargetObserverSetActiveGuideViewName(Observer* observer, [MarshalAs(UnmanagedType.LPStr)] string name);
 
 		/// <summary>
 		/// Get if the observed Model Target is advanced
@@ -2411,15 +2409,15 @@ namespace Evergine.Bindings.Vuforia
 		/// and vuModelTargetObserverGetGuideViews(). The guide view of an Advanced Model Target can be retrieved
 		/// via vuModelTargetObserverGetGuideViewForAdvanced().
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern uint vuModelTargetObserverIsAdvanced(VuObserver* observer);
+		[DllImport("VuforiaEngine", EntryPoint = "vuModelTargetObserverIsAdvanced", CallingConvention = CallingConvention.StdCall)]
+		public static extern uint ModelTargetObserverIsAdvanced(Observer* observer);
 
 		/// <summary>
 		/// Get the intrinsic parameters of the camera used to render the Guide View image.
 		/// This function will return VU_FAILED if the Guide View is not active.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuGuideViewGetIntrinsics(VuGuideView* guideView, VuCameraIntrinsics* cameraIntrinsics);
+		[DllImport("VuforiaEngine", EntryPoint = "vuGuideViewGetIntrinsics", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result GuideViewGetIntrinsics(GuideView* guideView, CameraIntrinsics* cameraIntrinsics);
 
 		/// <summary>
 		/// Get the Guide View pose with respect to the Model Target
@@ -2427,8 +2425,8 @@ namespace Evergine.Bindings.Vuforia
 		/// The pose is represented as a pose matrix using the OpenGL convention.
 		/// The Guide View pose determines the position and orientation of the device where tracking can be initiated.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuGuideViewGetPose(VuGuideView* guideView, VuMatrix44F* pose);
+		[DllImport("VuforiaEngine", EntryPoint = "vuGuideViewGetPose", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result GuideViewGetPose(GuideView* guideView, Matrix44F* pose);
 
 		/// <summary>
 		/// Set the Guide View pose with respect to the Model Target
@@ -2438,8 +2436,8 @@ namespace Evergine.Bindings.Vuforia
 		/// Calling this function causes the Guide View&apos;s image to be outdated and a subsequent call to
 		/// vuGuideViewGetImage() will return a new image with the updated pose.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuGuideViewSetPose(VuGuideView* guideView, VuMatrix44F* pose);
+		[DllImport("VuforiaEngine", EntryPoint = "vuGuideViewSetPose", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result GuideViewSetPose(GuideView* guideView, Matrix44F* pose);
 
 		/// <summary>
 		/// Get the Guide View image
@@ -2461,8 +2459,8 @@ namespace Evergine.Bindings.Vuforia
 		/// On iOS rendering might fail while the app is in background due to OS limitations. If this is the case this function will return
 		/// VU_FAILED and the Guide View image remains outdated.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuGuideViewGetImage(VuGuideView* guideView, VuImage** image);
+		[DllImport("VuforiaEngine", EntryPoint = "vuGuideViewGetImage", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result GuideViewGetImage(GuideView* guideView, Image** image);
 
 		/// <summary>
 		/// Flag that indicates if a previous Guide View image is outdated
@@ -2474,15 +2472,15 @@ namespace Evergine.Bindings.Vuforia
 		/// orientation and Guide View pose.
 		/// This function fails if the guide view is trained or not active.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuGuideViewIsImageOutdated(VuGuideView* guideView, uint* outdated);
+		[DllImport("VuforiaEngine", EntryPoint = "vuGuideViewIsImageOutdated", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result GuideViewIsImageOutdated(GuideView* guideView, uint* outdated);
 
 		/// <summary>
 		/// Get the name of a Guide View
 		/// The lifetime of the returned string is bound to the lifetime of the guide view.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuGuideViewGetName(VuGuideView* guideView, byte** name);
+		[DllImport("VuforiaEngine", EntryPoint = "vuGuideViewGetName", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result GuideViewGetName(GuideView* guideView, byte** name);
 
 		/// <summary>
 		/// Turn on recognition engine for an Advanced (360) Model Target database while extended-tracking a model
@@ -2496,20 +2494,20 @@ namespace Evergine.Bindings.Vuforia
 		/// The default value is VU_TRUE.
 		/// This can only be set when Vuforia is not running.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuEngineSetModelTargetRecoWhileExtendedTracked(VuEngine* engine, uint enable);
+		[DllImport("VuforiaEngine", EntryPoint = "vuEngineSetModelTargetRecoWhileExtendedTracked", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result EngineSetModelTargetRecoWhileExtendedTracked(Engine* engine, uint enable);
 
 		/// <summary>
 		/// Get the current setting for recognizing Advanced (360) Model Target databases while extended-tracking a model
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuEngineGetModelTargetRecoWhileExtendedTracked(VuEngine* engine, uint* enabled);
+		[DllImport("VuforiaEngine", EntryPoint = "vuEngineGetModelTargetRecoWhileExtendedTracked", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result EngineGetModelTargetRecoWhileExtendedTracked(Engine* engine, uint* enabled);
 
 		/// <summary>
 		/// Get all Model Target observations
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuStateGetModelTargetObservations(VuState* state, VuObservationList* list);
+		[DllImport("VuforiaEngine", EntryPoint = "vuStateGetModelTargetObservations", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result StateGetModelTargetObservations(State* state, ObservationList* list);
 
 		/// <summary>
 		/// Get status info associated to the pose status of a Model Target observation.
@@ -2518,20 +2516,20 @@ namespace Evergine.Bindings.Vuforia
 		/// retrieved via
 		/// @ref vuObservationGetPoseInfo.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuModelTargetObservationGetStatusInfo(VuObservation* observation, VuModelTargetObservationStatusInfo* statusInfo);
+		[DllImport("VuforiaEngine", EntryPoint = "vuModelTargetObservationGetStatusInfo", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result ModelTargetObservationGetStatusInfo(Observation* observation, ModelTargetObservationStatusInfo* statusInfo);
 
 		/// <summary>
 		/// Get target info associated with a Model Target observation
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuModelTargetObservationGetTargetInfo(VuObservation* observation, VuModelTargetObservationTargetInfo* targetInfo);
+		[DllImport("VuforiaEngine", EntryPoint = "vuModelTargetObservationGetTargetInfo", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result ModelTargetObservationGetTargetInfo(Observation* observation, ModelTargetObservationTargetInfo* targetInfo);
 
 		/// <summary>
 		/// Get state info associated with a Model Target observation
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuModelTargetObservationGetStateInfo(VuObservation* observation, VuModelTargetObservationStateInfo* stateInfo);
+		[DllImport("VuforiaEngine", EntryPoint = "vuModelTargetObservationGetStateInfo", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result ModelTargetObservationGetStateInfo(Observation* observation, ModelTargetObservationStateInfo* stateInfo);
 
 		/// <summary>
 		/// Set the active Model Target state by name
@@ -2540,15 +2538,15 @@ namespace Evergine.Bindings.Vuforia
 		/// Calling this function causes the Guide View&apos;s image to be outdated and a subsequent call to
 		/// vuGuideViewGetImage() will return a new image with the updated Model Target state.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuModelTargetObserverSetActiveStateName(VuObserver* observer, [MarshalAs(UnmanagedType.LPStr)] string stateName);
+		[DllImport("VuforiaEngine", EntryPoint = "vuModelTargetObserverSetActiveStateName", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result ModelTargetObserverSetActiveStateName(Observer* observer, [MarshalAs(UnmanagedType.LPStr)] string stateName);
 
 		/// <summary>
 		/// Get the name of the Model Target&apos;s active state
 		/// The lifetime of the returned string is bound to the lifetime of the observer.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuModelTargetObserverGetActiveStateName(VuObserver* observer, byte** stateName);
+		[DllImport("VuforiaEngine", EntryPoint = "vuModelTargetObserverGetActiveStateName", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result ModelTargetObserverGetActiveStateName(Observer* observer, byte** stateName);
 
 		/// <summary>
 		/// Get a list of all possible states of the Model Target
@@ -2556,15 +2554,15 @@ namespace Evergine.Bindings.Vuforia
 		/// @ref vuModelTargetObserverGetAvailableStateInfos
 		/// instead.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuModelTargetObserverGetAvailableStates(VuObserver* observer, VuModelTargetStateList* list);
+		[DllImport("VuforiaEngine", EntryPoint = "vuModelTargetObserverGetAvailableStates", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result ModelTargetObserverGetAvailableStates(Observer* observer, ModelTargetStateList* list);
 
 		/// <summary>
 		/// Get a list of all state infos of all possible states of the Model Target
 		/// The order of the available states is consistent with the order during authoring of the Model Target.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuModelTargetObserverGetAvailableStateInfos(VuObserver* observer, VuModelTargetStateInfoList* list);
+		[DllImport("VuforiaEngine", EntryPoint = "vuModelTargetObserverGetAvailableStateInfos", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result ModelTargetObserverGetAvailableStateInfos(Observer* observer, ModelTargetStateInfoList* list);
 
 		/// <summary>
 		/// Get the name of the Model Target state
@@ -2575,8 +2573,8 @@ namespace Evergine.Bindings.Vuforia
 		/// The Model Target state to get the name from
 		/// Output parameter for the name of the Model Target state
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuModelTargetStateGetName(VuModelTargetState* state, byte** name);
+		[DllImport("VuforiaEngine", EntryPoint = "vuModelTargetStateGetName", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result ModelTargetStateGetName(ModelTargetState* state, byte** name);
 
 		/// <summary>
 		/// Get a Guide View for an Advanced Model Target
@@ -2590,15 +2588,15 @@ namespace Evergine.Bindings.Vuforia
 		/// This is a potentially long running operation. Therefore, it is recommended to not call this function
 		/// from the main/UI thread.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuModelTargetObserverGetGuideViewForAdvanced(VuObserver* observer, VuGuideView** guideView);
+		[DllImport("VuforiaEngine", EntryPoint = "vuModelTargetObserverGetGuideViewForAdvanced", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result ModelTargetObserverGetGuideViewForAdvanced(Observer* observer, GuideView** guideView);
 
 		/// <summary>
 		/// Default Mesh observer configuration with a Model Target
 		/// Use this function to initialize the VuMeshModelTargetConfig data structure with default values.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuMeshModelTargetConfig vuMeshModelTargetConfigDefault();
+		[DllImport("VuforiaEngine", EntryPoint = "vuMeshModelTargetConfigDefault", CallingConvention = CallingConvention.StdCall)]
+		public static extern MeshModelTargetConfig MeshModelTargetConfigDefault();
 
 		/// <summary>
 		/// Create a Mesh observer with a Model Target as source
@@ -2609,88 +2607,88 @@ namespace Evergine.Bindings.Vuforia
 		/// Because the Mesh observer is dependent on the existence of the Model Target observer, one has to make
 		/// sure to destroy the Mesh observer before the associated Model Target observer is destroyed.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuEngineCreateMeshObserverFromModelTargetConfig(VuEngine* engine, VuObserver** observer, VuMeshModelTargetConfig* config, VuMeshModelTargetCreationError* errorCode);
+		[DllImport("VuforiaEngine", EntryPoint = "vuEngineCreateMeshObserverFromModelTargetConfig", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result EngineCreateMeshObserverFromModelTargetConfig(Engine* engine, Observer** observer, MeshModelTargetConfig* config, MeshModelTargetCreationError* errorCode);
 
 		/// <summary>
 		/// Default Multi-Target configuration
 		/// Use this function to initialize the VuMultiTargetConfig data structure with default values.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuMultiTargetConfig vuMultiTargetConfigDefault();
+		[DllImport("VuforiaEngine", EntryPoint = "vuMultiTargetConfigDefault", CallingConvention = CallingConvention.StdCall)]
+		public static extern MultiTargetConfig MultiTargetConfigDefault();
 
 		/// <summary>
 		/// Default Multi-Target part configuration
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuMultiTargetPartConfig vuMultiTargetPartConfigDefault();
+		[DllImport("VuforiaEngine", EntryPoint = "vuMultiTargetPartConfigDefault", CallingConvention = CallingConvention.StdCall)]
+		public static extern MultiTargetPartConfig MultiTargetPartConfigDefault();
 
 		/// <summary>
 		/// Default Multi-Target parts configuration
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuMultiTargetPartsConfig vuMultiTargetPartsConfigDefault();
+		[DllImport("VuforiaEngine", EntryPoint = "vuMultiTargetPartsConfigDefault", CallingConvention = CallingConvention.StdCall)]
+		public static extern MultiTargetPartsConfig MultiTargetPartsConfigDefault();
 
 		/// <summary>
 		/// Create a Multi-Target observer from a database
 		/// Note that loading the database may take a significant amount of time, it is therefore recommended that this method is not called on
 		/// the main/UI thread.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuEngineCreateMultiTargetObserver(VuEngine* engine, VuObserver** observer, VuMultiTargetConfig* config, VuMultiTargetCreationError* errorCode);
+		[DllImport("VuforiaEngine", EntryPoint = "vuEngineCreateMultiTargetObserver", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result EngineCreateMultiTargetObserver(Engine* engine, Observer** observer, MultiTargetConfig* config, MultiTargetCreationError* errorCode);
 
 		/// <summary>
 		/// Create a Multi-Target observer from parts
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuEngineCreateMultiTargetObserverFromPartsConfig(VuEngine* engine, VuObserver** observer, VuMultiTargetPartsConfig* config, VuMultiTargetPartsCreationError* errorCode);
+		[DllImport("VuforiaEngine", EntryPoint = "vuEngineCreateMultiTargetObserverFromPartsConfig", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result EngineCreateMultiTargetObserverFromPartsConfig(Engine* engine, Observer** observer, MultiTargetPartsConfig* config, MultiTargetPartsCreationError* errorCode);
 
 		/// <summary>
 		/// Get all Multi-Target observers
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuEngineGetMultiTargetObservers(VuEngine* engine, VuObserverList* observerList);
+		[DllImport("VuforiaEngine", EntryPoint = "vuEngineGetMultiTargetObservers", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result EngineGetMultiTargetObservers(Engine* engine, ObserverList* observerList);
 
 		/// <summary>
 		/// Get the unique ID associated to the target from a Multi-Target observer
 		/// The lifetime of the returned string is bound to the lifetime of the observer.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuMultiTargetObserverGetTargetUniqueId(VuObserver* observer, byte** targetId);
+		[DllImport("VuforiaEngine", EntryPoint = "vuMultiTargetObserverGetTargetUniqueId", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result MultiTargetObserverGetTargetUniqueId(Observer* observer, byte** targetId);
 
 		/// <summary>
 		/// Get the name associated to the target from a Multi-Target observer
 		/// The lifetime of the returned string is bound to the lifetime of the observer.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuMultiTargetObserverGetTargetName(VuObserver* observer, byte** targetName);
+		[DllImport("VuforiaEngine", EntryPoint = "vuMultiTargetObserverGetTargetName", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result MultiTargetObserverGetTargetName(Observer* observer, byte** targetName);
 
 		/// <summary>
 		/// Get the size in meters associated to the target from a Multi-Target observer
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuMultiTargetObserverGetTargetSize(VuObserver* observer, VuVector3F* size);
+		[DllImport("VuforiaEngine", EntryPoint = "vuMultiTargetObserverGetTargetSize", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result MultiTargetObserverGetTargetSize(Observer* observer, Vector3F* size);
 
 		/// <summary>
 		/// Get the axis-aligned bounding box associated to the target from a Multi-Target observer, relative to the target&apos;s frame of
 		/// reference
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuMultiTargetObserverGetAABB(VuObserver* observer, VuAABB* bbox);
+		[DllImport("VuforiaEngine", EntryPoint = "vuMultiTargetObserverGetAABB", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result MultiTargetObserverGetAABB(Observer* observer, AABB* bbox);
 
 		/// <summary>
 		/// Get the pose transformation offset associated to the target from a Multi-Target observer
 		/// The pose offset is represented as a pose matrix using the OpenGL convention.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuMultiTargetObserverGetTargetPoseOffset(VuObserver* observer, VuMatrix44F* poseOffset);
+		[DllImport("VuforiaEngine", EntryPoint = "vuMultiTargetObserverGetTargetPoseOffset", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result MultiTargetObserverGetTargetPoseOffset(Observer* observer, Matrix44F* poseOffset);
 
 		/// <summary>
 		/// Set the pose transformation offset associated to the target from a Multi-Target observer
 		/// The pose offset is represented as a pose matrix using the OpenGL convention.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuMultiTargetObserverSetTargetPoseOffset(VuObserver* observer, VuMatrix44F* poseOffset);
+		[DllImport("VuforiaEngine", EntryPoint = "vuMultiTargetObserverSetTargetPoseOffset", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result MultiTargetObserverSetTargetPoseOffset(Observer* observer, Matrix44F* poseOffset);
 
 		/// <summary>
 		/// Set the tracking optimization of the target associated to the Multi-Target observer.
@@ -2700,20 +2698,20 @@ namespace Evergine.Bindings.Vuforia
 		/// This operation will reset any tracking operation for the Multi-Target observer.
 		/// It is recommended to use this function before starting the Vuforia Engine.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuMultiTargetObserverSetTrackingOptimization(VuObserver* observer, VuTrackingOptimization optimization);
+		[DllImport("VuforiaEngine", EntryPoint = "vuMultiTargetObserverSetTrackingOptimization", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result MultiTargetObserverSetTrackingOptimization(Observer* observer, TrackingOptimization optimization);
 
 		/// <summary>
 		/// Get the tracking optimization of the target associated to the Multi-Target observer.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuMultiTargetObserverGetTrackingOptimization(VuObserver* observer, VuTrackingOptimization* optimization);
+		[DllImport("VuforiaEngine", EntryPoint = "vuMultiTargetObserverGetTrackingOptimization", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result MultiTargetObserverGetTrackingOptimization(Observer* observer, TrackingOptimization* optimization);
 
 		/// <summary>
 		/// Get all Multi-Target observations
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuStateGetMultiTargetObservations(VuState* state, VuObservationList* observationList);
+		[DllImport("VuforiaEngine", EntryPoint = "vuStateGetMultiTargetObservations", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result StateGetMultiTargetObservations(State* state, ObservationList* observationList);
 
 		/// <summary>
 		/// Get status info associated to the pose status of an Multi-Target observation.
@@ -2722,206 +2720,206 @@ namespace Evergine.Bindings.Vuforia
 		/// retrieved via
 		/// @ref vuObservationGetPoseInfo.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuMultiTargetObservationGetStatusInfo(VuObservation* observation, VuMultiTargetObservationStatusInfo* statusInfo);
+		[DllImport("VuforiaEngine", EntryPoint = "vuMultiTargetObservationGetStatusInfo", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result MultiTargetObservationGetStatusInfo(Observation* observation, MultiTargetObservationStatusInfo* statusInfo);
 
 		/// <summary>
 		/// Get target info associated with Multi-Target observation
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuMultiTargetObservationGetTargetInfo(VuObservation* observation, VuMultiTargetObservationTargetInfo* targetInfo);
+		[DllImport("VuforiaEngine", EntryPoint = "vuMultiTargetObservationGetTargetInfo", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result MultiTargetObservationGetTargetInfo(Observation* observation, MultiTargetObservationTargetInfo* targetInfo);
 
 		/// <summary>
 		/// Create Multi-Target part config list
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuMultiTargetPartConfigListCreate(VuMultiTargetPartConfigList** list);
+		[DllImport("VuforiaEngine", EntryPoint = "vuMultiTargetPartConfigListCreate", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result MultiTargetPartConfigListCreate(MultiTargetPartConfigList** list);
 
 		/// <summary>
 		/// Get number of elements in a Multi-Target part config list
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuMultiTargetPartConfigListGetSize(VuMultiTargetPartConfigList* list, int* listSize);
+		[DllImport("VuforiaEngine", EntryPoint = "vuMultiTargetPartConfigListGetSize", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result MultiTargetPartConfigListGetSize(MultiTargetPartConfigList* list, int* listSize);
 
 		/// <summary>
 		/// Get an element in a Multi-Target part config list
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuMultiTargetPartConfigListGetElement(VuMultiTargetPartConfigList* list, int element, VuMultiTargetPartConfig* config);
+		[DllImport("VuforiaEngine", EntryPoint = "vuMultiTargetPartConfigListGetElement", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result MultiTargetPartConfigListGetElement(MultiTargetPartConfigList* list, int element, MultiTargetPartConfig* config);
 
 		/// <summary>
 		/// Append an element to a Multi-Target part config list
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuMultiTargetPartConfigListAppendElement(VuMultiTargetPartConfigList* list, VuMultiTargetPartConfig* config);
+		[DllImport("VuforiaEngine", EntryPoint = "vuMultiTargetPartConfigListAppendElement", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result MultiTargetPartConfigListAppendElement(MultiTargetPartConfigList* list, MultiTargetPartConfig* config);
 
 		/// <summary>
 		/// Destroy a Multi-Target part config list
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuMultiTargetPartConfigListDestroy(VuMultiTargetPartConfigList* list);
+		[DllImport("VuforiaEngine", EntryPoint = "vuMultiTargetPartConfigListDestroy", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result MultiTargetPartConfigListDestroy(MultiTargetPartConfigList* list);
 
 		/// <summary>
 		/// Get a list of all parts of a Multi-Target
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuMultiTargetObserverGetParts(VuObserver* observer, VuMultiTargetPartList* partsList);
+		[DllImport("VuforiaEngine", EntryPoint = "vuMultiTargetObserverGetParts", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result MultiTargetObserverGetParts(Observer* observer, MultiTargetPartList* partsList);
 
 		/// <summary>
 		/// Add a part to a Multi-Target
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuMultiTargetObserverAddPart(VuObserver* observer, VuMultiTargetPartConfig* config);
+		[DllImport("VuforiaEngine", EntryPoint = "vuMultiTargetObserverAddPart", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result MultiTargetObserverAddPart(Observer* observer, MultiTargetPartConfig* config);
 
 		/// <summary>
 		/// Remove a part from a Multi-Target
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuMultiTargetObserverRemovePart(VuObserver* observer, [MarshalAs(UnmanagedType.LPStr)] string targetName);
+		[DllImport("VuforiaEngine", EntryPoint = "vuMultiTargetObserverRemovePart", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result MultiTargetObserverRemovePart(Observer* observer, [MarshalAs(UnmanagedType.LPStr)] string targetName);
 
 		/// <summary>
 		/// Create a Multi-Target part list
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuMultiTargetPartListCreate(VuMultiTargetPartList** list);
+		[DllImport("VuforiaEngine", EntryPoint = "vuMultiTargetPartListCreate", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result MultiTargetPartListCreate(MultiTargetPartList** list);
 
 		/// <summary>
 		/// Get number of elements in a Multi-Target part list
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuMultiTargetPartListGetSize(VuMultiTargetPartList* list, int* listSize);
+		[DllImport("VuforiaEngine", EntryPoint = "vuMultiTargetPartListGetSize", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result MultiTargetPartListGetSize(MultiTargetPartList* list, int* listSize);
 
 		/// <summary>
 		/// Get an element in a Multi-Target part list
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuMultiTargetPartListGetElement(VuMultiTargetPartList* list, int element, VuMultiTargetPart** part);
+		[DllImport("VuforiaEngine", EntryPoint = "vuMultiTargetPartListGetElement", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result MultiTargetPartListGetElement(MultiTargetPartList* list, int element, MultiTargetPart** part);
 
 		/// <summary>
 		/// Destroy a Multi-Target part list
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuMultiTargetPartListDestroy(VuMultiTargetPartList* list);
+		[DllImport("VuforiaEngine", EntryPoint = "vuMultiTargetPartListDestroy", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result MultiTargetPartListDestroy(MultiTargetPartList* list);
 
 		/// <summary>
 		/// Get the unique ID associated to a Multi-Target part
 		/// The lifetime of the returned string is bound to the lifetime of the Multi-Target part.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuMultiTargetPartGetTargetUniqueId(VuMultiTargetPart* part, byte** targetId);
+		[DllImport("VuforiaEngine", EntryPoint = "vuMultiTargetPartGetTargetUniqueId", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result MultiTargetPartGetTargetUniqueId(MultiTargetPart* part, byte** targetId);
 
 		/// <summary>
 		/// Get the name associated to a Multi-Target part
 		/// The lifetime of the returned string is bound to the lifetime of the Multi-Target part.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuMultiTargetPartGetTargetName(VuMultiTargetPart* part, byte** targetName);
+		[DllImport("VuforiaEngine", EntryPoint = "vuMultiTargetPartGetTargetName", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result MultiTargetPartGetTargetName(MultiTargetPart* part, byte** targetName);
 
 		/// <summary>
 		/// Get the size associated with a Multi-Target part in meters
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuMultiTargetPartGetTargetSize(VuMultiTargetPart* part, VuVector2F* size);
+		[DllImport("VuforiaEngine", EntryPoint = "vuMultiTargetPartGetTargetSize", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result MultiTargetPartGetTargetSize(MultiTargetPart* part, Vector2F* size);
 
 		/// <summary>
 		/// Get the pose transformation offset associated with a Multi-Target part
 		/// The pose transformation offset is represented as a pose matrix using the OpenGL convention.
 		/// This pose is relative to the Multi-Target to which the part belongs.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuMultiTargetPartGetTargetPoseOffset(VuMultiTargetPart* part, VuMatrix44F* poseOffset);
+		[DllImport("VuforiaEngine", EntryPoint = "vuMultiTargetPartGetTargetPoseOffset", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result MultiTargetPartGetTargetPoseOffset(MultiTargetPart* part, Matrix44F* poseOffset);
 
 		/// <summary>
 		/// Default VuMark configuration
 		/// Use this function to initialize the VuVuMarkConfig data structure with default values.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuVuMarkConfig vuVuMarkConfigDefault();
+		[DllImport("VuforiaEngine", EntryPoint = "vuVuMarkConfigDefault", CallingConvention = CallingConvention.StdCall)]
+		public static extern VuMarkConfig VuMarkConfigDefault();
 
 		/// <summary>
 		/// Create a VuMark observer from a database
 		/// Note that loading the database may take a significant amount of time, it is therefore recommended that this method is not called on
 		/// the main/UI thread.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuEngineCreateVuMarkObserver(VuEngine* engine, VuObserver** observer, VuVuMarkConfig* config, VuVuMarkCreationError* errorCode);
+		[DllImport("VuforiaEngine", EntryPoint = "vuEngineCreateVuMarkObserver", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result EngineCreateVuMarkObserver(Engine* engine, Observer** observer, VuMarkConfig* config, VuMarkCreationError* errorCode);
 
 		/// <summary>
 		/// Get all VuMark observers
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuEngineGetVuMarkObservers(VuEngine* engine, VuObserverList* observerList);
+		[DllImport("VuforiaEngine", EntryPoint = "vuEngineGetVuMarkObservers", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result EngineGetVuMarkObservers(Engine* engine, ObserverList* observerList);
 
 		/// <summary>
 		/// Get the unique id associated to the template from a VuMark observer
 		/// The lifetime of the returned string is bound to the lifetime of the observer.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuVuMarkObserverGetTargetUniqueId(VuObserver* observer, byte** targetId);
+		[DllImport("VuforiaEngine", EntryPoint = "vuVuMarkObserverGetTargetUniqueId", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result VuMarkObserverGetTargetUniqueId(Observer* observer, byte** targetId);
 
 		/// <summary>
 		/// Get the name associated to the VuMark template from a VuMark observer
 		/// The lifetime of the returned string is bound to the lifetime of the observer.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuVuMarkObserverGetTemplateName(VuObserver* observer, byte** templateName);
+		[DllImport("VuforiaEngine", EntryPoint = "vuVuMarkObserverGetTemplateName", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result VuMarkObserverGetTemplateName(Observer* observer, byte** templateName);
 
 		/// <summary>
 		/// Get the axis-aligned bounding box associated to the VuMark template from a VuMark observer, relative to its frame of reference
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuVuMarkObserverGetTemplateAABB(VuObserver* observer, VuAABB* bbox);
+		[DllImport("VuforiaEngine", EntryPoint = "vuVuMarkObserverGetTemplateAABB", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result VuMarkObserverGetTemplateAABB(Observer* observer, AABB* bbox);
 
 		/// <summary>
 		/// Get the size in meters associated to the VuMark template from a VuMark observer
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuVuMarkObserverGetTemplateSize(VuObserver* observer, VuVector2F* size);
+		[DllImport("VuforiaEngine", EntryPoint = "vuVuMarkObserverGetTemplateSize", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result VuMarkObserverGetTemplateSize(Observer* observer, Vector2F* size);
 
 		/// <summary>
 		/// Re-scale the VuMark template size associated to a VuMark observer
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuVuMarkObserverSetTemplateScale(VuObserver* observer, float scale);
+		[DllImport("VuforiaEngine", EntryPoint = "vuVuMarkObserverSetTemplateScale", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result VuMarkObserverSetTemplateScale(Observer* observer, float scale);
 
 		/// <summary>
 		/// Get the pose transformation offset associated to the VuMark template from a VuMark observer
 		/// The pose offset is represented as a pose matrix using the OpenGL convention.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuVuMarkObserverGetTemplatePoseOffset(VuObserver* observer, VuMatrix44F* poseOffset);
+		[DllImport("VuforiaEngine", EntryPoint = "vuVuMarkObserverGetTemplatePoseOffset", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result VuMarkObserverGetTemplatePoseOffset(Observer* observer, Matrix44F* poseOffset);
 
 		/// <summary>
 		/// Set the pose transformation offset associated to the VuMark template from a VuMark observer
 		/// The pose offset is represented as a pose matrix using the OpenGL convention.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuVuMarkObserverSetTemplatePoseOffset(VuObserver* observer, VuMatrix44F* poseOffset);
+		[DllImport("VuforiaEngine", EntryPoint = "vuVuMarkObserverSetTemplatePoseOffset", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result VuMarkObserverSetTemplatePoseOffset(Observer* observer, Matrix44F* poseOffset);
 
 		/// <summary>
 		/// Get the user data for a VuMark template from a VuMark observer&apos;s underlying database
 		/// The lifetime of the returned string is bound to the lifetime of the observer.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuVuMarkObserverGetUserData(VuObserver* observer, byte** userData);
+		[DllImport("VuforiaEngine", EntryPoint = "vuVuMarkObserverGetUserData", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result VuMarkObserverGetUserData(Observer* observer, byte** userData);
 
 		/// <summary>
 		/// Get the position of the origin of a VuMark template from a VuMark observer
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuVuMarkObserverGetOrigin(VuObserver* observer, VuVector2F* origin);
+		[DllImport("VuforiaEngine", EntryPoint = "vuVuMarkObserverGetOrigin", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result VuMarkObserverGetOrigin(Observer* observer, Vector2F* origin);
 
 		/// <summary>
 		/// Get whether tracking should use the VuMark template&apos;s background image or not
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuVuMarkObserverGetTrackingFromRuntimeAppearance(VuObserver* observer, uint* isEnabled);
+		[DllImport("VuforiaEngine", EntryPoint = "vuVuMarkObserverGetTrackingFromRuntimeAppearance", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result VuMarkObserverGetTrackingFromRuntimeAppearance(Observer* observer, uint* isEnabled);
 
 		/// <summary>
 		/// Set whether tracking should use the VuMark template&apos;s background image or not
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuVuMarkObserverSetTrackingFromRuntimeAppearance(VuObserver* observer, uint enable);
+		[DllImport("VuforiaEngine", EntryPoint = "vuVuMarkObserverSetTrackingFromRuntimeAppearance", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result VuMarkObserverSetTrackingFromRuntimeAppearance(Observer* observer, uint enable);
 
 		/// <summary>
 		/// Set the tracking optimization of the target associated to the VuMark observer.
@@ -2931,20 +2929,20 @@ namespace Evergine.Bindings.Vuforia
 		/// This operation will reset any tracking operation for the VuMark observer.
 		/// It is recommended to use this function before starting the Vuforia Engine.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuVuMarkObserverSetTrackingOptimization(VuObserver* observer, VuTrackingOptimization optimization);
+		[DllImport("VuforiaEngine", EntryPoint = "vuVuMarkObserverSetTrackingOptimization", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result VuMarkObserverSetTrackingOptimization(Observer* observer, TrackingOptimization optimization);
 
 		/// <summary>
 		/// Get the tracking optimization of the target associated to the VuMark observer.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuVuMarkObserverGetTrackingOptimization(VuObserver* observer, VuTrackingOptimization* optimization);
+		[DllImport("VuforiaEngine", EntryPoint = "vuVuMarkObserverGetTrackingOptimization", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result VuMarkObserverGetTrackingOptimization(Observer* observer, TrackingOptimization* optimization);
 
 		/// <summary>
 		/// Get all VuMark observations
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuStateGetVuMarkObservations(VuState* state, VuObservationList* observationList);
+		[DllImport("VuforiaEngine", EntryPoint = "vuStateGetVuMarkObservations", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result StateGetVuMarkObservations(State* state, ObservationList* observationList);
 
 		/// <summary>
 		/// Get status info associated to the pose status of a VuMark observation.
@@ -2953,176 +2951,176 @@ namespace Evergine.Bindings.Vuforia
 		/// retrieved via
 		/// @ref vuObservationGetPoseInfo.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuVuMarkObservationGetStatusInfo(VuObservation* observation, VuVuMarkObservationStatusInfo* statusInfo);
+		[DllImport("VuforiaEngine", EntryPoint = "vuVuMarkObservationGetStatusInfo", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result VuMarkObservationGetStatusInfo(Observation* observation, VuMarkObservationStatusInfo* statusInfo);
 
 		/// <summary>
 		/// Get VuMark-specific info associated with a VuMark observation
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuVuMarkObservationGetInfo(VuObservation* observation, VuVuMarkObservationInfo* info);
+		[DllImport("VuforiaEngine", EntryPoint = "vuVuMarkObservationGetInfo", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result VuMarkObservationGetInfo(Observation* observation, VuMarkObservationInfo* info);
 
 		/// <summary>
 		/// Get VuMark template info associated with a VuMark observation
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuVuMarkObservationGetTemplateInfo(VuObservation* observation, VuVuMarkObservationTemplateInfo* templateInfo);
+		[DllImport("VuforiaEngine", EntryPoint = "vuVuMarkObservationGetTemplateInfo", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result VuMarkObservationGetTemplateInfo(Observation* observation, VuMarkObservationTemplateInfo* templateInfo);
 
 		/// <summary>
 		/// Get VuMark instance info associated with a VuMark observation
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuVuMarkObservationGetInstanceInfo(VuObservation* observation, VuVuMarkObservationInstanceInfo* instanceInfo);
+		[DllImport("VuforiaEngine", EntryPoint = "vuVuMarkObservationGetInstanceInfo", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result VuMarkObservationGetInstanceInfo(Observation* observation, VuMarkObservationInstanceInfo* instanceInfo);
 
 		/// <summary>
 		/// Get VuMark instance image info associated with a VuMark observation
 		/// The lifetime of the returned image is bound to the lifetime of the observation.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuVuMarkObservationGetInstanceImage(VuObservation* observation, VuImage** instanceImage);
+		[DllImport("VuforiaEngine", EntryPoint = "vuVuMarkObservationGetInstanceImage", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result VuMarkObservationGetInstanceImage(Observation* observation, Image** instanceImage);
 
 		/// <summary>
 		/// Default barcode configuration
 		/// Use this function to initialize the VuBarcodeConfig data structure with default values.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuBarcodeConfig vuBarcodeConfigDefault();
+		[DllImport("VuforiaEngine", EntryPoint = "vuBarcodeConfigDefault", CallingConvention = CallingConvention.StdCall)]
+		public static extern BarcodeConfig BarcodeConfigDefault();
 
 		/// <summary>
 		/// Create a barcode observer
 		/// Only one barcode observer can be active at a time.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuEngineCreateBarcodeObserver(VuEngine* engine, VuObserver** observer, VuBarcodeConfig* config, VuBarcodeCreationError* error);
+		[DllImport("VuforiaEngine", EntryPoint = "vuEngineCreateBarcodeObserver", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result EngineCreateBarcodeObserver(Engine* engine, Observer** observer, BarcodeConfig* config, BarcodeCreationError* error);
 
 		/// <summary>
 		/// Get all barcode observers
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuEngineGetBarcodeObservers(VuEngine* engine, VuObserverList* observerList);
+		[DllImport("VuforiaEngine", EntryPoint = "vuEngineGetBarcodeObservers", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result EngineGetBarcodeObservers(Engine* engine, ObserverList* observerList);
 
 		/// <summary>
 		/// Get the set of barcode types that will be observed by the observer
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuBarcodeObserverGetObservedTypes(VuObserver* observer, VuBarcodeTypeSet* types);
+		[DllImport("VuforiaEngine", EntryPoint = "vuBarcodeObserverGetObservedTypes", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result BarcodeObserverGetObservedTypes(Observer* observer, BarcodeTypeSet* types);
 
 		/// <summary>
 		/// Create barcode type set
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuBarcodeTypeSetCreate(VuBarcodeTypeSet** list);
+		[DllImport("VuforiaEngine", EntryPoint = "vuBarcodeTypeSetCreate", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result BarcodeTypeSetCreate(BarcodeTypeSet** list);
 
 		/// <summary>
 		/// Get number of elements in a barcode type set
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuBarcodeTypeSetGetSize(VuBarcodeTypeSet* set, int* setSize);
+		[DllImport("VuforiaEngine", EntryPoint = "vuBarcodeTypeSetGetSize", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result BarcodeTypeSetGetSize(BarcodeTypeSet* set, int* setSize);
 
 		/// <summary>
 		/// Return VU_TRUE if an element is found in a barcode type set
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuBarcodeTypeSetHasElement(VuBarcodeTypeSet* set, VuBarcodeType type, uint* result);
+		[DllImport("VuforiaEngine", EntryPoint = "vuBarcodeTypeSetHasElement", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result BarcodeTypeSetHasElement(BarcodeTypeSet* set, BarcodeType type, uint* result);
 
 		/// <summary>
 		/// Add an element to a barcode type set
 		/// Nothing is done if the type is already in the set.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuBarcodeTypeSetAddElement(VuBarcodeTypeSet* set, VuBarcodeType type);
+		[DllImport("VuforiaEngine", EntryPoint = "vuBarcodeTypeSetAddElement", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result BarcodeTypeSetAddElement(BarcodeTypeSet* set, BarcodeType type);
 
 		/// <summary>
 		/// Destroy a barcode type set
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuBarcodeTypeSetDestroy(VuBarcodeTypeSet* set);
+		[DllImport("VuforiaEngine", EntryPoint = "vuBarcodeTypeSetDestroy", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result BarcodeTypeSetDestroy(BarcodeTypeSet* set);
 
 		/// <summary>
 		/// Get all barcode observations
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuStateGetBarcodeObservations(VuState* state, VuObservationList* observationList);
+		[DllImport("VuforiaEngine", EntryPoint = "vuStateGetBarcodeObservations", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result StateGetBarcodeObservations(State* state, ObservationList* observationList);
 
 		/// <summary>
 		/// Get the barcode info associated with a Barcode observation
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuBarcodeObservationGetInfo(VuObservation* observation, VuBarcodeObservationInfo* info);
+		[DllImport("VuforiaEngine", EntryPoint = "vuBarcodeObservationGetInfo", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result BarcodeObservationGetInfo(Observation* observation, BarcodeObservationInfo* info);
 
 		/// <summary>
 		/// Get the barcode instance info associated with a Barcode observation
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuBarcodeObservationGetInstanceInfo(VuObservation* observation, VuBarcodeObservationInstanceInfo* instanceInfo);
+		[DllImport("VuforiaEngine", EntryPoint = "vuBarcodeObservationGetInstanceInfo", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result BarcodeObservationGetInstanceInfo(Observation* observation, BarcodeObservationInstanceInfo* instanceInfo);
 
 		/// <summary>
 		/// Default Validation Area from image file configuration
 		/// Use this function to initialize the VuValidationAreaFileConfig data structure with default values.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuValidationAreaFileConfig vuValidationAreaFileConfigDefault();
+		[DllImport("VuforiaEngine", EntryPoint = "vuValidationAreaFileConfigDefault", CallingConvention = CallingConvention.StdCall)]
+		public static extern ValidationAreaFileConfig ValidationAreaFileConfigDefault();
 
 		/// <summary>
 		/// Create Validation Area observer from file configuration
 		/// Images with width or height bigger than 4096 pixels are not supported.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuEngineCreateValidationAreaObserverFromFileConfig(VuEngine* engine, VuObserver** observer, VuValidationAreaFileConfig* config, VuValidationAreaFileCreationError* errorCode);
+		[DllImport("VuforiaEngine", EntryPoint = "vuEngineCreateValidationAreaObserverFromFileConfig", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result EngineCreateValidationAreaObserverFromFileConfig(Engine* engine, Observer** observer, ValidationAreaFileConfig* config, ValidationAreaFileCreationError* errorCode);
 
 		/// <summary>
 		/// Configuration for an Validation Area from image buffer
 		/// Use this function to initialize the VuValidationAreaBufferConfig data structure with default values.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuValidationAreaBufferConfig vuValidationAreaBufferConfigDefault();
+		[DllImport("VuforiaEngine", EntryPoint = "vuValidationAreaBufferConfigDefault", CallingConvention = CallingConvention.StdCall)]
+		public static extern ValidationAreaBufferConfig ValidationAreaBufferConfigDefault();
 
 		/// <summary>
 		/// Create Validation Area observer from buffer configuration
 		/// Images with width or height bigger than 4096 pixels are not supported.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuEngineCreateValidationAreaObserverFromBufferConfig(VuEngine* engine, VuObserver** observer, VuValidationAreaBufferConfig* config, VuValidationAreaBufferCreationError* errorCode);
+		[DllImport("VuforiaEngine", EntryPoint = "vuEngineCreateValidationAreaObserverFromBufferConfig", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result EngineCreateValidationAreaObserverFromBufferConfig(Engine* engine, Observer** observer, ValidationAreaBufferConfig* config, ValidationAreaBufferCreationError* errorCode);
 
 		/// <summary>
 		/// Get all Validation Area observers
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuEngineGetValidationAreaObservers(VuEngine* engine, VuObserverList* observerList);
+		[DllImport("VuforiaEngine", EntryPoint = "vuEngineGetValidationAreaObservers", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result EngineGetValidationAreaObservers(Engine* engine, ObserverList* observerList);
 
 		/// <summary>
 		/// Get the unique ID associated to the area from a Validation Area observer
 		/// The lifetime of the returned string is bound to the lifetime of the observer.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuValidationAreaObserverGetUniqueId(VuObserver* observer, byte** areaId);
+		[DllImport("VuforiaEngine", EntryPoint = "vuValidationAreaObserverGetUniqueId", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result ValidationAreaObserverGetUniqueId(Observer* observer, byte** areaId);
 
 		/// <summary>
 		/// Get the name associated to the area from a Validation Area observer
 		/// The lifetime of the returned string is bound to the lifetime of the observer.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuValidationAreaObserverGetAreaName(VuObserver* observer, byte** areaName);
+		[DllImport("VuforiaEngine", EntryPoint = "vuValidationAreaObserverGetAreaName", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result ValidationAreaObserverGetAreaName(Observer* observer, byte** areaName);
 
 		/// <summary>
 		/// Get the pose transformation offset associated to the area from a Validation Area observer
 		/// The offset is represented as a pose matrix using the OpenGL convention.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuValidationAreaObserverGetPoseOffset(VuObserver* observer, VuMatrix44F* poseOffset);
+		[DllImport("VuforiaEngine", EntryPoint = "vuValidationAreaObserverGetPoseOffset", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result ValidationAreaObserverGetPoseOffset(Observer* observer, Matrix44F* poseOffset);
 
 		/// <summary>
 		/// Set the pose transformation offset associated to the area from a Validation Area observer
 		/// The offset is represented as a pose matrix using the OpenGL convention.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuValidationAreaObserverSetPoseOffset(VuObserver* observer, VuMatrix44F* poseOffset);
+		[DllImport("VuforiaEngine", EntryPoint = "vuValidationAreaObserverSetPoseOffset", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result ValidationAreaObserverSetPoseOffset(Observer* observer, Matrix44F* poseOffset);
 
 		/// <summary>
 		/// Get area info associated with a Validation Area observation
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuValidationAreaObservationGetAreaInfo(VuObservation* observation, VuValidationAreaObservationAreaInfo* areaInfo);
+		[DllImport("VuforiaEngine", EntryPoint = "vuValidationAreaObservationGetAreaInfo", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result ValidationAreaObservationGetAreaInfo(Observation* observation, ValidationAreaObservationAreaInfo* areaInfo);
 
 		/// <summary>
 		/// Get status info associated to the pose status of a Validation Area observation.
@@ -3131,74 +3129,74 @@ namespace Evergine.Bindings.Vuforia
 		/// retrieved via
 		/// @ref vuObservationGetPoseInfo.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuValidationAreaObservationGetStatusInfo(VuObservation* observation, VuValidationAreaObservationStatusInfo* statusInfo);
+		[DllImport("VuforiaEngine", EntryPoint = "vuValidationAreaObservationGetStatusInfo", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result ValidationAreaObservationGetStatusInfo(Observation* observation, ValidationAreaObservationStatusInfo* statusInfo);
 
 		/// <summary>
 		/// Get validation info associated with a Validation Area observation
 		/// Prediction for the Validation Area is typically performed at a lower frequency than the actual camera framerate. Validation info
 		/// returned by this method is the result of the latest validation attempt.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuValidationAreaObservationGetValidationInfo(VuObservation* observation, VuValidationAreaObservationValidationInfo* validationInfo);
+		[DllImport("VuforiaEngine", EntryPoint = "vuValidationAreaObservationGetValidationInfo", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result ValidationAreaObservationGetValidationInfo(Observation* observation, ValidationAreaObservationValidationInfo* validationInfo);
 
 		/// <summary>
 		/// Get all Validation Area observations
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuStateGetValidationAreaObservations(VuState* state, VuObservationList* list);
+		[DllImport("VuforiaEngine", EntryPoint = "vuStateGetValidationAreaObservations", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result StateGetValidationAreaObservations(State* state, ObservationList* list);
 
 		/// <summary>
 		/// Retrieve Camera Controller to get access to camera-specific functionality in Engine
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuEngineGetCameraController(VuEngine* engine, VuController** controller);
+		[DllImport("VuforiaEngine", EntryPoint = "vuEngineGetCameraController", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result EngineGetCameraController(Engine* engine, Controller** controller);
 
 		/// <summary>
 		/// Get all the supported video modes for the camera
 		/// If this is called before the engine is started, the camera will be accessed
 		/// which may be a longer-running operation on some platforms
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuCameraControllerGetVideoModes(VuController* controller, VuCameraVideoModeList* cameraVideoModeList);
+		[DllImport("VuforiaEngine", EntryPoint = "vuCameraControllerGetVideoModes", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result CameraControllerGetVideoModes(Controller* controller, CameraVideoModeList* cameraVideoModeList);
 
 		/// <summary>
 		/// Create a camera video mode list
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuCameraVideoModeListCreate(VuCameraVideoModeList** list);
+		[DllImport("VuforiaEngine", EntryPoint = "vuCameraVideoModeListCreate", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result CameraVideoModeListCreate(CameraVideoModeList** list);
 
 		/// <summary>
 		/// Get number of elements in a camera video mode list
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuCameraVideoModeListGetSize(VuCameraVideoModeList* list, int* listSize);
+		[DllImport("VuforiaEngine", EntryPoint = "vuCameraVideoModeListGetSize", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result CameraVideoModeListGetSize(CameraVideoModeList* list, int* listSize);
 
 		/// <summary>
 		/// Get an element in a camera video mode list
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuCameraVideoModeListGetElement(VuCameraVideoModeList* list, int element, VuCameraVideoMode* videoMode);
+		[DllImport("VuforiaEngine", EntryPoint = "vuCameraVideoModeListGetElement", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result CameraVideoModeListGetElement(CameraVideoModeList* list, int element, CameraVideoMode* videoMode);
 
 		/// <summary>
 		/// Destroy a camera video mode list
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuCameraVideoModeListDestroy(VuCameraVideoModeList* list);
+		[DllImport("VuforiaEngine", EntryPoint = "vuCameraVideoModeListDestroy", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result CameraVideoModeListDestroy(CameraVideoModeList* list);
 
 		/// <summary>
 		/// Get the the currently active video mode of the camera
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuCameraControllerGetActiveVideoMode(VuController* controller, VuCameraVideoModePreset* cameraVideoModePreset);
+		[DllImport("VuforiaEngine", EntryPoint = "vuCameraControllerGetActiveVideoMode", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result CameraControllerGetActiveVideoMode(Controller* controller, CameraVideoModePreset* cameraVideoModePreset);
 
 		/// <summary>
 		/// Set the current video mode of the camera from the list of supported presets
 		/// This function can only be called before the engine is started. To change the video mode after the engine is started,
 		/// stop the engine, then change the video mode and restart it again.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuCameraControllerSetActiveVideoMode(VuController* controller, VuCameraVideoModePreset cameraVideoModePreset);
+		[DllImport("VuforiaEngine", EntryPoint = "vuCameraControllerSetActiveVideoMode", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result CameraControllerSetActiveVideoMode(Controller* controller, CameraVideoModePreset cameraVideoModePreset);
 
 		/// <summary>
 		/// Get the current flash mode of the camera
@@ -3206,8 +3204,8 @@ namespace Evergine.Bindings.Vuforia
 		/// This function will output the current value as it is reported by the device
 		/// VU_SUCCESS on success or VU_FAILED if this operation is not supported on the current device or Engine is not running
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuCameraControllerGetFlashMode(VuController* controller, uint* flashMode);
+		[DllImport("VuforiaEngine", EntryPoint = "vuCameraControllerGetFlashMode", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result CameraControllerGetFlashMode(Controller* controller, uint* flashMode);
 
 		/// <summary>
 		/// Set the flash mode of the camera
@@ -3220,8 +3218,8 @@ namespace Evergine.Bindings.Vuforia
 		/// and then resumed.
 		/// VU_SUCCESS on success or VU_FAILED if this operation is not supported on the current device or Engine is not running
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuCameraControllerSetFlashMode(VuController* controller, uint flashMode);
+		[DllImport("VuforiaEngine", EntryPoint = "vuCameraControllerSetFlashMode", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result CameraControllerSetFlashMode(Controller* controller, uint flashMode);
 
 		/// <summary>
 		/// Check if setting the flash mode is supported on the current device and camera
@@ -3230,8 +3228,8 @@ namespace Evergine.Bindings.Vuforia
 		/// When this function returns VU_FALSE in &apos;isFlashModeSupported&apos;, calls to setting and getting the respective flash mode will fail.
 		/// VU_SUCCESS on success or VU_FAILED if Vuforia Engine is not running
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuCameraControllerIsFlashModeSupported(VuController* controller, uint* isFlashModeSupported);
+		[DllImport("VuforiaEngine", EntryPoint = "vuCameraControllerIsFlashModeSupported", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result CameraControllerIsFlashModeSupported(Controller* controller, uint* isFlashModeSupported);
 
 		/// <summary>
 		/// Get the current focus mode of the camera
@@ -3240,8 +3238,8 @@ namespace Evergine.Bindings.Vuforia
 		/// VU_SUCCESS on success or VU_FAILED if this operation is not supported on the current device or Vuforia
 		/// Engine is not running
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuCameraControllerGetFocusMode(VuController* controller, VuCameraFocusMode* focusMode);
+		[DllImport("VuforiaEngine", EntryPoint = "vuCameraControllerGetFocusMode", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result CameraControllerGetFocusMode(Controller* controller, CameraFocusMode* focusMode);
 
 		/// <summary>
 		/// Set the focus mode of the camera
@@ -3258,8 +3256,8 @@ namespace Evergine.Bindings.Vuforia
 		/// VU_SUCCESS on success or VU_FAILED if this operation or the requested focus mode is not supported on
 		/// the current device, or Vuforia Engine is not running
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuCameraControllerSetFocusMode(VuController* controller, VuCameraFocusMode focusMode);
+		[DllImport("VuforiaEngine", EntryPoint = "vuCameraControllerSetFocusMode", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result CameraControllerSetFocusMode(Controller* controller, CameraFocusMode focusMode);
 
 		/// <summary>
 		/// Get the current exposure mode of the camera
@@ -3268,8 +3266,8 @@ namespace Evergine.Bindings.Vuforia
 		/// VU_SUCCESS on success or VU_FAILED if this operation is not supported on the current device or Vuforia
 		/// Engine is not running
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuCameraControllerGetExposureMode(VuController* controller, VuCameraExposureMode* exposureMode);
+		[DllImport("VuforiaEngine", EntryPoint = "vuCameraControllerGetExposureMode", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result CameraControllerGetExposureMode(Controller* controller, CameraExposureMode* exposureMode);
 
 		/// <summary>
 		/// Set the exposure mode of the camera
@@ -3288,8 +3286,8 @@ namespace Evergine.Bindings.Vuforia
 		/// VU_SUCCESS on success or VU_FAILED if this operation or the requested exposure mode is not supported on
 		/// the current device, or Vuforia Engine is not running
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuCameraControllerSetExposureMode(VuController* controller, VuCameraExposureMode exposureMode);
+		[DllImport("VuforiaEngine", EntryPoint = "vuCameraControllerSetExposureMode", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result CameraControllerSetExposureMode(Controller* controller, CameraExposureMode exposureMode);
 
 		/// <summary>
 		/// Check if setting a specific focus mode is supported on the current device
@@ -3297,8 +3295,8 @@ namespace Evergine.Bindings.Vuforia
 		/// When this function returns VU_FALSE in &apos;isFocusModeSupported&apos; calls to setting the respective focus mode will fail.
 		/// VU_SUCCESS on success or VU_FAILED if Vuforia Engine is not running
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuCameraControllerIsFocusModeSupported(VuController* controller, VuCameraFocusMode focusMode, uint* isFocusModeSupported);
+		[DllImport("VuforiaEngine", EntryPoint = "vuCameraControllerIsFocusModeSupported", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result CameraControllerIsFocusModeSupported(Controller* controller, CameraFocusMode focusMode, uint* isFocusModeSupported);
 
 		/// <summary>
 		/// Check if setting a specific exposure mode is supported on the current device
@@ -3306,8 +3304,8 @@ namespace Evergine.Bindings.Vuforia
 		/// When this function returns VU_FALSE in &apos;isExposureModeSupported&apos; calls to setting the respective exposure mode will fail.
 		/// VU_SUCCESS on success or VU_FAILED if Vuforia Engine is not running
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuCameraControllerIsExposureModeSupported(VuController* controller, VuCameraExposureMode exposureMode, uint* isExposureModeSupported);
+		[DllImport("VuforiaEngine", EntryPoint = "vuCameraControllerIsExposureModeSupported", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result CameraControllerIsExposureModeSupported(Controller* controller, CameraExposureMode exposureMode, uint* isExposureModeSupported);
 
 		/// <summary>
 		/// Get the region of interest currently active for camera focus control
@@ -3315,8 +3313,8 @@ namespace Evergine.Bindings.Vuforia
 		/// VU_SUCCESS on success or VU_FAILED if this operation is not supported on the current device or
 		/// Vuforia Engine is not running
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuCameraControllerGetFocusRegion(VuController* controller, VuCameraRegionOfInterest* focusROI);
+		[DllImport("VuforiaEngine", EntryPoint = "vuCameraControllerGetFocusRegion", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result CameraControllerGetFocusRegion(Controller* controller, CameraRegionOfInterest* focusROI);
 
 		/// <summary>
 		/// Set the active region of interest for camera focus control
@@ -3338,8 +3336,8 @@ namespace Evergine.Bindings.Vuforia
 		/// VU_SUCCESS on success or VU_FAILED if this operation is not supported on the current device or if the specified region is not in
 		/// a valid range, or Vuforia Engine is not running
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuCameraControllerSetFocusRegion(VuController* controller, VuCameraRegionOfInterest focusROI);
+		[DllImport("VuforiaEngine", EntryPoint = "vuCameraControllerSetFocusRegion", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result CameraControllerSetFocusRegion(Controller* controller, CameraRegionOfInterest focusROI);
 
 		/// <summary>
 		/// Get the region of interest currently active for camera exposure control
@@ -3347,8 +3345,8 @@ namespace Evergine.Bindings.Vuforia
 		/// VU_SUCCESS on success or VU_FAILED if this operation is not supported on the current device or
 		/// Vuforia Engine is not running
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuCameraControllerGetExposureRegion(VuController* controller, VuCameraRegionOfInterest* exposureROI);
+		[DllImport("VuforiaEngine", EntryPoint = "vuCameraControllerGetExposureRegion", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result CameraControllerGetExposureRegion(Controller* controller, CameraRegionOfInterest* exposureROI);
 
 		/// <summary>
 		/// Set the active region of interest for camera exposure control
@@ -3370,8 +3368,8 @@ namespace Evergine.Bindings.Vuforia
 		/// VU_SUCCESS on success or VU_FAILED if this operation is not supported on the current device or if the specified region is not in
 		/// a valid range, or Vuforia Engine is not running
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuCameraControllerSetExposureRegion(VuController* controller, VuCameraRegionOfInterest exposureROI);
+		[DllImport("VuforiaEngine", EntryPoint = "vuCameraControllerSetExposureRegion", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result CameraControllerSetExposureRegion(Controller* controller, CameraRegionOfInterest exposureROI);
 
 		/// <summary>
 		/// Check if setting a focus region is supported on the current device
@@ -3380,8 +3378,8 @@ namespace Evergine.Bindings.Vuforia
 		/// focus region will fail.
 		/// VU_SUCCESS on success or VU_FAILED if Vuforia Engine is not running
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuCameraControllerIsFocusRegionSupported(VuController* controller, uint* isFocusRegionSupported);
+		[DllImport("VuforiaEngine", EntryPoint = "vuCameraControllerIsFocusRegionSupported", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result CameraControllerIsFocusRegionSupported(Controller* controller, uint* isFocusRegionSupported);
 
 		/// <summary>
 		/// Check if setting an exposure region is supported on the current device
@@ -3390,14 +3388,14 @@ namespace Evergine.Bindings.Vuforia
 		/// exposure region will fail.
 		/// VU_SUCCESS on success or VU_FAILED if Vuforia Engine is not running
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuCameraControllerIsExposureRegionSupported(VuController* controller, uint* isExposureRegionSupported);
+		[DllImport("VuforiaEngine", EntryPoint = "vuCameraControllerIsExposureRegionSupported", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result CameraControllerIsExposureRegionSupported(Controller* controller, uint* isExposureRegionSupported);
 
 		/// <summary>
 		/// Get list of image formats registered to be returned with the camera frame
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuCameraControllerGetRegisteredImageFormats(VuController* controller, VuImagePixelFormatList* list);
+		[DllImport("VuforiaEngine", EntryPoint = "vuCameraControllerGetRegisteredImageFormats", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result CameraControllerGetRegisteredImageFormats(Controller* controller, ImagePixelFormatList* list);
 
 		/// <summary>
 		/// Register a video pixel format to be delivered in the list of images of a camera frame
@@ -3423,10 +3421,9 @@ namespace Evergine.Bindings.Vuforia
 		/// for enabling the delivery of depth frames.
 		/// This function can only be called while Engine is running.
 		/// Will fail if the given video pixel format is already registered.
-		/// vuCameraControllerUnregisterImageFormat
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuCameraControllerRegisterImageFormat(VuController* controller, VuImagePixelFormat format);
+		[DllImport("VuforiaEngine", EntryPoint = "vuCameraControllerRegisterImageFormat", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result CameraControllerRegisterImageFormat(Controller* controller, ImagePixelFormat format);
 
 		/// <summary>
 		/// Unregister a video pixel format from being delivered in the list of images of a camera frame
@@ -3442,17 +3439,16 @@ namespace Evergine.Bindings.Vuforia
 		/// disabling the delivery of depth frames.
 		/// This function can only be called while Engine is running.
 		/// Will fail if the given video pixel format is not registered.
-		/// vuCameraControllerRegisterImageFormat
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuCameraControllerUnregisterImageFormat(VuController* controller, VuImagePixelFormat format);
+		[DllImport("VuforiaEngine", EntryPoint = "vuCameraControllerUnregisterImageFormat", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result CameraControllerUnregisterImageFormat(Controller* controller, ImagePixelFormat format);
 
 		/// <summary>
 		/// Check if depth frames are supported on this device
 		/// This function is part of an API in beta and may change from release-to-release without notice.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuCameraControllerIsDepthSupported(VuController* controller, uint* supported);
+		[DllImport("VuforiaEngine", EntryPoint = "vuCameraControllerIsDepthSupported", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result CameraControllerIsDepthSupported(Controller* controller, uint* supported);
 
 		/// <summary>
 		/// Enable depth frames
@@ -3467,8 +3463,8 @@ namespace Evergine.Bindings.Vuforia
 		/// \note This function is part of a feature in beta and may change from release to release without notice.
 		/// VU_SUCCESS if call was successful, otherwise VU_FAILED
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuCameraControllerEnableDepth(VuController* controller);
+		[DllImport("VuforiaEngine", EntryPoint = "vuCameraControllerEnableDepth", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result CameraControllerEnableDepth(Controller* controller);
 
 		/// <summary>
 		/// Disable depth frames
@@ -3477,21 +3473,21 @@ namespace Evergine.Bindings.Vuforia
 		/// \note This function is part of a feature in beta and may change from release to release without notice.
 		/// VU_SUCCESS if call was successful, otherwise VU_FAILED
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuCameraControllerDisableDepth(VuController* controller);
+		[DllImport("VuforiaEngine", EntryPoint = "vuCameraControllerDisableDepth", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result CameraControllerDisableDepth(Controller* controller);
 
 		/// <summary>
 		/// Check if depth frames are currently enabled
 		/// This function is part of a feature in beta and may change from release to release without notice.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern uint vuCameraControllerIsDepthEnabled(VuController* controller);
+		[DllImport("VuforiaEngine", EntryPoint = "vuCameraControllerIsDepthEnabled", CallingConvention = CallingConvention.StdCall)]
+		public static extern uint CameraControllerIsDepthEnabled(Controller* controller);
 
 		/// <summary>
 		/// Retrieve Platform Controller to get access to platform-specific functionality and settings in Engine
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuEngineGetPlatformController(VuEngine* engine, VuController** controller);
+		[DllImport("VuforiaEngine", EntryPoint = "vuEngineGetPlatformController", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result EngineGetPlatformController(Engine* engine, Controller** controller);
 
 		/// <summary>
 		/// Set the current view orientation
@@ -3523,8 +3519,8 @@ namespace Evergine.Bindings.Vuforia
 		/// for details.
 		/// VU_SUCCESS if the view orientation has been successfully set, VU_FAILED otherwise
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuPlatformControllerSetViewOrientation(VuController* controller, VuViewOrientation orientation);
+		[DllImport("VuforiaEngine", EntryPoint = "vuPlatformControllerSetViewOrientation", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result PlatformControllerSetViewOrientation(Controller* controller, ViewOrientation orientation);
 
 		/// <summary>
 		/// Utility function for converting a platform-specific orientation descriptor to a Vuforia view orientation value
@@ -3550,8 +3546,8 @@ namespace Evergine.Bindings.Vuforia
 		/// VU_SUCCESS if the passed platform orientation indicates a valid (known) orientation, and can therefore be converted to a
 		/// valid Vuforia view orientation; VU_FAILED otherwise OR if this functionality is not supported on the current platform
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuPlatformControllerConvertPlatformViewOrientation(VuController* controller, void* platformOrientation, VuViewOrientation* vuOrientation);
+		[DllImport("VuforiaEngine", EntryPoint = "vuPlatformControllerConvertPlatformViewOrientation", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result PlatformControllerConvertPlatformViewOrientation(Controller* controller, void* platformOrientation, ViewOrientation* vuOrientation);
 
 		/// <summary>
 		/// Get the current fusion provider type
@@ -3560,8 +3556,8 @@ namespace Evergine.Bindings.Vuforia
 		/// parameter is reported to be VU_FUSION_PROVIDER_TYPE_PLATFORM_SENSOR_FUSION, then you
 		/// can call vuPlatformControllerGetFusionProviderPlatformType() to query the actual Vuforia Fusion provider&apos;s underlying platform&apos;s type.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuPlatformControllerGetFusionProviderType(VuController* controller, VuFusionProviderType* fusionProvider);
+		[DllImport("VuforiaEngine", EntryPoint = "vuPlatformControllerGetFusionProviderType", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result PlatformControllerGetFusionProviderType(Controller* controller, FusionProviderType* fusionProvider);
 
 		/// <summary>
 		/// Get the current platform fusion provider type if Vuforia Fusion is using platform-provided technology
@@ -3570,8 +3566,8 @@ namespace Evergine.Bindings.Vuforia
 		/// reported, this call will fail.
 		/// VU_FAILED if not running on platform fusion provider, otherwise VU_SUCCESS
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuPlatformControllerGetFusionProviderPlatformType(VuController* controller, VuFusionProviderPlatformType* fusionProviderPlatformType);
+		[DllImport("VuforiaEngine", EntryPoint = "vuPlatformControllerGetFusionProviderPlatformType", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result PlatformControllerGetFusionProviderPlatformType(Controller* controller, FusionProviderPlatformType* fusionProviderPlatformType);
 
 		/// <summary>
 		/// Retrieves the handle to the currently loaded Vuforia Driver library
@@ -3582,14 +3578,14 @@ namespace Evergine.Bindings.Vuforia
 		/// for e.g. dlsym()/GetProcAddress() to load additional functions from the Driver.
 		/// VU_FAILED if no driver library is loaded, otherwise VU_SUCCESS
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuPlatformControllerGetDriverLibraryHandle(VuController* controller, void** handle);
+		[DllImport("VuforiaEngine", EntryPoint = "vuPlatformControllerGetDriverLibraryHandle", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result PlatformControllerGetDriverLibraryHandle(Controller* controller, void** handle);
 
 		/// <summary>
 		/// Retrieve Render Controller to get access to rendering-specific functionality in Engine
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuEngineGetRenderController(VuEngine* engine, VuController** controller);
+		[DllImport("VuforiaEngine", EntryPoint = "vuEngineGetRenderController", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result EngineGetRenderController(Engine* engine, Controller** controller);
 
 		/// <summary>
 		/// Set the current render view configuration
@@ -3615,8 +3611,8 @@ namespace Evergine.Bindings.Vuforia
 		/// client will be required to explicitly provide a render view configuration on all platforms.
 		/// VU_SUCCESS if the render view information was set successfully, VU_FAILED if the render view information could not be set
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuRenderControllerSetRenderViewConfig(VuController* controller, VuRenderViewConfig* renderViewConfig);
+		[DllImport("VuforiaEngine", EntryPoint = "vuRenderControllerSetRenderViewConfig", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result RenderControllerSetRenderViewConfig(Controller* controller, RenderViewConfig* renderViewConfig);
 
 		/// <summary>
 		/// Get the current render view configuration
@@ -3627,8 +3623,8 @@ namespace Evergine.Bindings.Vuforia
 		/// for details.
 		/// VU_SUCCESS on success, or VU_FAILED if no render view config is set
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuRenderControllerGetRenderViewConfig(VuController* controller, VuRenderViewConfig* renderViewConfig);
+		[DllImport("VuforiaEngine", EntryPoint = "vuRenderControllerGetRenderViewConfig", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result RenderControllerGetRenderViewConfig(Controller* controller, RenderViewConfig* renderViewConfig);
 
 		/// <summary>
 		/// Get the video background viewport
@@ -3674,8 +3670,8 @@ namespace Evergine.Bindings.Vuforia
 		/// for details.
 		/// VU_SUCCESS on success, VU_FAILED if no viewport is available
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuRenderControllerGetVideoBackgroundViewport(VuController* controller, VuVector4I* vbViewport);
+		[DllImport("VuforiaEngine", EntryPoint = "vuRenderControllerGetVideoBackgroundViewport", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result RenderControllerGetVideoBackgroundViewport(Controller* controller, Vector4I* vbViewport);
 
 		/// <summary>
 		/// Configure a custom video background viewport (its location/size on screen)
@@ -3693,8 +3689,8 @@ namespace Evergine.Bindings.Vuforia
 		/// for details.
 		/// VU_SUCCESS on success, VU_FAILED if no custom viewport could be set
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuRenderControllerSetVideoBackgroundViewport(VuController* controller, VuVector4I* vbViewport);
+		[DllImport("VuforiaEngine", EntryPoint = "vuRenderControllerSetVideoBackgroundViewport", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result RenderControllerSetVideoBackgroundViewport(Controller* controller, Vector4I* vbViewport);
 
 		/// <summary>
 		/// Configure the video background viewport mode
@@ -3714,8 +3710,8 @@ namespace Evergine.Bindings.Vuforia
 		/// for details.
 		/// VU_SUCCESS on success, VU_FAILED if no viewport mode could be set
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuRenderControllerSetVideoBackgroundViewportMode(VuController* controller, VuVideoBackgroundViewportMode vbMode);
+		[DllImport("VuforiaEngine", EntryPoint = "vuRenderControllerSetVideoBackgroundViewportMode", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result RenderControllerSetVideoBackgroundViewportMode(Controller* controller, VideoBackgroundViewportMode vbMode);
 
 		/// <summary>
 		/// Get video background view information for rendering view background
@@ -3729,14 +3725,14 @@ namespace Evergine.Bindings.Vuforia
 		/// for details.
 		/// VU_SUCCESS on success, VU_FAILED if the video background view information could not be retrieved
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuRenderControllerGetVideoBackgroundViewInfo(VuController* controller, VuVideoBackgroundViewInfo* viewInfo);
+		[DllImport("VuforiaEngine", EntryPoint = "vuRenderControllerGetVideoBackgroundViewInfo", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result RenderControllerGetVideoBackgroundViewInfo(Controller* controller, VideoBackgroundViewInfo* viewInfo);
 
 		/// <summary>
 		/// Update the texture data to use for rendering the video background
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuRenderControllerUpdateVideoBackgroundTexture(VuController* controller, VuState* state, VuRenderVideoBackgroundData* renderVBData);
+		[DllImport("VuforiaEngine", EntryPoint = "vuRenderControllerUpdateVideoBackgroundTexture", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result RenderControllerUpdateVideoBackgroundTexture(Controller* controller, State* state, RenderVideoBackgroundData* renderVBData);
 
 		/// <summary>
 		/// Set the values for the near and far plane used by Engine for calculating the projection matrix
@@ -3748,28 +3744,28 @@ namespace Evergine.Bindings.Vuforia
 		/// Default values after Engine creation are 0.01f (near plane) and 100.0f (far plane).
 		/// VU_SUCCESS if the values have been set successfully, VU_FAILED if invalid values have been provided.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuRenderControllerSetProjectionMatrixNearFar(VuController* controller, float nearPlane, float farPlane);
+		[DllImport("VuforiaEngine", EntryPoint = "vuRenderControllerSetProjectionMatrixNearFar", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result RenderControllerSetProjectionMatrixNearFar(Controller* controller, float nearPlane, float farPlane);
 
 		/// <summary>
 		/// Get the values of the near and far planes currently used by Engine for calculating the projection matrix
 		/// VU_SUCCESS on success, VU_FAILED on failure to retrive the values
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuRenderControllerGetProjectionMatrixNearFar(VuController* controller, float* nearPlane, float* farPlane);
+		[DllImport("VuforiaEngine", EntryPoint = "vuRenderControllerGetProjectionMatrixNearFar", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result RenderControllerGetProjectionMatrixNearFar(Controller* controller, float* nearPlane, float* farPlane);
 
 		/// <summary>
 		/// Default configuration for a recording session
 		/// Use this function to initialize the VuRecordingConfig data structure with default values.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuRecordingConfig vuRecordingConfigDefault();
+		[DllImport("VuforiaEngine", EntryPoint = "vuRecordingConfigDefault", CallingConvention = CallingConvention.StdCall)]
+		public static extern RecordingConfig RecordingConfigDefault();
 
 		/// <summary>
 		/// Retrieve Session Recorder Controller to get access to session recording-specific functionality in Engine
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuEngineGetSessionRecorderController(VuEngine* engine, VuController** controller);
+		[DllImport("VuforiaEngine", EntryPoint = "vuEngineGetSessionRecorderController", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result EngineGetSessionRecorderController(Engine* engine, Controller** controller);
 
 		/// <summary>
 		/// Get the default recording data flags that are appropriate for the current device
@@ -3780,8 +3776,8 @@ namespace Evergine.Bindings.Vuforia
 		/// Output variable storing the default data flags bitmask
 		/// VU_SUCCESS on successful retrieval of the data flags, VU_FAILED on failure
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuSessionRecorderControllerGetDefaultRecordingDataFlags(VuController* controller, uint* dataFlags);
+		[DllImport("VuforiaEngine", EntryPoint = "vuSessionRecorderControllerGetDefaultRecordingDataFlags", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result SessionRecorderControllerGetDefaultRecordingDataFlags(Controller* controller, uint* dataFlags);
 
 		/// <summary>
 		/// Get all recording data flags that are supported by the current device
@@ -3789,8 +3785,8 @@ namespace Evergine.Bindings.Vuforia
 		/// Output variable storing the data flags bitmask
 		/// VU_SUCCESS on successful retrieval of the data flags, VU_FAILED on failure
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuSessionRecorderControllerGetSupportedRecordingDataFlags(VuController* controller, uint* dataFlags);
+		[DllImport("VuforiaEngine", EntryPoint = "vuSessionRecorderControllerGetSupportedRecordingDataFlags", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result SessionRecorderControllerGetSupportedRecordingDataFlags(Controller* controller, uint* dataFlags);
 
 		/// <summary>
 		/// Get the default camera recording frame rate
@@ -3799,8 +3795,8 @@ namespace Evergine.Bindings.Vuforia
 		/// The output value will always be an explicit one (i.e. never VU_RECORDING_FRAME_RATE_AUTO) so the caller can determine
 		/// the specific value being used for recording.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuSessionRecorderControllerGetDefaultRecordingFrameRate(VuController* controller, VuRecordingFrameRate* frameRate);
+		[DllImport("VuforiaEngine", EntryPoint = "vuSessionRecorderControllerGetDefaultRecordingFrameRate", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result SessionRecorderControllerGetDefaultRecordingFrameRate(Controller* controller, RecordingFrameRate* frameRate);
 
 		/// <summary>
 		/// Get the default recording image scale
@@ -3809,8 +3805,8 @@ namespace Evergine.Bindings.Vuforia
 		/// The output value will always be an explicit one (i.e. never VU_RECORDING_IMAGE_SCALE_AUTO) so the caller can determine
 		/// the specific value being used for recording.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuSessionRecorderControllerGetDefaultRecordingImageScale(VuController* controller, VuRecordingImageScale* scale);
+		[DllImport("VuforiaEngine", EntryPoint = "vuSessionRecorderControllerGetDefaultRecordingImageScale", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result SessionRecorderControllerGetDefaultRecordingImageScale(Controller* controller, RecordingImageScale* scale);
 
 		/// <summary>
 		/// Create a new recording with the specified configuration
@@ -3822,8 +3818,8 @@ namespace Evergine.Bindings.Vuforia
 		/// Optional output variable providing additional error information. Can be NULL.
 		/// VU_SUCCESS on successfully creation of the recording, VU_FAILED on failure
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuSessionRecorderControllerCreateRecording(VuController* controller, VuRecordingConfig* config, VuRecording** recording, VuRecordingCreationError* error);
+		[DllImport("VuforiaEngine", EntryPoint = "vuSessionRecorderControllerCreateRecording", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result SessionRecorderControllerCreateRecording(Controller* controller, RecordingConfig* config, Recording** recording, RecordingCreationError* error);
 
 		/// <summary>
 		/// Get a list of all recordings from the controller
@@ -3831,8 +3827,8 @@ namespace Evergine.Bindings.Vuforia
 		/// List that will be filled with the recordings
 		/// VU_SUCCESS on success, or VU_FAILED otherwise
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuSessionRecorderControllerGetRecordings(VuController* controller, VuRecordingList* recordingList);
+		[DllImport("VuforiaEngine", EntryPoint = "vuSessionRecorderControllerGetRecordings", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result SessionRecorderControllerGetRecordings(Controller* controller, RecordingList* recordingList);
 
 		/// <summary>
 		/// Destroy all recordings
@@ -3841,8 +3837,8 @@ namespace Evergine.Bindings.Vuforia
 		/// Set to VU_TRUE to delete all data generated by the recording instances before their destruction
 		/// VU_SUCCESS on success, or VU_FAILED otherwise
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuSessionRecorderControllerDestroyRecordings(VuController* controller, uint deleteData);
+		[DllImport("VuforiaEngine", EntryPoint = "vuSessionRecorderControllerDestroyRecordings", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result SessionRecorderControllerDestroyRecordings(Controller* controller, uint deleteData);
 
 		/// <summary>
 		/// Remove all previously recorded sequences from the device storage
@@ -3851,8 +3847,8 @@ namespace Evergine.Bindings.Vuforia
 		/// Session Recorder Controller
 		/// VU_SUCCESS if all recorded data was removed successfully, or VU_FAILED otherwise
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuSessionRecorderControllerCleanRecordedData(VuController* controller);
+		[DllImport("VuforiaEngine", EntryPoint = "vuSessionRecorderControllerCleanRecordedData", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result SessionRecorderControllerCleanRecordedData(Controller* controller);
 
 		/// <summary>
 		/// Start the recording
@@ -3866,8 +3862,8 @@ namespace Evergine.Bindings.Vuforia
 		/// Optional output variable providing additional error information. Can be NULL.
 		/// VU_SUCCESS on successfully start of the recording, VU_FAILED on failure
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuRecordingStart(VuRecording* recording, VuRecordingStartError* error);
+		[DllImport("VuforiaEngine", EntryPoint = "vuRecordingStart", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result RecordingStart(Recording* recording, RecordingStartError* error);
 
 		/// <summary>
 		/// Stop the current recording
@@ -3876,8 +3872,8 @@ namespace Evergine.Bindings.Vuforia
 		/// The current recording
 		/// VU_SUCCESS on successfully stopping the recording, VU_FAILED on failure
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuRecordingStop(VuRecording* recording);
+		[DllImport("VuforiaEngine", EntryPoint = "vuRecordingStop", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result RecordingStop(Recording* recording);
 
 		/// <summary>
 		/// Get the path where the data for this recording is stored
@@ -3887,8 +3883,8 @@ namespace Evergine.Bindings.Vuforia
 		/// The absolute path to where the recording is stored. The parameter will stay unmodified on failure.
 		/// VU_SUCCESS on successful retrieval of the path, VU_FAILED if no recording path is available.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuRecordingGetPath(VuRecording* recording, byte** path);
+		[DllImport("VuforiaEngine", EntryPoint = "vuRecordingGetPath", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result RecordingGetPath(Recording* recording, byte** path);
 
 		/// <summary>
 		/// Get the status of a recording
@@ -3896,8 +3892,8 @@ namespace Evergine.Bindings.Vuforia
 		/// Current recording status
 		/// VU_SUCCESS on successfully getting status, VU_FAILED on failure
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuRecordingGetStatus(VuRecording* recording, VuRecordingStatus* status);
+		[DllImport("VuforiaEngine", EntryPoint = "vuRecordingGetStatus", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result RecordingGetStatus(Recording* recording, RecordingStatus* status);
 
 		/// <summary>
 		/// Get additional status info about a recording
@@ -3905,8 +3901,8 @@ namespace Evergine.Bindings.Vuforia
 		/// Current recording status info
 		/// VU_SUCCESS on successfully getting status info, VU_FAILED on failure
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuRecordingGetStatusInfo(VuRecording* recording, VuRecordingStatusInfo* statusInfo);
+		[DllImport("VuforiaEngine", EntryPoint = "vuRecordingGetStatusInfo", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result RecordingGetStatusInfo(Recording* recording, RecordingStatusInfo* statusInfo);
 
 		/// <summary>
 		/// Destroy a recording instance
@@ -3915,52 +3911,52 @@ namespace Evergine.Bindings.Vuforia
 		/// If set to VU_TRUE, the recorded data in device storage will be deleted as well
 		/// VU_SUCCESS on success, VU_FAILED on failure
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuRecordingDestroy(VuRecording* recording, uint deleteData);
+		[DllImport("VuforiaEngine", EntryPoint = "vuRecordingDestroy", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result RecordingDestroy(Recording* recording, uint deleteData);
 
 		/// <summary>
 		/// Create a recording list
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuRecordingListCreate(VuRecordingList** list);
+		[DllImport("VuforiaEngine", EntryPoint = "vuRecordingListCreate", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result RecordingListCreate(RecordingList** list);
 
 		/// <summary>
 		/// Get the number of elements in a recording list
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuRecordingListGetSize(VuRecordingList* list, int* listSize);
+		[DllImport("VuforiaEngine", EntryPoint = "vuRecordingListGetSize", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result RecordingListGetSize(RecordingList* list, int* listSize);
 
 		/// <summary>
 		/// Get an element in a recording list
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuRecordingListGetElement(VuRecordingList* list, int element, VuRecording** recording);
+		[DllImport("VuforiaEngine", EntryPoint = "vuRecordingListGetElement", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result RecordingListGetElement(RecordingList* list, int element, Recording** recording);
 
 		/// <summary>
 		/// Destroy a recording list
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuRecordingListDestroy(VuRecordingList* list);
+		[DllImport("VuforiaEngine", EntryPoint = "vuRecordingListDestroy", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result RecordingListDestroy(RecordingList* list);
 
 		/// <summary>
 		/// Default capture configuration
 		/// Use this function to initialize the VuAreaTargetCaptureConfig data structure with default values.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuAreaTargetCaptureConfig vuAreaTargetCaptureConfigDefault();
+		[DllImport("VuforiaEngine", EntryPoint = "vuAreaTargetCaptureConfigDefault", CallingConvention = CallingConvention.StdCall)]
+		public static extern AreaTargetCaptureConfig AreaTargetCaptureConfigDefault();
 
 		/// <summary>
 		/// Default generation configuration
 		/// Use this function to initialize the VuAreaTargetCaptureGenerationConfig data structure with default values.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuAreaTargetCaptureGenerationConfig vuAreaTargetCaptureGenerationConfigDefault();
+		[DllImport("VuforiaEngine", EntryPoint = "vuAreaTargetCaptureGenerationConfigDefault", CallingConvention = CallingConvention.StdCall)]
+		public static extern AreaTargetCaptureGenerationConfig AreaTargetCaptureGenerationConfigDefault();
 
 		/// <summary>
 		/// Retrieve Area Target Capture Controller to get access to Area Target Capture functionality in Engine
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuEngineGetAreaTargetCaptureController(VuEngine* engine, VuController** controller);
+		[DllImport("VuforiaEngine", EntryPoint = "vuEngineGetAreaTargetCaptureController", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result EngineGetAreaTargetCaptureController(Engine* engine, Controller** controller);
 
 		/// <summary>
 		/// Create a new capture with the specified configuration
@@ -3987,8 +3983,8 @@ namespace Evergine.Bindings.Vuforia
 		/// Optional output variable providing additional error information. Can be NULL.
 		/// VU_SUCCESS on successful creation of the capture, VU_FAILED otherwise
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuAreaTargetCaptureControllerCreateAreaTargetCapture(VuController* controller, VuAreaTargetCaptureConfig* config, VuAreaTargetCapture** capture, VuAreaTargetCaptureCreationError* error);
+		[DllImport("VuforiaEngine", EntryPoint = "vuAreaTargetCaptureControllerCreateAreaTargetCapture", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result AreaTargetCaptureControllerCreateAreaTargetCapture(Controller* controller, AreaTargetCaptureConfig* config, AreaTargetCapture** capture, AreaTargetCaptureCreationError* error);
 
 		/// <summary>
 		/// Start a capture
@@ -4005,8 +4001,8 @@ namespace Evergine.Bindings.Vuforia
 		/// @ref VU_AREA_TARGET_CAPTURE_STATUS_INITIALIZED
 		/// and start is successful, VU_FAILED otherwise
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuAreaTargetCaptureStart(VuAreaTargetCapture* capture);
+		[DllImport("VuforiaEngine", EntryPoint = "vuAreaTargetCaptureStart", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result AreaTargetCaptureStart(AreaTargetCapture* capture);
 
 		/// <summary>
 		/// Stop a running or paused capture
@@ -4021,8 +4017,8 @@ namespace Evergine.Bindings.Vuforia
 		/// @ref VU_AREA_TARGET_CAPTURE_STATUS_PAUSED
 		/// and stop is successful, VU_FAILED otherwise
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuAreaTargetCaptureStop(VuAreaTargetCapture* capture);
+		[DllImport("VuforiaEngine", EntryPoint = "vuAreaTargetCaptureStop", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result AreaTargetCaptureStop(AreaTargetCapture* capture);
 
 		/// <summary>
 		/// Pause a running capture
@@ -4048,8 +4044,8 @@ namespace Evergine.Bindings.Vuforia
 		/// @ref VU_AREA_TARGET_CAPTURE_STATUS_CAPTURING
 		/// and pause is successful, VU_FAILED otherwise
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuAreaTargetCapturePause(VuAreaTargetCapture* capture);
+		[DllImport("VuforiaEngine", EntryPoint = "vuAreaTargetCapturePause", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result AreaTargetCapturePause(AreaTargetCapture* capture);
 
 		/// <summary>
 		/// Resume a paused capture
@@ -4059,8 +4055,8 @@ namespace Evergine.Bindings.Vuforia
 		/// @ref VU_AREA_TARGET_CAPTURE_STATUS_PAUSED
 		/// and resume is successful, VU_FAILED otherwise
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuAreaTargetCaptureResume(VuAreaTargetCapture* capture);
+		[DllImport("VuforiaEngine", EntryPoint = "vuAreaTargetCaptureResume", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result AreaTargetCaptureResume(AreaTargetCapture* capture);
 
 		/// <summary>
 		/// Start Area Target generation from a stopped capture
@@ -4105,20 +4101,20 @@ namespace Evergine.Bindings.Vuforia
 		/// Optional output variable providing additional error information. Can be NULL.
 		/// VU_SUCCESS if the Area Target generation has successfully started, VU_FAILED otherwise
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuAreaTargetCaptureGenerate(VuAreaTargetCapture* capture, VuAreaTargetCaptureGenerationConfig* config, VuAreaTargetCaptureGenerationError* error);
+		[DllImport("VuforiaEngine", EntryPoint = "vuAreaTargetCaptureGenerate", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result AreaTargetCaptureGenerate(AreaTargetCapture* capture, AreaTargetCaptureGenerationConfig* config, AreaTargetCaptureGenerationError* error);
 
 		/// <summary>
 		/// Get status of the capture
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuAreaTargetCaptureGetStatus(VuAreaTargetCapture* capture, VuAreaTargetCaptureStatus* status);
+		[DllImport("VuforiaEngine", EntryPoint = "vuAreaTargetCaptureGetStatus", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result AreaTargetCaptureGetStatus(AreaTargetCapture* capture, AreaTargetCaptureStatus* status);
 
 		/// <summary>
 		/// Get status info for the capture
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuAreaTargetCaptureGetStatusInfo(VuAreaTargetCapture* capture, VuAreaTargetCaptureStatusInfo* statusInfo);
+		[DllImport("VuforiaEngine", EntryPoint = "vuAreaTargetCaptureGetStatusInfo", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result AreaTargetCaptureGetStatusInfo(AreaTargetCapture* capture, AreaTargetCaptureStatusInfo* statusInfo);
 
 		/// <summary>
 		/// Cancel Area Target generation
@@ -4133,8 +4129,8 @@ namespace Evergine.Bindings.Vuforia
 		/// and cancelation is successful, VU_FAILED
 		/// otherwise
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuAreaTargetCaptureCancelGeneration(VuAreaTargetCapture* capture);
+		[DllImport("VuforiaEngine", EntryPoint = "vuAreaTargetCaptureCancelGeneration", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result AreaTargetCaptureCancelGeneration(AreaTargetCapture* capture);
 
 		/// <summary>
 		/// Get progress information of the current Area Target generation in the range [0.0f, 1.0f]
@@ -4142,8 +4138,8 @@ namespace Evergine.Bindings.Vuforia
 		/// @ref VU_AREA_TARGET_CAPTURE_STATUS_GENERATING,
 		/// VU_FAILED otherwise
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuAreaTargetCaptureGetGenerationProgress(VuAreaTargetCapture* capture, float* progress);
+		[DllImport("VuforiaEngine", EntryPoint = "vuAreaTargetCaptureGetGenerationProgress", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result AreaTargetCaptureGetGenerationProgress(AreaTargetCapture* capture, float* progress);
 
 		/// <summary>
 		/// Get estimated time remaining to complete the current Area Target generation in seconds
@@ -4153,8 +4149,8 @@ namespace Evergine.Bindings.Vuforia
 		/// and the time estimate is available,
 		/// VU_FAILED otherwise
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuAreaTargetCaptureGetGenerationTimeEstimate(VuAreaTargetCapture* capture, int* remainingTimeSeconds);
+		[DllImport("VuforiaEngine", EntryPoint = "vuAreaTargetCaptureGetGenerationTimeEstimate", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result AreaTargetCaptureGetGenerationTimeEstimate(AreaTargetCapture* capture, int* remainingTimeSeconds);
 
 		/// <summary>
 		/// Destroy the given capture instance
@@ -4162,15 +4158,15 @@ namespace Evergine.Bindings.Vuforia
 		/// it is automatically canceled.
 		/// This is a potentially long running operation
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuAreaTargetCaptureDestroy(VuAreaTargetCapture* capture);
+		[DllImport("VuforiaEngine", EntryPoint = "vuAreaTargetCaptureDestroy", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result AreaTargetCaptureDestroy(AreaTargetCapture* capture);
 
 		/// <summary>
 		/// Default Mesh observer configuration with Area Target Capture source
 		/// Use this function to initialize the VuMeshAreaTargetCaptureConfig data structure with default values.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuMeshAreaTargetCaptureConfig vuMeshAreaTargetCaptureConfigDefault();
+		[DllImport("VuforiaEngine", EntryPoint = "vuMeshAreaTargetCaptureConfigDefault", CallingConvention = CallingConvention.StdCall)]
+		public static extern MeshAreaTargetCaptureConfig MeshAreaTargetCaptureConfigDefault();
 
 		/// <summary>
 		/// Create a Mesh observer with an Area Target Capture instance as source
@@ -4179,8 +4175,8 @@ namespace Evergine.Bindings.Vuforia
 		/// existence of the Area Target Capture instance, one has to make sure to destroy the Mesh observer before
 		/// the Area Target Capture instance is destroyed.
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuEngineCreateMeshObserverFromAreaTargetCaptureConfig(VuEngine* engine, VuObserver** observer, VuMeshAreaTargetCaptureConfig* config, VuMeshAreaTargetCaptureCreationError* errorCode);
+		[DllImport("VuforiaEngine", EntryPoint = "vuEngineCreateMeshObserverFromAreaTargetCaptureConfig", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result EngineCreateMeshObserverFromAreaTargetCaptureConfig(Engine* engine, Observer** observer, MeshAreaTargetCaptureConfig* config, MeshAreaTargetCaptureCreationError* errorCode);
 
 		/// <summary>
 		/// Get information about the ARCore Fusion Provider Platform
@@ -4208,20 +4204,20 @@ namespace Evergine.Bindings.Vuforia
 		/// VU_FAILED if Vuforia is not running, is not using the ARCore Fusion Provider Platform,
 		/// or if the ARCore pointers are not ready to be retrieved yet, VU_SUCCESS otherwise
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuPlatformControllerGetARCoreInfo(VuController* controller, VuPlatformARCoreInfo* arCoreInfo);
+		[DllImport("VuforiaEngine", EntryPoint = "vuPlatformControllerGetARCoreInfo", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result PlatformControllerGetARCoreInfo(Controller* controller, PlatformARCoreInfo* arCoreInfo);
 
 		/// <summary>
 		/// Default iOS-specific configuration
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuPlatformiOSConfig vuPlatformiOSConfigDefault();
+		[DllImport("VuforiaEngine", EntryPoint = "vuPlatformiOSConfigDefault", CallingConvention = CallingConvention.StdCall)]
+		public static extern PlatformiOSConfig PlatformiOSConfigDefault();
 
 		/// <summary>
 		/// Add an iOS-specific configuration to the engine config
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuEngineConfigSetAddPlatformiOSConfig(VuEngineConfigSet* configSet, VuPlatformiOSConfig* config);
+		[DllImport("VuforiaEngine", EntryPoint = "vuEngineConfigSetAddPlatformiOSConfig", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result EngineConfigSetAddPlatformiOSConfig(EngineConfigSet* configSet, PlatformiOSConfig* config);
 
 		/// <summary>
 		/// Get information about the ARKit Fusion Provider Platform
@@ -4236,8 +4232,8 @@ namespace Evergine.Bindings.Vuforia
 		/// VU_FAILED if Vuforia is not running, is not using the ARKit Fusion Provider Platform,
 		/// or if the ARKit pointers are not ready to be retrieved yet, VU_SUCCESS otherwise
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuPlatformControllerGetARKitInfo(VuController* controller, VuPlatformARKitInfo* arkitInfo);
+		[DllImport("VuforiaEngine", EntryPoint = "vuPlatformControllerGetARKitInfo", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result PlatformControllerGetARKitInfo(Controller* controller, PlatformARKitInfo* arkitInfo);
 
 		/// <summary>
 		/// Set ARKit platform fusion provider configuration
@@ -4261,8 +4257,8 @@ namespace Evergine.Bindings.Vuforia
 		/// @ref vuEngineGetPlatformController)
 		/// Configuration pointer of type ARWorldTrackingConfiguration
 		/// </summary>
-		[DllImport("VuforiaEngine", CallingConvention = CallingConvention.StdCall)]
-		public static extern VuResult vuPlatformControllerSetARKitConfig(VuController* controller, void* config);
+		[DllImport("VuforiaEngine", EntryPoint = "vuPlatformControllerSetARKitConfig", CallingConvention = CallingConvention.StdCall)]
+		public static extern Result PlatformControllerSetARKitConfig(Controller* controller, void* config);
 
 	}
 }
