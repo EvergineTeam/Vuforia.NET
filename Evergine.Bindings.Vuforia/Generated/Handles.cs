@@ -6,23 +6,23 @@ namespace Evergine.Bindings.Vuforia
 	/// <summary>
 	/// Vuforia Controller handle
 	/// </summary>
-	public partial struct Controller : IEquatable<Controller>
+	public partial struct VuController : IEquatable<VuController>
 	{
 		public readonly IntPtr Handle;
 
-		public Controller(IntPtr existingHandle) { Handle = existingHandle; }
+		public VuController(IntPtr existingHandle) { Handle = existingHandle; }
 
-		public static Controller Null => new Controller(IntPtr.Zero);
+		public static VuController Null => new VuController(IntPtr.Zero);
 
-		public static implicit operator Controller(IntPtr handle) => new Controller(handle);
+		public static implicit operator VuController(IntPtr handle) => new VuController(handle);
 
-		public static bool operator ==(Controller left, Controller right) => left.Handle == right.Handle;
+		public static bool operator ==(VuController left, VuController right) => left.Handle == right.Handle;
 
-		public static bool operator !=(Controller left, Controller right) => left.Handle != right.Handle;
+		public static bool operator !=(VuController left, VuController right) => left.Handle != right.Handle;
 
-		public bool Equals(Controller h) => Handle == h.Handle;
+		public bool Equals(VuController h) => Handle == h.Handle;
 
-		public override bool Equals(object o) => o is Controller h && Equals(h);
+		public override bool Equals(object o) => o is VuController h && Equals(h);
 
 		public override int GetHashCode() => Handle.GetHashCode();
 	}
@@ -30,23 +30,23 @@ namespace Evergine.Bindings.Vuforia
 	/// <summary>
 	/// List of image pixel formats
 	/// </summary>
-	public partial struct ImagePixelFormatList : IEquatable<ImagePixelFormatList>
+	public partial struct VuImagePixelFormatList : IEquatable<VuImagePixelFormatList>
 	{
 		public readonly IntPtr Handle;
 
-		public ImagePixelFormatList(IntPtr existingHandle) { Handle = existingHandle; }
+		public VuImagePixelFormatList(IntPtr existingHandle) { Handle = existingHandle; }
 
-		public static ImagePixelFormatList Null => new ImagePixelFormatList(IntPtr.Zero);
+		public static VuImagePixelFormatList Null => new VuImagePixelFormatList(IntPtr.Zero);
 
-		public static implicit operator ImagePixelFormatList(IntPtr handle) => new ImagePixelFormatList(handle);
+		public static implicit operator VuImagePixelFormatList(IntPtr handle) => new VuImagePixelFormatList(handle);
 
-		public static bool operator ==(ImagePixelFormatList left, ImagePixelFormatList right) => left.Handle == right.Handle;
+		public static bool operator ==(VuImagePixelFormatList left, VuImagePixelFormatList right) => left.Handle == right.Handle;
 
-		public static bool operator !=(ImagePixelFormatList left, ImagePixelFormatList right) => left.Handle != right.Handle;
+		public static bool operator !=(VuImagePixelFormatList left, VuImagePixelFormatList right) => left.Handle != right.Handle;
 
-		public bool Equals(ImagePixelFormatList h) => Handle == h.Handle;
+		public bool Equals(VuImagePixelFormatList h) => Handle == h.Handle;
 
-		public override bool Equals(object o) => o is ImagePixelFormatList h && Equals(h);
+		public override bool Equals(object o) => o is VuImagePixelFormatList h && Equals(h);
 
 		public override int GetHashCode() => Handle.GetHashCode();
 	}
@@ -54,23 +54,23 @@ namespace Evergine.Bindings.Vuforia
 	/// <summary>
 	/// Vuforia Image
 	/// </summary>
-	public partial struct Image : IEquatable<Image>
+	public partial struct VuImage : IEquatable<VuImage>
 	{
 		public readonly IntPtr Handle;
 
-		public Image(IntPtr existingHandle) { Handle = existingHandle; }
+		public VuImage(IntPtr existingHandle) { Handle = existingHandle; }
 
-		public static Image Null => new Image(IntPtr.Zero);
+		public static VuImage Null => new VuImage(IntPtr.Zero);
 
-		public static implicit operator Image(IntPtr handle) => new Image(handle);
+		public static implicit operator VuImage(IntPtr handle) => new VuImage(handle);
 
-		public static bool operator ==(Image left, Image right) => left.Handle == right.Handle;
+		public static bool operator ==(VuImage left, VuImage right) => left.Handle == right.Handle;
 
-		public static bool operator !=(Image left, Image right) => left.Handle != right.Handle;
+		public static bool operator !=(VuImage left, VuImage right) => left.Handle != right.Handle;
 
-		public bool Equals(Image h) => Handle == h.Handle;
+		public bool Equals(VuImage h) => Handle == h.Handle;
 
-		public override bool Equals(object o) => o is Image h && Equals(h);
+		public override bool Equals(object o) => o is VuImage h && Equals(h);
 
 		public override int GetHashCode() => Handle.GetHashCode();
 	}
@@ -78,23 +78,23 @@ namespace Evergine.Bindings.Vuforia
 	/// <summary>
 	/// Vuforia Image List
 	/// </summary>
-	public partial struct ImageList : IEquatable<ImageList>
+	public partial struct VuImageList : IEquatable<VuImageList>
 	{
 		public readonly IntPtr Handle;
 
-		public ImageList(IntPtr existingHandle) { Handle = existingHandle; }
+		public VuImageList(IntPtr existingHandle) { Handle = existingHandle; }
 
-		public static ImageList Null => new ImageList(IntPtr.Zero);
+		public static VuImageList Null => new VuImageList(IntPtr.Zero);
 
-		public static implicit operator ImageList(IntPtr handle) => new ImageList(handle);
+		public static implicit operator VuImageList(IntPtr handle) => new VuImageList(handle);
 
-		public static bool operator ==(ImageList left, ImageList right) => left.Handle == right.Handle;
+		public static bool operator ==(VuImageList left, VuImageList right) => left.Handle == right.Handle;
 
-		public static bool operator !=(ImageList left, ImageList right) => left.Handle != right.Handle;
+		public static bool operator !=(VuImageList left, VuImageList right) => left.Handle != right.Handle;
 
-		public bool Equals(ImageList h) => Handle == h.Handle;
+		public bool Equals(VuImageList h) => Handle == h.Handle;
 
-		public override bool Equals(object o) => o is ImageList h && Equals(h);
+		public override bool Equals(object o) => o is VuImageList h && Equals(h);
 
 		public override int GetHashCode() => Handle.GetHashCode();
 	}
@@ -102,23 +102,23 @@ namespace Evergine.Bindings.Vuforia
 	/// <summary>
 	/// Vuforia EngineConfig handle
 	/// </summary>
-	public partial struct EngineConfigSet : IEquatable<EngineConfigSet>
+	public partial struct VuEngineConfigSet : IEquatable<VuEngineConfigSet>
 	{
 		public readonly IntPtr Handle;
 
-		public EngineConfigSet(IntPtr existingHandle) { Handle = existingHandle; }
+		public VuEngineConfigSet(IntPtr existingHandle) { Handle = existingHandle; }
 
-		public static EngineConfigSet Null => new EngineConfigSet(IntPtr.Zero);
+		public static VuEngineConfigSet Null => new VuEngineConfigSet(IntPtr.Zero);
 
-		public static implicit operator EngineConfigSet(IntPtr handle) => new EngineConfigSet(handle);
+		public static implicit operator VuEngineConfigSet(IntPtr handle) => new VuEngineConfigSet(handle);
 
-		public static bool operator ==(EngineConfigSet left, EngineConfigSet right) => left.Handle == right.Handle;
+		public static bool operator ==(VuEngineConfigSet left, VuEngineConfigSet right) => left.Handle == right.Handle;
 
-		public static bool operator !=(EngineConfigSet left, EngineConfigSet right) => left.Handle != right.Handle;
+		public static bool operator !=(VuEngineConfigSet left, VuEngineConfigSet right) => left.Handle != right.Handle;
 
-		public bool Equals(EngineConfigSet h) => Handle == h.Handle;
+		public bool Equals(VuEngineConfigSet h) => Handle == h.Handle;
 
-		public override bool Equals(object o) => o is EngineConfigSet h && Equals(h);
+		public override bool Equals(object o) => o is VuEngineConfigSet h && Equals(h);
 
 		public override int GetHashCode() => Handle.GetHashCode();
 	}
@@ -126,23 +126,23 @@ namespace Evergine.Bindings.Vuforia
 	/// <summary>
 	/// Vuforia Engine handle
 	/// </summary>
-	public partial struct Engine : IEquatable<Engine>
+	public partial struct VuEngine : IEquatable<VuEngine>
 	{
 		public readonly IntPtr Handle;
 
-		public Engine(IntPtr existingHandle) { Handle = existingHandle; }
+		public VuEngine(IntPtr existingHandle) { Handle = existingHandle; }
 
-		public static Engine Null => new Engine(IntPtr.Zero);
+		public static VuEngine Null => new VuEngine(IntPtr.Zero);
 
-		public static implicit operator Engine(IntPtr handle) => new Engine(handle);
+		public static implicit operator VuEngine(IntPtr handle) => new VuEngine(handle);
 
-		public static bool operator ==(Engine left, Engine right) => left.Handle == right.Handle;
+		public static bool operator ==(VuEngine left, VuEngine right) => left.Handle == right.Handle;
 
-		public static bool operator !=(Engine left, Engine right) => left.Handle != right.Handle;
+		public static bool operator !=(VuEngine left, VuEngine right) => left.Handle != right.Handle;
 
-		public bool Equals(Engine h) => Handle == h.Handle;
+		public bool Equals(VuEngine h) => Handle == h.Handle;
 
-		public override bool Equals(object o) => o is Engine h && Equals(h);
+		public override bool Equals(object o) => o is VuEngine h && Equals(h);
 
 		public override int GetHashCode() => Handle.GetHashCode();
 	}
@@ -150,23 +150,23 @@ namespace Evergine.Bindings.Vuforia
 	/// <summary>
 	/// Vuforia Observer handle
 	/// </summary>
-	public partial struct Observer : IEquatable<Observer>
+	public partial struct VuObserver : IEquatable<VuObserver>
 	{
 		public readonly IntPtr Handle;
 
-		public Observer(IntPtr existingHandle) { Handle = existingHandle; }
+		public VuObserver(IntPtr existingHandle) { Handle = existingHandle; }
 
-		public static Observer Null => new Observer(IntPtr.Zero);
+		public static VuObserver Null => new VuObserver(IntPtr.Zero);
 
-		public static implicit operator Observer(IntPtr handle) => new Observer(handle);
+		public static implicit operator VuObserver(IntPtr handle) => new VuObserver(handle);
 
-		public static bool operator ==(Observer left, Observer right) => left.Handle == right.Handle;
+		public static bool operator ==(VuObserver left, VuObserver right) => left.Handle == right.Handle;
 
-		public static bool operator !=(Observer left, Observer right) => left.Handle != right.Handle;
+		public static bool operator !=(VuObserver left, VuObserver right) => left.Handle != right.Handle;
 
-		public bool Equals(Observer h) => Handle == h.Handle;
+		public bool Equals(VuObserver h) => Handle == h.Handle;
 
-		public override bool Equals(object o) => o is Observer h && Equals(h);
+		public override bool Equals(object o) => o is VuObserver h && Equals(h);
 
 		public override int GetHashCode() => Handle.GetHashCode();
 	}
@@ -174,23 +174,23 @@ namespace Evergine.Bindings.Vuforia
 	/// <summary>
 	/// Vuforia ObserverList handle
 	/// </summary>
-	public partial struct ObserverList : IEquatable<ObserverList>
+	public partial struct VuObserverList : IEquatable<VuObserverList>
 	{
 		public readonly IntPtr Handle;
 
-		public ObserverList(IntPtr existingHandle) { Handle = existingHandle; }
+		public VuObserverList(IntPtr existingHandle) { Handle = existingHandle; }
 
-		public static ObserverList Null => new ObserverList(IntPtr.Zero);
+		public static VuObserverList Null => new VuObserverList(IntPtr.Zero);
 
-		public static implicit operator ObserverList(IntPtr handle) => new ObserverList(handle);
+		public static implicit operator VuObserverList(IntPtr handle) => new VuObserverList(handle);
 
-		public static bool operator ==(ObserverList left, ObserverList right) => left.Handle == right.Handle;
+		public static bool operator ==(VuObserverList left, VuObserverList right) => left.Handle == right.Handle;
 
-		public static bool operator !=(ObserverList left, ObserverList right) => left.Handle != right.Handle;
+		public static bool operator !=(VuObserverList left, VuObserverList right) => left.Handle != right.Handle;
 
-		public bool Equals(ObserverList h) => Handle == h.Handle;
+		public bool Equals(VuObserverList h) => Handle == h.Handle;
 
-		public override bool Equals(object o) => o is ObserverList h && Equals(h);
+		public override bool Equals(object o) => o is VuObserverList h && Equals(h);
 
 		public override int GetHashCode() => Handle.GetHashCode();
 	}
@@ -198,23 +198,23 @@ namespace Evergine.Bindings.Vuforia
 	/// <summary>
 	/// Vuforia Observation handle
 	/// </summary>
-	public partial struct Observation : IEquatable<Observation>
+	public partial struct VuObservation : IEquatable<VuObservation>
 	{
 		public readonly IntPtr Handle;
 
-		public Observation(IntPtr existingHandle) { Handle = existingHandle; }
+		public VuObservation(IntPtr existingHandle) { Handle = existingHandle; }
 
-		public static Observation Null => new Observation(IntPtr.Zero);
+		public static VuObservation Null => new VuObservation(IntPtr.Zero);
 
-		public static implicit operator Observation(IntPtr handle) => new Observation(handle);
+		public static implicit operator VuObservation(IntPtr handle) => new VuObservation(handle);
 
-		public static bool operator ==(Observation left, Observation right) => left.Handle == right.Handle;
+		public static bool operator ==(VuObservation left, VuObservation right) => left.Handle == right.Handle;
 
-		public static bool operator !=(Observation left, Observation right) => left.Handle != right.Handle;
+		public static bool operator !=(VuObservation left, VuObservation right) => left.Handle != right.Handle;
 
-		public bool Equals(Observation h) => Handle == h.Handle;
+		public bool Equals(VuObservation h) => Handle == h.Handle;
 
-		public override bool Equals(object o) => o is Observation h && Equals(h);
+		public override bool Equals(object o) => o is VuObservation h && Equals(h);
 
 		public override int GetHashCode() => Handle.GetHashCode();
 	}
@@ -222,23 +222,23 @@ namespace Evergine.Bindings.Vuforia
 	/// <summary>
 	/// Vuforia ObservationList handle
 	/// </summary>
-	public partial struct ObservationList : IEquatable<ObservationList>
+	public partial struct VuObservationList : IEquatable<VuObservationList>
 	{
 		public readonly IntPtr Handle;
 
-		public ObservationList(IntPtr existingHandle) { Handle = existingHandle; }
+		public VuObservationList(IntPtr existingHandle) { Handle = existingHandle; }
 
-		public static ObservationList Null => new ObservationList(IntPtr.Zero);
+		public static VuObservationList Null => new VuObservationList(IntPtr.Zero);
 
-		public static implicit operator ObservationList(IntPtr handle) => new ObservationList(handle);
+		public static implicit operator VuObservationList(IntPtr handle) => new VuObservationList(handle);
 
-		public static bool operator ==(ObservationList left, ObservationList right) => left.Handle == right.Handle;
+		public static bool operator ==(VuObservationList left, VuObservationList right) => left.Handle == right.Handle;
 
-		public static bool operator !=(ObservationList left, ObservationList right) => left.Handle != right.Handle;
+		public static bool operator !=(VuObservationList left, VuObservationList right) => left.Handle != right.Handle;
 
-		public bool Equals(ObservationList h) => Handle == h.Handle;
+		public bool Equals(VuObservationList h) => Handle == h.Handle;
 
-		public override bool Equals(object o) => o is ObservationList h && Equals(h);
+		public override bool Equals(object o) => o is VuObservationList h && Equals(h);
 
 		public override int GetHashCode() => Handle.GetHashCode();
 	}
@@ -246,23 +246,23 @@ namespace Evergine.Bindings.Vuforia
 	/// <summary>
 	/// Vuforia State handle
 	/// </summary>
-	public partial struct State : IEquatable<State>
+	public partial struct VuState : IEquatable<VuState>
 	{
 		public readonly IntPtr Handle;
 
-		public State(IntPtr existingHandle) { Handle = existingHandle; }
+		public VuState(IntPtr existingHandle) { Handle = existingHandle; }
 
-		public static State Null => new State(IntPtr.Zero);
+		public static VuState Null => new VuState(IntPtr.Zero);
 
-		public static implicit operator State(IntPtr handle) => new State(handle);
+		public static implicit operator VuState(IntPtr handle) => new VuState(handle);
 
-		public static bool operator ==(State left, State right) => left.Handle == right.Handle;
+		public static bool operator ==(VuState left, VuState right) => left.Handle == right.Handle;
 
-		public static bool operator !=(State left, State right) => left.Handle != right.Handle;
+		public static bool operator !=(VuState left, VuState right) => left.Handle != right.Handle;
 
-		public bool Equals(State h) => Handle == h.Handle;
+		public bool Equals(VuState h) => Handle == h.Handle;
 
-		public override bool Equals(object o) => o is State h && Equals(h);
+		public override bool Equals(object o) => o is VuState h && Equals(h);
 
 		public override int GetHashCode() => Handle.GetHashCode();
 	}
@@ -270,23 +270,23 @@ namespace Evergine.Bindings.Vuforia
 	/// <summary>
 	/// Vuforia Camera Frame
 	/// </summary>
-	public partial struct CameraFrame : IEquatable<CameraFrame>
+	public partial struct VuCameraFrame : IEquatable<VuCameraFrame>
 	{
 		public readonly IntPtr Handle;
 
-		public CameraFrame(IntPtr existingHandle) { Handle = existingHandle; }
+		public VuCameraFrame(IntPtr existingHandle) { Handle = existingHandle; }
 
-		public static CameraFrame Null => new CameraFrame(IntPtr.Zero);
+		public static VuCameraFrame Null => new VuCameraFrame(IntPtr.Zero);
 
-		public static implicit operator CameraFrame(IntPtr handle) => new CameraFrame(handle);
+		public static implicit operator VuCameraFrame(IntPtr handle) => new VuCameraFrame(handle);
 
-		public static bool operator ==(CameraFrame left, CameraFrame right) => left.Handle == right.Handle;
+		public static bool operator ==(VuCameraFrame left, VuCameraFrame right) => left.Handle == right.Handle;
 
-		public static bool operator !=(CameraFrame left, CameraFrame right) => left.Handle != right.Handle;
+		public static bool operator !=(VuCameraFrame left, VuCameraFrame right) => left.Handle != right.Handle;
 
-		public bool Equals(CameraFrame h) => Handle == h.Handle;
+		public bool Equals(VuCameraFrame h) => Handle == h.Handle;
 
-		public override bool Equals(object o) => o is CameraFrame h && Equals(h);
+		public override bool Equals(object o) => o is VuCameraFrame h && Equals(h);
 
 		public override int GetHashCode() => Handle.GetHashCode();
 	}
@@ -295,23 +295,23 @@ namespace Evergine.Bindings.Vuforia
 	/// Vuforia Depth Frame
 	/// This type is part of a feature in beta and may change from release to release without notice.
 	/// </summary>
-	public partial struct DepthFrame : IEquatable<DepthFrame>
+	public partial struct VuDepthFrame : IEquatable<VuDepthFrame>
 	{
 		public readonly IntPtr Handle;
 
-		public DepthFrame(IntPtr existingHandle) { Handle = existingHandle; }
+		public VuDepthFrame(IntPtr existingHandle) { Handle = existingHandle; }
 
-		public static DepthFrame Null => new DepthFrame(IntPtr.Zero);
+		public static VuDepthFrame Null => new VuDepthFrame(IntPtr.Zero);
 
-		public static implicit operator DepthFrame(IntPtr handle) => new DepthFrame(handle);
+		public static implicit operator VuDepthFrame(IntPtr handle) => new VuDepthFrame(handle);
 
-		public static bool operator ==(DepthFrame left, DepthFrame right) => left.Handle == right.Handle;
+		public static bool operator ==(VuDepthFrame left, VuDepthFrame right) => left.Handle == right.Handle;
 
-		public static bool operator !=(DepthFrame left, DepthFrame right) => left.Handle != right.Handle;
+		public static bool operator !=(VuDepthFrame left, VuDepthFrame right) => left.Handle != right.Handle;
 
-		public bool Equals(DepthFrame h) => Handle == h.Handle;
+		public bool Equals(VuDepthFrame h) => Handle == h.Handle;
 
-		public override bool Equals(object o) => o is DepthFrame h && Equals(h);
+		public override bool Equals(object o) => o is VuDepthFrame h && Equals(h);
 
 		public override int GetHashCode() => Handle.GetHashCode();
 	}
@@ -319,23 +319,23 @@ namespace Evergine.Bindings.Vuforia
 	/// <summary>
 	/// List for holding information about targets in database
 	/// </summary>
-	public partial struct DatabaseTargetInfoList : IEquatable<DatabaseTargetInfoList>
+	public partial struct VuDatabaseTargetInfoList : IEquatable<VuDatabaseTargetInfoList>
 	{
 		public readonly IntPtr Handle;
 
-		public DatabaseTargetInfoList(IntPtr existingHandle) { Handle = existingHandle; }
+		public VuDatabaseTargetInfoList(IntPtr existingHandle) { Handle = existingHandle; }
 
-		public static DatabaseTargetInfoList Null => new DatabaseTargetInfoList(IntPtr.Zero);
+		public static VuDatabaseTargetInfoList Null => new VuDatabaseTargetInfoList(IntPtr.Zero);
 
-		public static implicit operator DatabaseTargetInfoList(IntPtr handle) => new DatabaseTargetInfoList(handle);
+		public static implicit operator VuDatabaseTargetInfoList(IntPtr handle) => new VuDatabaseTargetInfoList(handle);
 
-		public static bool operator ==(DatabaseTargetInfoList left, DatabaseTargetInfoList right) => left.Handle == right.Handle;
+		public static bool operator ==(VuDatabaseTargetInfoList left, VuDatabaseTargetInfoList right) => left.Handle == right.Handle;
 
-		public static bool operator !=(DatabaseTargetInfoList left, DatabaseTargetInfoList right) => left.Handle != right.Handle;
+		public static bool operator !=(VuDatabaseTargetInfoList left, VuDatabaseTargetInfoList right) => left.Handle != right.Handle;
 
-		public bool Equals(DatabaseTargetInfoList h) => Handle == h.Handle;
+		public bool Equals(VuDatabaseTargetInfoList h) => Handle == h.Handle;
 
-		public override bool Equals(object o) => o is DatabaseTargetInfoList h && Equals(h);
+		public override bool Equals(object o) => o is VuDatabaseTargetInfoList h && Equals(h);
 
 		public override int GetHashCode() => Handle.GetHashCode();
 	}
@@ -343,23 +343,23 @@ namespace Evergine.Bindings.Vuforia
 	/// <summary>
 	/// Anchor list
 	/// </summary>
-	public partial struct AnchorList : IEquatable<AnchorList>
+	public partial struct VuAnchorList : IEquatable<VuAnchorList>
 	{
 		public readonly IntPtr Handle;
 
-		public AnchorList(IntPtr existingHandle) { Handle = existingHandle; }
+		public VuAnchorList(IntPtr existingHandle) { Handle = existingHandle; }
 
-		public static AnchorList Null => new AnchorList(IntPtr.Zero);
+		public static VuAnchorList Null => new VuAnchorList(IntPtr.Zero);
 
-		public static implicit operator AnchorList(IntPtr handle) => new AnchorList(handle);
+		public static implicit operator VuAnchorList(IntPtr handle) => new VuAnchorList(handle);
 
-		public static bool operator ==(AnchorList left, AnchorList right) => left.Handle == right.Handle;
+		public static bool operator ==(VuAnchorList left, VuAnchorList right) => left.Handle == right.Handle;
 
-		public static bool operator !=(AnchorList left, AnchorList right) => left.Handle != right.Handle;
+		public static bool operator !=(VuAnchorList left, VuAnchorList right) => left.Handle != right.Handle;
 
-		public bool Equals(AnchorList h) => Handle == h.Handle;
+		public bool Equals(VuAnchorList h) => Handle == h.Handle;
 
-		public override bool Equals(object o) => o is AnchorList h && Equals(h);
+		public override bool Equals(object o) => o is VuAnchorList h && Equals(h);
 
 		public override int GetHashCode() => Handle.GetHashCode();
 	}
@@ -367,23 +367,23 @@ namespace Evergine.Bindings.Vuforia
 	/// <summary>
 	/// Hit-test list
 	/// </summary>
-	public partial struct HitTest : IEquatable<HitTest>
+	public partial struct VuHitTest : IEquatable<VuHitTest>
 	{
 		public readonly IntPtr Handle;
 
-		public HitTest(IntPtr existingHandle) { Handle = existingHandle; }
+		public VuHitTest(IntPtr existingHandle) { Handle = existingHandle; }
 
-		public static HitTest Null => new HitTest(IntPtr.Zero);
+		public static VuHitTest Null => new VuHitTest(IntPtr.Zero);
 
-		public static implicit operator HitTest(IntPtr handle) => new HitTest(handle);
+		public static implicit operator VuHitTest(IntPtr handle) => new VuHitTest(handle);
 
-		public static bool operator ==(HitTest left, HitTest right) => left.Handle == right.Handle;
+		public static bool operator ==(VuHitTest left, VuHitTest right) => left.Handle == right.Handle;
 
-		public static bool operator !=(HitTest left, HitTest right) => left.Handle != right.Handle;
+		public static bool operator !=(VuHitTest left, VuHitTest right) => left.Handle != right.Handle;
 
-		public bool Equals(HitTest h) => Handle == h.Handle;
+		public bool Equals(VuHitTest h) => Handle == h.Handle;
 
-		public override bool Equals(object o) => o is HitTest h && Equals(h);
+		public override bool Equals(object o) => o is VuHitTest h && Equals(h);
 
 		public override int GetHashCode() => Handle.GetHashCode();
 	}
@@ -391,23 +391,23 @@ namespace Evergine.Bindings.Vuforia
 	/// <summary>
 	/// Hit-test list
 	/// </summary>
-	public partial struct HitTestList : IEquatable<HitTestList>
+	public partial struct VuHitTestList : IEquatable<VuHitTestList>
 	{
 		public readonly IntPtr Handle;
 
-		public HitTestList(IntPtr existingHandle) { Handle = existingHandle; }
+		public VuHitTestList(IntPtr existingHandle) { Handle = existingHandle; }
 
-		public static HitTestList Null => new HitTestList(IntPtr.Zero);
+		public static VuHitTestList Null => new VuHitTestList(IntPtr.Zero);
 
-		public static implicit operator HitTestList(IntPtr handle) => new HitTestList(handle);
+		public static implicit operator VuHitTestList(IntPtr handle) => new VuHitTestList(handle);
 
-		public static bool operator ==(HitTestList left, HitTestList right) => left.Handle == right.Handle;
+		public static bool operator ==(VuHitTestList left, VuHitTestList right) => left.Handle == right.Handle;
 
-		public static bool operator !=(HitTestList left, HitTestList right) => left.Handle != right.Handle;
+		public static bool operator !=(VuHitTestList left, VuHitTestList right) => left.Handle != right.Handle;
 
-		public bool Equals(HitTestList h) => Handle == h.Handle;
+		public bool Equals(VuHitTestList h) => Handle == h.Handle;
 
-		public override bool Equals(object o) => o is HitTestList h && Equals(h);
+		public override bool Equals(object o) => o is VuHitTestList h && Equals(h);
 
 		public override int GetHashCode() => Handle.GetHashCode();
 	}
@@ -415,23 +415,23 @@ namespace Evergine.Bindings.Vuforia
 	/// <summary>
 	/// List of Mesh observation blocks
 	/// </summary>
-	public partial struct MeshObservationBlockList : IEquatable<MeshObservationBlockList>
+	public partial struct VuMeshObservationBlockList : IEquatable<VuMeshObservationBlockList>
 	{
 		public readonly IntPtr Handle;
 
-		public MeshObservationBlockList(IntPtr existingHandle) { Handle = existingHandle; }
+		public VuMeshObservationBlockList(IntPtr existingHandle) { Handle = existingHandle; }
 
-		public static MeshObservationBlockList Null => new MeshObservationBlockList(IntPtr.Zero);
+		public static VuMeshObservationBlockList Null => new VuMeshObservationBlockList(IntPtr.Zero);
 
-		public static implicit operator MeshObservationBlockList(IntPtr handle) => new MeshObservationBlockList(handle);
+		public static implicit operator VuMeshObservationBlockList(IntPtr handle) => new VuMeshObservationBlockList(handle);
 
-		public static bool operator ==(MeshObservationBlockList left, MeshObservationBlockList right) => left.Handle == right.Handle;
+		public static bool operator ==(VuMeshObservationBlockList left, VuMeshObservationBlockList right) => left.Handle == right.Handle;
 
-		public static bool operator !=(MeshObservationBlockList left, MeshObservationBlockList right) => left.Handle != right.Handle;
+		public static bool operator !=(VuMeshObservationBlockList left, VuMeshObservationBlockList right) => left.Handle != right.Handle;
 
-		public bool Equals(MeshObservationBlockList h) => Handle == h.Handle;
+		public bool Equals(VuMeshObservationBlockList h) => Handle == h.Handle;
 
-		public override bool Equals(object o) => o is MeshObservationBlockList h && Equals(h);
+		public override bool Equals(object o) => o is VuMeshObservationBlockList h && Equals(h);
 
 		public override int GetHashCode() => Handle.GetHashCode();
 	}
@@ -439,23 +439,23 @@ namespace Evergine.Bindings.Vuforia
 	/// <summary>
 	/// Guide View
 	/// </summary>
-	public partial struct GuideView : IEquatable<GuideView>
+	public partial struct VuGuideView : IEquatable<VuGuideView>
 	{
 		public readonly IntPtr Handle;
 
-		public GuideView(IntPtr existingHandle) { Handle = existingHandle; }
+		public VuGuideView(IntPtr existingHandle) { Handle = existingHandle; }
 
-		public static GuideView Null => new GuideView(IntPtr.Zero);
+		public static VuGuideView Null => new VuGuideView(IntPtr.Zero);
 
-		public static implicit operator GuideView(IntPtr handle) => new GuideView(handle);
+		public static implicit operator VuGuideView(IntPtr handle) => new VuGuideView(handle);
 
-		public static bool operator ==(GuideView left, GuideView right) => left.Handle == right.Handle;
+		public static bool operator ==(VuGuideView left, VuGuideView right) => left.Handle == right.Handle;
 
-		public static bool operator !=(GuideView left, GuideView right) => left.Handle != right.Handle;
+		public static bool operator !=(VuGuideView left, VuGuideView right) => left.Handle != right.Handle;
 
-		public bool Equals(GuideView h) => Handle == h.Handle;
+		public bool Equals(VuGuideView h) => Handle == h.Handle;
 
-		public override bool Equals(object o) => o is GuideView h && Equals(h);
+		public override bool Equals(object o) => o is VuGuideView h && Equals(h);
 
 		public override int GetHashCode() => Handle.GetHashCode();
 	}
@@ -463,23 +463,23 @@ namespace Evergine.Bindings.Vuforia
 	/// <summary>
 	/// Guide View List
 	/// </summary>
-	public partial struct GuideViewList : IEquatable<GuideViewList>
+	public partial struct VuGuideViewList : IEquatable<VuGuideViewList>
 	{
 		public readonly IntPtr Handle;
 
-		public GuideViewList(IntPtr existingHandle) { Handle = existingHandle; }
+		public VuGuideViewList(IntPtr existingHandle) { Handle = existingHandle; }
 
-		public static GuideViewList Null => new GuideViewList(IntPtr.Zero);
+		public static VuGuideViewList Null => new VuGuideViewList(IntPtr.Zero);
 
-		public static implicit operator GuideViewList(IntPtr handle) => new GuideViewList(handle);
+		public static implicit operator VuGuideViewList(IntPtr handle) => new VuGuideViewList(handle);
 
-		public static bool operator ==(GuideViewList left, GuideViewList right) => left.Handle == right.Handle;
+		public static bool operator ==(VuGuideViewList left, VuGuideViewList right) => left.Handle == right.Handle;
 
-		public static bool operator !=(GuideViewList left, GuideViewList right) => left.Handle != right.Handle;
+		public static bool operator !=(VuGuideViewList left, VuGuideViewList right) => left.Handle != right.Handle;
 
-		public bool Equals(GuideViewList h) => Handle == h.Handle;
+		public bool Equals(VuGuideViewList h) => Handle == h.Handle;
 
-		public override bool Equals(object o) => o is GuideViewList h && Equals(h);
+		public override bool Equals(object o) => o is VuGuideViewList h && Equals(h);
 
 		public override int GetHashCode() => Handle.GetHashCode();
 	}
@@ -490,23 +490,23 @@ namespace Evergine.Bindings.Vuforia
 	/// @ref VuModelTargetStateInfo
 	/// instead.
 	/// </summary>
-	public partial struct ModelTargetState : IEquatable<ModelTargetState>
+	public partial struct VuModelTargetState : IEquatable<VuModelTargetState>
 	{
 		public readonly IntPtr Handle;
 
-		public ModelTargetState(IntPtr existingHandle) { Handle = existingHandle; }
+		public VuModelTargetState(IntPtr existingHandle) { Handle = existingHandle; }
 
-		public static ModelTargetState Null => new ModelTargetState(IntPtr.Zero);
+		public static VuModelTargetState Null => new VuModelTargetState(IntPtr.Zero);
 
-		public static implicit operator ModelTargetState(IntPtr handle) => new ModelTargetState(handle);
+		public static implicit operator VuModelTargetState(IntPtr handle) => new VuModelTargetState(handle);
 
-		public static bool operator ==(ModelTargetState left, ModelTargetState right) => left.Handle == right.Handle;
+		public static bool operator ==(VuModelTargetState left, VuModelTargetState right) => left.Handle == right.Handle;
 
-		public static bool operator !=(ModelTargetState left, ModelTargetState right) => left.Handle != right.Handle;
+		public static bool operator !=(VuModelTargetState left, VuModelTargetState right) => left.Handle != right.Handle;
 
-		public bool Equals(ModelTargetState h) => Handle == h.Handle;
+		public bool Equals(VuModelTargetState h) => Handle == h.Handle;
 
-		public override bool Equals(object o) => o is ModelTargetState h && Equals(h);
+		public override bool Equals(object o) => o is VuModelTargetState h && Equals(h);
 
 		public override int GetHashCode() => Handle.GetHashCode();
 	}
@@ -517,23 +517,23 @@ namespace Evergine.Bindings.Vuforia
 	/// @ref VuModelTargetStateInfoList
 	/// instead.
 	/// </summary>
-	public partial struct ModelTargetStateList : IEquatable<ModelTargetStateList>
+	public partial struct VuModelTargetStateList : IEquatable<VuModelTargetStateList>
 	{
 		public readonly IntPtr Handle;
 
-		public ModelTargetStateList(IntPtr existingHandle) { Handle = existingHandle; }
+		public VuModelTargetStateList(IntPtr existingHandle) { Handle = existingHandle; }
 
-		public static ModelTargetStateList Null => new ModelTargetStateList(IntPtr.Zero);
+		public static VuModelTargetStateList Null => new VuModelTargetStateList(IntPtr.Zero);
 
-		public static implicit operator ModelTargetStateList(IntPtr handle) => new ModelTargetStateList(handle);
+		public static implicit operator VuModelTargetStateList(IntPtr handle) => new VuModelTargetStateList(handle);
 
-		public static bool operator ==(ModelTargetStateList left, ModelTargetStateList right) => left.Handle == right.Handle;
+		public static bool operator ==(VuModelTargetStateList left, VuModelTargetStateList right) => left.Handle == right.Handle;
 
-		public static bool operator !=(ModelTargetStateList left, ModelTargetStateList right) => left.Handle != right.Handle;
+		public static bool operator !=(VuModelTargetStateList left, VuModelTargetStateList right) => left.Handle != right.Handle;
 
-		public bool Equals(ModelTargetStateList h) => Handle == h.Handle;
+		public bool Equals(VuModelTargetStateList h) => Handle == h.Handle;
 
-		public override bool Equals(object o) => o is ModelTargetStateList h && Equals(h);
+		public override bool Equals(object o) => o is VuModelTargetStateList h && Equals(h);
 
 		public override int GetHashCode() => Handle.GetHashCode();
 	}
@@ -541,23 +541,23 @@ namespace Evergine.Bindings.Vuforia
 	/// <summary>
 	/// Model Target State Info List
 	/// </summary>
-	public partial struct ModelTargetStateInfoList : IEquatable<ModelTargetStateInfoList>
+	public partial struct VuModelTargetStateInfoList : IEquatable<VuModelTargetStateInfoList>
 	{
 		public readonly IntPtr Handle;
 
-		public ModelTargetStateInfoList(IntPtr existingHandle) { Handle = existingHandle; }
+		public VuModelTargetStateInfoList(IntPtr existingHandle) { Handle = existingHandle; }
 
-		public static ModelTargetStateInfoList Null => new ModelTargetStateInfoList(IntPtr.Zero);
+		public static VuModelTargetStateInfoList Null => new VuModelTargetStateInfoList(IntPtr.Zero);
 
-		public static implicit operator ModelTargetStateInfoList(IntPtr handle) => new ModelTargetStateInfoList(handle);
+		public static implicit operator VuModelTargetStateInfoList(IntPtr handle) => new VuModelTargetStateInfoList(handle);
 
-		public static bool operator ==(ModelTargetStateInfoList left, ModelTargetStateInfoList right) => left.Handle == right.Handle;
+		public static bool operator ==(VuModelTargetStateInfoList left, VuModelTargetStateInfoList right) => left.Handle == right.Handle;
 
-		public static bool operator !=(ModelTargetStateInfoList left, ModelTargetStateInfoList right) => left.Handle != right.Handle;
+		public static bool operator !=(VuModelTargetStateInfoList left, VuModelTargetStateInfoList right) => left.Handle != right.Handle;
 
-		public bool Equals(ModelTargetStateInfoList h) => Handle == h.Handle;
+		public bool Equals(VuModelTargetStateInfoList h) => Handle == h.Handle;
 
-		public override bool Equals(object o) => o is ModelTargetStateInfoList h && Equals(h);
+		public override bool Equals(object o) => o is VuModelTargetStateInfoList h && Equals(h);
 
 		public override int GetHashCode() => Handle.GetHashCode();
 	}
@@ -565,23 +565,23 @@ namespace Evergine.Bindings.Vuforia
 	/// <summary>
 	/// Multi-Target part config list
 	/// </summary>
-	public partial struct MultiTargetPartConfigList : IEquatable<MultiTargetPartConfigList>
+	public partial struct VuMultiTargetPartConfigList : IEquatable<VuMultiTargetPartConfigList>
 	{
 		public readonly IntPtr Handle;
 
-		public MultiTargetPartConfigList(IntPtr existingHandle) { Handle = existingHandle; }
+		public VuMultiTargetPartConfigList(IntPtr existingHandle) { Handle = existingHandle; }
 
-		public static MultiTargetPartConfigList Null => new MultiTargetPartConfigList(IntPtr.Zero);
+		public static VuMultiTargetPartConfigList Null => new VuMultiTargetPartConfigList(IntPtr.Zero);
 
-		public static implicit operator MultiTargetPartConfigList(IntPtr handle) => new MultiTargetPartConfigList(handle);
+		public static implicit operator VuMultiTargetPartConfigList(IntPtr handle) => new VuMultiTargetPartConfigList(handle);
 
-		public static bool operator ==(MultiTargetPartConfigList left, MultiTargetPartConfigList right) => left.Handle == right.Handle;
+		public static bool operator ==(VuMultiTargetPartConfigList left, VuMultiTargetPartConfigList right) => left.Handle == right.Handle;
 
-		public static bool operator !=(MultiTargetPartConfigList left, MultiTargetPartConfigList right) => left.Handle != right.Handle;
+		public static bool operator !=(VuMultiTargetPartConfigList left, VuMultiTargetPartConfigList right) => left.Handle != right.Handle;
 
-		public bool Equals(MultiTargetPartConfigList h) => Handle == h.Handle;
+		public bool Equals(VuMultiTargetPartConfigList h) => Handle == h.Handle;
 
-		public override bool Equals(object o) => o is MultiTargetPartConfigList h && Equals(h);
+		public override bool Equals(object o) => o is VuMultiTargetPartConfigList h && Equals(h);
 
 		public override int GetHashCode() => Handle.GetHashCode();
 	}
@@ -589,23 +589,23 @@ namespace Evergine.Bindings.Vuforia
 	/// <summary>
 	/// Multi-Target part
 	/// </summary>
-	public partial struct MultiTargetPart : IEquatable<MultiTargetPart>
+	public partial struct VuMultiTargetPart : IEquatable<VuMultiTargetPart>
 	{
 		public readonly IntPtr Handle;
 
-		public MultiTargetPart(IntPtr existingHandle) { Handle = existingHandle; }
+		public VuMultiTargetPart(IntPtr existingHandle) { Handle = existingHandle; }
 
-		public static MultiTargetPart Null => new MultiTargetPart(IntPtr.Zero);
+		public static VuMultiTargetPart Null => new VuMultiTargetPart(IntPtr.Zero);
 
-		public static implicit operator MultiTargetPart(IntPtr handle) => new MultiTargetPart(handle);
+		public static implicit operator VuMultiTargetPart(IntPtr handle) => new VuMultiTargetPart(handle);
 
-		public static bool operator ==(MultiTargetPart left, MultiTargetPart right) => left.Handle == right.Handle;
+		public static bool operator ==(VuMultiTargetPart left, VuMultiTargetPart right) => left.Handle == right.Handle;
 
-		public static bool operator !=(MultiTargetPart left, MultiTargetPart right) => left.Handle != right.Handle;
+		public static bool operator !=(VuMultiTargetPart left, VuMultiTargetPart right) => left.Handle != right.Handle;
 
-		public bool Equals(MultiTargetPart h) => Handle == h.Handle;
+		public bool Equals(VuMultiTargetPart h) => Handle == h.Handle;
 
-		public override bool Equals(object o) => o is MultiTargetPart h && Equals(h);
+		public override bool Equals(object o) => o is VuMultiTargetPart h && Equals(h);
 
 		public override int GetHashCode() => Handle.GetHashCode();
 	}
@@ -613,23 +613,23 @@ namespace Evergine.Bindings.Vuforia
 	/// <summary>
 	/// Multi-Target part list
 	/// </summary>
-	public partial struct MultiTargetPartList : IEquatable<MultiTargetPartList>
+	public partial struct VuMultiTargetPartList : IEquatable<VuMultiTargetPartList>
 	{
 		public readonly IntPtr Handle;
 
-		public MultiTargetPartList(IntPtr existingHandle) { Handle = existingHandle; }
+		public VuMultiTargetPartList(IntPtr existingHandle) { Handle = existingHandle; }
 
-		public static MultiTargetPartList Null => new MultiTargetPartList(IntPtr.Zero);
+		public static VuMultiTargetPartList Null => new VuMultiTargetPartList(IntPtr.Zero);
 
-		public static implicit operator MultiTargetPartList(IntPtr handle) => new MultiTargetPartList(handle);
+		public static implicit operator VuMultiTargetPartList(IntPtr handle) => new VuMultiTargetPartList(handle);
 
-		public static bool operator ==(MultiTargetPartList left, MultiTargetPartList right) => left.Handle == right.Handle;
+		public static bool operator ==(VuMultiTargetPartList left, VuMultiTargetPartList right) => left.Handle == right.Handle;
 
-		public static bool operator !=(MultiTargetPartList left, MultiTargetPartList right) => left.Handle != right.Handle;
+		public static bool operator !=(VuMultiTargetPartList left, VuMultiTargetPartList right) => left.Handle != right.Handle;
 
-		public bool Equals(MultiTargetPartList h) => Handle == h.Handle;
+		public bool Equals(VuMultiTargetPartList h) => Handle == h.Handle;
 
-		public override bool Equals(object o) => o is MultiTargetPartList h && Equals(h);
+		public override bool Equals(object o) => o is VuMultiTargetPartList h && Equals(h);
 
 		public override int GetHashCode() => Handle.GetHashCode();
 	}
@@ -637,23 +637,23 @@ namespace Evergine.Bindings.Vuforia
 	/// <summary>
 	/// VuBarcodeType set
 	/// </summary>
-	public partial struct BarcodeTypeSet : IEquatable<BarcodeTypeSet>
+	public partial struct VuBarcodeTypeSet : IEquatable<VuBarcodeTypeSet>
 	{
 		public readonly IntPtr Handle;
 
-		public BarcodeTypeSet(IntPtr existingHandle) { Handle = existingHandle; }
+		public VuBarcodeTypeSet(IntPtr existingHandle) { Handle = existingHandle; }
 
-		public static BarcodeTypeSet Null => new BarcodeTypeSet(IntPtr.Zero);
+		public static VuBarcodeTypeSet Null => new VuBarcodeTypeSet(IntPtr.Zero);
 
-		public static implicit operator BarcodeTypeSet(IntPtr handle) => new BarcodeTypeSet(handle);
+		public static implicit operator VuBarcodeTypeSet(IntPtr handle) => new VuBarcodeTypeSet(handle);
 
-		public static bool operator ==(BarcodeTypeSet left, BarcodeTypeSet right) => left.Handle == right.Handle;
+		public static bool operator ==(VuBarcodeTypeSet left, VuBarcodeTypeSet right) => left.Handle == right.Handle;
 
-		public static bool operator !=(BarcodeTypeSet left, BarcodeTypeSet right) => left.Handle != right.Handle;
+		public static bool operator !=(VuBarcodeTypeSet left, VuBarcodeTypeSet right) => left.Handle != right.Handle;
 
-		public bool Equals(BarcodeTypeSet h) => Handle == h.Handle;
+		public bool Equals(VuBarcodeTypeSet h) => Handle == h.Handle;
 
-		public override bool Equals(object o) => o is BarcodeTypeSet h && Equals(h);
+		public override bool Equals(object o) => o is VuBarcodeTypeSet h && Equals(h);
 
 		public override int GetHashCode() => Handle.GetHashCode();
 	}
@@ -661,23 +661,23 @@ namespace Evergine.Bindings.Vuforia
 	/// <summary>
 	/// List of video modes available for a camera
 	/// </summary>
-	public partial struct CameraVideoModeList : IEquatable<CameraVideoModeList>
+	public partial struct VuCameraVideoModeList : IEquatable<VuCameraVideoModeList>
 	{
 		public readonly IntPtr Handle;
 
-		public CameraVideoModeList(IntPtr existingHandle) { Handle = existingHandle; }
+		public VuCameraVideoModeList(IntPtr existingHandle) { Handle = existingHandle; }
 
-		public static CameraVideoModeList Null => new CameraVideoModeList(IntPtr.Zero);
+		public static VuCameraVideoModeList Null => new VuCameraVideoModeList(IntPtr.Zero);
 
-		public static implicit operator CameraVideoModeList(IntPtr handle) => new CameraVideoModeList(handle);
+		public static implicit operator VuCameraVideoModeList(IntPtr handle) => new VuCameraVideoModeList(handle);
 
-		public static bool operator ==(CameraVideoModeList left, CameraVideoModeList right) => left.Handle == right.Handle;
+		public static bool operator ==(VuCameraVideoModeList left, VuCameraVideoModeList right) => left.Handle == right.Handle;
 
-		public static bool operator !=(CameraVideoModeList left, CameraVideoModeList right) => left.Handle != right.Handle;
+		public static bool operator !=(VuCameraVideoModeList left, VuCameraVideoModeList right) => left.Handle != right.Handle;
 
-		public bool Equals(CameraVideoModeList h) => Handle == h.Handle;
+		public bool Equals(VuCameraVideoModeList h) => Handle == h.Handle;
 
-		public override bool Equals(object o) => o is CameraVideoModeList h && Equals(h);
+		public override bool Equals(object o) => o is VuCameraVideoModeList h && Equals(h);
 
 		public override int GetHashCode() => Handle.GetHashCode();
 	}
@@ -685,23 +685,23 @@ namespace Evergine.Bindings.Vuforia
 	/// <summary>
 	/// Recording instance
 	/// </summary>
-	public partial struct Recording : IEquatable<Recording>
+	public partial struct VuRecording : IEquatable<VuRecording>
 	{
 		public readonly IntPtr Handle;
 
-		public Recording(IntPtr existingHandle) { Handle = existingHandle; }
+		public VuRecording(IntPtr existingHandle) { Handle = existingHandle; }
 
-		public static Recording Null => new Recording(IntPtr.Zero);
+		public static VuRecording Null => new VuRecording(IntPtr.Zero);
 
-		public static implicit operator Recording(IntPtr handle) => new Recording(handle);
+		public static implicit operator VuRecording(IntPtr handle) => new VuRecording(handle);
 
-		public static bool operator ==(Recording left, Recording right) => left.Handle == right.Handle;
+		public static bool operator ==(VuRecording left, VuRecording right) => left.Handle == right.Handle;
 
-		public static bool operator !=(Recording left, Recording right) => left.Handle != right.Handle;
+		public static bool operator !=(VuRecording left, VuRecording right) => left.Handle != right.Handle;
 
-		public bool Equals(Recording h) => Handle == h.Handle;
+		public bool Equals(VuRecording h) => Handle == h.Handle;
 
-		public override bool Equals(object o) => o is Recording h && Equals(h);
+		public override bool Equals(object o) => o is VuRecording h && Equals(h);
 
 		public override int GetHashCode() => Handle.GetHashCode();
 	}
@@ -709,23 +709,23 @@ namespace Evergine.Bindings.Vuforia
 	/// <summary>
 	/// Recording list handle
 	/// </summary>
-	public partial struct RecordingList : IEquatable<RecordingList>
+	public partial struct VuRecordingList : IEquatable<VuRecordingList>
 	{
 		public readonly IntPtr Handle;
 
-		public RecordingList(IntPtr existingHandle) { Handle = existingHandle; }
+		public VuRecordingList(IntPtr existingHandle) { Handle = existingHandle; }
 
-		public static RecordingList Null => new RecordingList(IntPtr.Zero);
+		public static VuRecordingList Null => new VuRecordingList(IntPtr.Zero);
 
-		public static implicit operator RecordingList(IntPtr handle) => new RecordingList(handle);
+		public static implicit operator VuRecordingList(IntPtr handle) => new VuRecordingList(handle);
 
-		public static bool operator ==(RecordingList left, RecordingList right) => left.Handle == right.Handle;
+		public static bool operator ==(VuRecordingList left, VuRecordingList right) => left.Handle == right.Handle;
 
-		public static bool operator !=(RecordingList left, RecordingList right) => left.Handle != right.Handle;
+		public static bool operator !=(VuRecordingList left, VuRecordingList right) => left.Handle != right.Handle;
 
-		public bool Equals(RecordingList h) => Handle == h.Handle;
+		public bool Equals(VuRecordingList h) => Handle == h.Handle;
 
-		public override bool Equals(object o) => o is RecordingList h && Equals(h);
+		public override bool Equals(object o) => o is VuRecordingList h && Equals(h);
 
 		public override int GetHashCode() => Handle.GetHashCode();
 	}
@@ -733,23 +733,23 @@ namespace Evergine.Bindings.Vuforia
 	/// <summary>
 	/// Area Target Capture instance
 	/// </summary>
-	public partial struct AreaTargetCapture : IEquatable<AreaTargetCapture>
+	public partial struct VuAreaTargetCapture : IEquatable<VuAreaTargetCapture>
 	{
 		public readonly IntPtr Handle;
 
-		public AreaTargetCapture(IntPtr existingHandle) { Handle = existingHandle; }
+		public VuAreaTargetCapture(IntPtr existingHandle) { Handle = existingHandle; }
 
-		public static AreaTargetCapture Null => new AreaTargetCapture(IntPtr.Zero);
+		public static VuAreaTargetCapture Null => new VuAreaTargetCapture(IntPtr.Zero);
 
-		public static implicit operator AreaTargetCapture(IntPtr handle) => new AreaTargetCapture(handle);
+		public static implicit operator VuAreaTargetCapture(IntPtr handle) => new VuAreaTargetCapture(handle);
 
-		public static bool operator ==(AreaTargetCapture left, AreaTargetCapture right) => left.Handle == right.Handle;
+		public static bool operator ==(VuAreaTargetCapture left, VuAreaTargetCapture right) => left.Handle == right.Handle;
 
-		public static bool operator !=(AreaTargetCapture left, AreaTargetCapture right) => left.Handle != right.Handle;
+		public static bool operator !=(VuAreaTargetCapture left, VuAreaTargetCapture right) => left.Handle != right.Handle;
 
-		public bool Equals(AreaTargetCapture h) => Handle == h.Handle;
+		public bool Equals(VuAreaTargetCapture h) => Handle == h.Handle;
 
-		public override bool Equals(object o) => o is AreaTargetCapture h && Equals(h);
+		public override bool Equals(object o) => o is VuAreaTargetCapture h && Equals(h);
 
 		public override int GetHashCode() => Handle.GetHashCode();
 	}

@@ -8,13 +8,13 @@ namespace Evergine.Bindings.Vuforia
 	/// Vuforia State handler function type
 	/// </summary>
 	[UnmanagedFunctionPointer(CallingConvention.StdCall)]
-	public unsafe delegate void StateHandler(State* state, void* clientData);
+	public unsafe delegate void VuStateHandler(VuState* state, void* clientData);
 
 	/// <summary>
 	/// Handler function type to report an Engine lifecycle-related error asynchronously
 	/// </summary>
 	[UnmanagedFunctionPointer(CallingConvention.StdCall)]
-	public unsafe delegate void ErrorHandler(EngineError errorCode, void* clientData);
+	public unsafe delegate void VuErrorHandler(VuEngineError errorCode, void* clientData);
 
 	/// <summary>
 	/// Handler for receiving Engine log events
@@ -22,18 +22,18 @@ namespace Evergine.Bindings.Vuforia
 	/// Custom data provided by the client.
 	/// </summary>
 	[UnmanagedFunctionPointer(CallingConvention.StdCall)]
-	public unsafe delegate void LogHandler(LogEvent logEvent, void* clientData);
+	public unsafe delegate void VuLogHandler(VuLogEvent logEvent, void* clientData);
 
 	/// <summary>
 	/// Cloud Image Target observation handler
 	/// </summary>
 	[UnmanagedFunctionPointer(CallingConvention.StdCall)]
-	public unsafe delegate void CloudImageTargetObservationsHandler(ObservationList* observations, void* clientData);
+	public unsafe delegate void VuCloudImageTargetObservationsHandler(VuObservationList* observations, void* clientData);
 
 	/// <summary>
 	/// Cloud Image Target query error handler
 	/// </summary>
 	[UnmanagedFunctionPointer(CallingConvention.StdCall)]
-	public unsafe delegate void CloudImageTargetQueryErrorHandler(CloudImageTargetQueryError queryError, void* clientData);
+	public unsafe delegate void VuCloudImageTargetQueryErrorHandler(VuCloudImageTargetQueryError queryError, void* clientData);
 
 }

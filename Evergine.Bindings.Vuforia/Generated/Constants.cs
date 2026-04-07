@@ -3,163 +3,163 @@ using System;
 
 namespace Evergine.Bindings.Vuforia
 {
-	public static partial class Vuforia
+	public static partial class VuforiaNative
 	{
 		/// <summary>
 		/// Type identifier for anchor observers
 		/// </summary>
-		public const int OBSERVER_ANCHOR_TYPE = 9;
+		public const int VU_OBSERVER_ANCHOR_TYPE = 9;
 
 		/// <summary>
 		/// Type identifier for anchor observations
 		/// </summary>
-		public const int OBSERVATION_ANCHOR_TYPE = 9;
+		public const int VU_OBSERVATION_ANCHOR_TYPE = 9;
 
 		/// <summary>
 		/// Type identifier for Area Target observers
 		/// </summary>
-		public const int OBSERVER_AREA_TARGET_TYPE = 7;
+		public const int VU_OBSERVER_AREA_TARGET_TYPE = 7;
 
 		/// <summary>
 		/// Type identifier for Area Target observations
 		/// </summary>
-		public const int OBSERVATION_AREA_TARGET_TYPE = 7;
+		public const int VU_OBSERVATION_AREA_TARGET_TYPE = 7;
 
 		/// <summary>
 		/// Type identifier for Cloud Image Target observers
 		/// </summary>
-		public const int OBSERVER_CLOUD_IMAGE_TARGET_TYPE = 10;
+		public const int VU_OBSERVER_CLOUD_IMAGE_TARGET_TYPE = 10;
 
 		/// <summary>
 		/// Type identifier for Cloud Image Target observations
 		/// </summary>
-		public const int OBSERVATION_CLOUD_IMAGE_TARGET_TYPE = 10;
+		public const int VU_OBSERVATION_CLOUD_IMAGE_TARGET_TYPE = 10;
 
 		/// <summary>
 		/// Type identifier for Cylinder Target observers
 		/// </summary>
-		public const int OBSERVER_CYLINDER_TARGET_TYPE = 2;
+		public const int VU_OBSERVER_CYLINDER_TARGET_TYPE = 2;
 
 		/// <summary>
 		/// Type identifier for Cylinder Target observations
 		/// </summary>
-		public const int OBSERVATION_CYLINDER_TARGET_TYPE = 2;
+		public const int VU_OBSERVATION_CYLINDER_TARGET_TYPE = 2;
 
 		/// <summary>
 		/// Type identifier for Device Pose observers
 		/// </summary>
-		public const int OBSERVER_DEVICE_POSE_TYPE = 8;
+		public const int VU_OBSERVER_DEVICE_POSE_TYPE = 8;
 
 		/// <summary>
 		/// Type identifier for Device Pose observations
 		/// </summary>
-		public const int OBSERVATION_DEVICE_POSE_TYPE = 8;
+		public const int VU_OBSERVATION_DEVICE_POSE_TYPE = 8;
 
 		/// <summary>
 		/// Value used in the VuIlluminationObservationInfo data structure to indicate that scene ambient intensity is not supported on the
 		/// current platform
 		/// </summary>
-		public const int ILLUMINATION_AMBIENT_INTENSITY_UNAVAILABLE = -1;
+		public const int VU_ILLUMINATION_AMBIENT_INTENSITY_UNAVAILABLE = -1;
 
 		/// <summary>
 		/// Value used in the VuIlluminationObservationInfo data structure to indicate that scene ambient color temperature is not supported
 		/// on the current platform
 		/// </summary>
-		public const int ILLUMINATION_AMBIENT_COLOR_TEMPERATURE_UNAVAILABLE = -1;
+		public const int VU_ILLUMINATION_AMBIENT_COLOR_TEMPERATURE_UNAVAILABLE = -1;
 
 		/// <summary>
 		/// Type identifier for illumination observers
 		/// </summary>
-		public const int OBSERVER_ILLUMINATION_TYPE = 11;
+		public const int VU_OBSERVER_ILLUMINATION_TYPE = 11;
 
 		/// <summary>
 		/// Type identifier for illumination observations
 		/// </summary>
-		public const int OBSERVATION_ILLUMINATION_TYPE = 11;
+		public const int VU_OBSERVATION_ILLUMINATION_TYPE = 11;
 
 		/// <summary>
 		/// Type identifier for Image Target observers
 		/// </summary>
-		public const int OBSERVER_IMAGE_TARGET_TYPE = 1;
+		public const int VU_OBSERVER_IMAGE_TARGET_TYPE = 1;
 
 		/// <summary>
 		/// Type identifier for Image Target observations
 		/// </summary>
-		public const int OBSERVATION_IMAGE_TARGET_TYPE = 1;
+		public const int VU_OBSERVATION_IMAGE_TARGET_TYPE = 1;
 
 		/// <summary>
 		/// Type identifier for Mesh observers
 		/// </summary>
-		public const int OBSERVER_MESH_TYPE = 15;
+		public const int VU_OBSERVER_MESH_TYPE = 15;
 
 		/// <summary>
 		/// Type identifier for Mesh observations
 		/// </summary>
-		public const int OBSERVATION_MESH_TYPE = 15;
+		public const int VU_OBSERVATION_MESH_TYPE = 15;
 
 		/// <summary>
 		/// Type identifier for Model Target observers
 		/// </summary>
-		public const int OBSERVER_MODEL_TARGET_TYPE = 6;
+		public const int VU_OBSERVER_MODEL_TARGET_TYPE = 6;
 
 		/// <summary>
 		/// Type identifier for Model Target observations
 		/// </summary>
-		public const int OBSERVATION_MODEL_TARGET_TYPE = 6;
+		public const int VU_OBSERVATION_MODEL_TARGET_TYPE = 6;
 
 		/// <summary>
 		/// Type identifier for Multi-Target observers
 		/// </summary>
-		public const int OBSERVER_MULTI_TARGET_TYPE = 3;
+		public const int VU_OBSERVER_MULTI_TARGET_TYPE = 3;
 
 		/// <summary>
 		/// Type identifier for Multi-Target observations
 		/// </summary>
-		public const int OBSERVATION_MULTI_TARGET_TYPE = 3;
+		public const int VU_OBSERVATION_MULTI_TARGET_TYPE = 3;
 
 		/// <summary>
 		/// Type identifier for VuMark observers
 		/// </summary>
-		public const int OBSERVER_VUMARK_TYPE = 4;
+		public const int VU_OBSERVER_VUMARK_TYPE = 4;
 
 		/// <summary>
 		/// Type identifier for VuMark observations
 		/// </summary>
-		public const int OBSERVATION_VUMARK_TYPE = 4;
+		public const int VU_OBSERVATION_VUMARK_TYPE = 4;
 
 		/// <summary>
 		/// Type identifier for barcode observers
 		/// </summary>
-		public const int OBSERVER_BARCODE_TYPE = 16;
+		public const int VU_OBSERVER_BARCODE_TYPE = 16;
 
 		/// <summary>
 		/// Type identifier for barcode observations
 		/// </summary>
-		public const int OBSERVATION_BARCODE_TYPE = 16;
+		public const int VU_OBSERVATION_BARCODE_TYPE = 16;
 
 		/// <summary>
 		/// Type identifier for Validation Area observers
 		/// </summary>
-		public const int OBSERVER_VALIDATION_AREA_TYPE = 14;
+		public const int VU_OBSERVER_VALIDATION_AREA_TYPE = 14;
 
 		/// <summary>
 		/// Type identifier for Validation Area observations
 		/// </summary>
-		public const int OBSERVATION_VALIDATION_AREA_TYPE = 14;
+		public const int VU_OBSERVATION_VALIDATION_AREA_TYPE = 14;
 
-		public const int PLATFORM_ANDROID = 1;
+		public const int VU_PLATFORM_ANDROID = 1;
 
-		public const int VERSION_MAJOR = 11;
+		public const int VU_VERSION_MAJOR = 11;
 
-		public const int VERSION_MINOR = 4;
+		public const int VU_VERSION_MINOR = 4;
 
-		public const int VERSION_PATCH = 4;
+		public const int VU_VERSION_PATCH = 4;
 
-		public const int TRUE = 1;
+		public const int VU_TRUE = 1;
 
-		public const int FALSE = 0;
+		public const int VU_FALSE = 0;
 
-		public const int PLATFORM_IOS = 1;
+		public const int VU_PLATFORM_IOS = 1;
 
 	}
 }

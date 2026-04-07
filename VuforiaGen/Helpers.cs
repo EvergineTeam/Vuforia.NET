@@ -115,12 +115,11 @@ namespace VuforiaGen
 			if (csNameMappings.TryGetValue(name, out var mapped))
 				return mapped;
 
-			// Opaque handle types → return stripped name (we generate wrapper structs with stripped names)
+			// Opaque handle types → keep as their named handle type (we generate wrapper structs)
 			if (TypedefList.Contains(name))
-				return StripPrefix(name);
+				return name;
 
-			// Strip prefix for all other Vuforia types (enums, structs)
-			return StripPrefix(name);
+			return name;
 		}
 
 		public static bool IsCharPointer(CppPointerType ptrType)
