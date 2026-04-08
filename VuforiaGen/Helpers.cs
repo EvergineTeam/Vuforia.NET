@@ -33,7 +33,15 @@ namespace VuforiaGen
 			{ "VuObserverType", "int" },
 			{ "VuObservationType", "int" },
 			{ "VuRecordingDataFlags", "uint" },
+			// Evergine.Mathematics type mappings
+			{ "VuVector2F", "Vector2" },
+			{ "VuVector3F", "Vector3" },
+			{ "VuVector4F", "Vector4" },
+			{ "VuMatrix44F", "Matrix4x4" },
+			{ "VuMatrix33F", "Matrix3x3" },
 		};
+
+		public static bool IsMappedType(string name) => csNameMappings.ContainsKey(name);
 
 		public static string ConvertToCSharpType(CppType type, bool isPointer = false)
 		{

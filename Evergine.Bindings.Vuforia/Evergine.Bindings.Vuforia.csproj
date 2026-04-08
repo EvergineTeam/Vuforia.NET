@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<TargetFramework>net8.0</TargetFramework>
 		<AllowUnsafeBlocks>True</AllowUnsafeBlocks>
@@ -13,6 +13,11 @@
 
 	<ItemGroup>
 		<Folder Include="Generated\" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Evergine.Mathematics" Version="2025.10.21.3204" />
+		<PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="6.0.0" />
 	</ItemGroup>
 
 	<ItemGroup>
