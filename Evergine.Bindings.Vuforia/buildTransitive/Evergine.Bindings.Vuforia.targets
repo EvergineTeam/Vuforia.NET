@@ -1,5 +1,5 @@
 ﻿<Project>
-	<ItemGroup Condition="'$(TargetPlatformIdentifier)' == 'android'">
+	<ItemGroup Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">
 		<AndroidLibrary Include="$(MSBuildThisFileDirectory)android\VuforiaEngine.jar" Bind="false" />
 	</ItemGroup>
 </Project>
