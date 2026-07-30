@@ -13,6 +13,10 @@ Vuforia Engine is a comprehensive AR development platform that enables developer
 
 See the [Vuforia Engine documentation](https://developer.vuforia.com/library/) for more details on the native library.
 
+## License
+
+The Evergine .NET binding code is licensed under the MIT License. Native Vuforia Engine runtime binaries included with the package are provided subject to the applicable Vuforia Engine SDK license terms from PTC/Vuforia.
+
 ## Features
 
 - **Image Target Tracking** — Recognize and track 2D images in the real world

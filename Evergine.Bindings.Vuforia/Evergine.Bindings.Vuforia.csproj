@@ -8,6 +8,7 @@
 		<Description>Low-level bindings for Vuforia Engine used in Evergine</Description>
 		<RepositoryUrl>https://github.com/EvergineTeam/Vuforia.NET</RepositoryUrl>
 		<PackageIcon>icon.png</PackageIcon>
+		<PackageLicenseFile>PACKAGE-LICENSE.txt</PackageLicenseFile>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 	</PropertyGroup>
 
@@ -27,6 +28,7 @@
 
 	<ItemGroup>
 		<None Include="..\icon.png" Pack="true" PackagePath="\" Visible="false" />
+		<None Include="..\PACKAGE-LICENSE.txt" Pack="true" PackagePath="\" Visible="false" />
 		<None Include="..\README.md" Pack="true" PackagePath="\" Visible="false" />
 	</ItemGroup>
 </Project>
