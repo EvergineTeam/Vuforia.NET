@@ -1,5 +1,57 @@
-﻿<Project>
+<Project>
 	<ItemGroup Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">
 		<AndroidLibrary Include="$(MSBuildThisFileDirectory)android\VuforiaEngine.jar" Bind="false" />
 	</ItemGroup>
+
+	<PropertyGroup Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">
+		<_EvergineVuforiaEngineFrameworkDir>$(MSBuildThisFileDirectory)ios\VuforiaEngine.framework</_EvergineVuforiaEngineFrameworkDir>
+		<_EvergineVuforiaEngineFrameworkBinary>$(_EvergineVuforiaEngineFrameworkDir)\VuforiaEngine</_EvergineVuforiaEngineFrameworkBinary>
+	</PropertyGroup>
+
+	<ItemGroup Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios' And Exists('$(_EvergineVuforiaEngineFrameworkBinary)')">
+		<None Include="$(_EvergineVuforiaEngineFrameworkDir)"
+			  CopyToPublishDirectory="Always"
+			  PublishFolderType="AppleFramework" />
+	</ItemGroup>
+
+	<Target Name="EvergineVuforiaAddVuforiaEngineNativeReferenceForIos"
+			BeforeTargets="_ComputeLinkNativeExecutableInputs"
+			Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios' And Exists('$(_EvergineVuforiaEngineFrameworkBinary)')">
+		<ItemGroup>
+			<_FrameworkNativeReference Include="$(_EvergineVuforiaEngineFrameworkBinary)">
+				<Kind>Framework</Kind>
+				<CopyToAppBundle>false</CopyToAppBundle>
+				<ForceLoad>false</ForceLoad>
+				<SmartLink>false</SmartLink>
+			</_FrameworkNativeReference>
+		</ItemGroup>
+	</Target>
+
+	<Target Name="EvergineVuforiaCopyVuforiaEngineFrameworkForIos"
+			AfterTargets="_CopyDirectoriesToBundle"
+			BeforeTargets="_PostProcessAppBundle"
+			Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios' And Exists('$(_EvergineVuforiaEngineFrameworkBinary)')">
+		<Ditto
+			SessionId="$(BuildSessionId)"
+			Condition="'$(IsMacEnabled)' == 'true'"
+			CopyFromWindows="true"
+			DittoPath="$(DittoPath)"
+			Source="$(_EvergineVuforiaEngineFrameworkDir)"
+			Destination="$(_AppBundlePath)\Frameworks\VuforiaEngine.framework"
+			TouchDestinationFiles="true"
+			CreateOutputFiles="false" />
+
+		<ItemGroup Condition="'$(IsMacEnabled)' != 'true'">
+			<_EvergineVuforiaEngineFrameworkFiles Include="$(_EvergineVuforiaEngineFrameworkDir)\**\*" />
+		</ItemGroup>
+
+		<MakeDir
+			Condition="'$(IsMacEnabled)' != 'true'"
+			Directories="$(_AppBundlePath)\Frameworks\VuforiaEngine.framework" />
+		<Copy
+			Condition="'$(IsMacEnabled)' != 'true'"
+			SourceFiles="@(_EvergineVuforiaEngineFrameworkFiles)"
+			DestinationFiles="@(_EvergineVuforiaEngineFrameworkFiles->'$(_AppBundlePath)\Frameworks\VuforiaEngine.framework\%(RecursiveDir)%(Filename)%(Extension)')"
+			SkipUnchangedFiles="false" />
+	</Target>
 </Project>

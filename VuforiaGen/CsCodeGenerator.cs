@@ -6,13 +6,30 @@ using System.Linq;
 
 namespace VuforiaGen
 {
+	public sealed class PlatformCompilation
+	{
+		public PlatformCompilation(string platform, CppCompilation compilation)
+		{
+			Platform = platform;
+			Compilation = compilation;
+		}
+
+		public string Platform { get; }
+
+		public CppCompilation Compilation { get; }
+	}
+
 	public class CsCodeGenerator
 	{
 		public static readonly CsCodeGenerator Instance = new CsCodeGenerator();
 
-		private const string DllImportName = "VuforiaEngine";
+		private static readonly HashSet<string> UnavailableFunctions = new HashSet<string>
+		{
+			// Present in the common header, but not exported by the bundled native libraries.
+			"vuImageListAppendElement",
+		};
 
-		public void Generate(List<CppCompilation> compilations, string outputPath)
+		public void Generate(List<PlatformCompilation> platformCompilations, string outputPath)
 		{
 			// Merge all compilations, deduplicating by name
 			var allEnums = new List<CppEnum>();
@@ -26,11 +43,15 @@ namespace VuforiaGen
 			var seenFunctions = new HashSet<string>();
 			var seenTypedefs = new HashSet<string>();
 			var seenMacros = new HashSet<string>();
+			var functionPlatforms = new Dictionary<string, HashSet<string>>();
 
 			int anonymousEnumId = 0;
 			var seenAnonymousItems = new HashSet<string>();
-			foreach (var compilation in compilations)
+			foreach (var platformCompilation in platformCompilations)
 			{
+				var platform = platformCompilation.Platform;
+				var compilation = platformCompilation.Compilation;
+
 				foreach (var e in compilation.Enums)
 				{
 					if (e.IsAnonymous)
@@ -68,6 +89,14 @@ namespace VuforiaGen
 
 				foreach (var f in compilation.Functions)
 				{
+					if (!functionPlatforms.TryGetValue(f.Name, out var platforms))
+					{
+						platforms = new HashSet<string>();
+						functionPlatforms.Add(f.Name, platforms);
+					}
+
+					platforms.Add(platform);
+
 					if (seenFunctions.Add(f.Name))
 						allFunctions.Add(f);
 				}
@@ -108,7 +137,7 @@ namespace VuforiaGen
 			GenerateEnums(allEnums, allTypedefs, outputPath);
 			GenerateDelegates(allTypedefs, outputPath);
 			GenerateStructs(allClasses, outputPath);
-			GenerateFunctions(allFunctions, outputPath);
+			GenerateFunctions(allFunctions, functionPlatforms, outputPath);
 			GenerateHandles(allTypedefs, outputPath);
 		}
 
@@ -411,7 +440,7 @@ namespace VuforiaGen
 			Console.WriteLine($"Generated: {filePath}");
 		}
 
-		private void GenerateFunctions(List<CppFunction> functions, string outputPath)
+		private void GenerateFunctions(List<CppFunction> functions, Dictionary<string, HashSet<string>> functionPlatforms, string outputPath)
 		{
 			var filePath = Path.Combine(outputPath, "Functions.cs");
 			using var writer = new StreamWriter(filePath);
@@ -438,6 +467,15 @@ namespace VuforiaGen
 				// Skip non-Vuforia functions (system headers leak)
 				if (!function.Name.StartsWith("vu"))
 					continue;
+
+				if (UnavailableFunctions.Contains(function.Name))
+					continue;
+
+				var platformGuard = GetPlatformGuard(functionPlatforms.TryGetValue(function.Name, out var platforms) ? platforms : null);
+				if (!string.IsNullOrEmpty(platformGuard))
+				{
+					writer.WriteLine($"#if {platformGuard}");
+				}
 
 				Helpers.PrintComments(writer, function.Comment, "\t\t");
 
@@ -489,8 +527,14 @@ namespace VuforiaGen
 					parameters.Add($"{paramType} {paramName}");
 				}
 
-				writer.WriteLine($"\t\t[DllImport(\"{DllImportName}\", CallingConvention = CallingConvention.StdCall)]");
+				writer.WriteLine($"\t\t[DllImport(Native.Dll, CallingConvention = Native.Conv)]");
 				writer.WriteLine($"\t\tpublic static extern {returnType} {function.Name}({string.Join(", ", parameters)});");
+
+				if (!string.IsNullOrEmpty(platformGuard))
+				{
+					writer.WriteLine("#endif");
+				}
+
 				writer.WriteLine();
 			}
 
@@ -498,6 +542,17 @@ namespace VuforiaGen
 			writer.WriteLine("}");
 
 			Console.WriteLine($"Generated: {filePath}");
+		}
+
+		private static string GetPlatformGuard(HashSet<string> platforms)
+		{
+			if (platforms == null || platforms.Count != 1)
+				return null;
+
+			if (platforms.Contains("Android"))
+				return "!__IOS__";
+
+			return null;
 		}
 
 		private void GenerateHandles(List<CppTypedef> typedefs, string outputPath)

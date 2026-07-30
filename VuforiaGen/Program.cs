@@ -22,7 +22,7 @@ namespace VuforiaGen
 				["iOS"]     = new[] { "__APPLE__", "TARGET_OS_IOS=1", "VU_PLATFORM_IOS" },
 			};
 
-			var compilations = new List<CppCompilation>();
+			var compilations = new List<PlatformCompilation>();
 
 			foreach (var (platform, defines) in platformDefines)
 			{
@@ -51,7 +51,7 @@ namespace VuforiaGen
 					}
 				}
 
-				compilations.Add(compilation);
+				compilations.Add(new PlatformCompilation(platform, compilation));
 			}
 
 			string outputPath = Path.Combine(
