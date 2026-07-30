@@ -18,10 +18,12 @@ jobs:
       generator-project: "VuforiaGen/VuforiaGen.csproj"
       generator-name: "VuforiaGen"
       binding-project: "Evergine.Bindings.Vuforia/Evergine.Bindings.Vuforia.csproj"
-      target-framework: "net8.0"
-      dotnet-version: "8.x"
+      target-framework: "net10.0"
+      dotnet-version: "10.x"
       nuget-version: "6.x"
-      runtime-identifier: "linux-x64"
+      runtime-identifier: "osx-x64"
+      runner-os: "macos-26-intel"
+      restore-workloads: true
       build-configuration: "Release"
       revision: ${{ github.run_number }}
       publish-enabled: ${{ !inputs.skip-assets-publishing }}
