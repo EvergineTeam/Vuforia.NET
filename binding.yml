@@ -1,0 +1,60 @@
+# Binding manifest — see https://github.com/EvergineTeam/Evergine.Bindings
+# Schema: https://github.com/EvergineTeam/Evergine.Bindings/blob/main/binding.schema.json
+toolbox: 1.23.0
+
+package:
+  id: Evergine.Bindings.Vuforia
+  project: Evergine.Bindings.Vuforia/Evergine.Bindings.Vuforia.csproj
+  target-framework: net10.0
+  runtime-identifier: osx-x64
+
+upstream:
+  # Vendored: nothing fetches this upstream, because nothing can. The Vuforia Engine SDK is
+  # only downloadable after signing in to developer.vuforia.com and accepting the EULA, so
+  # the headers arrive by hand and live in the repository. The adapter's job here is not to
+  # fetch but to read the version out of what is already committed.
+  kind: vendored
+  language: c
+  project: https://developer.vuforia.com/downloads/sdk
+
+  # The version is a fact about the vendored headers, not a number anybody maintains. The
+  # adapter reads these three defines and writes the result into release.current below, so
+  # refreshing the headers updates the manifest in the same commit and the two cannot drift.
+  version-probe:
+    file: VuforiaGen/Headers/VuforiaEngine/VuforiaEngine.h
+    patterns:
+      - 'define\s+VU_VERSION_MAJOR\s+(\d+)'
+      - 'define\s+VU_VERSION_MINOR\s+(\d+)'
+      - 'define\s+VU_VERSION_PATCH\s+(\d+)'
+    join: '.'
+
+  release:
+    # Pinned, and it means something stronger than usual: there is no tag to chase and no
+    # API to ask. release-watch.yml scrapes the release notes and opens an issue; a human
+    # moves this by dropping new headers in.
+    track: pinned
+    current: 11.4.4
+
+  sources:
+    - path: VuforiaGen/Headers
+      format: c-header
+
+generator:
+  project: VuforiaGen/VuforiaGen.csproj
+  name: VuforiaGen
+  output:
+    - Evergine.Bindings.Vuforia/Generated
+
+# NOTE — the upstream cannot be fetched by CI. Refreshing VuforiaGen/Headers means signing
+# in to developer.vuforia.com and accepting a licence, which is a human act and not a
+# mechanical step. Do not propose an adapter, a URL or a script that downloads the SDK; if
+# the headers are stale, say so and stop.
+#
+# NOTE — the two native binaries arrive in the same manual commit as the headers. They come
+# out of the same SDK archive, so they are already consistent with each other; nothing in
+# CI rebuilds them and nothing can.
+#
+# NOTE — the supported platforms are Android arm64 and iOS arm64, and that is a decision.
+# The Windows parse pass in VuforiaGen/Program.cs is commented out on purpose, and the
+# Windows DLLs and UWP headers were deliberately removed in 90ef351f. None of that is a
+# regression to repair.
