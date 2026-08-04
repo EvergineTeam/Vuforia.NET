@@ -23,8 +23,14 @@ jobs:
       binding-project: "Evergine.Bindings.Vuforia/Evergine.Bindings.Vuforia.csproj"
       target-framework: "net10.0"
       dotnet-version: "10.x"
-      runtime-identifier: "osx-x64"
-      runner-os: "macos-26-intel"
+      # Windows, because CppAst's libclang cannot resolve <stdint.h> on the macOS runner:
+      # Core/Basic.h(18) fails and the Android compilation aborts. That was invisible until
+      # a failed parse became fatal, since the old code printed the errors and generated
+      # from the partial result -- into a directory nobody read, so two faults were hiding
+      # each other. The binding targets net10.0-ios, but it is a class library rather than
+      # an app, so the iOS workload builds it on Windows without a Mac.
+      runtime-identifier: "win-x64"
+      runner-os: "windows-latest"
       restore-workloads: true
       build-configuration: "Release"
       nuget-artifacts: ${{ inputs.publish-artifacts || false }}

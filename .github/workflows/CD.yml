@@ -21,8 +21,12 @@ jobs:
       target-framework: "net10.0"
       dotnet-version: "10.x"
       nuget-version: "6.x"
-      runtime-identifier: "osx-x64"
-      runner-os: "macos-26-intel"
+      # Windows, for the same reason as CI: libclang cannot resolve <stdint.h> on the macOS
+      # runner, so the Android compilation aborts. Keeping both on one OS also matters for
+      # a second reason -- the parse resolves host system headers, so generating on two
+      # different runners could produce two different files from the same input.
+      runtime-identifier: "win-x64"
+      runner-os: "windows-latest"
       restore-workloads: true
       build-configuration: "Release"
       revision: ${{ github.run_number }}
