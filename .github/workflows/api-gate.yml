@@ -1,0 +1,60 @@
+# Measures what a pull request does to the public API surface, and reports whether anything
+# a consumer could notice changed.
+#
+# auto-merge is off, and stays off until the chain has run once for real. The regeneration
+# here is driven by headers a person dropped in after accepting a licence, so a pull request
+# from this repository carries a whole new SDK rather than an incremental spec change. That is
+# worth a human glance the first few times.
+
+name: api
+
+on:
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  api:
+    uses: EvergineTeam/Evergine.Bindings/.github/workflows/binding-api-gate.yml@v1
+    with:
+      binding-project: "Evergine.Bindings.Vuforia/Evergine.Bindings.Vuforia.csproj"
+      dotnet-version: "10.x"
+      # Windows, same reason as CI and CD: the parse aborts elsewhere, and a partial surface
+      # compared against a full one reads as a large removal.
+      runner-os: windows-latest
+
+      # Off, and this is a real gap rather than a preference. Two platforms ship here, and the
+      # coherence tools can only see one of them:
+      #
+      #   runtimes/android-arm64/native/libVuforiaEngine.so   read end to end
+      #   buildTransitive/ios/VuforiaEngine.framework/...     invisible
+      #
+      # check-native-coherence.py globs `runtimes/*/native/*` and does not descend into
+      # directories, so a .framework is skipped with a warning and its RID never enters
+      # verified_rids -- which then fails the check for an unverified platform. And
+      # check-native-arch.py hands the directory to read_bytes(), which raises rather than
+      # diagnosing. Both are defects in the tools, not in this repository, and turning this on
+      # before they are fixed would mean a permanently red check nobody could act on.
+      native-coherence: false
+
+      # The version constants move with every SDK, and their *values* are part of the measured
+      # surface -- deliberately, because renumbering a constant compiles and then sends a
+      # different number down the wire. Here the number changing is the entire point of the
+      # pull request, so exempt these three rather than reading "breaking" on every release.
+      #
+      # The pattern is matched with `grep -Ev` against whole dump lines, which look exactly
+      # like this -- checked by running tools/api-surface.cs over the built assembly rather
+      # than inferred, because an exempt pattern that matches nothing exempts nothing and says
+      # so to no one:
+      #
+      #   K Evergine.Bindings.Vuforia.VuforiaNative.VU_VERSION_MAJOR = 11
+      exempt-symbols: |
+        ^K Evergine\.Bindings\.Vuforia\.VuforiaNative\.VU_VERSION_(MAJOR|MINOR|PATCH) =
+
+      auto-merge: false
+      app-client-id: ${{ vars.APP_CLIENT_ID }}
+    secrets:
+      APP_PRIVATE_KEY: ${{ secrets.APP_PRIVATE_KEY }}
