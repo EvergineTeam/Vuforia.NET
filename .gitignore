@@ -2,3 +2,7 @@
 */obj
 *.vs
 .claude
+
+# Written by build/scripts/check-upstream-release.py when a newer SDK is found, and
+# consumed by release-watch.yml in the same run. Never committed.
+issue-body.md
