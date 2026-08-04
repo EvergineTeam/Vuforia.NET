@@ -31,6 +31,9 @@ The Evergine .NET binding code is licensed under the MIT License. Native Vuforia
 
 ## Supported Platforms
 
-- [x] Windows x64, ARM64
-- [x] iOS ARM64
 - [x] Android ARM64
+- [x] iOS ARM64
+
+Android and iOS are the whole supported set. The Windows and UWP payloads were removed
+deliberately, so the commented-out Windows parse pass in `VuforiaGen/Program.cs` is a decision
+rather than an omission.

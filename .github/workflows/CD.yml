@@ -1,7 +1,29 @@
-# Binding Simple CD - Template
+# Regenerates, commits and publishes when somebody refreshes the vendored SDK.
+#
+# The name stays `CD` on purpose. ci-doctor reacts to `workflow_run` for workflows named
+# exactly `CI`, `CD` or `Sync standards`; calling this anything more descriptive would leave
+# the repair agent blind to every failure it exists to handle.
 name: CD
 
 on:
+  # The whole automated half of this repository hangs off these three paths. Vuforia's SDK is
+  # only downloadable after signing in and accepting the EULA, so no workflow can fetch it:
+  # a person drops the new headers and the two native binaries in, commits them to main, and
+  # this takes over from there. release-watch.yml is what tells them there is a new one.
+  push:
+    branches: [main]
+    paths:
+      - 'VuforiaGen/Headers/**'
+      - 'Evergine.Bindings.Vuforia/runtimes/**'
+      - 'Evergine.Bindings.Vuforia/buildTransitive/ios/**'
+
+  # Monthly, and it earns its keep even though nothing fetches anything: it regenerates from
+  # the vendored headers and commits the result if it differs. That answers "does the
+  # committed generated code still match the headers it claims to come from", which nothing
+  # else asks. Most months it finds nothing, commits nothing and publishes nothing.
+  schedule:
+    - cron: '0 3 6 * *'
+
   workflow_dispatch:
     inputs:
       skip-assets-publishing:
@@ -9,27 +31,48 @@ on:
         required: false
         type: boolean
         default: false
+      force-publish:
+        description: 'Publish even when the generated code is unchanged'
+        required: false
+        type: boolean
+        default: false
+      publish-only:
+        description: 'Publish main exactly as it stands, without regenerating into it'
+        required: false
+        type: boolean
+        default: false
 
 jobs:
   cd:
     if: github.event_name != 'schedule' || github.ref == 'refs/heads/main'
-    uses: EvergineTeam/evergine-standards/.github/workflows/binding-simple-cd.yml@v2
+    uses: EvergineTeam/Evergine.Bindings/.github/workflows/binding-tracked-cd.yml@v1
     with:
+      # No `resolve` job in front, unlike the other tracked bindings. There is nothing to
+      # resolve: `kind: vendored` reads the version out of VuforiaEngine.h rather than asking
+      # an upstream, and there are no native libraries for a resolve step to decide whether
+      # to rebuild -- they arrive with the headers, from the same archive.
       generator-project: "VuforiaGen/VuforiaGen.csproj"
       generator-name: "VuforiaGen"
       binding-project: "Evergine.Bindings.Vuforia/Evergine.Bindings.Vuforia.csproj"
       target-framework: "net10.0"
       dotnet-version: "10.x"
       nuget-version: "6.x"
-      # Windows, for the same reason as CI: libclang cannot resolve <stdint.h> on the macOS
-      # runner, so the Android compilation aborts. Keeping both on one OS also matters for
-      # a second reason -- the parse resolves host system headers, so generating on two
-      # different runners could produce two different files from the same input.
+      # Windows, because CppAst's libclang cannot resolve <stdint.h> on the macOS runner and
+      # the Android compilation aborts. Also keeps generation on one OS: the parse resolves
+      # host system headers, so two runners could produce two different files from the same
+      # vendored input, and "regenerating changes nothing" would stop being a usable check.
       runtime-identifier: "win-x64"
-      runner-os: "windows-latest"
+      runner-os: windows-latest
       restore-workloads: true
       build-configuration: "Release"
       revision: ${{ github.run_number }}
+      # Nothing to hand over. The adapter reports `changed: false` for a vendored upstream --
+      # it brought nothing in -- so the CD's refusal to commit a source bump without a
+      # matching native rebuild never fires. It is right to exist and it does not apply here:
+      # the human committed the sources and the binaries in one go.
+      natives-artifact-pattern: ''
+      force-publish: ${{ inputs.force-publish || false }}
+      publish-only: ${{ inputs.publish-only || false }}
       publish-enabled: ${{ !inputs.skip-assets-publishing }}
       enable-email-notifications: true
     secrets:

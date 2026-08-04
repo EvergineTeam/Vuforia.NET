@@ -1,4 +1,8 @@
-# Binding CI - Simple Template
+# Builds the generator, regenerates the bindings from the vendored headers, and builds the
+# package.
+#
+# The name stays `CI`, for the same reason `CD` does: ci-doctor only reacts to workflows
+# named exactly `CI`, `CD` or `Sync standards`.
 name: CI
 
 on:
@@ -16,7 +20,11 @@ on:
 
 jobs:
   ci:
-    uses: EvergineTeam/evergine-standards/.github/workflows/binding-common-ci.yml@v2
+    # Moved off evergine-standards@v2 and onto the toolbox, which is where the rest of the
+    # fleet's CI lives. Two reasons beyond consistency: the toolbox updater keeps installed
+    # workflows current, and `evergine-standards` has an unresolved v2-versus-main question
+    # that this repository no longer needs to have an opinion about.
+    uses: EvergineTeam/Evergine.Bindings/.github/workflows/binding-common-ci.yml@v1
     with:
       generator-project: "VuforiaGen/VuforiaGen.csproj"
       generator-name: "VuforiaGen"
