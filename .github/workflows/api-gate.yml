@@ -26,19 +26,16 @@ jobs:
       # compared against a full one reads as a large removal.
       runner-os: windows-latest
 
-      # Off, and this is a real gap rather than a preference. Two platforms ship here, and the
-      # coherence tools can only see one of them:
+      # On since toolbox v1.24.0, which taught the checkers to resolve an Apple framework to
+      # the binary inside it and to take its path from package.natives. Until then they could
+      # read only the Android library, so half of what this package ships went unverified.
       #
-      #   runtimes/android-arm64/native/libVuforiaEngine.so   read end to end
-      #   buildTransitive/ios/VuforiaEngine.framework/...     invisible
-      #
-      # check-native-coherence.py globs `runtimes/*/native/*` and does not descend into
-      # directories, so a .framework is skipped with a warning and its RID never enters
-      # verified_rids -- which then fails the check for an unverified platform. And
-      # check-native-arch.py hands the directory to read_bytes(), which raises rather than
-      # diagnosing. Both are defects in the tools, not in this repository, and turning this on
-      # before they are fixed would mean a permanently red check nobody could act on.
-      native-coherence: false
+      # It answers the one failure a binding with native libraries cannot afford and nothing
+      # else catches: a P/Invoke binds late, so a declaration naming a symbol the library does
+      # not export compiles, packs, publishes, and throws EntryPointNotFoundException the
+      # first time a consumer calls it. Measured here -- 495 declarations against 703 exports
+      # in the Android library and 704 in the iOS framework, every one of them resolving.
+      native-coherence: true
 
       # The version constants move with every SDK, and their *values* are part of the measured
       # surface -- deliberately, because renumbering a constant compiles and then sends a
