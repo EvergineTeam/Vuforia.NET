@@ -6,7 +6,19 @@ package:
   id: Evergine.Bindings.Vuforia
   project: Evergine.Bindings.Vuforia/Evergine.Bindings.Vuforia.csproj
   target-framework: net10.0
-  runtime-identifier: osx-x64
+  # Windows, matching CI and CD. CppAst's libclang cannot resolve <stdint.h> on the macOS
+  # runner, so the Android compilation aborts; this said osx-x64 while both workflows had
+  # already moved, which is a manifest describing a repository that no longer exists.
+  runtime-identifier: win-x64
+
+  # The iOS payload, which the conventional runtimes/<rid>/native/ layout cannot describe:
+  # it is an Apple framework, so it is a directory rather than a file, and it is staged under
+  # buildTransitive for consumers rather than under runtimes, so there is no RID in the path
+  # to read. Without this entry the coherence check sees only Android and half the package
+  # ships unverified -- which is why it was off until now.
+  natives:
+    - path: Evergine.Bindings.Vuforia/buildTransitive/ios/VuforiaEngine.framework
+      rid: ios-arm64
 
 upstream:
   # Vendored: nothing fetches this upstream, because nothing can. The Vuforia Engine SDK is
