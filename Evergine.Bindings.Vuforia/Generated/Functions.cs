@@ -4208,18 +4208,23 @@ namespace Evergine.Bindings.Vuforia
 		public static extern VuResult vuPlatformControllerGetARCoreInfo(VuController* controller, VuPlatformARCoreInfo* arCoreInfo);
 #endif
 
+#if __IOS__
 		/// <summary>
 		/// Default iOS-specific configuration
 		/// </summary>
 		[DllImport(Native.Dll, CallingConvention = Native.Conv)]
 		public static extern VuPlatformiOSConfig vuPlatformiOSConfigDefault();
+#endif
 
+#if __IOS__
 		/// <summary>
 		/// Add an iOS-specific configuration to the engine config
 		/// </summary>
 		[DllImport(Native.Dll, CallingConvention = Native.Conv)]
 		public static extern VuResult vuEngineConfigSetAddPlatformiOSConfig(VuEngineConfigSet* configSet, VuPlatformiOSConfig* config);
+#endif
 
+#if __IOS__
 		/// <summary>
 		/// Get information about the ARKit Fusion Provider Platform
 		/// The information contained in the returned struct can be used to allow applications to interact with
@@ -4235,7 +4240,9 @@ namespace Evergine.Bindings.Vuforia
 		/// </summary>
 		[DllImport(Native.Dll, CallingConvention = Native.Conv)]
 		public static extern VuResult vuPlatformControllerGetARKitInfo(VuController* controller, VuPlatformARKitInfo* arkitInfo);
+#endif
 
+#if __IOS__
 		/// <summary>
 		/// Set ARKit platform fusion provider configuration
 		/// This function is used to configure the ARKit session that will be used. An instance of the class
@@ -4260,6 +4267,7 @@ namespace Evergine.Bindings.Vuforia
 		/// </summary>
 		[DllImport(Native.Dll, CallingConvention = Native.Conv)]
 		public static extern VuResult vuPlatformControllerSetARKitConfig(VuController* controller, void* config);
+#endif
 
 	}
 }
