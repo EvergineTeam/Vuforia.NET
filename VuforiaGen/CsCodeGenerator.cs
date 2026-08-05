@@ -557,18 +557,22 @@ namespace VuforiaGen
 		// Expressed as !__IOS__ / __IOS__ rather than __ANDROID__ / __IOS__ because the
 		// package targets net10.0 and net10.0-ios: __IOS__ is defined for the second, and
 		// the first is where Android lives.
+		// Written as a switch with the two arms side by side because the guards they return
+		// differ by exactly one character -- "__IOS__" and "!__IOS__" -- and as two separate
+		// if statements a missing "!" is invisible to a reader and to review.
 		private static string GetPlatformGuard(HashSet<string> platforms)
 		{
 			if (platforms == null || platforms.Count != 1)
 				return null;
 
-			if (platforms.Contains("Android"))
-				return "!__IOS__";
-
-			if (platforms.Contains("iOS"))
-				return "__IOS__";
-
-			return null;
+			return platforms.Single() switch
+			{
+				// compiled into net10.0-ios only
+				"iOS" => "__IOS__",
+				// compiled into net10.0 only, which is the target that runs on Android
+				"Android" => "!__IOS__",
+				_ => null,
+			};
 		}
 
 		private void GenerateHandles(List<CppTypedef> typedefs, string outputPath)
