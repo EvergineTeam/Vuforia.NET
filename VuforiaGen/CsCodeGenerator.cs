@@ -544,15 +544,35 @@ namespace VuforiaGen
 			Console.WriteLine($"Generated: {filePath}");
 		}
 
+		// A function the header exposes on one platform only must be declared on that
+		// platform only. Both directions matter, and only one of them was covered: the
+		// Android-only functions were guarded with !__IOS__ while the iOS-only ones fell
+		// through to null and were declared unconditionally. That put four ARKit imports --
+		// vuPlatformiOSConfigDefault, vuPlatformControllerGetARKitInfo,
+		// vuPlatformControllerSetARKitConfig and vuEngineConfigSetAddPlatformiOSConfig --
+		// into the net10.0 target, which is the one that runs on Android, where
+		// libVuforiaEngine.so does not export them. They compile and would throw
+		// EntryPointNotFoundException on the first call.
+		//
+		// Expressed as !__IOS__ / __IOS__ rather than __ANDROID__ / __IOS__ because the
+		// package targets net10.0 and net10.0-ios: __IOS__ is defined for the second, and
+		// the first is where Android lives.
+		// Written as a switch with the two arms side by side because the guards they return
+		// differ by exactly one character -- "__IOS__" and "!__IOS__" -- and as two separate
+		// if statements a missing "!" is invisible to a reader and to review.
 		private static string GetPlatformGuard(HashSet<string> platforms)
 		{
 			if (platforms == null || platforms.Count != 1)
 				return null;
 
-			if (platforms.Contains("Android"))
-				return "!__IOS__";
-
-			return null;
+			return platforms.Single() switch
+			{
+				// compiled into net10.0-ios only
+				"iOS" => "__IOS__",
+				// compiled into net10.0 only, which is the target that runs on Android
+				"Android" => "!__IOS__",
+				_ => null,
+			};
 		}
 
 		private void GenerateHandles(List<CppTypedef> typedefs, string outputPath)
