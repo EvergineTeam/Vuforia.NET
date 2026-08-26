@@ -1,6 +1,13 @@
 <Project>
 	<ItemGroup Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">
 		<AndroidLibrary Include="$(MSBuildThisFileDirectory)android\VuforiaEngine.jar" Bind="false" />
+		<!--
+			Vuforia does not ship ARCore and loads it natively when it is available. Keep the
+			dependency unbound because the managed bindings do not call the ARCore Java API.
+		-->
+		<AndroidMavenLibrary Include="com.google.ar:core" Version="1.54.0" Repository="Google" Bind="false" />
+		<!-- Already supplied transitively by MAUI via Xamarin.AndroidX.Annotation. -->
+		<AndroidIgnoredJavaDependency Include="androidx.annotation:annotation:1.3.0" />
 	</ItemGroup>
 
 	<PropertyGroup Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">
